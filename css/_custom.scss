@@ -1,0 +1,59 @@
+// mi-estilo/_custom.scss
+
+// 1. Importa las funciones de Bootstrap primero.
+// Asegúrate de que la ruta sea correcta a tu instalación de Bootstrap.
+// Por ejemplo, si tienes los archivos de Bootstrap en una carpeta llamada 'bootstrap-5.3.3',
+// la ruta sería '../bootstrap-5.3.3/scss/functions';
+@import "../node_modules/bootstrap/scss/functions";
+
+// 2. Define tus nuevos colores aquí
+// Puedes usar códigos hexadecimales, nombres de color, o funciones Sass (como lighten/darken)
+$primary: #071F42;  
+$secondary: #117EAD; 
+$success: #41A116;   
+$dark: #343A40;      
+$info: #0F8E80;      
+$warning: #F1C40F;   
+$danger: #E74C3C;    
+$light: #F8F9FA;    
+$footer-deep: #0F2D5A;
+$footer-sky: #4EC1E0;
+$footer-sun: #FFD166;
+$footer-mist: #E0F2FE;
+$footer-coral: #FF7E6B;
+
+
+// Puedes también personalizar los tonos de grises si lo deseas:
+// $gray-100: #f0f0f0;
+// $gray-900: #222222;
+
+// Si quieres añadir un color completamente nuevo que Bootstrap no tiene por defecto,
+// lo añades al mapa $theme-colors. Esto hará que Bootstrap genere clases
+// como `text-mi-color-nuevo` o `bg-mi-color-nuevo`.
+$theme-colors: (
+  "primary": $primary,
+  "secondary":$secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+  "mi-color-nuevo": #133063 // Un color púrpura, por ejemplo
+);
+
+// 3. Importa el resto de Bootstrap *después* de tus variables.
+// La ruta debe apuntar a la carpeta 'scss' dentro de tu instalación de Bootstrap.
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// 4. (Opcional) Agrega cualquier otro estilo personalizado aquí
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+.mi-clase-personalizada {
+  background-color: var(--bs-mi-color-nuevo); // Usando la variable CSS generada por tu nuevo color
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}

@@ -1,0 +1,11 @@
+<!-- waves-animated.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="wave-svg">
+  <!-- Capa 1 (onda trasera) -->
+  <path fill="currentColor" opacity="0.25" class="wave-layer" d="M0,0V25c40-15,80-10,120-5s80,15,120,20c40,5,80,0,120-10s80-25,120-25c40,0,80,15,120,25s80,10,120,5c40-5,80-20,120-25s80,5,120,15c40,10,80,30,120,30s80-20,120-30V0Z"/>
+  
+  <!-- Capa 2 (onda media) -->
+  <path fill="currentColor" opacity="0.5" class="wave-layer" d="M0,0V15c40-5,80,5,120,10s80,5,120,0c40-5,80-15,120-15s80,10,120,20c40,10,80,20,120,15s80-15,120-25c40-10,80-10,120-5s80,15,120,20c40,5,80,0,120-10s80-25,120-25V0Z"/>
+  
+  <!-- Capa 3 (onda frontal) -->
+  <path fill="currentColor" class="wave-layer" d="M0,0V5c40,0,80,0,120,5s80,15,120,15c40,0,80-10,120-15s80-5,120,0c40,5,80,15,120,15s80-10,120-20c40-10,80-10,120-5s80,15,120,25c40,10,80,10,120,5s80-15,120-25V0Z"/>
+</svg>
