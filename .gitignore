@@ -30,5 +30,7 @@ node_modules/to-regex-range/
 package-lock.json
 package.json
 
+
 # Archivos de prueba
 pruebas.html
+img/original/*
