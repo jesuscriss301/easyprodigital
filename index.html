@@ -91,88 +91,70 @@
 
 <body>
   <!-- #region Header -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-3 sticky-top">
+   <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-3 sticky-top">
     <div class="container">
-      <!-- Logo with hover effect -->
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="./index.html">
         <img src="./img/logotipo.svg" alt="Easy Pro Digital" class="brand-logo">
       </a>
 
-      <!-- Mobile button with animation -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
-        aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!-- Main menu -->
       <div class="collapse navbar-collapse" id="navbarMain">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <!-- Home -->
           <li class="nav-item mx-2">
-            <a class="nav-link position-relative active" href="index.html">
+            <a class="nav-link position-relative" href="./index.html">
               <span class="nav-link-text">Home</span>
             </a>
           </li>
 
-          <!-- Services Dropdown -->
           <li class="nav-item dropdown mx-2">
             <a class="nav-link dropdown-toggle position-relative" href="#" id="servicesDropdown" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
+              data-bs-toggle="dropdown">
               <span class="nav-link-text">Services</span>
             </a>
-            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end border-0 shadow-lg"
-              aria-labelledby="servicesDropdown">
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end border-0 shadow-lg">
               <li>
                 <h6 class="dropdown-header text-warning">Development</h6>
               </li>
-              <li>
-                <a class="dropdown-item d-flex align-items-center py-3" href="./html/services.html#mobile-development">
+              <li><a class="dropdown-item d-flex align-items-center py-3" href="./html/services.html#web-development">
                   <i class="fas fa-code me-3 text-info"></i>
                   <div>
                     <h6 class="mb-0">Web & Mobile</h6>
                     <small class="text-muted">Responsive applications</small>
                   </div>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item d-flex align-items-center py-3" href="./html/services.html#saas-development">
+                </a></li>
+              <li><a class="dropdown-item d-flex align-items-center py-3" href="./html/services.html#saas-development">
                   <i class="fas fa-cloud me-3 text-warning"></i>
                   <div>
                     <h6 class="mb-0">SaaS Solutions</h6>
                     <small class="text-muted">Scalable platforms</small>
                   </div>
-                </a>
-              </li>
+                </a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
               <li>
                 <h6 class="dropdown-header text-warning">Marketing</h6>
               </li>
-              <li>
-                <a class="dropdown-item d-flex align-items-center py-3"
-                  href="./html/services.html#seo_local_international">
+              <li><a class="dropdown-item d-flex align-items-center py-3" href="./services.html#seo-services">
                   <i class="fas fa-search-dollar me-3 text-success"></i>
                   <div>
                     <h6 class="mb-0">SEO Services</h6>
                     <small class="text-muted">Local & International</small>
                   </div>
-                </a>
-              </li>
-              <li>
-
-                <a class="dropdown-item d-flex align-items-center py-3" href="./html/services.html#digital_marketing">
+                </a></li>
+              <li><a class="dropdown-item d-flex align-items-center py-3" href="./services.html#digital-marketing">
                   <i class="fas fa-bullhorn me-3 text-danger"></i>
                   <div>
                     <h6 class="mb-0">Digital Marketing</h6>
                     <small class="text-muted">User acquisition</small>
                   </div>
-                </a>
-              </li>
+                </a></li>
             </ul>
           </li>
 
-          <!-- Other links -->
           <li class="nav-item mx-2">
             <a class="nav-link position-relative" href="./html/plan.html">
               <span class="nav-link-text">Plans</span>
@@ -189,7 +171,6 @@
             </a>
           </li>
 
-          <!-- Highlighted Contact Button -->
           <li class="nav-item ms-lg-3 my-2 my-lg-0">
             <a class="btn btn-warning btn-sm px-4 fw-bold rounded-pill" href="./html/contact.html">
               Contact Us <i class="fas fa-arrow-right ms-2"></i>
@@ -881,7 +862,7 @@
     </div>
   </footer>
 
-  <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../js/animations.js"></script>
 
 </body>
