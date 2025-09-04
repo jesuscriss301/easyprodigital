@@ -8,7 +8,12 @@ window.addEventListener('scroll', function () {
   }
 });
 
+// Animación de burbujas
+
 document.addEventListener('DOMContentLoaded', function () {
+  if (window.location.pathname !== "/service/index.html") {
+    return; // no mostrar en otras páginas
+  }
   const container = document.getElementById('bubbles-container');
   let bubbles = [];
   const techIcons = [
@@ -181,6 +186,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Efecto de parpadeo aleatorio adicional
 document.addEventListener('DOMContentLoaded', function () {
+  if (window.location.pathname !== "/404.html") {
+    return; // no mostrar en otras páginas
+  }
   const glitchEffect = document.querySelector('.glitch-effect');
 
   function randomGlitch() {
