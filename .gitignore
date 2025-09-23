@@ -1,5 +1,6 @@
 # Documento que no queremos subir
 EasyPro_Digital_Consolidado.docx
+EasyPro_Digital_Consolidado.pdf
 
 # Node modules y subcarpetas específicas
 node_modules/.bin/
@@ -25,6 +26,7 @@ node_modules/readdirp/
 node_modules/sass/
 node_modules/source-map-js/
 node_modules/to-regex-range/
+node_modules/*
 
 # Archivos de Node
 package-lock.json
