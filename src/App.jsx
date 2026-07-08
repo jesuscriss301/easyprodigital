@@ -9,6 +9,7 @@ import {
   Legal,
   NotFound,
 } from './pages/pages.jsx'
+import RagForm from './pages/RagForm.jsx'
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/rag-form" element={<RagForm />} />
           <Route path="/privacy" element={<Legal kind="privacy" />} />
           <Route path="/terms" element={<Legal kind="terms" />} />
           <Route path="/cookies" element={<Legal kind="cookies" />} />
