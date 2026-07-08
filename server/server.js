@@ -1,6 +1,8 @@
 import express from 'express'
 import mysql from 'mysql2/promise'
 import nodemailer from 'nodemailer'
+import swaggerJsdoc from 'swagger-jsdoc'
+import swaggerUi from 'swagger-ui-express'
 import { fileURLToPath } from 'url'
 import path from 'path'
 
@@ -34,6 +36,26 @@ const transporter = process.env.SMTP_HOST
     })
   : null
 
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Easy Pro Digital API',
+      version: '1.0.0',
+      description: 'API para guardar formularios de descubrimiento y consultar el estado del backend.',
+    },
+    servers: [
+      {
+        url: `http://localhost:${port}`,
+        description: 'Servidor local',
+      },
+    ],
+  },
+  apis: ['./server.js'],
+}
+
+const swaggerSpec = swaggerJsdoc(swaggerOptions)
+
 async function sendThankYouEmail(payload) {
   if (!transporter) {
     console.log('SMTP not configured. Skipping email autoresponse.')
@@ -65,6 +87,25 @@ async function sendThankYouEmail(payload) {
   return { sent: true }
 }
 
+/**
+ * @openapi
+ * /api/rag-form:
+ *   post:
+ *     summary: Guardar un formulario de descubrimiento
+ *     tags: [Forms]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             additionalProperties: true
+ *     responses:
+ *       201:
+ *         description: Formulario guardado correctamente
+ *       500:
+ *         description: Error al guardar el formulario
+ */
 app.post('/api/rag-form', async (req, res) => {
   try {
     const payload = req.body
@@ -88,6 +129,18 @@ app.post('/api/rag-form', async (req, res) => {
   }
 })
 
+/**
+ * @openapi
+ * /api/health:
+ *   get:
+ *     summary: Verificar estado del backend
+ *     tags: [Health]
+ *     responses:
+ *       200:
+ *         description: Backend y base de datos respondieron correctamente
+ *       500:
+ *         description: Error de conexión con la base de datos
+ */
 app.get('/api/health', async (_req, res) => {
   try {
     await pool.query('SELECT 1')
@@ -96,6 +149,12 @@ app.get('/api/health', async (_req, res) => {
     res.status(500).json({ ok: false, error: error.message })
   }
 })
+
+app.get('/api/docs.json', (_req, res) => {
+  res.json(swaggerSpec)
+})
+
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 app.use(express.static(path.join(__dirname, '..', 'dist')))
 app.get('*', (_req, res) => {

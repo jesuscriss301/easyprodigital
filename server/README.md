@@ -45,3 +45,10 @@ npm start
 ```
 
 El formulario enviará los datos a `/api/rag-form`.
+
+## Documentación Swagger
+
+Una vez iniciado el servidor, puedes abrir:
+
+- http://localhost:3001/api/docs
+- http://localhost:3001/api/docs.json
