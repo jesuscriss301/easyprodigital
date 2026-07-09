@@ -82,3 +82,25 @@ npm start        # http://localhost:3001
 ```
 
 Deploy: sube a GitHub → **Settings → Pages → Source: GitHub Actions** → el workflow `.github/workflows/deploy.yml` publica solo en cada push a `main`. El `CNAME` va en `public/`, así el dominio no se pierde.
+
+## Ejecutar en Ubuntu / Linux
+
+### Desarrollo
+
+```bash
+chmod +x run-dev.sh
+./run-dev.sh
+```
+
+También puedes usar:
+
+```bash
+npm run dev:all
+```
+
+### Producción
+
+```bash
+chmod +x run-prod.sh
+./run-prod.sh
+```
