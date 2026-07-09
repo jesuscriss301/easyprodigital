@@ -57,11 +57,11 @@ const initialPills = {
 }
 
 const businessMessages = {
-  almacen: 'El cliente que escribe fuera de horario rara vez espera: un agente que responde al instante evita que el lead se vaya a otro sitio.',
-  restaurante: 'En hora pico cada chat sin responder puede ser un pedido perdido. Un agente ayuda a captar pedidos incluso cuando el equipo está ocupado.',
-  inmobiliaria: 'Los leads inmobiliarios se enfrían en horas. Responder rápido puede marcar la diferencia entre una visita o una oportunidad perdida.',
-  servicios: 'Las cotizaciones que llegan tarde se convierten con facilidad en clientes perdidos para otro proveedor.',
-  otro: 'La automatización puede recuperar ventas y tiempo de atención cuando el equipo no está disponible.',
+  almacen: 'When a customer messages outside business hours and gets no answer, they often move on to a competitor. Fast automation helps capture the lead before that happens.',
+  restaurante: 'During peak hours, every unanswered chat can mean a lost order. Automation keeps sales moving even when the team is busy.',
+  inmobiliaria: 'Real estate leads cool off quickly. A fast reply can mean the difference between a visit and a missed opportunity.',
+  servicios: 'Quotes that arrive too late are easily lost to another provider. Automation protects revenue when the team is unavailable.',
+  otro: 'Message automation helps recover sales, reduce missed inquiries, and prevent customers from leaving frustrated.',
 }
 
 const conditionalFields = {
@@ -77,12 +77,12 @@ export default function RagForm() {
   const [pills, setPills] = useState(initialPills)
   const [businessType, setBusinessType] = useState('')
   const [errors, setErrors] = useState({})
-  const [status, setStatus] = useState({ type: 'idle', text: 'Completa los campos marcados con *' })
+  const [status, setStatus] = useState({ type: 'idle', text: 'Complete the fields marked with *' })
   const [summary, setSummary] = useState('')
   const [submitting, setSubmitting] = useState(false)
 
   const selectedBusinessText = useMemo(() => {
-    if (!businessType) return 'Selecciona el tipo de negocio para ver el contexto del diagnóstico.'
+    if (!businessType) return 'Select your business type to see the context of the pain point.'
     return businessMessages[businessType] || businessMessages.otro
   }, [businessType])
 
@@ -116,13 +116,13 @@ export default function RagForm() {
     const nextErrors = {}
     const requiredFields = ['bizName', 'bizCity', 'ctName', 'ctPhone', 'bizDesc', 'dxFueraHorario', 'dxPerdidas', 'topQ', 'prohibido']
     requiredFields.forEach((field) => {
-      if (!form[field]?.trim()) nextErrors[field] = 'Este campo es obligatorio.'
+      if (!form[field]?.trim()) nextErrors[field] = 'This field is required.'
     })
 
-    if (!businessType) nextErrors.businessType = 'Selecciona un tipo de negocio.'
-    if (!pills.canales?.length) nextErrors.canales = 'Selecciona al menos un canal.'
-    if (!pills.tieneBd?.length) nextErrors.tieneBd = 'Selecciona una opción.'
-    if (!pills.medioContacto?.length) nextErrors.medioContacto = 'Selecciona un medio de contacto.'
+    if (!businessType) nextErrors.businessType = 'Please select a business type.'
+    if (!pills.canales?.length) nextErrors.canales = 'Select at least one channel.'
+    if (!pills.tieneBd?.length) nextErrors.tieneBd = 'Select an option.'
+    if (!pills.medioContacto?.length) nextErrors.medioContacto = 'Select a preferred contact method.'
 
     setErrors(nextErrors)
     return Object.keys(nextErrors).length === 0
@@ -143,24 +143,24 @@ export default function RagForm() {
   const handleGenerateSummary = (event) => {
     event.preventDefault()
     if (!validate()) {
-      setStatus({ type: 'error', text: 'Faltan campos obligatorios. Revisa arriba.' })
+      setStatus({ type: 'error', text: 'Some required fields are missing. Please review the form above.' })
       return
     }
     const payload = buildPayload()
     setSummary(JSON.stringify(payload, null, 2))
-    setStatus({ type: 'success', text: 'Resumen listo. Puedes enviarlo para guardarlo en la base de datos.' })
+    setStatus({ type: 'success', text: 'Summary ready. You can send it to save it in the database.' })
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
     if (!validate()) {
-      setStatus({ type: 'error', text: 'Faltan campos obligatorios. Revisa arriba.' })
+      setStatus({ type: 'error', text: 'Some required fields are missing. Please review the form above.' })
       return
     }
 
     const payload = buildPayload()
     setSubmitting(true)
-    setStatus({ type: 'loading', text: 'Guardando el formulario…' })
+    setStatus({ type: 'loading', text: 'Saving the form…' })
 
     try {
       const response = await fetch(`${apiBase}/rag-form`, {
@@ -174,10 +174,10 @@ export default function RagForm() {
         throw new Error(result?.message || 'No se pudo guardar el formulario.')
       }
 
-      setStatus({ type: 'success', text: 'Formulario guardado correctamente.' })
+      setStatus({ type: 'success', text: 'Form saved successfully.' })
       setSummary(JSON.stringify(payload, null, 2))
     } catch (error) {
-      setStatus({ type: 'error', text: error.message || 'No se pudo guardar el formulario.' })
+      setStatus({ type: 'error', text: error.message || 'The form could not be saved.' })
     } finally {
       setSubmitting(false)
     }
@@ -186,17 +186,17 @@ export default function RagForm() {
   return (
     <>
       <Seo
-        title="Formulario RAG de ventas | Easy Pro Digital"
-        description="Formulario de descubrimiento de ventas con IA para capturar información y guardarla en una base de datos MySQL."
+        title="AI Sales Discovery Form | Easy Pro Digital"
+        description="A discovery form for businesses that want to stop losing customers to missed messages and automate their sales conversations."
         path="/rag-form/"
       />
       <div className="rag-form-page">
         <header className="rag-form-header">
           <div className="container">
-            <p className="eyebrow">Easy Pro Digital · Automatización de ventas con IA</p>
-            <h1>Formulario de descubrimiento — Agente de ventas con RAG</h1>
+            <p className="eyebrow">Easy Pro Digital · AI sales automation</p>
+            <h1>Discovery form — AI sales agent</h1>
             <p>
-              Esta información nos permite construir un agente de IA que responda con los datos reales de tu negocio: catálogo, precios, políticas y tono. Puedes dejar en blanco lo que no aplique.
+              This information helps us design an AI agent that responds with the real context of your business: catalog, pricing, policies, and tone. It also helps us understand where missed messages are costing you leads, sales, and customer trust.
             </p>
           </div>
         </header>
@@ -204,51 +204,53 @@ export default function RagForm() {
         <div className="container rag-form-body">
           <form onSubmit={handleSubmit} className="rag-form-form">
             <section className="rag-form-card">
-              <h2>1 · Tu negocio</h2>
-              <p className="rag-form-hint">Lo básico para saber quién eres y qué vendes.</p>
+              <h2>1 · Your business</h2>
+              <p className="rag-form-hint">The basics so we understand who you are, what you sell, and where the communication gap is hurting you.</p>
 
               <div className="rag-form-grid">
                 <label>
-                  <span>Nombre del negocio *</span>
-                  <input name="bizName" value={form.bizName} onChange={handleChange} placeholder="Ej: Almacenes La Rebaja" />
+                  <span>Business name *</span>
+                  <input name="bizName" value={form.bizName} onChange={handleChange} placeholder="e.g. Northside Auto Parts" />
                   {errors.bizName && <span className="rag-form-error">{errors.bizName}</span>}
                 </label>
                 <label>
-                  <span>Ciudad / zona de operación *</span>
-                  <input name="bizCity" value={form.bizCity} onChange={handleChange} placeholder="Ej: Medellín y área metropolitana" />
+                  <span>City / operating area *</span>
+                  <input name="bizCity" value={form.bizCity} onChange={handleChange} placeholder="e.g. Medellín metro area" />
                   {errors.bizCity && <span className="rag-form-error">{errors.bizCity}</span>}
                 </label>
               </div>
 
               <div className="rag-form-grid">
                 <label>
-                  <span>Persona de contacto *</span>
-                  <input name="ctName" value={form.ctName} onChange={handleChange} placeholder="Nombre y cargo" />
+                  <span>Contact person *</span>
+                  <input name="ctName" value={form.ctName} onChange={handleChange} placeholder="Name and role" />
                   {errors.ctName && <span className="rag-form-error">{errors.ctName}</span>}
                 </label>
                 <label>
-                  <span>WhatsApp / teléfono *</span>
+                  <span>WhatsApp / phone *</span>
                   <input name="ctPhone" value={form.ctPhone} onChange={handleChange} placeholder="+57 ..." />
                   {errors.ctPhone && <span className="rag-form-error">{errors.ctPhone}</span>}
                 </label>
               </div>
 
               <label>
-                <span>Tipo de negocio *</span>
+                <span>Business type *</span>
                 <div className="rag-form-business-grid">
-                  {['almacen', 'restaurante', 'inmobiliaria', 'servicios', 'otro'].map((option) => (
+                  {[
+                    { value: 'almacen', label: 'Retail / Store', icon: '🏬' },
+                    { value: 'restaurante', label: 'Restaurant', icon: '🍽️' },
+                    { value: 'inmobiliaria', label: 'Real Estate', icon: '🏘️' },
+                    { value: 'servicios', label: 'Services', icon: '🛠️' },
+                    { value: 'otro', label: 'Other', icon: '✳️' },
+                  ].map((option) => (
                     <button
-                      key={option}
+                      key={option.value}
                       type="button"
-                      className={`rag-form-biz ${businessType === option ? 'active' : ''}`}
-                      onClick={() => handleBusinessSelect(option)}
+                      className={`rag-form-biz ${businessType === option.value ? 'active' : ''}`}
+                      onClick={() => handleBusinessSelect(option.value)}
                     >
-                      {option === 'almacen' && '🏬'}
-                      {option === 'restaurante' && '🍽️'}
-                      {option === 'inmobiliaria' && '🏘️'}
-                      {option === 'servicios' && '🛠️'}
-                      {option === 'otro' && '✳️'}
-                      <span>{option}</span>
+                      <span>{option.icon}</span>
+                      <span>{option.label}</span>
                     </button>
                   ))}
                 </div>
@@ -256,15 +258,15 @@ export default function RagForm() {
               </label>
 
               <label>
-                <span>Describe en 2-3 líneas qué vendes y a quién *</span>
-                <textarea name="bizDesc" value={form.bizDesc} onChange={handleChange} placeholder="Ej: Vendemos repuestos de motos..." />
+                <span>Describe in 2–3 lines what you sell and who you sell to *</span>
+                <textarea name="bizDesc" value={form.bizDesc} onChange={handleChange} placeholder="e.g. We sell replacement parts and serve local vehicle owners..." />
                 {errors.bizDesc && <span className="rag-form-error">{errors.bizDesc}</span>}
               </label>
 
               <label>
-                <span>¿Por qué medio prefieres que te contactemos? *</span>
+                <span>What is your preferred contact method? *</span>
                 <div className="rag-form-pill-list">
-                  {['whatsapp', 'llamada', 'correo', 'videollamada'].map((value) => (
+                  {['whatsapp', 'call', 'email', 'video call'].map((value) => (
                     <button
                       key={value}
                       type="button"
@@ -280,78 +282,78 @@ export default function RagForm() {
 
               <div className="rag-form-grid">
                 <label>
-                  <span>Correo electrónico</span>
-                  <input name="ctEmail" value={form.ctEmail} onChange={handleChange} placeholder="tucorreo@negocio.com" />
+                  <span>Email</span>
+                  <input name="ctEmail" value={form.ctEmail} onChange={handleChange} placeholder="you@yourbusiness.com" />
                 </label>
                 <label>
-                  <span>Mejor horario para contactarte</span>
-                  <input name="ctBestTime" value={form.ctBestTime} onChange={handleChange} placeholder="Ej: entre semana después de las 2pm" />
+                  <span>Best time to reach you</span>
+                  <input name="ctBestTime" value={form.ctBestTime} onChange={handleChange} placeholder="e.g. weekdays after 2pm" />
                 </label>
               </div>
             </section>
 
             <section className="rag-form-card">
-              <h2>2 · Diagnóstico rápido</h2>
-              <p className="rag-form-hint">Qué está pasando hoy con las oportunidades perdidas.</p>
+              <h2>2 · The pain point</h2>
+              <p className="rag-form-hint">What is happening today with missed inquiries, delayed replies, and lost revenue.</p>
 
               <label>
-                <span>¿Qué pasa con los mensajes fuera de horario? *</span>
-                <textarea name="dxFueraHorario" value={form.dxFueraHorario} onChange={handleChange} placeholder="Ej: quedan en visto hasta el día siguiente..." />
+                <span>What happens when customers message you outside business hours? *</span>
+                <textarea name="dxFueraHorario" value={form.dxFueraHorario} onChange={handleChange} placeholder="e.g. They wait until the next day and often buy from someone else..." />
                 {errors.dxFueraHorario && <span className="rag-form-error">{errors.dxFueraHorario}</span>}
               </label>
 
               <div className="rag-form-grid">
                 <label>
-                  <span>¿Cuántos mensajes se quedan sin responder por semana?</span>
+                  <span>How many messages go unanswered each week?</span>
                   <select name="dxSinResponder" value={form.dxSinResponder} onChange={handleChange}>
-                    <option value="">Selecciona...</option>
-                    <option>Casi ninguno</option>
-                    <option>Entre 5 y 20</option>
-                    <option>Entre 20 y 50</option>
-                    <option>Más de 50</option>
-                    <option>No tengo idea</option>
+                    <option value="">Select...</option>
+                    <option>Almost none</option>
+                    <option>Between 5 and 20</option>
+                    <option>Between 20 and 50</option>
+                    <option>More than 50</option>
+                    <option>I do not know</option>
                   </select>
                 </label>
                 <label>
-                  <span>¿Cuánto vale una venta promedio?</span>
-                  <input name="dxTicket" value={form.dxTicket} onChange={handleChange} placeholder="Ej: $150.000 COP" />
+                  <span>What is the average value of one sale?</span>
+                  <input name="dxTicket" value={form.dxTicket} onChange={handleChange} placeholder="e.g. $150,000 COP" />
                 </label>
               </div>
 
               <div className="rag-form-grid">
                 <label>
-                  <span>¿Cuánto tarda hoy tu negocio en responder?</span>
+                  <span>How long does it take your business to respond today?</span>
                   <select name="dxTiempo" value={form.dxTiempo} onChange={handleChange}>
-                    <option value="">Selecciona...</option>
-                    <option>Minutos</option>
-                    <option>1 a 3 horas</option>
-                    <option>Medio día</option>
-                    <option>Un día o más</option>
+                    <option value="">Select...</option>
+                    <option>Minutes</option>
+                    <option>1 to 3 hours</option>
+                    <option>Half a day</option>
+                    <option>One day or more</option>
                   </select>
                 </label>
                 <label>
-                  <span>¿Cuántas ventas más crees que cerrarías al mes? *</span>
-                  <textarea name="dxPerdidas" value={form.dxPerdidas} onChange={handleChange} placeholder="Ej: 10 ventas más al mes..." />
+                  <span>How many additional sales do you believe you could close per month? *</span>
+                  <textarea name="dxPerdidas" value={form.dxPerdidas} onChange={handleChange} placeholder="e.g. 10 more sales per month..." />
                   {errors.dxPerdidas && <span className="rag-form-error">{errors.dxPerdidas}</span>}
                 </label>
               </div>
 
               <label>
-                <span>¿Has intentado resolver esto antes?</span>
-                <textarea name="dxIntentos" value={form.dxIntentos} onChange={handleChange} placeholder="Ej: probé un bot pero era muy robótico..." />
+                <span>Have you tried solving this before?</span>
+                <textarea name="dxIntentos" value={form.dxIntentos} onChange={handleChange} placeholder="e.g. I tried a bot but it felt too robotic..." />
               </label>
 
               <div className="rag-form-note">{selectedBusinessText}</div>
             </section>
 
             <section className="rag-form-card">
-              <h2>3 · Canales de venta</h2>
-              <p className="rag-form-hint">Dónde debe atender el agente.</p>
+              <h2>3 · Sales channels</h2>
+              <p className="rag-form-hint">Where the agent should be available to prevent lost conversations.</p>
 
               <label>
-                <span>¿Por dónde quieres que atienda? *</span>
+                <span>Which channels should the agent handle? *</span>
                 <div className="rag-form-pill-list">
-                  {['whatsapp', 'llamadas', 'web', 'instagram', 'facebook'].map((value) => (
+                  {['whatsapp', 'calls', 'web', 'instagram', 'facebook'].map((value) => (
                     <button key={value} type="button" className={`rag-form-pill ${pills.canales.includes(value) ? 'active' : ''}`} onClick={() => handlePillToggle('canales', value)}>
                       {value}
                     </button>
@@ -362,26 +364,26 @@ export default function RagForm() {
 
               <div className="rag-form-grid">
                 <label>
-                  <span>Número de WhatsApp del negocio</span>
+                  <span>Business WhatsApp number</span>
                   <input name="waNumber" value={form.waNumber} onChange={handleChange} placeholder="+57 ..." />
                 </label>
                 <label>
-                  <span>Volumen aproximado de consultas al día</span>
+                  <span>Approximate volume of inquiries per day</span>
                   <select name="volume" value={form.volume} onChange={handleChange}>
-                    <option value="">Selecciona...</option>
-                    <option>Menos de 20</option>
-                    <option>20 a 50</option>
-                    <option>50 a 200</option>
-                    <option>Más de 200</option>
-                    <option>No lo sé</option>
+                    <option value="">Select...</option>
+                    <option>Less than 20</option>
+                    <option>20 to 50</option>
+                    <option>50 to 200</option>
+                    <option>More than 200</option>
+                    <option>I do not know</option>
                   </select>
                 </label>
               </div>
 
               <label>
-                <span>¿Cuándo debe atender el agente?</span>
+                <span>When should the agent respond?</span>
                 <div className="rag-form-pill-list">
-                  {['24/7', 'fuera_horario', 'horario_negocio'].map((value) => (
+                  {['24/7', 'outside_hours', 'business_hours'].map((value) => (
                     <button key={value} type="button" className={`rag-form-pill ${pills.horarioAgente.includes(value) ? 'active' : ''}`} onClick={() => handlePillToggle('horarioAgente', value, false)}>
                       {value}
                     </button>
@@ -390,19 +392,19 @@ export default function RagForm() {
               </label>
 
               <label>
-                <span>Horario de atención humana actual</span>
-                <input name="hours" value={form.hours} onChange={handleChange} placeholder="Ej: Lun-Sáb 8am-6pm" />
+                <span>Current human support hours</span>
+                <input name="hours" value={form.hours} onChange={handleChange} placeholder="e.g. Mon-Sat 8am-6pm" />
               </label>
             </section>
 
             <section className="rag-form-card">
-              <h2>4 · Fuentes de información</h2>
-              <p className="rag-form-hint">Qué necesita el agente para responder con datos reales.</p>
+              <h2>4 · Knowledge sources</h2>
+              <p className="rag-form-hint">What the agent needs to answer customers accurately and avoid frustrating dead ends.</p>
 
               <label>
-                <span>¿Tu negocio tiene base de datos o sistema? *</span>
+                <span>Do you have a database or system? *</span>
                 <div className="rag-form-pill-list">
-                  {['si_sistema', 'si_archivos', 'no'].map((value) => (
+                  {['Yes, a system', 'Yes, files', 'No'].map((value) => (
                     <button key={value} type="button" className={`rag-form-pill ${pills.tieneBd.includes(value) ? 'active' : ''}`} onClick={() => handlePillToggle('tieneBd', value, false)}>
                       {value}
                     </button>
@@ -412,14 +414,14 @@ export default function RagForm() {
               </label>
 
               <label>
-                <span>Si tienes sistema, ¿cuál?</span>
-                <input name="bdDetail" value={form.bdDetail} onChange={handleChange} placeholder="Ej: Siigo, WooCommerce, Excel compartido..." />
+                <span>If you have a system, which one?</span>
+                <input name="bdDetail" value={form.bdDetail} onChange={handleChange} placeholder="e.g. Shopify, ERP, shared Excel..." />
               </label>
 
               <label>
-                <span>¿Qué información existe hoy en algún formato?</span>
+                <span>What information exists today in any format?</span>
                 <div className="rag-form-pill-list">
-                  {['catalogo', 'precios', 'inventario', 'faq', 'politicas', 'web', 'nada'].map((value) => (
+                  {['catalog', 'prices', 'inventory', 'faq', 'policies', 'website', 'nothing'].map((value) => (
                     <button key={value} type="button" className={`rag-form-pill ${pills.fuentes.includes(value) ? 'active' : ''}`} onClick={() => handlePillToggle('fuentes', value)}>
                       {value}
                     </button>
@@ -428,36 +430,36 @@ export default function RagForm() {
               </label>
 
               <label>
-                <span>¿Cada cuánto cambian precios o disponibilidad?</span>
+                <span>How often do prices or availability change?</span>
                 <select name="updateFreq" value={form.updateFreq} onChange={handleChange}>
-                  <option value="">Selecciona...</option>
-                  <option>Varias veces al día</option>
-                  <option>Diario</option>
-                  <option>Semanal</option>
-                  <option>Mensual o menos</option>
+                  <option value="">Select...</option>
+                  <option>Several times a day</option>
+                  <option>Daily</option>
+                  <option>Weekly</option>
+                  <option>Monthly or less</option>
                 </select>
               </label>
             </section>
 
             <section className="rag-form-card">
-              <h2>5 · Proceso de ventas</h2>
-              <p className="rag-form-hint">Qué debe saber y hacer el agente para vender de verdad.</p>
+              <h2>5 · Sales process</h2>
+              <p className="rag-form-hint">What the agent needs to know and do to turn conversations into revenue instead of missed opportunities.</p>
 
               <label>
-                <span>Las 5 preguntas que más te hacen los clientes *</span>
-                <textarea name="topQ" value={form.topQ} onChange={handleChange} placeholder="Ej: ¿Tienen domicilio? ¿Cuánto vale X?..." />
+                <span>The 5 questions your customers ask most often *</span>
+                <textarea name="topQ" value={form.topQ} onChange={handleChange} placeholder="e.g. Do you offer delivery? How much does X cost?" />
                 {errors.topQ && <span className="rag-form-error">{errors.topQ}</span>}
               </label>
 
               <label>
-                <span>Objeciones típicas y cómo las responde tu mejor vendedor</span>
-                <textarea name="objections" value={form.objections} onChange={handleChange} placeholder="Ej: 'Está caro' → explicamos garantía..." />
+                <span>Common objections and how your best salesperson handles them</span>
+                <textarea name="objections" value={form.objections} onChange={handleChange} placeholder="e.g. 'It is too expensive' → explain warranty and financing..." />
               </label>
 
               <label>
-                <span>¿Qué debe poder hacer el agente?</span>
+                <span>What should the agent be able to do?</span>
                 <div className="rag-form-pill-list">
-                  {['responder', 'cotizar', 'agendar', 'pedido', 'pago', 'seguimiento', 'calificar'].map((value) => (
+                  {['answer', 'quote', 'schedule', 'order', 'payment', 'follow-up', 'qualify'].map((value) => (
                     <button key={value} type="button" className={`rag-form-pill ${pills.acciones.includes(value) ? 'active' : ''}`} onClick={() => handlePillToggle('acciones', value)}>
                       {value}
                     </button>
@@ -511,13 +513,13 @@ export default function RagForm() {
             </section>
 
             <section className="rag-form-card">
-              <h2>6 · Voz y límites del agente</h2>
-              <p className="rag-form-hint">Cómo habla, qué puede prometer y cuándo pasa a un humano.</p>
+              <h2>6 · Voice and boundaries</h2>
+              <p className="rag-form-hint">How the agent should speak, what it should never promise, and when it should hand off to a human.</p>
 
               <label>
-                <span>Tono del agente</span>
+                <span>Agent tone</span>
                 <div className="rag-form-pill-list">
-                  {['cercano', 'profesional', 'formal'].map((value) => (
+                  {['friendly', 'professional', 'formal'].map((value) => (
                     <button key={value} type="button" className={`rag-form-pill ${pills.tono.includes(value) ? 'active' : ''}`} onClick={() => handlePillToggle('tono', value, false)}>
                       {value}
                     </button>
@@ -526,20 +528,20 @@ export default function RagForm() {
               </label>
 
               <label>
-                <span>Frases o expresiones propias del negocio</span>
-                <textarea name="frases" value={form.frases} onChange={handleChange} placeholder='Ej: "¡Con gusto te ayudo!"' />
+                <span>Brand phrases or expressions</span>
+                <textarea name="frases" value={form.frases} onChange={handleChange} placeholder='e.g. "Happy to help!"' />
               </label>
 
               <label>
-                <span>Lo que el agente NUNCA debe hacer o prometer *</span>
-                <textarea name="prohibido" value={form.prohibido} onChange={handleChange} placeholder="Ej: no prometer fechas exactas..." />
+                <span>What the agent must never do or promise *</span>
+                <textarea name="prohibido" value={form.prohibido} onChange={handleChange} placeholder="e.g. do not promise exact delivery dates..." />
                 {errors.prohibido && <span className="rag-form-error">{errors.prohibido}</span>}
               </label>
 
               <label>
-                <span>¿Cuándo debe transferir a un humano?</span>
+                <span>When should it transfer to a human?</span>
                 <div className="rag-form-pill-list">
-                  {['pide', 'queja', 'monto', 'nosabe', 'negociacion'].map((value) => (
+                  {['request', 'complaint', 'high-value', 'does_not_know', 'negotiation'].map((value) => (
                     <button key={value} type="button" className={`rag-form-pill ${pills.escalamiento.includes(value) ? 'active' : ''}`} onClick={() => handlePillToggle('escalamiento', value)}>
                       {value}
                     </button>
@@ -548,19 +550,19 @@ export default function RagForm() {
               </label>
 
               <label>
-                <span>¿A quién y por qué medio escala?</span>
-                <input name="escalaA" value={form.escalaA} onChange={handleChange} placeholder="Ej: A Carolina por WhatsApp" />
+                <span>Who should it escalate to and through what channel?</span>
+                <input name="escalaA" value={form.escalaA} onChange={handleChange} placeholder="e.g. To Carolina via WhatsApp" />
               </label>
             </section>
 
             <section className="rag-form-card">
-              <h2>7 · Privacidad e infraestructura</h2>
-              <p className="rag-form-hint">Define si usas IA en la nube o un despliegue privado local.</p>
+              <h2>7 · Privacy and infrastructure</h2>
+              <p className="rag-form-hint">Whether you need a cloud deployment or a private local setup.</p>
 
               <label>
-                <span>Sensibilidad de los datos</span>
+                <span>Data sensitivity</span>
                 <div className="rag-form-pill-list">
-                  {['baja', 'media', 'alta'].map((value) => (
+                  {['low', 'medium', 'high'].map((value) => (
                     <button key={value} type="button" className={`rag-form-pill ${pills.sensibilidad.includes(value) ? 'active' : ''}`} onClick={() => handlePillToggle('sensibilidad', value, false)}>
                       {value}
                     </button>
@@ -569,9 +571,9 @@ export default function RagForm() {
               </label>
 
               <label>
-                <span>Preferencia de despliegue</span>
+                <span>Deployment preference</span>
                 <div className="rag-form-pill-list">
-                  {['nube', 'local', 'asesoria'].map((value) => (
+                  {['cloud', 'local', 'consulting'].map((value) => (
                     <button key={value} type="button" className={`rag-form-pill ${pills.despliegue.includes(value) ? 'active' : ''}`} onClick={() => handlePillToggle('despliegue', value, false)}>
                       {value}
                     </button>
@@ -580,34 +582,34 @@ export default function RagForm() {
               </label>
 
               <label>
-                <span>Presupuesto mensual estimado</span>
+                <span>Estimated monthly budget</span>
                 <select name="presupuesto" value={form.presupuesto || ''} onChange={handleChange}>
-                  <option value="">Selecciona...</option>
-                  <option>Menos de $300.000 COP</option>
-                  <option>$300.000 – $800.000 COP</option>
-                  <option>$800.000 – $2.000.000 COP</option>
-                  <option>Más de $2.000.000 COP</option>
-                  <option>Aún no definido</option>
+                  <option value="">Select...</option>
+                  <option>Less than $300,000 COP</option>
+                  <option>$300,000 – $800,000 COP</option>
+                  <option>$800,000 – $2,000,000 COP</option>
+                  <option>More than $2,000,000 COP</option>
+                  <option>Not defined yet</option>
                 </select>
               </label>
 
               <label>
-                <span>¿Algo más que debamos saber?</span>
-                <textarea name="extra" value={form.extra} onChange={handleChange} placeholder="Integraciones, plazos, lo que no funcionó con otros proveedores..." />
+                <span>Anything else we should know?</span>
+                <textarea name="extra" value={form.extra} onChange={handleChange} placeholder="Integrations, timeline, what did not work with other providers..." />
               </label>
             </section>
 
             <div className="rag-form-actions">
               <span className={`rag-form-status ${status.type}`}>{status.text}</span>
-              <button type="button" className="btn btn-ghost" onClick={handleGenerateSummary}>Generar resumen</button>
+              <button type="button" className="btn btn-ghost" onClick={handleGenerateSummary}>Generate summary</button>
               <button type="submit" className="btn btn-primary" disabled={submitting}>
-                {submitting ? 'Guardando…' : 'Enviar y guardar'}
+                {submitting ? 'Saving…' : 'Send and save'}
               </button>
             </div>
 
             {summary && (
               <section className="rag-form-card rag-form-preview">
-                <h2>Resumen generado</h2>
+                <h2>Generated summary</h2>
                 <pre>{summary}</pre>
               </section>
             )}
