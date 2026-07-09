@@ -398,6 +398,54 @@ section.first-section { border-top: none; padding-top: 48px; }
 }
 .legal-copy strong { color: var(--ink); }
 
+/* ---------- rag form ---------- */
+.rag-form-page { padding-bottom: 120px; }
+.rag-form-header { background: var(--ink); color: var(--paper); padding: 72px 0 28px; }
+.rag-form-header h1 { font-family: var(--font-display); font-size: clamp(30px, 4vw, 46px); margin-top: 8px; max-width: 16ch; }
+.rag-form-header p { margin-top: 16px; max-width: 70ch; color: #b8c6da; }
+.rag-form-body { padding-top: 24px; }
+.rag-form-form { display: grid; gap: 20px; }
+.rag-form-card { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 24px; box-shadow: 0 8px 24px rgba(7, 31, 66, 0.04); }
+.rag-form-card h2 { font-family: var(--font-display); font-size: 24px; margin-bottom: 8px; }
+.rag-form-hint { color: var(--slate); margin-bottom: 18px; }
+.rag-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.rag-form-card label { display: grid; gap: 8px; margin-top: 16px; }
+.rag-form-card label span { font-weight: 600; font-size: 14px; }
+.rag-form-card input,
+.rag-form-card textarea,
+.rag-form-card select {
+  width: 100%; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font: inherit; background: white;
+}
+.rag-form-card textarea { min-height: 96px; resize: vertical; }
+.rag-form-card input:focus,
+.rag-form-card textarea:focus,
+.rag-form-card select:focus { outline: 2px solid var(--accent); border-color: var(--accent); }
+.rag-form-pill-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.rag-form-pill,
+.rag-form-biz {
+  border: 1px solid var(--line); background: white; color: var(--ink); border-radius: 999px; padding: 8px 12px; font-size: 13px; cursor: pointer;
+}
+.rag-form-pill.active,
+.rag-form-biz.active { background: var(--accent); color: white; border-color: var(--accent); }
+.rag-form-business-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
+.rag-form-biz { border-radius: 12px; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 12px 10px; }
+.rag-form-note { margin-top: 16px; background: var(--porcelain); border-left: 3px solid var(--accent); padding: 12px 14px; color: var(--slate); }
+.rag-form-conditional { margin-top: 16px; padding: 16px; border: 1px dashed var(--line); border-radius: 12px; background: #fff; }
+.rag-form-conditional h3 { font-size: 16px; margin-bottom: 10px; }
+.rag-form-actions { display: flex; justify-content: flex-end; gap: 12px; align-items: center; flex-wrap: wrap; }
+.rag-form-status { color: var(--slate); font-size: 14px; margin-right: auto; }
+.rag-form-status.success { color: var(--accent); }
+.rag-form-status.error { color: #b33a2d; }
+.rag-form-status.loading { color: var(--ink); }
+.rag-form-preview pre { white-space: pre-wrap; word-break: break-word; background: var(--ink); color: #e6f2ff; padding: 16px; border-radius: 12px; overflow-x: auto; }
+.rag-form-error { color: #b33a2d; font-size: 12px; }
+@media (max-width: 720px) {
+  .rag-form-grid { grid-template-columns: 1fr; }
+  .rag-form-actions { justify-content: stretch; }
+  .rag-form-actions .btn { width: 100%; text-align: center; }
+  .rag-form-status { margin-right: 0; width: 100%; }
+}
+
 .notfound { text-align: left; }
 .notfound-code {
   font-family: var(--font-display);
