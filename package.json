@@ -7,7 +7,10 @@
     "dev": "vite",
     "dev:all": "node scripts/run-dev.mjs",
     "build": "vite build && node -e \"import { copyFileSync } from 'fs'; copyFileSync('dist/index.html', 'dist/404.html')\"",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "blog:demo": "npm --prefix blog run demo",
+    "blog:generate": "npm --prefix blog run generate",
+    "blog:batch": "npm --prefix blog run batch"
   },
   "dependencies": {
     "react": "^18.3.1",

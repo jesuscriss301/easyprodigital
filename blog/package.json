@@ -1,0 +1,19 @@
+{
+  "name": "seo-article-forge",
+  "version": "1.0.0",
+  "description": "Sistema de generación de artículos SEO con IA multi-proveedor, análisis SERP, extracción de keywords e imágenes libres de derechos",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": { "forge": "./src/index.js" },
+  "scripts": {
+    "generate": "node src/index.js generate",
+    "batch": "node src/index.js batch",
+    "demo": "node src/index.js demo"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "dotenv": "^17.2.3",
+    "image-size": "^2.0.2"
+  }
+}

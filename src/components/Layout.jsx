@@ -35,6 +35,7 @@ export function Header() {
         <nav className={`nav${open ? ' open' : ''}`} aria-label="Main">
           <NavLink to="/services/">Services</NavLink>
           <NavLink to="/portfolio/">Portfolio</NavLink>
+          <NavLink to="/blog/">Blog</NavLink>
           <NavLink to="/about/">About</NavLink>
           <NavLink to="/contact/" className="nav-cta">
             Start a project
@@ -46,6 +47,21 @@ export function Header() {
 }
 
 /* ---------------- Footer ---------------- */
+export function WhatsAppFloat() {
+  return (
+    <a
+      className="whatsapp-float"
+      href={profile.whatsapp}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Contactar por WhatsApp"
+    >
+      <span className="whatsapp-float-icon">💬</span>
+      <span className="whatsapp-float-text">WhatsApp</span>
+    </a>
+  )
+}
+
 export function Footer() {
   return (
     <footer className="site-footer">
@@ -57,6 +73,7 @@ export function Footer() {
         <nav className="footer-nav" aria-label="Footer">
           <Link to="/services/">Services</Link>
           <Link to="/portfolio/">Portfolio</Link>
+          <Link to="/blog/">Blog</Link>
           <Link to="/about/">About</Link>
           <Link to="/contact/">Contact</Link>
         </nav>

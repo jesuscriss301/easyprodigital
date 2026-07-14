@@ -1,0 +1,65 @@
+{
+  "articles": [
+    {
+      "slug": "demo-1-prisma-editorial",
+      "title": "Cómo funciona el compostaje doméstico: guía completa — plantilla prisma-editorial",
+      "description": "Aprende cómo funciona el compostaje doméstico paso a paso: qué compostar, los 4 factores clave y cuánto tarda. Guía práctica con base científica.",
+      "keywords": [
+        "compostaje doméstico",
+        "cómo hacer compost",
+        "abono orgánico casero"
+      ],
+      "featuredImage": "https://picsum.photos/seed/compost1/1600/900",
+      "template": "prisma-editorial"
+    },
+    {
+      "slug": "demo-2-circuito-tech",
+      "title": "Cómo funciona el compostaje doméstico: guía completa — plantilla circuito-tech",
+      "description": "Aprende cómo funciona el compostaje doméstico paso a paso: qué compostar, los 4 factores clave y cuánto tarda. Guía práctica con base científica.",
+      "keywords": [
+        "compostaje doméstico",
+        "cómo hacer compost",
+        "abono orgánico casero"
+      ],
+      "featuredImage": "https://picsum.photos/seed/compost1/1600/900",
+      "template": "circuito-tech"
+    },
+    {
+      "slug": "demo-3-mosaico-cards",
+      "title": "Cómo funciona el compostaje doméstico: guía completa — plantilla mosaico-cards",
+      "description": "Aprende cómo funciona el compostaje doméstico paso a paso: qué compostar, los 4 factores clave y cuánto tarda. Guía práctica con base científica.",
+      "keywords": [
+        "compostaje doméstico",
+        "cómo hacer compost",
+        "abono orgánico casero"
+      ],
+      "featuredImage": "https://picsum.photos/seed/compost1/1600/900",
+      "template": "mosaico-cards"
+    },
+    {
+      "slug": "demo-4-academia-cientifico",
+      "title": "Cómo funciona el compostaje doméstico: guía completa — plantilla academia-cientifico",
+      "description": "Aprende cómo funciona el compostaje doméstico paso a paso: qué compostar, los 4 factores clave y cuánto tarda. Guía práctica con base científica.",
+      "keywords": [
+        "compostaje doméstico",
+        "cómo hacer compost",
+        "abono orgánico casero"
+      ],
+      "featuredImage": "https://picsum.photos/seed/compost1/1600/900",
+      "template": "academia-cientifico"
+    },
+    {
+      "slug": "demo-5-vertiente-split",
+      "title": "Cómo funciona el compostaje doméstico: guía completa — plantilla vertiente-split",
+      "description": "Aprende cómo funciona el compostaje doméstico paso a paso: qué compostar, los 4 factores clave y cuánto tarda. Guía práctica con base científica.",
+      "keywords": [
+        "compostaje doméstico",
+        "cómo hacer compost",
+        "abono orgánico casero"
+      ],
+      "featuredImage": "https://picsum.photos/seed/compost1/1600/900",
+      "template": "vertiente-split"
+    }
+  ],
+  "lastTemplate": 4
+}

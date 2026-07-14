@@ -17,6 +17,7 @@ function ProjectList({ items }) {
             <div className="project-top">
               <span className="project-year">{p.year}</span>
               <span className="project-type">{p.type}</span>
+              {p.private && <span className="tag">Privado</span>}
             </div>
             <div className="project-body">
               <h3 className="project-name">
@@ -57,34 +58,33 @@ export function Home() {
   return (
     <>
       <Seo
-        title="Jesús Manuel Cristancho — Freelance Full-Stack Developer | Easy Pro Digital"
-        description="Freelance full-stack developer building web apps, mobile apps and SaaS for businesses in the US and Canada. Based in Medellín, Colombia. Direct communication, end-to-end delivery."
+        title="Jesús Manuel Cristancho — Desarrollador Full-Stack Freelance | Easy Pro Digital"
+        description="Desarrollador full-stack freelance creando aplicaciones web, móviles y SaaS para negocios en Colombia y LATAM. Con base en Medellín, comunicación directa y entrega completa."
         path="/"
         jsonLd={personJsonLd}
       />
       <div className="hero container">
         <p className="eyebrow">{profile.role}</p>
         <h1>
-          Hi, I'm <em>{profile.firstName}</em>. I build web, mobile &amp; SaaS
-          products end to end.
+          Hola, soy <em>{profile.firstName}</em>. Construyo productos web, móviles y SaaS de principio a fin.
         </h1>
         <p className="hero-tagline">{profile.tagline}</p>
         <div className="hero-actions">
-          <Link className="btn btn-primary" to="/portfolio/">See my work</Link>
-          <Link className="btn btn-ghost" to="/contact/">Start a project</Link>
+          <Link className="btn btn-primary" to="/portfolio/">Ver mi trabajo</Link>
+          <Link className="btn btn-ghost" to="/contact/">Empezar un proyecto</Link>
         </div>
       </div>
 
       <section>
         <div className="container">
-          <p className="eyebrow">What I do</p>
-          <h2 className="section-title">Services</h2>
+          <p className="eyebrow">Lo que hago</p>
+          <h2 className="section-title">Servicios</h2>
           <div className="cap-grid">
             {services.map((s) => (
               <Link className="cap cap-link" key={s.id} to={`/services/#${s.id}`}>
                 <h3>{s.title}</h3>
                 <p>{s.short}</p>
-                <span className="cap-more">Learn more →</span>
+                <span className="cap-more">Ver más →</span>
               </Link>
             ))}
           </div>
@@ -98,10 +98,10 @@ export function Home() {
               <p className="eyebrow">Portfolio</p>
               <h2 className="section-title">Selected work that solves real business problems</h2>
             </div>
-            <Link className="btn btn-ghost" to="/portfolio/">See the full portfolio</Link>
+            <Link className="btn btn-ghost" to="/portfolio/">Ver todo el portafolio</Link>
           </div>
           <p className="portfolio-copy">
-            I build systems for healthcare, mining, hospitality and e-commerce — combining backend engineering, product thinking and applied AI.
+            Diseño sistemas para salud, minería, hostelería y comercio electrónico — combinando ingeniería backend, pensamiento de producto e IA aplicada.
           </p>
           <ProjectList items={projects.slice(0, 3)} />
         </div>
@@ -109,8 +109,8 @@ export function Home() {
 
       <section>
         <div className="container">
-          <p className="eyebrow">Contact</p>
-          <h2 className="section-title">Have a project in mind?</h2>
+          <p className="eyebrow">Contacto</p>
+          <h2 className="section-title">¿Tienes un proyecto en mente?</h2>
           <a className="contact-email" href={`mailto:${profile.email}`}>
             {profile.email}
           </a>
@@ -125,8 +125,8 @@ export function Services() {
   return (
     <>
       <Seo
-        title="Services — Web, Mobile, SaaS, SEO & AI | Jesús Manuel Cristancho"
-        description="Freelance development services: web development, mobile apps, SaaS platforms, technical & local SEO, digital marketing and AI integrations for US & Canada businesses."
+        title="Servicios — Web, Apps Móviles, SaaS, SEO e IA | Jesús Manuel Cristancho"
+        description="Servicios de desarrollo freelance: desarrollo web, apps móviles, plataformas SaaS, SEO técnico y local, marketing digital e integraciones de IA para negocios en Colombia y LATAM."
         path="/services/"
         jsonLd={{
           '@context': 'https://schema.org',
@@ -142,11 +142,11 @@ export function Services() {
         }}
       />
       <div className="page-head container">
-        <p className="eyebrow">Services</p>
-        <h1 className="section-title">Everything your product needs, from one developer</h1>
+        <p className="eyebrow">Servicios</p>
+        <h1 className="section-title">Todo lo que tu producto necesita, desde un solo desarrollador</h1>
         <p className="page-intro">
-          The same services Easy Pro Digital has always offered — now delivered
-          directly by me, without agency overhead.
+          Los mismos servicios que Easy Pro Digital siempre ha ofrecido, ahora entregados
+          directamente por mí, sin sobrecostos de agencia.
         </p>
       </div>
       {services.map((s, i) => (
@@ -171,8 +171,8 @@ export function Services() {
       ))}
       <section>
         <div className="container">
-          <h2 className="section-title">Need something custom?</h2>
-          <Link className="btn btn-primary" to="/contact/">Let's talk</Link>
+          <h2 className="section-title">¿Necesitas algo a medida?</h2>
+          <Link className="btn btn-primary" to="/contact/">Hablemos</Link>
         </div>
       </section>
     </>
@@ -184,29 +184,29 @@ export function Portfolio() {
   return (
     <>
       <Seo
-        title="Portfolio — Projects by Jesús Manuel Cristancho | Easy Pro Digital"
-        description="Selected web, mobile and SaaS projects built end to end by freelance developer Jesús Manuel Cristancho for clients in the US and Canada."
+        title="Portafolio — Proyectos de Jesús Manuel Cristancho | Easy Pro Digital"
+        description="Proyectos seleccionados de web, apps móviles y SaaS construidos de principio a fin por el desarrollador freelance Jesús Manuel Cristancho para clientes en Colombia y LATAM."
         path="/portfolio/"
       />
       <div className="page-head container">
-        <p className="eyebrow">Portfolio</p>
-        <h1 className="section-title">Selected work</h1>
+        <p className="eyebrow">Portafolio</p>
+        <h1 className="section-title">Trabajo seleccionado</h1>
         <p className="page-intro">
-          A growing catalog of products and integrations I’ve built end to end for businesses that need reliable software, not just prototypes.
+          Un catálogo en crecimiento de productos e integraciones que he construido de principio a fin para negocios que necesitan software confiable, no solo prototipos.
         </p>
       </div>
       <section className="first-section">
         <div className="container">
           <div className="portfolio-summary">
             <div className="portfolio-summary-card">
-              <p className="eyebrow">What I focus on</p>
-              <h2>Web products, automations and AI tools that ship.</h2>
-              <p>My work spans custom platforms, e-commerce, SaaS and operational systems with SEO and analytics baked in.</p>
+              <p className="eyebrow">En lo que enfoco</p>
+              <h2>Productos web, automatizaciones y herramientas de IA que se lanzan.</h2>
+              <p>Mi trabajo abarca plataformas a medida, e-commerce, SaaS y sistemas operativos con SEO y analítica integrados.</p>
             </div>
             <ul className="portfolio-stats">
-              <li><strong>6+</strong><span>Projects delivered</span></li>
-              <li><strong>US &amp; Canada</strong><span>Client focus</span></li>
-              <li><strong>End to end</strong><span>From strategy to deployment</span></li>
+              <li><strong>6+</strong><span>Proyectos entregados</span></li>
+              <li><strong>Colombia &amp; LATAM</strong><span>Enfoque de clientes</span></li>
+              <li><strong>De principio a fin</strong><span>Desde la estrategia hasta el despliegue</span></li>
             </ul>
           </div>
           <ProjectList items={projects} />
@@ -221,22 +221,22 @@ export function About() {
   return (
     <>
       <Seo
-        title="About — Jesús Manuel Cristancho, Freelance Developer"
-        description="Full-stack developer in Medellín, Colombia working with US & Canada clients. From agency brand to independent practice: one developer, accountable end to end."
+        title="Sobre mí — Jesús Manuel Cristancho, Desarrollador Freelance"
+        description="Desarrollador full-stack en Medellín, Colombia trabajando con clientes en Colombia y LATAM. De marca de agencia a práctica independiente: un desarrollador responsable de principio a fin."
         path="/about/"
         jsonLd={personJsonLd}
       />
       <div className="page-head container">
-        <p className="eyebrow">About</p>
-        <h1 className="section-title">From agency brand to freelance practice</h1>
+        <p className="eyebrow">Sobre mí</p>
+        <h1 className="section-title">De marca de agencia a práctica freelance</h1>
       </div>
       <section className="first-section">
         <div className="container about-grid">
           <dl className="about-facts">
-            <div className="fact"><dt>Name</dt><dd>{profile.name}</dd></div>
-            <div className="fact"><dt>Based in</dt><dd>{profile.location}</dd></div>
-            <div className="fact"><dt>Timezone</dt><dd>{profile.timezoneLabel} — overlaps US &amp; Canada</dd></div>
-            <div className="fact"><dt>Working with</dt><dd>Clients in the US &amp; Canada</dd></div>
+            <div className="fact"><dt>Nombre</dt><dd>{profile.name}</dd></div>
+            <div className="fact"><dt>Base</dt><dd>{profile.location}</dd></div>
+            <div className="fact"><dt>Zona horaria</dt><dd>{profile.timezoneLabel} — solapa con Colombia y LATAM</dd></div>
+            <div className="fact"><dt>Trabajando con</dt><dd>Clientes en Colombia y LATAM</dd></div>
             <div className="fact">
               <dt>GitHub</dt>
               <dd>
@@ -262,13 +262,13 @@ export function Contact() {
   return (
     <>
       <Seo
-        title="Contact — Hire Jesús Manuel Cristancho | Easy Pro Digital"
-        description="Start a project with freelance full-stack developer Jesús Manuel Cristancho. Email, WhatsApp and LinkedIn — direct communication, no intermediaries."
+        title="Contacto — Contrata a Jesús Manuel Cristancho | Easy Pro Digital"
+        description="Inicia un proyecto con el desarrollador full-stack freelance Jesús Manuel Cristancho. Email, WhatsApp y LinkedIn — comunicación directa, sin intermediarios."
         path="/contact/"
       />
       <div className="page-head container">
-        <p className="eyebrow">Contact</p>
-        <h1 className="section-title">Have a project in mind?</h1>
+        <p className="eyebrow">Contacto</p>
+        <h1 className="section-title">¿Tienes un proyecto en mente?</h1>
       </div>
       <section className="first-section contact">
         <div className="container">
@@ -290,71 +290,71 @@ export function Contact() {
 /* ============ Legal (Privacy / Terms / Cookies) ============ */
 export function Legal({ kind }) {
   const meta = {
-    privacy: { title: 'Privacy Policy', path: '/privacy/' },
-    terms: { title: 'Terms of Service', path: '/terms/' },
-    cookies: { title: 'Cookie Policy', path: '/cookies/' },
+    privacy: { title: 'Política de privacidad', path: '/privacy/' },
+    terms: { title: 'Términos de servicio', path: '/terms/' },
+    cookies: { title: 'Política de cookies', path: '/cookies/' },
   }[kind]
 
   const content = {
     privacy: {
-      intro: `This Privacy Policy explains how ${profile.name}, operating as Easy Pro Digital, collects, uses and protects your personal information when you visit ${site.domain} or contact me about a project.`,
+      intro: `Esta política de privacidad explica cómo ${profile.name}, operando como Easy Pro Digital, recopila, utiliza y protege tu información personal cuando visitas ${site.domain} o te pones en contacto conmigo sobre un proyecto.`,
       sections: [
         {
-          title: 'Information I collect',
+          title: 'Información que recopilo',
           paragraphs: [
-            'When you contact me through the website, email, WhatsApp or social media, I may collect your name, email address, phone number, company and the details of your request.',
-            'I may also collect technical information such as your IP address, browser type, device, referring page and interactions with the site for security and analytics purposes.',
+            'Cuando te pones en contacto conmigo a través del sitio web, email, WhatsApp o redes sociales, puedo recopilar tu nombre, dirección de correo, número de teléfono, empresa y detalles de tu solicitud.',
+            'También puedo recopilar información técnica como tu dirección IP, tipo de navegador, dispositivo, página de referencia e interacciones con el sitio por motivos de seguridad y analítica.',
           ],
         },
         {
-          title: 'How I use your information',
+          title: 'Cómo utilizo tu información',
           paragraphs: [
-            'I use your information to answer your inquiry, prepare a proposal, deliver services, communicate about your project and improve the quality of my work.',
-            'I may also use it to comply with legal obligations and to maintain the security of the website and my systems.',
+            'Utilizo tu información para responder tu consulta, preparar una propuesta, entregar servicios, comunicarme sobre tu proyecto y mejorar la calidad de mi trabajo.',
+            'También puedo usarla para cumplir obligaciones legales y mantener la seguridad del sitio web y mis sistemas.',
           ],
         },
         {
-          title: 'Sharing of information',
+          title: 'Compartir información',
           paragraphs: [
-            'I do not sell your personal data. I may share limited information with trusted service providers such as hosting, email delivery, analytics or payment platforms, only when this is necessary to operate the site and fulfill your request.',
+            'No vendo tus datos personales. Puedo compartir información limitada con proveedores de confianza como hosting, entrega de correo, analítica o plataformas de pago, solo cuando sea necesario para operar el sitio y cumplir con tu solicitud.',
           ],
         },
         {
-          title: 'Your rights',
+          title: 'Tus derechos',
           paragraphs: [
-            'Depending on your location, you may have the right to access, correct, delete or restrict your personal data, as well as to withdraw consent where applicable.',
-            'To exercise these rights, please contact me at the email below.',
+            'Dependiendo de tu ubicación, puedes tener derecho a acceder, corregir, eliminar o restringir tus datos personales, así como a retirar tu consentimiento cuando aplique.',
+            'Para ejercer estos derechos, contáctame al correo que aparece abajo.',
           ],
         },
         {
-          title: 'Security and retention',
+          title: 'Seguridad y conservación',
           paragraphs: [
-            'I use reasonable technical and organizational measures to protect your information, although no transmission over the internet is completely secure.',
-            'I keep personal data only for as long as necessary to fulfill the purpose for which it was collected or to meet a legal obligation.',
+            'Utilizo medidas técnicas y organizativas razonables para proteger tu información, aunque ninguna transmisión por internet es completamente segura.',
+            'Conservo los datos personales solo durante el tiempo necesario para cumplir el propósito para el cual fueron recopilados o para atender una obligación legal.',
           ],
         },
       ],
       effectiveDate: 'July 7, 2026',
     },
     terms: {
-      intro: `These Terms of Service govern the use of ${site.domain} and the freelance development services I provide through Easy Pro Digital.`,
+      intro: `Estos términos de servicio rigen el uso de ${site.domain} y los servicios de desarrollo freelance que presto a través de Easy Pro Digital.`,
       sections: [
         {
-          title: 'Scope of services',
+          title: 'Alcance de los servicios',
           paragraphs: [
-            'I provide freelance services such as web development, mobile applications, SaaS platforms, SEO, AI integrations and related consulting. The specific scope, deliverables, deadlines and budget will be defined in a proposal, contract or written agreement.',
+            'Presto servicios freelance como desarrollo web, aplicaciones móviles, plataformas SaaS, SEO, integraciones de IA y consultoría relacionada. El alcance específico, entregables, plazos y presupuesto se definirán en una propuesta, contrato o acuerdo escrito.',
           ],
         },
         {
-          title: 'Project workflow',
+          title: 'Flujo del proyecto',
           paragraphs: [
-            'Work begins once the scope, price and timeline are agreed. Delays caused by missing content, late feedback or pending approvals may affect delivery dates.',
+            'El trabajo comienza una vez se acuerdan alcance, precio y cronograma. Los retrasos por contenido faltante, retroalimentación tardía o aprobaciones pendientes pueden afectar las fechas de entrega.',
           ],
         },
         {
-          title: 'Payments and invoices',
+          title: 'Pagos y facturas',
           paragraphs: [
-            'Payments are made according to the agreed proposal or contract. If a project is billed in milestones, each milestone is due as stated in the agreement.',
+            'Los pagos se realizan según la propuesta o contrato acordado. Si un proyecto se factura por hitos, cada hito se vence según lo indicado en el acuerdo.',
           ],
         },
         {

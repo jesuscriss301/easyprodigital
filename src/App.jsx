@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { Header, Footer, StatusBar, ScrollToTop } from './components/Layout.jsx'
+import { Header, Footer, StatusBar, ScrollToTop, WhatsAppFloat } from './components/Layout.jsx'
 import {
   Home,
   Services,
@@ -10,6 +10,7 @@ import {
   NotFound,
 } from './pages/pages.jsx'
 import RagForm from './pages/RagForm.jsx'
+import Blog from './pages/Blog.jsx'
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/rag-form" element={<RagForm />} />
@@ -30,13 +32,13 @@ export default function App() {
 
           {/* Redirects de URLs del sitio anterior (conservan el link juice) */}
           <Route path="/plan" element={<Navigate to="/services/" replace />} />
-          <Route path="/blog" element={<Navigate to="/" replace />} />
           <Route path="/sign_in" element={<Navigate to="/" replace />} />
           <Route path="/log_in" element={<Navigate to="/" replace />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
+      <WhatsAppFloat />
       <Footer />
       <StatusBar />
     </BrowserRouter>
