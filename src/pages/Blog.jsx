@@ -4,13 +4,15 @@ import Seo from '../components/Seo.jsx'
 /**
  * Listado del blog. Los artículos son HTML estático generado por blog/
  * (SEO Article Forge) y publicado en public/blog/. Este componente solo
- * lee el manifiesto /blog/index.json — no necesita backend.
+ * lee el manifiesto /blog/posts.json — no necesita backend.
+ * (Se llama posts.json y no index.json porque GitHub Pages sirve index.json
+ * como índice del directorio /blog/, rompiendo la ruta de la SPA.)
  */
 export default function Blog() {
   const [articles, setArticles] = useState(null) // null = cargando
 
   useEffect(() => {
-    fetch('/blog/index.json')
+    fetch('/blog/posts.json')
       .then((r) => (r.ok ? r.json() : { articles: [] }))
       .then((m) => setArticles(Array.isArray(m.articles) ? [...m.articles].reverse() : []))
       .catch(() => setArticles([]))

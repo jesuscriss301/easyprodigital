@@ -28,12 +28,12 @@ graph TD
     end
 
     subgraph Blog["blog/ (SEO Article Forge)"]
-        Forge[CLI: generate/batch/demo] --> Output[blog/output/*.html + index.json]
+        Forge[CLI: generate/batch/demo] --> Output[blog/output/*.html + posts.json]
         Output -->|copiar manualmente| PublicBlog[public/blog/]
     end
 
     RagForm -->|fetch POST| API
-    BlogPage -->|"fetch /blog/index.json"| PublicBlog
+    BlogPage -->|"fetch /blog/posts.json"| PublicBlog
 
     Deploy["push a main → .github/workflows/deploy.yml<br/>vite build → dist/ → GitHub Pages"] -.-> Frontend
 ```
@@ -42,7 +42,7 @@ Puntos clave del diseño:
 
 - **Todo el contenido editable vive en `src/data/profile.js`** (servicios, proyectos, textos, contacto). Para cambiar contenido del sitio, casi siempre se edita ahí, no en los componentes.
 - **`src/pages/pages.jsx` contiene varias páginas en un solo archivo** (Home, Services, Portfolio, About, Contact, Legal, NotFound). Solo `RagForm` y `Blog` tienen archivo propio.
-- **El blog no tiene backend**: `Blog.jsx` lee el manifiesto `/blog/index.json` y enlaza HTML estático en `public/blog/`. Los artículos se generan con `blog/` y se copian a `public/blog/`.
+- **El blog no tiene backend**: `Blog.jsx` lee el manifiesto `/blog/posts.json` y enlaza HTML estático en `public/blog/`. Los artículos se generan con `blog/` y se copian a `public/blog/`.
 - **SEO**: cada página usa el componente `Seo` (title/description/canonical/OG únicos + JSON-LD). Hay redirects de URLs del sitio anterior (`/plan`, `/sign_in`, `/log_in`) en `App.jsx` para conservar enlaces indexados. `sitemap.xml` y `robots.txt` en `public/`.
 - **SPA en GitHub Pages**: el build copia `dist/index.html` a `dist/404.html` para que las rutas profundas funcionen. `public/CNAME` mantiene el dominio propio (`base: '/'` en `vite.config.js`).
 

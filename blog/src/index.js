@@ -170,10 +170,10 @@ No necesitas equipo especializado: un recipiente ventilado, restos de cocina y h
   }
 
   // Manifiesto para la página /blog del sitio — solo si no existe uno real
-  const manifestPath = path.join(config.output.dir, 'index.json');
+  const manifestPath = path.join(config.output.dir, 'posts.json');
   try {
     await fs.access(manifestPath);
-    console.log('\nindex.json ya existe: no se sobreescribe el manifiesto.');
+    console.log('\nposts.json ya existe: no se sobreescribe el manifiesto.');
   } catch {
     await fs.writeFile(manifestPath, JSON.stringify({ articles: demoEntries, lastTemplate: 4 }, null, 2), 'utf8');
     console.log(`\n  ✔ Manifiesto demo → ${manifestPath}`);

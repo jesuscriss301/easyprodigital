@@ -12,7 +12,7 @@ import {
 import { renderArticle } from './templates/render.js';
 import { slugify, log, extractJSON } from './utils/helpers.js';
 
-const MANIFEST = () => path.join(config.output.dir, 'index.json');
+const MANIFEST = () => path.join(config.output.dir, 'posts.json');
 
 export async function generateArticle(topic, opts = {}) {
   log('pipeline', `═══ Generando artículo: "${topic}" ═══`);

@@ -4,7 +4,7 @@ Sistema de scripts en Node.js para generar artículos SEO de calidad con IA (mul
 
 ## Integración con el sitio easyprodigital
 
-Este generador es una **herramienta de build**, no corre en producción: escribe HTML estático + `index.json` directamente en `../public/blog/` (configurado vía `OUTPUT_DIR` en `.env`). La página `/blog` del sitio React lee ese `index.json` y lista los artículos; cada artículo es HTML independiente con la paleta de la marca (navy `#071F42` / azul `#117EAD` / lima `#C6F135`) y un header con enlace de vuelta al sitio principal.
+Este generador es una **herramienta de build**, no corre en producción: escribe HTML estático + `posts.json` directamente en `../public/blog/` (configurado vía `OUTPUT_DIR` en `.env`). La página `/blog` del sitio React lee ese `posts.json` y lista los artículos; cada artículo es HTML independiente con la paleta de la marca (navy `#071F42` / azul `#117EAD` / lima `#C6F135`) y un header con enlace de vuelta al sitio principal.
 
 Flujo de publicación:
 
@@ -28,7 +28,7 @@ Tema → 1. Búsqueda SERP (SerpAPI / Brave / DuckDuckGo)
      → 6. Imágenes: Pexels → Pixabay → Unsplash (validando resolución mínima) → IA (DALL·E) como último recurso
      → 7. Enlaces internos a artículos relacionados (por solapamiento de keywords)
      → 8. Render en 1 de 5 plantillas (rotación automática) con SEO técnico completo
-     → output/slug.html + slug.json + index.json (manifiesto del sitio)
+     → output/slug.html + slug.json + posts.json (manifiesto del sitio)
 ```
 
 ## Instalación
@@ -70,7 +70,7 @@ node src/index.js demo
 | 3 | `academia-cientifico` | Divulgación | TOC lateral fijo, citas `[n]` → referencias, ideal modo científico |
 | 4 | `vertiente-split` | Hero partido | Bloque bosque + imagen, subrayados animados |
 
-Todas incluyen: JSON-LD (`Article`/`ScholarlyArticle`), Open Graph/Twitter Cards, canonical, `loading="lazy"`, animaciones que respetan `prefers-reduced-motion`, sección de **artículos relacionados** y enlaces internos `{{related}}` dentro del cuerpo. La rotación es automática (se guarda en `output/index.json`) para que páginas consecutivas nunca repitan diseño.
+Todas incluyen: JSON-LD (`Article`/`ScholarlyArticle`), Open Graph/Twitter Cards, canonical, `loading="lazy"`, animaciones que respetan `prefers-reduced-motion`, sección de **artículos relacionados** y enlaces internos `{{related}}` dentro del cuerpo. La rotación es automática (se guarda en `output/posts.json`) para que páginas consecutivas nunca repitan diseño.
 
 ## Derechos de autor de las imágenes — cómo lo resuelve el sistema
 
@@ -99,7 +99,7 @@ src/serp/search.js       Búsqueda (SerpAPI, Brave, DuckDuckGo)
 src/serp/scraper.js      Scraping de las 3 primeras páginas
 src/images/sourcer.js    Estrategia de imágenes con derechos resueltos
 src/templates/           Markdown→HTML, motor de render y 5 temas
-output/                  HTML finales + JSON de metadatos + index.json
+output/                  HTML finales + JSON de metadatos + posts.json
 ```
 
 ## Notas y límites
