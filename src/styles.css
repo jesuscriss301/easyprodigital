@@ -24,7 +24,12 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  /* iOS Safari infla el texto al rotar a landscape sin esto */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -36,14 +41,21 @@ body {
   font-family: var(--font-body);
   font-size: 17px;
   line-height: 1.6;
-  padding-bottom: var(--statusbar-h);
+  /* deja sitio a la status bar fija + home indicator de iPhone */
+  padding-bottom: calc(var(--statusbar-h) + env(safe-area-inset-bottom, 0px));
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
 }
 
 a { color: inherit; }
 ::selection { background: var(--lime); color: var(--ink); }
 
-.container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+.container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  /* respeta el notch en landscape (viewport-fit=cover) */
+  padding: 0 max(24px, env(safe-area-inset-right, 0px)) 0 max(24px, env(safe-area-inset-left, 0px));
+}
 
 /* ---------- eyebrow / mono ---------- */
 .eyebrow {
@@ -64,7 +76,9 @@ a { color: inherit; }
   position: sticky;
   top: 0;
   z-index: 50;
+  background: rgba(242, 245, 247, 0.88); /* fallback iOS < 16.2 sin color-mix */
   background: color-mix(in srgb, var(--porcelain) 88%, transparent);
+  -webkit-backdrop-filter: blur(10px); /* Safari/iOS requiere el prefijo */
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
@@ -110,9 +124,13 @@ a { color: inherit; }
   border: 1px solid var(--line);
   border-radius: 3px;
   font-size: 18px;
+  /* tap target mínimo 44×44 (HIG de iOS) */
+  min-width: 44px;
+  min-height: 44px;
   padding: 4px 10px;
   cursor: pointer;
   color: var(--ink);
+  touch-action: manipulation;
 }
 
 @media (max-width: 720px) {
@@ -126,16 +144,37 @@ a { color: inherit; }
     background: var(--paper);
     border-bottom: 1px solid var(--line);
     flex-direction: column;
-    align-items: flex-start;
-    padding: 20px 24px;
-    gap: 18px;
+    align-items: stretch;
+    padding: 12px max(24px, env(safe-area-inset-right, 0px)) 16px max(24px, env(safe-area-inset-left, 0px));
+    gap: 0;
+    box-shadow: 0 18px 32px rgba(7, 31, 66, 0.1);
   }
   .nav.open { display: flex; }
+  /* filas tipo lista iOS: alto de 48px, separador fino y área táctil completa */
+  .nav a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav a:last-of-type { border-bottom: none; }
+  .nav a.nav-cta, .nav a.nav-cta.active {
+    justify-content: center;
+    margin-top: 12px;
+    padding: 14px 16px;
+    border-radius: 8px;
+  }
 }
 
 /* ---------- hero / page head ---------- */
 .hero { padding: 96px 0 80px; }
 .page-head { padding: 72px 0 0; }
+@media (max-width: 720px) {
+  .hero { padding: 56px 0 48px; }
+  .page-head { padding: 44px 0 0; }
+  .hero-tagline { font-size: 17px; margin-top: 20px; }
+}
 .page-intro { max-width: 56ch; color: var(--slate); font-size: 18px; margin-top: -24px; }
 
 .hero h1, .page-head h1 {
@@ -181,6 +220,11 @@ section.first-section { border-top: none; padding-top: 48px; }
   margin-bottom: 48px;
 }
 .page-head .section-title { margin-bottom: 32px; }
+@media (max-width: 720px) {
+  section { padding: 56px 0; }
+  section.first-section { padding-top: 36px; }
+  .section-title { margin-bottom: 32px; }
+}
 
 /* ---------- proyectos ---------- */
 .project-list {
@@ -363,8 +407,9 @@ section.first-section { border-top: none; padding-top: 48px; }
 /* ---------- whatsapp float ---------- */
 .whatsapp-float {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: max(20px, env(safe-area-inset-right, 0px));
+  /* por encima de la status bar fija y del home indicator */
+  bottom: calc(var(--statusbar-h) + 16px + env(safe-area-inset-bottom, 0px));
   z-index: 1200;
   display: inline-flex;
   align-items: center;
@@ -400,8 +445,8 @@ section.first-section { border-top: none; padding-top: 48px; }
 }
 @media (max-width: 820px) {
   .whatsapp-float {
-    right: 14px;
-    bottom: 14px;
+    right: max(14px, env(safe-area-inset-right, 0px));
+    bottom: calc(var(--statusbar-h) + 12px + env(safe-area-inset-bottom, 0px));
     padding: 10px 14px;
   }
   .whatsapp-float-icon {
@@ -466,6 +511,15 @@ section.first-section { border-top: none; padding-top: 48px; }
 .rag-form-card textarea,
 .rag-form-card select {
   width: 100%; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font: inherit; background: white;
+  /* ≥16px evita que iOS Safari haga zoom al enfocar el campo */
+  font-size: max(16px, 1em);
+  min-height: 44px;
+}
+.rag-form-card input,
+.rag-form-card textarea {
+  /* quita sombras internas y esquinas nativas de iOS */
+  -webkit-appearance: none;
+  appearance: none;
 }
 .rag-form-card textarea { min-height: 96px; resize: vertical; }
 .rag-form-card input:focus,
@@ -474,7 +528,9 @@ section.first-section { border-top: none; padding-top: 48px; }
 .rag-form-pill-list { display: flex; flex-wrap: wrap; gap: 8px; }
 .rag-form-pill,
 .rag-form-biz {
-  border: 1px solid var(--line); background: white; color: var(--ink); border-radius: 999px; padding: 8px 12px; font-size: 13px; cursor: pointer;
+  border: 1px solid var(--line); background: white; color: var(--ink); border-radius: 999px; padding: 10px 14px; font-size: 13px; cursor: pointer;
+  min-height: 44px;
+  touch-action: manipulation;
 }
 .rag-form-pill.active,
 .rag-form-biz.active { background: var(--accent); color: white; border-color: var(--accent); }
@@ -488,7 +544,7 @@ section.first-section { border-top: none; padding-top: 48px; }
 .rag-form-status.success { color: var(--accent); }
 .rag-form-status.error { color: #b33a2d; }
 .rag-form-status.loading { color: var(--ink); }
-.rag-form-preview pre { white-space: pre-wrap; word-break: break-word; background: var(--ink); color: #e6f2ff; padding: 16px; border-radius: 12px; overflow-x: auto; }
+.rag-form-preview pre { white-space: pre-wrap; word-break: break-word; background: var(--ink); color: #e6f2ff; padding: 16px; border-radius: 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .rag-form-error { color: #b33a2d; font-size: 12px; }
 @media (max-width: 720px) {
   .rag-form-grid { grid-template-columns: 1fr; }
@@ -541,6 +597,9 @@ section.first-section { border-top: none; padding-top: 48px; }
 }
 @media (max-width: 720px) {
   .footer-top { grid-template-columns: 1fr; }
+  /* área táctil cómoda en los enlaces del footer */
+  .footer-nav { gap: 0; }
+  .footer-nav a { padding: 10px 0; }
 }
 
 /* ---------- status bar (elemento firma) ---------- */
@@ -549,7 +608,9 @@ section.first-section { border-top: none; padding-top: 48px; }
   bottom: 0;
   left: 0;
   right: 0;
-  height: var(--statusbar-h);
+  /* crece hacia abajo para cubrir el área del home indicator */
+  height: calc(var(--statusbar-h) + env(safe-area-inset-bottom, 0px));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
   background: var(--ink);
   color: #b8c6da;
   font-family: var(--font-mono);
@@ -628,4 +689,19 @@ section.first-section { border-top: none; padding-top: 48px; }
 a:focus-visible, .btn:focus-visible, .nav-toggle:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
+}
+
+/* ---------- táctil (iOS/Android) ---------- */
+/* elimina el retardo de doble tap en elementos interactivos */
+a, button { touch-action: manipulation; }
+
+/* en pantallas táctiles el :hover queda "pegado" tras el tap — lo neutralizamos */
+@media (hover: none) {
+  .project:hover, .project:focus-visible,
+  .blog-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .whatsapp-float:hover { transform: none; }
+  .cap:hover { background: var(--paper); }
 }
