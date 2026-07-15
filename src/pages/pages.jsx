@@ -8,8 +8,9 @@ function ProjectList({ items }) {
   return (
     <div className="project-list">
       {items.map((p) => {
-        const Tag = p.url ? 'a' : 'div'
-        const linkProps = p.url
+        const hasActions = Boolean(p.repo)
+        const Tag = p.url && !hasActions ? 'a' : 'div'
+        const linkProps = Tag === 'a'
           ? { href: p.url, target: '_blank', rel: 'noopener noreferrer' }
           : {}
         return (
@@ -17,12 +18,14 @@ function ProjectList({ items }) {
             <div className="project-top">
               <span className="project-year">{p.year}</span>
               <span className="project-type">{p.type}</span>
-              {p.private && <span className="tag">Privado</span>}
+              {p.private === false
+                ? <span className="tag tag-public">Público</span>
+                : p.private && <span className="tag">Privado</span>}
             </div>
             <div className="project-body">
               <h3 className="project-name">
                 {p.name}
-                {p.url && <span className="arrow" aria-hidden="true">↗</span>}
+                {Tag === 'a' && <span className="arrow" aria-hidden="true">↗</span>}
               </h3>
               <p className="project-summary">{p.summary}</p>
               <div className="project-stack">
@@ -30,6 +33,18 @@ function ProjectList({ items }) {
                   <span className="tag" key={s}>{s}</span>
                 ))}
               </div>
+              {hasActions && (
+                <div className="project-actions">
+                  {p.url && (
+                    <a className="btn btn-primary" href={p.url} target="_blank" rel="noopener noreferrer">
+                      Ver proyecto en vivo ↗
+                    </a>
+                  )}
+                  <a className="btn btn-ghost" href={p.repo} target="_blank" rel="noopener noreferrer">
+                    Código en GitHub
+                  </a>
+                </div>
+              )}
             </div>
           </Tag>
         )

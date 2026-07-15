@@ -278,6 +278,12 @@ section.first-section { border-top: none; padding-top: 48px; }
   color: var(--slate);
   background: var(--porcelain);
 }
+.tag-public {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: transparent;
+}
+.project-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
 .portfolio-intro {
   display: flex;
   justify-content: space-between;

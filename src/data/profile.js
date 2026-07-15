@@ -115,6 +115,19 @@ export const services = [
 // Proyectos reales (del CV)
 export const projects = [
   {
+    id: 'turnero-saas',
+    name: 'Turnero — SaaS de filas virtuales',
+    type: 'SaaS multi-tenant',
+    year: '2026',
+    summary:
+      'Plataforma SaaS multi-tenant para gestionar filas de atención al cliente: cada empresa se registra, configura sucursales y servicios, y emite turnos que se despachan en tiempo real. Incluye pantalla pública para TV, seguimiento del turno desde el móvil vía SSE y despacho concurrente seguro con bloqueos a nivel de base de datos. Todo empaquetado en un solo contenedor Docker listo para desplegar en cualquier VPS.',
+    stack: ['Java 21 / Spring Boot 3', 'React + TypeScript', 'MySQL 8', 'Docker / SSE'],
+    url: null, // URL del demo en vivo (pendiente de despliegue)
+    repo: 'https://github.com/jesuscriss301/Turnero-java-react',
+    image: null,
+    private: false,
+  },
+  {
     id: 'mipres',
     name: 'MIPRES Reporting API — Ministerio de Salud',
     type: 'API de salud',
