@@ -1,7 +1,12 @@
 node_modules/
 dist/
+dist-preview/
 .DS_Store
 *.local
+vite.config.js.timestamp-*.mjs
 
 # API keys y secretos (blog/.env, server/.env, etc.)
 .env
+
+# metadata local de herramientas, no forma parte del proyecto
+.claude/
