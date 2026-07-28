@@ -3,19 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#f2f5f7" />
+    <meta name="theme-color" content="#f2f5f7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b1420" media="(prefers-color-scheme: dark)" />
     <meta name="apple-mobile-web-app-title" content="EasyProDigital" />
+    <script>
+      /* Aplica el tema guardado antes del primer pintado, evitando el parpadeo claro→oscuro */
+      (function () {
+        try {
+          var saved = localStorage.getItem('epd-theme')
+          if (saved === 'light' || saved === 'dark') {
+            document.documentElement.setAttribute('data-theme', saved)
+          }
+        } catch (e) {}
+      })()
+    </script>
 
     <title>Jesús Manuel Cristancho — Freelance Full-Stack Developer | Easy Pro Digital</title>
-    <meta name="description" content="Freelance full-stack developer building web apps, mobile apps and SaaS for businesses in the US and Canada. Based in Medellín, Colombia." />
+    <meta name="description" content="Freelance full-stack developer building web, mobile and SaaS applications for businesses across the US and Canada — technical SEO and applied AI included from day one." />
     <meta name="author" content="Jesús Manuel Cristancho" />
 
     <link rel="icon" type="image/x-icon" href="/LOGO.ico" />
     <link rel="canonical" href="https://easyprodigital.com/" />
+    <link rel="alternate" hreflang="en" href="https://easyprodigital.com/" />
+    <link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/" />
+    <link rel="alternate" hreflang="x-default" href="https://easyprodigital.com/" />
 
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content="Jesús Manuel Cristancho — Freelance Full-Stack Developer" />
-    <meta property="og:description" content="Web, mobile and SaaS products built end to end by one accountable developer." />
+    <meta property="og:description" content="Web, mobile, SaaS, SEO and AI — built end to end by one accountable developer." />
     <meta property="og:url" content="https://easyprodigital.com/" />
     <meta property="og:site_name" content="Easy Pro Digital" />
     <meta name="twitter:card" content="summary" />

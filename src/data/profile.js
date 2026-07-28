@@ -24,11 +24,79 @@ export const profile = {
   tiktok: 'https://www.tiktok.com/@easyprodigital',
   github: 'https://github.com/jesuscriss301',
 
+  // Ruta a una foto profesional. Si se deja en null, se usa el monograma de
+  // respaldo que ya está diseñado en el sitio.
+  photo: '/photo-jesus-cristancho.jpg',
+
   about: [
     `Soy Jesús Manuel Cristancho, ingeniero de sistemas y desarrollador full-stack con base en Medellín, Colombia. He entregado software productivo en salud, minería, hostelería y comercio electrónico — incluyendo integraciones con el Ministerio de Salud de Colombia (MIPRES), plataformas de monitoreo en tiempo real con microservicios y tiendas online que crecieron su tráfico orgánico en 40%.`,
     `Mi stack principal es Java (Spring Boot) y PHP (Symfony/Laravel) en backend, con React/TypeScript en frontend. Integro IA aplicada con APIs de OpenAI, Gemini y Claude, además de despliegues locales de modelos open-source como DeepSeek y Qwen para clientes que necesitan privacidad de datos. Complemento cada proyecto con SEO orgánico. Easy Pro Digital nació como marca de agencia; hoy es mi práctica personal, así que hablas directamente con quien escribe el código.`,
   ],
 }
+
+// Experiencia profesional (del CV) — orden más reciente primero
+export const experience = [
+  {
+    role: 'Desarrollador Full Stack',
+    company: 'Offimedicas',
+    // Logo real pendiente: no pude bajar el binario (el sandbox bloquea red
+    // a dominios externos por bash, y el puente del navegador bloquea pasar
+    // datos de imagen por seguridad). Archivo oficial en
+    // https://www.offimedicas.com/img/logo_offimedicas_blanco.png — guárdalo
+    // como public/logos/offimedicas.png y pon esto en '/logos/offimedicas.png'.
+    logo: null,
+    period: 'Sep. 2025 — Jun. 2026',
+    bullets: [
+      'Desarrollé y mantuve módulos del sistema de logística y distribución (PHP 7.2 / Symfony), mejorando 5% el tiempo de operación y procesando 3.000 consultas diarias.',
+      'Integré la API MIPRES del Ministerio de Salud para el reporte y control de prescripciones y dispensación, reduciendo 40% los tiempos de respuesta.',
+      'Diseñé la base de datos en MariaDB para inventarios, trazabilidad y cadena de suministro farmacéutico, garantizando el cumplimiento de la normativa del Ministerio de Salud de Colombia.',
+      'Construí las interfaces de operación diaria (JavaScript/HTML/CSS) para el personal de bodega y distribución.',
+    ],
+  },
+  {
+    role: 'Desarrollador Full Stack & IA',
+    company: 'Freelance (proyectos independientes)',
+    logo: '/LOGO.ico', // marca propia — ya está en el proyecto
+    period: '2021 — Sep. 2025',
+    bullets: [
+      'Implementé tiendas online con Bagisto (Laravel) — catálogo, pasarela de pago y gestión de pedidos — con SEO on-page que aumentó 40% el tráfico orgánico y posicionó 30 palabras clave en la primera página.',
+      'Construí un chatbot con IA (OpenAI API) integrado a WhatsApp Business que redujo el tiempo de respuesta de 10–40 min a 1 min y automatizó 85% de las consultas.',
+      'Realicé despliegues locales de modelos LLM open-source (DeepSeek, Qwen) para clientes que requieren IA privada sin dependencia de la nube.',
+      'Desarrollé una aplicación en Python + Gemini API para generación de artículos SEO a escala, produciendo 150 artículos/semana.',
+      'Automaticé flujos de negocio con n8n, agentes de IA y APIs REST; desarrollé componentes frontend en React/TypeScript y apps móviles híbridas.',
+    ],
+  },
+  {
+    role: 'Desarrollador Full Stack',
+    company: 'Rasi Soluciones S.A.S',
+    // Logo real pendiente — archivo oficial en https://rasi.com.co/logo-rasi.png,
+    // guárdalo como public/logos/rasi.png y pon esto en '/logos/rasi.png'.
+    logo: null,
+    period: 'Oct. 2023 — May. 2024',
+    bullets: [
+      'Desarrollé módulos frontend y backend para aplicaciones del sector salud (Java Spring Boot, JavaScript, Bootstrap), priorizando la usabilidad para personal médico.',
+      'Implementé pruebas unitarias y end-to-end con Cypress, elevando la cobertura a 10% y reduciendo 45% los defectos en producción, en entornos críticos de salud.',
+    ],
+  },
+  {
+    role: 'Líder de Sistemas y Desarrollador Full Stack',
+    company: 'Carbones de Exportación de Colombia',
+    // Logo real pendiente — archivo oficial en
+    // https://carboexco.com/wp-content/uploads/2019/07/logo-carboexco.png,
+    // guárdalo como public/logos/carboexco.png y pon esto en '/logos/carboexco.png'.
+    logo: null,
+    period: 'Ene. 2023 — Ago. 2023',
+    bullets: [
+      'Lideré técnicamente a un equipo de 2 desarrolladores en la construcción de una aplicación web empresarial desde cero.',
+      'Diseñé una arquitectura de microservicios (Java Spring Boot, MySQL, APIs RESTful) para monitoreo en tiempo real, garantizando integridad y escalabilidad de los datos.',
+    ],
+  },
+]
+
+export const education = [
+  { title: 'Ingeniería en Sistemas', school: 'Universidad Francisco de Paula Santander', period: '2018 — 2022' },
+  { title: 'Técnico en Sistemas', school: 'SENA', period: '2018' },
+]
 
 // Servicios (los del sitio original, con tu stack real)
 export const services = [
@@ -114,6 +182,32 @@ export const services = [
 
 // Proyectos reales (del CV)
 export const projects = [
+  {
+    id: 'turnero-saas',
+    name: 'Turnero — SaaS de filas virtuales',
+    type: 'SaaS multi-tenant',
+    year: '2026',
+    summary:
+      'Plataforma SaaS multi-tenant para gestionar filas de atención al cliente: cada empresa se registra, configura sucursales y servicios, y emite turnos que se despachan en tiempo real. Incluye pantalla pública para TV, seguimiento del turno desde el móvil vía SSE y despacho concurrente seguro con bloqueos a nivel de base de datos. Todo empaquetado en un solo contenedor Docker listo para desplegar en cualquier VPS.',
+    stack: ['Java 21 / Spring Boot 3', 'React + TypeScript', 'MySQL 8', 'Docker / SSE'],
+    url: null, // URL del demo en vivo (pendiente de despliegue)
+    repo: 'https://github.com/jesuscriss301/Turnero-java-react',
+    image: null,
+    private: false,
+  },
+  {
+    id: 'bagisto-ecommerce-pos',
+    name: 'Bagisto — E-commerce con POS',
+    type: 'E-commerce / Punto de venta',
+    year: '2026',
+    summary:
+      'Plataforma de e-commerce sobre Laravel + Vue.js con catálogo, pagos y gestión de pedidos, más módulo de Punto de Venta (POS) para operar inventario y ventas presenciales desde el mismo sistema que la tienda online. Arquitectura modular (~42 paquetes) con patrón repositorio y extensibilidad basada en eventos — base sobre la que construyo tiendas a medida para clientes.',
+    stack: ['Laravel 12 / PHP 8.3', 'Vue.js 3', 'Tailwind CSS', 'MySQL', 'POS'],
+    url: 'https://demo.bagisto.com/',
+    repo: 'https://github.com/jesuscriss301/bagisto',
+    image: null,
+    private: false,
+  },
   {
     id: 'mipres',
     name: 'MIPRES Reporting API — Ministerio de Salud',

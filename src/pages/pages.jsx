@@ -1,15 +1,107 @@
 import { Link } from 'react-router-dom'
 import Seo from '../components/Seo.jsx'
-import { profile, services, projects, site } from '../data/profile.js'
+import Reveal from '../components/Reveal.jsx'
+import SplitText from '../components/SplitText.jsx'
+import LetterGlitch from '../components/LetterGlitch.jsx'
+import {
+  SiOpenjdk,
+  SiSpring,
+  SiPhp,
+  SiLaravel,
+  SiSymfony,
+  SiReact,
+  SiTypescript,
+  SiNodedotjs,
+  SiMysql,
+  SiDocker,
+  SiPython,
+  SiGithub,
+} from 'react-icons/si'
+import { useLanguage } from '../i18n/LanguageContext.jsx'
 
-/* ============ bloques reutilizables ============ */
+/* Core stack shown in the About page's Logo Loop — mirrors the real stack
+   listed across services/experience in profile data. Brand-accurate colors;
+   the two "ink" ones (Symfony, GitHub) use the theme token so they flip
+   correctly between light/dark mode instead of staying flat black. */
+const STACK_LOGOS = [
+  { node: <SiOpenjdk color="#437291" />, title: 'Java' },
+  { node: <SiSpring color="#6DB33F" />, title: 'Spring Boot' },
+  { node: <SiPhp color="#777BB4" />, title: 'PHP' },
+  { node: <SiLaravel color="#FF2D20" />, title: 'Laravel' },
+  { node: <SiSymfony color="var(--ink)" />, title: 'Symfony' },
+  { node: <SiReact color="#61DAFB" />, title: 'React' },
+  { node: <SiTypescript color="#3178C6" />, title: 'TypeScript' },
+  { node: <SiNodedotjs color="#339933" />, title: 'Node.js' },
+  { node: <SiMysql color="#4479A1" />, title: 'MySQL' },
+  { node: <SiDocker color="#2496ED" />, title: 'Docker' },
+  { node: <SiPython color="#3776AB" />, title: 'Python' },
+  { node: <SiGithub color="var(--ink)" />, title: 'GitHub' },
+]
+
+/* Initials for the fallback monogram when there's no photo */
+function initialsOf(name) {
+  const parts = name.split(' ').filter(Boolean)
+  return ((parts[0]?.[0] || '') + (parts[parts.length - 1]?.[0] || '')).toUpperCase()
+}
+
+/* Company "logo" badge for the experience cards. No real company logo
+   files exist in the project (checked public/) and fetching/guessing
+   official brand marks for former employers isn't reliable, so this
+   generates a consistent initials badge instead — same idea as the avatar
+   fallback above. Drop real files in public/logos/<company-slug>.png and
+   swap this for an <img> if real logos become available. */
+function companyBadge(company) {
+  const clean = company.replace(/\(.*?\)/g, '').trim()
+  const words = clean.split(/\s+/).filter((w) => !/^(de|del|la|y|s\.?a\.?s\.?)$/i.test(w))
+  if (words.length >= 2) return (words[0][0] + words[1][0]).toUpperCase()
+  return clean.slice(0, 2).toUpperCase()
+}
+
+function Avatar({ size = 'lg' }) {
+  const { data } = useLanguage()
+  const { profile } = data
+  return (
+    <div className="avatar-frame">
+      {/* Small, cheap grid (~200 cells) — no perf impact even with the loop
+          running; hard-cut (no smooth transitions) both for a crisper
+          "glitch" look and to keep it lightweight. */}
+      <div className="avatar-frame-bg" aria-hidden="true">
+        <LetterGlitch
+          glitchColors={['#0c2f5e', '#117ead', '#3ab1e8', '#c6f135']}
+          glitchSpeed={90}
+          smooth={false}
+          centerVignette={false}
+          outerVignette={false}
+          characters="01"
+        />
+      </div>
+      {profile.photo ? (
+        <img
+          className={`avatar avatar-${size}`}
+          src={profile.photo}
+          alt={profile.name}
+          width="160"
+          height="160"
+        />
+      ) : (
+        <div className={`avatar avatar-${size} avatar-fallback`} aria-hidden="true">
+          {initialsOf(profile.name)}
+        </div>
+      )}
+    </div>
+  )
+}
+
+/* ============ reusable blocks ============ */
 
 function ProjectList({ items }) {
+  const { t } = useLanguage()
   return (
-    <div className="project-list">
+    <Reveal as="div" className="project-list">
       {items.map((p) => {
-        const Tag = p.url ? 'a' : 'div'
-        const linkProps = p.url
+        const hasActions = Boolean(p.repo)
+        const Tag = p.url && !hasActions ? 'a' : 'div'
+        const linkProps = Tag === 'a'
           ? { href: p.url, target: '_blank', rel: 'noopener noreferrer' }
           : {}
         return (
@@ -17,12 +109,14 @@ function ProjectList({ items }) {
             <div className="project-top">
               <span className="project-year">{p.year}</span>
               <span className="project-type">{p.type}</span>
-              {p.private && <span className="tag">Privado</span>}
+              {p.private === false
+                ? <span className="tag tag-public">{t.common.public}</span>
+                : p.private && <span className="tag">{t.common.private}</span>}
             </div>
             <div className="project-body">
               <h3 className="project-name">
                 {p.name}
-                {p.url && <span className="arrow" aria-hidden="true">↗</span>}
+                {Tag === 'a' && <span className="arrow" aria-hidden="true">↗</span>}
               </h3>
               <p className="project-summary">{p.summary}</p>
               <div className="project-stack">
@@ -30,64 +124,91 @@ function ProjectList({ items }) {
                   <span className="tag" key={s}>{s}</span>
                 ))}
               </div>
+              {hasActions && (
+                <div className="project-actions">
+                  {p.url && (
+                    <a className="btn btn-primary" href={p.url} target="_blank" rel="noopener noreferrer">
+                      {t.common.viewLiveProject}
+                    </a>
+                  )}
+                  <a className="btn btn-ghost" href={p.repo} target="_blank" rel="noopener noreferrer">
+                    {t.common.viewCode}
+                  </a>
+                </div>
+              )}
             </div>
           </Tag>
         )
       })}
-    </div>
+    </Reveal>
   )
 }
 
-const personJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: profile.name,
-  url: site.domain,
-  jobTitle: profile.role,
-  email: profile.email,
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Medellín',
-    addressCountry: 'CO',
-  },
-  sameAs: [profile.linkedin, profile.tiktok, profile.github],
+function buildPersonJsonLd({ profile, site, education }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: profile.name,
+    url: site.domain,
+    jobTitle: profile.role,
+    email: profile.email,
+    ...(profile.photo ? { image: site.domain + profile.photo } : {}),
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Medellín',
+      addressCountry: 'CO',
+    },
+    alumniOf: education.map((e) => ({ '@type': 'EducationalOrganization', name: e.school })),
+    sameAs: [profile.linkedin, profile.tiktok, profile.github],
+  }
 }
 
 /* ============ Home ============ */
 export function Home() {
+  const { href, data, t } = useLanguage()
+  const { profile, services, projects } = data
+
   return (
     <>
       <Seo
-        title="Jesús Manuel Cristancho — Desarrollador Full-Stack Freelance | Easy Pro Digital"
-        description="Desarrollador full-stack freelance creando aplicaciones web, móviles y SaaS para negocios en Colombia y LATAM. Con base en Medellín, comunicación directa y entrega completa."
+        title={t.home.seoTitle}
+        description={t.home.seoDescription}
         path="/"
-        jsonLd={personJsonLd}
+        jsonLd={buildPersonJsonLd(data)}
       />
-      <div className="hero container">
+      <Reveal as="div" className="hero container" immediate>
         <p className="eyebrow">{profile.role}</p>
         <h1>
-          Hola, soy <em>{profile.firstName}</em>. Construyo productos web, móviles y SaaS de principio a fin.
+          {t.home.heroGreeting} <em>{profile.firstName}</em>{t.home.heroRest}
         </h1>
         <p className="hero-tagline">{profile.tagline}</p>
         <div className="hero-actions">
-          <Link className="btn btn-primary" to="/portfolio/">Ver mi trabajo</Link>
-          <Link className="btn btn-ghost" to="/contact/">Empezar un proyecto</Link>
+          <Link className="btn btn-primary" to={href('/portfolio/')}>{t.home.ctaViewWork}</Link>
+          <Link className="btn btn-ghost" to={href('/contact/')}>{t.home.ctaStartProject}</Link>
         </div>
-      </div>
+      </Reveal>
 
       <section>
         <div className="container">
-          <p className="eyebrow">Lo que hago</p>
-          <h2 className="section-title">Servicios</h2>
-          <div className="cap-grid">
+          <p className="eyebrow">{t.home.servicesEyebrow}</p>
+          <SplitText
+            tag="h2"
+            className="section-title"
+            text={t.home.servicesTitle}
+            textAlign="left"
+            splitType="chars"
+            delay={30}
+            duration={0.8}
+          />
+          <Reveal as="div" className="cap-grid">
             {services.map((s) => (
-              <Link className="cap cap-link" key={s.id} to={`/services/#${s.id}`}>
+              <Link className="cap cap-link" key={s.id} to={href(`/services/#${s.id}`)}>
                 <h3>{s.title}</h3>
                 <p>{s.short}</p>
-                <span className="cap-more">Ver más →</span>
+                <span className="cap-more">{t.common.readMore}</span>
               </Link>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -95,22 +216,32 @@ export function Home() {
         <div className="container">
           <div className="portfolio-intro">
             <div>
-              <p className="eyebrow">Portfolio</p>
-              <h2 className="section-title">Selected work that solves real business problems</h2>
+              <p className="eyebrow">{t.home.portfolioEyebrow}</p>
+              <h2 className="section-title">{t.home.portfolioTitle}</h2>
             </div>
-            <Link className="btn btn-ghost" to="/portfolio/">Ver todo el portafolio</Link>
+            <Link className="btn btn-ghost" to={href('/portfolio/')}>{t.home.portfolioViewAll}</Link>
           </div>
-          <p className="portfolio-copy">
-            Diseño sistemas para salud, minería, hostelería y comercio electrónico — combinando ingeniería backend, pensamiento de producto e IA aplicada.
-          </p>
+          <p className="portfolio-copy">{t.home.portfolioCopy}</p>
           <ProjectList items={projects.slice(0, 3)} />
         </div>
       </section>
 
-      <section>
-        <div className="container">
-          <p className="eyebrow">Contacto</p>
-          <h2 className="section-title">¿Tienes un proyecto en mente?</h2>
+      <section className="home-cta">
+        <div className="home-cta-bg">
+          <LetterGlitch
+            glitchColors={['#12406b', '#117ead', '#3ab1e8', '#c6f135']}
+            glitchSpeed={110}
+            centerVignette
+            outerVignette
+            smooth={false}
+            fontSize={26}
+            charWidth={20}
+            charHeight={34}
+          />
+        </div>
+        <div className="container home-cta-content">
+          <p className="eyebrow">{t.home.contactEyebrow}</p>
+          <h2 className="section-title">{t.home.contactTitle}</h2>
           <a className="contact-email" href={`mailto:${profile.email}`}>
             {profile.email}
           </a>
@@ -122,11 +253,17 @@ export function Home() {
 
 /* ============ Services ============ */
 export function Services() {
+  const { lang, href, data, t } = useLanguage()
+  const { profile, services, site } = data
+  const areaServed = lang === 'es'
+    ? ['CO', 'MX', 'AR', 'CL', 'PE', 'EC']
+    : ['US', 'CA', 'CO', 'MX', 'AR', 'CL', 'PE', 'EC']
+
   return (
     <>
       <Seo
-        title="Servicios — Web, Apps Móviles, SaaS, SEO e IA | Jesús Manuel Cristancho"
-        description="Servicios de desarrollo freelance: desarrollo web, apps móviles, plataformas SaaS, SEO técnico y local, marketing digital e integraciones de IA para negocios en Colombia y LATAM."
+        title={t.services.seoTitle}
+        description={t.services.seoDescription}
         path="/services/"
         jsonLd={{
           '@context': 'https://schema.org',
@@ -134,7 +271,7 @@ export function Services() {
           name: 'Easy Pro Digital — Jesús Manuel Cristancho',
           url: site.domain + '/services/',
           founder: { '@type': 'Person', name: profile.name },
-          areaServed: ['US', 'CA'],
+          areaServed,
           makesOffer: services.map((s) => ({
             '@type': 'Offer',
             itemOffered: { '@type': 'Service', name: s.title, description: s.short },
@@ -142,22 +279,19 @@ export function Services() {
         }}
       />
       <div className="page-head container">
-        <p className="eyebrow">Servicios</p>
-        <h1 className="section-title">Todo lo que tu producto necesita, desde un solo desarrollador</h1>
-        <p className="page-intro">
-          Los mismos servicios que Easy Pro Digital siempre ha ofrecido, ahora entregados
-          directamente por mí, sin sobrecostos de agencia.
-        </p>
+        <p className="eyebrow">{t.services.eyebrow}</p>
+        <h1 className="section-title">{t.services.title}</h1>
+        <p className="page-intro">{t.services.intro}</p>
       </div>
       {services.map((s, i) => (
         <section key={s.id} id={s.id} className={i === 0 ? 'first-section' : ''}>
-          <div className="container service-detail">
+          <Reveal as="div" className="container service-detail">
             <div>
               <h2 className="service-title">{s.title}</h2>
               <p className="service-text">{s.detail}</p>
               <div className="cap-stack">
-                {s.stack.map((t) => (
-                  <span className="tag" key={t}>{t}</span>
+                {s.stack.map((techName) => (
+                  <span className="tag" key={techName}>{techName}</span>
                 ))}
               </div>
             </div>
@@ -166,13 +300,13 @@ export function Services() {
                 <li key={b}>{b}</li>
               ))}
             </ul>
-          </div>
+          </Reveal>
         </section>
       ))}
       <section>
         <div className="container">
-          <h2 className="section-title">¿Necesitas algo a medida?</h2>
-          <Link className="btn btn-primary" to="/contact/">Hablemos</Link>
+          <h2 className="section-title">{t.services.ctaTitle}</h2>
+          <Link className="btn btn-primary" to={href('/contact/')}>{t.services.ctaButton}</Link>
         </div>
       </section>
     </>
@@ -181,32 +315,33 @@ export function Services() {
 
 /* ============ Portfolio ============ */
 export function Portfolio() {
+  const { data, t } = useLanguage()
+  const { projects } = data
+
   return (
     <>
       <Seo
-        title="Portafolio — Proyectos de Jesús Manuel Cristancho | Easy Pro Digital"
-        description="Proyectos seleccionados de web, apps móviles y SaaS construidos de principio a fin por el desarrollador freelance Jesús Manuel Cristancho para clientes en Colombia y LATAM."
+        title={t.portfolio.seoTitle}
+        description={t.portfolio.seoDescription}
         path="/portfolio/"
       />
       <div className="page-head container">
-        <p className="eyebrow">Portafolio</p>
-        <h1 className="section-title">Trabajo seleccionado</h1>
-        <p className="page-intro">
-          Un catálogo en crecimiento de productos e integraciones que he construido de principio a fin para negocios que necesitan software confiable, no solo prototipos.
-        </p>
+        <p className="eyebrow">{t.portfolio.eyebrow}</p>
+        <h1 className="section-title">{t.portfolio.title}</h1>
+        <p className="page-intro">{t.portfolio.intro}</p>
       </div>
       <section className="first-section">
         <div className="container">
           <div className="portfolio-summary">
             <div className="portfolio-summary-card">
-              <p className="eyebrow">En lo que enfoco</p>
-              <h2>Productos web, automatizaciones y herramientas de IA que se lanzan.</h2>
-              <p>Mi trabajo abarca plataformas a medida, e-commerce, SaaS y sistemas operativos con SEO y analítica integrados.</p>
+              <p className="eyebrow">{t.portfolio.focusEyebrow}</p>
+              <h2>{t.portfolio.focusTitle}</h2>
+              <p>{t.portfolio.focusCopy}</p>
             </div>
             <ul className="portfolio-stats">
-              <li><strong>6+</strong><span>Proyectos entregados</span></li>
-              <li><strong>Colombia &amp; LATAM</strong><span>Enfoque de clientes</span></li>
-              <li><strong>De principio a fin</strong><span>Desde la estrategia hasta el despliegue</span></li>
+              <li><strong>+50</strong><span>{t.portfolio.statDelivered}</span></li>
+              <li><strong>{t.portfolio.statFocusValue}</strong><span>{t.portfolio.statFocusLabel}</span></li>
+              <li><strong>{t.portfolio.statEndToEndValue}</strong><span>{t.portfolio.statEndToEndLabel}</span></li>
             </ul>
           </div>
           <ProjectList items={projects} />
@@ -218,39 +353,110 @@ export function Portfolio() {
 
 /* ============ About ============ */
 export function About() {
+  const { data, t } = useLanguage()
+  const { profile, experience, education } = data
+
   return (
     <>
       <Seo
-        title="Sobre mí — Jesús Manuel Cristancho, Desarrollador Freelance"
-        description="Desarrollador full-stack en Medellín, Colombia trabajando con clientes en Colombia y LATAM. De marca de agencia a práctica independiente: un desarrollador responsable de principio a fin."
+        title={t.about.seoTitle}
+        description={t.about.seoDescription}
         path="/about/"
-        jsonLd={personJsonLd}
+        jsonLd={buildPersonJsonLd(data)}
       />
       <div className="page-head container">
-        <p className="eyebrow">Sobre mí</p>
-        <h1 className="section-title">De marca de agencia a práctica freelance</h1>
+        <p className="eyebrow">{t.about.eyebrow}</p>
+        <h1 className="section-title">{t.about.title}</h1>
       </div>
       <section className="first-section">
         <div className="container about-grid">
-          <dl className="about-facts">
-            <div className="fact"><dt>Nombre</dt><dd>{profile.name}</dd></div>
-            <div className="fact"><dt>Base</dt><dd>{profile.location}</dd></div>
-            <div className="fact"><dt>Zona horaria</dt><dd>{profile.timezoneLabel} — solapa con Colombia y LATAM</dd></div>
-            <div className="fact"><dt>Trabajando con</dt><dd>Clientes en Colombia y LATAM</dd></div>
-            <div className="fact">
-              <dt>GitHub</dt>
-              <dd>
-                <a href={profile.github} target="_blank" rel="noopener noreferrer">
-                  {profile.github.replace('https://', '')}
-                </a>
-              </dd>
-            </div>
-          </dl>
+          <div className="about-side">
+            <Avatar size="lg" />
+            <dl className="about-facts">
+              <div className="fact"><dt>{t.about.factName}</dt><dd>{profile.name}</dd></div>
+              <div className="fact"><dt>{t.about.factBase}</dt><dd>{profile.location}</dd></div>
+              <div className="fact"><dt>{t.about.factTimezone}</dt><dd>{profile.timezoneLabel}{t.about.timezoneSuffix}</dd></div>
+              <div className="fact"><dt>{t.about.factWorkingWith}</dt><dd>{t.about.workingWithValue}</dd></div>
+              <div className="fact">
+                <dt>{t.about.factGithub}</dt>
+                <dd>
+                  <a href={profile.github} target="_blank" rel="noopener noreferrer">
+                    {profile.github.replace('https://', '')}
+                  </a>
+                </dd>
+              </div>
+            </dl>
+          </div>
           <div className="about-copy">
             {profile.about.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="first-section">
+        <div className="container about-grid">
+            <div className="stack-loop">
+              <p className="eyebrow">{t.about.stackEyebrow}</p>
+              <div className="stack-carousel" role="list" aria-label={t.about.stackEyebrow}>
+                {STACK_LOGOS.map((item) => (
+                  <div className="stack-carousel-item" role="listitem" key={item.title}>
+                    <span className="stack-carousel-icon">{item.node}</span>
+                    <span className="stack-carousel-label">{item.title}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="container">
+          <p className="eyebrow">{t.about.experienceEyebrow}</p>
+          <h2 className="section-title">{t.about.experienceTitle}</h2>
+          <Reveal as="div" className="experience-cards">
+            {experience.map((job) => (
+              <div className="experience-card" key={job.company + job.period}>
+                <div className="experience-card-head">
+                  {job.logo ? (
+                    <span className="experience-card-logo experience-card-logo--image">
+                      <img src={job.logo} alt="" loading="lazy" />
+                    </span>
+                  ) : (
+                    <span className="experience-card-logo experience-card-logo--initials" aria-hidden="true">
+                      {companyBadge(job.company)}
+                    </span>
+                  )}
+                  <div className="experience-card-titles">
+                    <h3>{job.role}</h3>
+                    <p className="experience-card-company">{job.company}</p>
+                  </div>
+                  <span className="experience-card-period">{job.period}</span>
+                </div>
+                <ul className="experience-card-bullets">
+                  {job.bullets.map((b) => (
+                    <li key={b}>{b}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
+      <section>
+        <div className="container">
+          <p className="eyebrow">{t.about.educationEyebrow}</p>
+          <h2 className="section-title">{t.about.educationTitle}</h2>
+          <dl className="about-facts education-facts">
+            {education.map((e) => (
+              <div className="fact" key={e.title}>
+                <dt>{e.title}</dt>
+                <dd>{e.school} · {e.period}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
     </>
@@ -259,16 +465,19 @@ export function About() {
 
 /* ============ Contact ============ */
 export function Contact() {
+  const { data, t } = useLanguage()
+  const { profile } = data
+
   return (
     <>
       <Seo
-        title="Contacto — Contrata a Jesús Manuel Cristancho | Easy Pro Digital"
-        description="Inicia un proyecto con el desarrollador full-stack freelance Jesús Manuel Cristancho. Email, WhatsApp y LinkedIn — comunicación directa, sin intermediarios."
+        title={t.contact.seoTitle}
+        description={t.contact.seoDescription}
         path="/contact/"
       />
       <div className="page-head container">
-        <p className="eyebrow">Contacto</p>
-        <h1 className="section-title">¿Tienes un proyecto en mente?</h1>
+        <p className="eyebrow">{t.contact.eyebrow}</p>
+        <h1 className="section-title">{t.contact.title}</h1>
       </div>
       <section className="first-section contact">
         <div className="container">
@@ -289,147 +498,26 @@ export function Contact() {
 
 /* ============ Legal (Privacy / Terms / Cookies) ============ */
 export function Legal({ kind }) {
-  const meta = {
-    privacy: { title: 'Política de privacidad', path: '/privacy/' },
-    terms: { title: 'Términos de servicio', path: '/terms/' },
-    cookies: { title: 'Política de cookies', path: '/cookies/' },
-  }[kind]
-
-  const content = {
-    privacy: {
-      intro: `Esta política de privacidad explica cómo ${profile.name}, operando como Easy Pro Digital, recopila, utiliza y protege tu información personal cuando visitas ${site.domain} o te pones en contacto conmigo sobre un proyecto.`,
-      sections: [
-        {
-          title: 'Información que recopilo',
-          paragraphs: [
-            'Cuando te pones en contacto conmigo a través del sitio web, email, WhatsApp o redes sociales, puedo recopilar tu nombre, dirección de correo, número de teléfono, empresa y detalles de tu solicitud.',
-            'También puedo recopilar información técnica como tu dirección IP, tipo de navegador, dispositivo, página de referencia e interacciones con el sitio por motivos de seguridad y analítica.',
-          ],
-        },
-        {
-          title: 'Cómo utilizo tu información',
-          paragraphs: [
-            'Utilizo tu información para responder tu consulta, preparar una propuesta, entregar servicios, comunicarme sobre tu proyecto y mejorar la calidad de mi trabajo.',
-            'También puedo usarla para cumplir obligaciones legales y mantener la seguridad del sitio web y mis sistemas.',
-          ],
-        },
-        {
-          title: 'Compartir información',
-          paragraphs: [
-            'No vendo tus datos personales. Puedo compartir información limitada con proveedores de confianza como hosting, entrega de correo, analítica o plataformas de pago, solo cuando sea necesario para operar el sitio y cumplir con tu solicitud.',
-          ],
-        },
-        {
-          title: 'Tus derechos',
-          paragraphs: [
-            'Dependiendo de tu ubicación, puedes tener derecho a acceder, corregir, eliminar o restringir tus datos personales, así como a retirar tu consentimiento cuando aplique.',
-            'Para ejercer estos derechos, contáctame al correo que aparece abajo.',
-          ],
-        },
-        {
-          title: 'Seguridad y conservación',
-          paragraphs: [
-            'Utilizo medidas técnicas y organizativas razonables para proteger tu información, aunque ninguna transmisión por internet es completamente segura.',
-            'Conservo los datos personales solo durante el tiempo necesario para cumplir el propósito para el cual fueron recopilados o para atender una obligación legal.',
-          ],
-        },
-      ],
-      effectiveDate: 'July 7, 2026',
-    },
-    terms: {
-      intro: `Estos términos de servicio rigen el uso de ${site.domain} y los servicios de desarrollo freelance que presto a través de Easy Pro Digital.`,
-      sections: [
-        {
-          title: 'Alcance de los servicios',
-          paragraphs: [
-            'Presto servicios freelance como desarrollo web, aplicaciones móviles, plataformas SaaS, SEO, integraciones de IA y consultoría relacionada. El alcance específico, entregables, plazos y presupuesto se definirán en una propuesta, contrato o acuerdo escrito.',
-          ],
-        },
-        {
-          title: 'Flujo del proyecto',
-          paragraphs: [
-            'El trabajo comienza una vez se acuerdan alcance, precio y cronograma. Los retrasos por contenido faltante, retroalimentación tardía o aprobaciones pendientes pueden afectar las fechas de entrega.',
-          ],
-        },
-        {
-          title: 'Pagos y facturas',
-          paragraphs: [
-            'Los pagos se realizan según la propuesta o contrato acordado. Si un proyecto se factura por hitos, cada hito se vence según lo indicado en el acuerdo.',
-          ],
-        },
-        {
-          title: 'Intellectual property',
-          paragraphs: [
-            'You will own the final deliverables once the agreed payments have been completed, unless otherwise stated in writing. I retain rights over my general tools, templates, methods and pre-existing materials.',
-          ],
-        },
-        {
-          title: 'Confidentiality and liability',
-          paragraphs: [
-            'I will keep your sensitive information confidential, except where disclosure is required by law. I am not liable for indirect, incidental or consequential damages arising from the use of the site or services, including lost profits, business interruption or data loss.',
-          ],
-        },
-        {
-          title: 'Governing law',
-          paragraphs: [
-            'These terms are governed by the laws of Colombia, unless a different agreement is signed with you. Any dispute will be resolved in accordance with the applicable law and the agreed contract.',
-          ],
-        },
-      ],
-      effectiveDate: 'July 7, 2026',
-    },
-    cookies: {
-      intro: `This Cookie Policy explains how ${site.domain} uses cookies and similar technologies to improve your browsing experience and understand how the site is used.`,
-      sections: [
-        {
-          title: 'What are cookies?',
-          paragraphs: [
-            'Cookies are small text files stored on your device to remember preferences and help websites function more efficiently.',
-          ],
-        },
-        {
-          title: 'What I use them for',
-          paragraphs: [
-            'I use cookies to keep the site functioning, remember your preferences, understand anonymous traffic and improve the overall experience.',
-          ],
-        },
-        {
-          title: 'Types of cookies',
-          paragraphs: [
-            'Essential cookies are required for the site to work. Analytics cookies help me understand traffic and performance. Functional cookies remember your choices. Marketing cookies may be used only if I activate ad or campaign tracking in the future.',
-          ],
-        },
-        {
-          title: 'Your choices',
-          paragraphs: [
-            'You can manage or disable cookies through your browser settings. Blocking some cookies may limit certain features of the website.',
-          ],
-        },
-        {
-          title: 'Third-party cookies',
-          paragraphs: [
-            'If I use analytics or external services, they may place their own cookies according to their own privacy policies.',
-          ],
-        },
-      ],
-      effectiveDate: 'July 7, 2026',
-    },
-  }[kind]
+  const { data, t } = useLanguage()
+  const { profile, site } = data
+  const meta = t.legal.meta[kind]
+  const content = t.legal.content[kind]
+  const intro = kind === 'privacy' ? content.intro(profile.name, site.domain) : content.intro(site.domain)
 
   return (
     <>
       <Seo
         title={`${meta.title} | Easy Pro Digital`}
-        description={`${meta.title} for easyprodigital.com, the personal site of freelance developer Jesús Manuel Cristancho.`}
+        description={`${meta.title} ${t.legal.seoDescriptionSuffix}`}
         path={meta.path}
       />
       <div className="page-head container">
-        <p className="eyebrow">Legal</p>
+        <p className="eyebrow">{t.legal.eyebrow}</p>
         <h1 className="section-title">{meta.title}</h1>
       </div>
       <section className="first-section">
         <div className="container legal-copy">
-          <p>{content.intro}</p>
+          <p>{intro}</p>
           {content.sections.map((section) => (
             <div key={section.title}>
               <h2>{section.title}</h2>
@@ -439,10 +527,10 @@ export function Legal({ kind }) {
             </div>
           ))}
           <p>
-            <strong>Effective date:</strong> {content.effectiveDate}
+            <strong>{t.legal.effectiveDateLabel}</strong> {content.effectiveDate}
           </p>
           <p>
-            If you have questions, write to{' '}
+            {t.legal.questionsPrefix}{' '}
             <a href={`mailto:${profile.email}`}>{profile.email}</a>.
           </p>
         </div>
@@ -453,19 +541,20 @@ export function Legal({ kind }) {
 
 /* ============ 404 ============ */
 export function NotFound() {
+  const { href, t } = useLanguage()
   return (
     <>
       <Seo
-        title="404 — Page not found | Easy Pro Digital"
-        description="The page you are looking for could not be found."
+        title={t.notFound.seoTitle}
+        description={t.notFound.seoDescription}
         path="/404"
       />
       <section className="first-section notfound">
         <div className="container">
           <p className="notfound-code" aria-hidden="true">404</p>
-          <h1 className="section-title">This page doesn't exist</h1>
-          <p className="page-intro">The page you're looking for was moved or never existed.</p>
-          <Link className="btn btn-primary" to="/">Go home</Link>
+          <h1 className="section-title">{t.notFound.title}</h1>
+          <p className="page-intro">{t.notFound.intro}</p>
+          <Link className="btn btn-primary" to={href('/')}>{t.notFound.goHome}</Link>
         </div>
       </section>
     </>
