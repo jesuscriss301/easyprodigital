@@ -159,13 +159,38 @@ a { color: inherit; }
   gap: 16px;
 }
 .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.brand-mark {
+  display: block;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.brand-word {
   font-family: var(--font-display);
   font-weight: 900;
   font-size: 17px;
   letter-spacing: -0.02em;
-  text-decoration: none;
+  color: var(--ink, inherit);
 }
+.brand-word span { color: var(--accent); }
+/* compat: selector antiguo, por si queda referenciado en otro lado */
 .brand span { color: var(--accent); }
+
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+.footer-brand .brand-word {
+  font-size: 15px;
+  color: inherit;
+}
 
 .header-right { display: flex; align-items: center; gap: 20px; }
 .header-actions { display: flex; align-items: center; gap: 8px; }

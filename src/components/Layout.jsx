@@ -116,7 +116,10 @@ export function Header() {
     <header className="site-header">
       <div className="container">
         <Link className="brand" to={href('/')}>
-          easypro<span>digital</span>
+          <img className="brand-mark" src="/isologo.svg" alt="" width="32" height="32" />
+          <span className="brand-word">
+            easypro<span>digital</span>
+          </span>
         </Link>
         <div className="header-right">
           <nav className={`nav${open ? ' open' : ''}`} aria-label="Main">
@@ -172,6 +175,12 @@ export function Footer() {
     <footer className="site-footer">
       <div className="container footer-top">
         <div>
+          <Link className="footer-brand" to={href('/')}>
+            <img className="brand-mark" src="/isologo.svg" alt="" width="28" height="28" />
+            <span className="brand-word">
+              easypro<span>digital</span>
+            </span>
+          </Link>
           <p className="footer-name">{profile.name}</p>
           <p className="footer-role">{profile.role} · {profile.location}</p>
         </div>
