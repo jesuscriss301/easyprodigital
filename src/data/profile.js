@@ -190,7 +190,8 @@ export const projects = [
     summary:
       'Plataforma SaaS multi-tenant para gestionar filas de atención al cliente: cada empresa se registra, configura sucursales y servicios, y emite turnos que se despachan en tiempo real. Incluye pantalla pública para TV, seguimiento del turno desde el móvil vía SSE y despacho concurrente seguro con bloqueos a nivel de base de datos. Todo empaquetado en un solo contenedor Docker listo para desplegar en cualquier VPS.',
     stack: ['Java 21 / Spring Boot 3', 'React + TypeScript', 'MySQL 8', 'Docker / SSE'],
-    url: null, // URL del demo en vivo (pendiente de despliegue)
+    url: 'https://turnero.easyprodigital.com',
+    demo: { user: 'demo@easyprodigital.com', password: 'DemoTurnero2026' },
     repo: 'https://github.com/jesuscriss301/Turnero-java-react',
     image: null,
     private: false,
@@ -203,7 +204,8 @@ export const projects = [
     summary:
       'Plataforma de e-commerce sobre Laravel + Vue.js con catálogo, pagos y gestión de pedidos, más módulo de Punto de Venta (POS) para operar inventario y ventas presenciales desde el mismo sistema que la tienda online. Arquitectura modular (~42 paquetes) con patrón repositorio y extensibilidad basada en eventos — base sobre la que construyo tiendas a medida para clientes.',
     stack: ['Laravel 12 / PHP 8.3', 'Vue.js 3', 'Tailwind CSS', 'MySQL', 'POS'],
-    url: 'https://demo.bagisto.com/',
+    url: 'https://store.easyprodigital.com',
+    demo: { user: 'admin@example.com', password: 'admin123' },
     repo: 'https://github.com/jesuscriss301/bagisto',
     image: null,
     private: false,
