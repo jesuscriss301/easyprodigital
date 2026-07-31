@@ -191,7 +191,8 @@ export const projects = [
     summary:
       'Multi-tenant SaaS platform for managing customer service queues: each business registers, configures branches and services, and issues tickets dispatched in real time. Includes a public TV display, mobile ticket tracking via SSE, and safe concurrent dispatching with database-level locking. Fully packaged in a single Docker container ready to deploy on any VPS.',
     stack: ['Java 21 / Spring Boot 3', 'React + TypeScript', 'MySQL 8', 'Docker / SSE'],
-    url: null, // Live demo URL (deployment pending)
+    url: 'https://turnero.easyprodigital.com',
+    demo: { user: 'demo@easyprodigital.com', password: 'DemoTurnero2026' },
     repo: 'https://github.com/jesuscriss301/Turnero-java-react',
     image: null,
     private: false,
@@ -204,7 +205,8 @@ export const projects = [
     summary:
       'E-commerce platform on Laravel + Vue.js with catalog, payments and order management, plus a Point of Sale (POS) module for running inventory and in-person sales from the same system as the online store. Modular architecture (~42 packages) with repository pattern and event-based extensibility — the foundation I use to build custom stores for clients.',
     stack: ['Laravel 12 / PHP 8.3', 'Vue.js 3', 'Tailwind CSS', 'MySQL', 'POS'],
-    url: 'https://demo.bagisto.com/',
+    url: 'https://store.easyprodigital.com',
+    demo: { user: 'admin@example.com', password: 'admin123' },
     repo: 'https://github.com/jesuscriss301/bagisto',
     image: null,
     private: false,

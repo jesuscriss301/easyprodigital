@@ -33,6 +33,8 @@ export const en = {
     viewCode: 'View code on GitHub',
     public: 'Public',
     private: 'Private',
+    demoUser: 'User',
+    demoPassword: 'Password',
   },
   home: {
     seoTitle: 'Jesús Manuel Cristancho — Freelance Full-Stack Developer | Easy Pro Digital',
@@ -290,6 +292,8 @@ export const es = {
     viewCode: 'Código en GitHub',
     public: 'Público',
     private: 'Privado',
+    demoUser: 'Usuario',
+    demoPassword: 'Contraseña',
   },
   home: {
     seoTitle: 'Jesús Manuel Cristancho — Desarrollador Full-Stack Freelance | Easy Pro Digital',

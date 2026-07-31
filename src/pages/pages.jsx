@@ -124,6 +124,13 @@ function ProjectList({ items }) {
                   <span className="tag" key={s}>{s}</span>
                 ))}
               </div>
+              {p.demo && (
+                <p className="project-demo">
+                  <strong>{t.common.demoUser}:</strong> <code>{p.demo.user}</code>
+                  <span className="project-demo-sep">·</span>
+                  <strong>{t.common.demoPassword}:</strong> <code>{p.demo.password}</code>
+                </p>
+              )}
               {hasActions && (
                 <div className="project-actions">
                   {p.url && (
