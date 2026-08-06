@@ -4,11 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Qué es este proyecto
 
-Web personal de desarrollador freelance (**easyprodigital.com**) de Jesús Manuel Cristancho. Es un monorepo con tres partes independientes, cada una con su propio `package.json` y `node_modules`:
+Web personal de desarrollador freelance (**easyprodigital.com**) de Jesús Manuel Cristancho. Es un monorepo con cuatro partes independientes, cada una con su propio `package.json` y `node_modules`:
 
 1. **Raíz** — SPA en React 18 + Vite + React Router 7, desplegada en GitHub Pages.
 2. **`server/`** — API Express (MySQL + Nodemailer + Swagger) para el formulario de descubrimiento (`/rag-form`). Corre aparte, NO se despliega en Pages.
 3. **`blog/`** — "SEO Article Forge": generador CLI de artículos HTML estáticos con IA. Su salida se copia a `public/blog/` y la SPA la lee como contenido estático.
+4. **`showcase/`** — webs de muestra por nicho/prospecto (React + Vite + React Router), pensadas para enseñarle a un visitante cómo luciría la web de su negocio. Se despliega **aparte, en Dokploy**, bajo `demos.easyprodigital.com` — NO se despliega en Pages ni forma parte del build de la raíz. Cada demo vive en `showcase/src/demos/*.js` (contenido + tema) y se renderiza con `showcase/src/pages/DemoPage.jsx`. La página de Portafolio de la raíz enlaza a estas demos vía `nicheDemos` en `src/data/profile.js` / `profile.en.js`. Ver `showcase/README.md`.
 
 ## Arquitectura
 
@@ -74,11 +75,20 @@ npm run blog:generate  # genera un artículo
 npm run blog:batch     # lote (ver blog/temas.example.txt y blog/config/default.js)
 ```
 
+### Showcase (webs de muestra por nicho)
+
+```bash
+cd showcase && npm install && npm run dev   # http://localhost:5174
+cd showcase && npm run build                # verificar antes de push
+```
+
+Se despliega en Dokploy (Dockerfile + nginx incluidos en `showcase/`), no en GitHub Pages. Ver `showcase/README.md` y `showcase/src/demos/README.md` para agregar una demo nueva.
+
 No hay tests ni linter configurados.
 
 ## Deploy — ⚠️ regla crítica
 
-El deploy a producción es **solo** vía `.github/workflows/deploy.yml`: push a `main` → `npm ci && npm run build` → publica `dist/` en GitHub Pages (Settings → Pages → Source: **GitHub Actions**).
+El deploy a producción del **sitio principal** es **solo** vía `.github/workflows/deploy.yml`: push a `main` → `npm ci && npm run build` (raíz) → publica `dist/` en GitHub Pages (Settings → Pages → Source: **GitHub Actions**). Ese workflow solo construye la raíz del repo; no toca `server/`, `blog/` ni `showcase/`. El proyecto `showcase/` se despliega por separado en Dokploy (ver `showcase/README.md`) — un push a `main` no lo actualiza automáticamente salvo que Dokploy tenga su propio webhook configurado.
 
 **Nunca agregar otro workflow que publique a Pages** (p. ej. el sample "Deploy Jekyll" que sugiere GitHub, o "deploy from branch"). En julio de 2026 un `jekyll-gh-pages.yml` agregado desde la UI compitió con `deploy.yml` y desplegó el código fuente sin compilar (`index.html` apuntando a `/src/main.jsx`), dejando el sitio en blanco. Si el sitio vuelve a quedar en blanco, verificar primero que `curl https://easyprodigital.com` devuelva un `index.html` con `/assets/index-*.js` (build real) y no `/src/main.jsx` (fuente sin compilar).
 

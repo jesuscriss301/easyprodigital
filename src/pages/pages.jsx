@@ -323,7 +323,7 @@ export function Services() {
 /* ============ Portfolio ============ */
 export function Portfolio() {
   const { data, t } = useLanguage()
-  const { projects } = data
+  const { projects, nicheDemos } = data
 
   return (
     <>
@@ -354,6 +354,32 @@ export function Portfolio() {
           <ProjectList items={projects} />
         </div>
       </section>
+
+      {nicheDemos && nicheDemos.length > 0 && (
+        <section>
+          <div className="container">
+            <p className="eyebrow">{t.portfolio.nicheEyebrow}</p>
+            <h2 className="section-title">{t.portfolio.nicheTitle}</h2>
+            <p className="page-intro">{t.portfolio.nicheIntro}</p>
+            <Reveal as="div" className="niche-demo-grid">
+              {nicheDemos.map((d) => (
+                <a
+                  key={d.slug}
+                  className="niche-demo-card"
+                  href={d.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="tag">{d.niche}</span>
+                  <h3>{d.brand}</h3>
+                  <p>{d.summary}</p>
+                  <span className="niche-demo-cta">{t.portfolio.nicheCta}</span>
+                </a>
+              ))}
+            </Reveal>
+          </div>
+        </section>
+      )}
     </>
   )
 }

@@ -81,6 +81,11 @@ export const en = {
     statFocusLabel: 'Client focus',
     statEndToEndValue: 'End to end',
     statEndToEndLabel: 'From strategy to deployment',
+    nicheEyebrow: 'Sample sites',
+    nicheTitle: 'Designs by industry',
+    nicheIntro:
+      'Full demo sites for specific industries, hosted separately — a preview of what your own business site could look like.',
+    nicheCta: 'View demo ↗',
   },
   about: {
     seoTitle: 'About — Jesús Manuel Cristancho, Freelance Developer',
@@ -340,6 +345,11 @@ export const es = {
     statFocusLabel: 'Enfoque de clientes',
     statEndToEndValue: 'De principio a fin',
     statEndToEndLabel: 'Desde la estrategia hasta el despliegue',
+    nicheEyebrow: 'Webs de muestra',
+    nicheTitle: 'Diseños por nicho',
+    nicheIntro:
+      'Sitios de demostración completos para rubros específicos, alojados aparte — una vista previa de cómo luciría la web de tu negocio.',
+    nicheCta: 'Ver demo ↗',
   },
   about: {
     seoTitle: 'Sobre mí — Jesús Manuel Cristancho, Desarrollador Freelance',
