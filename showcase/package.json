@@ -1,0 +1,21 @@
+{
+  "name": "easyprodigital-showcase",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Webs de muestra por nicho/prospecto — desplegado por separado en Dokploy (demos.easyprodigital.com), independiente del sitio principal en GitHub Pages.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --host --port 4173"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.18.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.4.11"
+  }
+}

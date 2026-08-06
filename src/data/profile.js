@@ -283,3 +283,17 @@ export const projects = [
     private: true,
   },
 ]
+
+// Webs de muestra por nicho — demos completas alojadas aparte
+// (demos.easyprodigital.com, proyecto en showcase/), pensadas para que un
+// visitante del rubro vea cómo luciría su propia web.
+export const nicheDemos = [
+  {
+    slug: 'salon-belleza',
+    niche: 'Salón de belleza y estética',
+    brand: 'Bella Aura Studio',
+    summary:
+      'Reservas, servicios con precios, testimonios y una estética cálida pensada para negocios de belleza.',
+    url: 'https://demos.easyprodigital.com/salon-belleza',
+  },
+]

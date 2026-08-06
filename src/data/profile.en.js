@@ -284,3 +284,17 @@ export const projects = [
     private: true,
   },
 ]
+
+// Niche sample sites — full demos hosted separately (demos.easyprodigital.com,
+// the showcase/ project), meant to show a visitor in that industry what their
+// own site could look like.
+export const nicheDemos = [
+  {
+    slug: 'salon-belleza',
+    niche: 'Beauty salon & aesthetics',
+    brand: 'Bella Aura Studio',
+    summary:
+      'Booking, priced services, testimonials and a warm aesthetic built for beauty businesses.',
+    url: 'https://demos.easyprodigital.com/salon-belleza',
+  },
+]
