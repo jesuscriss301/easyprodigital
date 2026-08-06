@@ -122,16 +122,61 @@ h1, h2, h3, h4 {
   font-weight: 700;
   color: var(--demo-primary-dark);
 }
-.demo-nav-links { display: flex; gap: 32px; list-style: none; }
+.demo-nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
 .demo-nav-links a { font-size: 15px; font-weight: 500; color: var(--demo-ink); transition: color 0.15s ease; }
 .demo-nav-links a:hover { color: var(--demo-primary); }
-.demo-nav-toggle { display: none; background: none; border: none; font-size: 24px; color: var(--demo-ink); cursor: pointer; }
+.demo-nav-cta-mobile-item { display: none; }
+
+/* Hamburger / close icon: three bars that morph into an X when open. */
+.demo-nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.demo-nav-toggle:hover { background: color-mix(in srgb, var(--demo-ink) 6%, transparent); }
+.demo-nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--demo-ink);
+  border-radius: 2px;
+  transition: transform 0.25s var(--demo-ease), opacity 0.2s ease;
+}
+.demo-nav-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.demo-nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+.demo-nav-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 @media (max-width: 860px) {
-  .demo-nav-links { position: fixed; inset: 68px 0 0 0; background: var(--demo-bg); flex-direction: column; padding: 32px 24px; gap: 24px; transform: translateY(-110%); transition: transform 0.3s var(--demo-ease); }
+  .demo-nav-links {
+    position: fixed;
+    inset: 69px 0 0 0;
+    z-index: 39;
+    background: var(--demo-bg);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 32px 24px;
+    gap: 8px;
+    overflow-y: auto;
+    transform: translateY(-110%);
+    transition: transform 0.3s var(--demo-ease);
+  }
   .demo-nav-links.is-open { transform: translateY(0); }
+  .demo-nav-links li { border-bottom: 1px solid var(--demo-line); }
+  .demo-nav-links a { display: block; padding: 16px 4px; font-size: 17px; }
   .demo-nav-cta { display: none; }
-  .demo-nav-toggle { display: block; }
+  .demo-nav-cta-mobile-item { display: block; border-bottom: none; margin-top: 16px; }
+  .demo-nav-cta-mobile-item a { padding: 14px 20px; text-align: center; }
+  .demo-nav-toggle { display: flex; }
 }
 
 /* ---------- hero ---------- */
