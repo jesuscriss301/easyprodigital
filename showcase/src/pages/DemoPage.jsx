@@ -33,7 +33,7 @@ const SECTION_RENDERERS = {
   features: (demo) => (demo.features ? <Features key="features" {...demo.features} /> : null),
   gallery: (demo) => (demo.gallery ? <Gallery key="gallery" {...demo.gallery} theme={demo.theme} /> : null),
   testimonials: (demo) => (demo.testimonials ? <Testimonials key="testimonials" {...demo.testimonials} /> : null),
-  cta: (demo) => (demo.cta ? <CtaBanner key="cta" {...demo.cta} /> : null),
+  cta: (demo) => (demo.cta ? <CtaBanner key="cta" {...demo.cta} theme={demo.theme} /> : null),
 }
 
 const DEFAULT_ORDER = ['hero', 'services', 'features', 'gallery', 'testimonials', 'cta']

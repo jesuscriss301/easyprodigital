@@ -1,4 +1,5 @@
 import Reveal from './Reveal.jsx'
+import SplitText from './SplitText.jsx'
 
 /** Genera degradados a partir de la paleta del tema, sin depender de fotos reales. */
 function gradientForIndex(i, theme) {
@@ -20,7 +21,7 @@ export default function Gallery({ id = 'gallery', eyebrow, title, intro, items =
       <div className="demo-container">
         <Reveal className="demo-section-head">
           {eyebrow && <span className="demo-eyebrow">{eyebrow}</span>}
-          <h2>{title}</h2>
+          <SplitText tag="h2" text={title} textAlign="center" splitType="chars" delay={30} duration={0.8} />
           {intro && <p>{intro}</p>}
         </Reveal>
         <Reveal as="div" className="demo-gallery">

@@ -1,4 +1,5 @@
 import Reveal from './Reveal.jsx'
+import SplitText from './SplitText.jsx'
 
 export default function Testimonials({ id = 'testimonials', eyebrow, title, intro, items = [] }) {
   return (
@@ -6,7 +7,7 @@ export default function Testimonials({ id = 'testimonials', eyebrow, title, intr
       <div className="demo-container">
         <Reveal className="demo-section-head">
           {eyebrow && <span className="demo-eyebrow">{eyebrow}</span>}
-          <h2>{title}</h2>
+          <SplitText tag="h2" text={title} textAlign="center" splitType="chars" delay={30} duration={0.8} />
           {intro && <p>{intro}</p>}
         </Reveal>
         <Reveal as="div" className="demo-testimonials">

@@ -1,4 +1,5 @@
 import Reveal from './Reveal.jsx'
+import SplitText from './SplitText.jsx'
 import { Icon } from './icons.jsx'
 
 /** variant: 'grid' (tarjetas) | 'list' (fila horizontal) */
@@ -8,7 +9,7 @@ export default function Services({ id = 'services', eyebrow, title, intro, varia
       <div className="demo-container">
         <Reveal className="demo-section-head">
           {eyebrow && <span className="demo-eyebrow">{eyebrow}</span>}
-          <h2>{title}</h2>
+          <SplitText tag="h2" text={title} textAlign="center" splitType="chars" delay={30} duration={0.8} />
           {intro && <p>{intro}</p>}
         </Reveal>
 
