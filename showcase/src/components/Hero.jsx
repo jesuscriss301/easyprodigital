@@ -11,6 +11,8 @@ export default function Hero({
   secondaryCta,
   trust = [],
   visualIcon = 'sparkle',
+  image,
+  imageAlt = '',
 }) {
   const modifier = variant === 'centered' ? 'demo-hero--centered' : 'demo-hero--split'
 
@@ -51,7 +53,11 @@ export default function Hero({
         <div className="demo-container demo-hero-inner">
           {copy}
           <Reveal className="demo-hero-visual">
-            <Icon name={visualIcon} />
+            {image ? (
+              <img src={image} alt={imageAlt} loading="eager" />
+            ) : (
+              <Icon name={visualIcon} />
+            )}
           </Reveal>
         </div>
       )}

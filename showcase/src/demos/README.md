@@ -19,7 +19,26 @@
      (`scissors`, `droplet`, `sparkle`, `leaf`, `sun`, `brush`, `award`,
      `waves`, `users`, `flower`). Si el rubro necesita un ícono nuevo,
      agrégalo ahí primero.
-5. Registra la demo en `src/demos/index.js`:
+5. **Orden de secciones** (opcional): agrega `layout: { order: [...] }` con
+   cualquier subconjunto/orden de `'hero' | 'services' | 'features' |
+   'gallery' | 'testimonials' | 'cta'`. Si lo omites, se usa el orden por
+   defecto (`hero, services, features, gallery, testimonials, cta`). `nav`,
+   `disclosure`, `footer` y el badge siempre van fijos (arriba/abajo).
+   Ejemplo (galería justo después del hero, para negocios muy visuales):
+   ```js
+   layout: { order: ['hero', 'gallery', 'services', 'features', 'testimonials', 'cta'] },
+   ```
+6. **Imágenes reales** (opcional, si no las agregas se usan íconos/gradientes
+   decorativos):
+   - `hero.image` + `hero.imageAlt`: reemplaza el ícono del hero por una foto.
+   - `gallery.items`: acepta strings (gradiente decorativo, comportamiento
+     anterior) u objetos `{ label, image, alt }` para fotos reales.
+   Guarda las imágenes en `public/images/<slug>/` y referencia con ruta
+   absoluta (`/images/<slug>/archivo.jpg`). Si las sacas de un banco gratuito
+   (ej. Pixabay, licencia libre sin atribución obligatoria), deja un
+   `CREDITS.md` en esa misma carpeta con el link de cada foto por trazabilidad
+   (ver `public/images/salon-belleza/CREDITS.md` de ejemplo).
+7. Registra la demo en `src/demos/index.js`:
    ```js
    import restaurantes from './restaurantes.js'
    const demos = [salonBelleza, restaurantes]
@@ -28,10 +47,10 @@
    página de inicio del showcase (para no exponerla públicamente aunque no
    se indexe en Google), no la agregues al arreglo `demos` — en su lugar
    impórtala directamente en una ruta dedicada en `App.jsx`.
-6. El WhatsApp de contacto en `Disclosure` ya apunta por defecto al número
+8. El WhatsApp de contacto en `Disclosure` ya apunta por defecto al número
    real de Easy Pro Digital — no lo cambies por uno inventado del negocio
    ficticio.
-7. Corre `npm run dev` y revisa `http://localhost:5174/<slug>` antes de
+9. Corre `npm run dev` y revisa `http://localhost:5174/<slug>` antes de
    hacer commit.
 
 Ver `../../README.md` para las instrucciones de despliegue en Dokploy.

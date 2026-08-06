@@ -13,6 +13,13 @@ export default {
     robots: 'index, follow',
   },
 
+  // Controls which sections render and in what order. Any subset/order of
+  // 'hero' | 'services' | 'features' | 'gallery' | 'testimonials' | 'cta' is
+  // valid — DemoPage.jsx renders whatever is listed here, skipping the rest.
+  layout: {
+    order: ['hero', 'gallery', 'services', 'features', 'testimonials', 'cta'],
+  },
+
   theme: {
     primary: '#b76e79',
     primaryDark: '#8c4a56',
@@ -52,6 +59,8 @@ export default {
       { value: '8 years', label: 'of experience' },
     ],
     visualIcon: 'flower',
+    image: '/images/salon-belleza/hero.jpg',
+    imageAlt: 'Hairdresser styling a client\'s hair in a bright salon',
   },
 
   services: {
@@ -85,7 +94,14 @@ export default {
     eyebrow: 'Our Work',
     title: 'Gallery',
     intro: 'On your real website, this is where photos of your work, your space and your team would go.',
-    items: ['Coloring', 'Studio', 'Manicure', 'Styling', 'Facials', 'Makeup'],
+    items: [
+      { label: 'Coloring', image: '/images/salon-belleza/coloring.jpg', alt: 'Hairdresser applying color highlights' },
+      { label: 'Studio', image: '/images/salon-belleza/studio.jpg', alt: 'Salon studio interior with styling chairs' },
+      { label: 'Manicure', image: '/images/salon-belleza/manicure.jpg', alt: 'Hand with floral nail art manicure' },
+      { label: 'Styling', image: '/images/salon-belleza/styling.jpg', alt: 'Upscale salon styling station' },
+      { label: 'Facials', image: '/images/salon-belleza/facials.jpg', alt: 'Client receiving a facial treatment' },
+      { label: 'Makeup', image: '/images/salon-belleza/makeup.jpg', alt: 'Professional makeup brush set' },
+    ],
   },
 
   testimonials: {

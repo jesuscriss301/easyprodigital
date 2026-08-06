@@ -24,15 +24,20 @@ export default function Gallery({ id = 'gallery', eyebrow, title, intro, items =
           {intro && <p>{intro}</p>}
         </Reveal>
         <Reveal as="div" className="demo-gallery">
-          {items.map((label, i) => (
-            <div
-              className="demo-gallery-tile"
-              key={label}
-              style={{ background: gradientForIndex(i, theme) }}
-            >
-              <span>{label}</span>
-            </div>
-          ))}
+          {items.map((item, i) => {
+            const isImage = typeof item === 'object' && item !== null
+            const label = isImage ? item.label : item
+            return (
+              <div
+                className="demo-gallery-tile"
+                key={label}
+                style={isImage ? undefined : { background: gradientForIndex(i, theme) }}
+              >
+                {isImage && <img src={item.image} alt={item.alt || label} loading="lazy" />}
+                <span>{label}</span>
+              </div>
+            )
+          })}
         </Reveal>
       </div>
     </section>
