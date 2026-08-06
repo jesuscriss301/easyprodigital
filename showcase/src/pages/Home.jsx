@@ -4,19 +4,19 @@ import { Icon } from '../components/icons.jsx'
 
 export default function Home() {
   useEffect(() => {
-    document.title = 'Webs de muestra por nicho — Easy Pro Digital'
+    document.title = 'Sample Websites by Industry — Easy Pro Digital'
   }, [])
 
   return (
     <div className="showcase-home">
       <div className="showcase-home-hero">
-        <h1>Webs de muestra por nicho</h1>
+        <h1>Sample Websites by Industry</h1>
         <p>
-          Ejemplos reales de diseño web para distintos tipos de negocio, creados por{' '}
+          Real web design examples for different types of businesses, built by{' '}
           <a href="https://easyprodigital.com" style={{ color: '#fff', textDecoration: 'underline' }}>
             Easy Pro Digital
           </a>
-          . Elige un rubro para ver la demo completa.
+          . Pick an industry to see the full demo.
         </p>
       </div>
       <div className="showcase-grid">
@@ -31,7 +31,7 @@ export default function Home() {
             <div className="showcase-card-body">
               <span className="tag">{d.niche}</span>
               <h3>{d.brand}</h3>
-              <p>Ver demo →</p>
+              <p>View demo →</p>
             </div>
           </a>
         ))}

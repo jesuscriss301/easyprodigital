@@ -1,6 +1,6 @@
 import Reveal from './Reveal.jsx'
 
-export default function CtaBanner({ id = 'reservar', heading, text, actions = [] }) {
+export default function CtaBanner({ id = 'book', heading, text, actions = [] }) {
   return (
     <section id={id} className="demo-section">
       <div className="demo-container">

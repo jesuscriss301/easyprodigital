@@ -44,7 +44,7 @@ export default function Hero({
   )
 
   return (
-    <header id="inicio" className={`demo-hero ${modifier}`}>
+    <header id="home" className={`demo-hero ${modifier}`}>
       {variant === 'centered' ? (
         <div className="demo-container">{copy}</div>
       ) : (

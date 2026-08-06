@@ -1,7 +1,7 @@
 import Reveal from './Reveal.jsx'
 import { Icon } from './icons.jsx'
 
-export default function Features({ id = 'nosotros', eyebrow, title, intro, items = [] }) {
+export default function Features({ id = 'about', eyebrow, title, intro, items = [] }) {
   return (
     <section id={id} className="demo-section demo-section--alt">
       <div className="demo-container">

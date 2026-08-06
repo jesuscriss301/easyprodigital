@@ -14,7 +14,7 @@ function gradientForIndex(i, theme) {
   return `linear-gradient(140deg, ${a}, ${b})`
 }
 
-export default function Gallery({ id = 'galeria', eyebrow, title, intro, items = [], theme }) {
+export default function Gallery({ id = 'gallery', eyebrow, title, intro, items = [], theme }) {
   return (
     <section id={id} className="demo-section">
       <div className="demo-container">

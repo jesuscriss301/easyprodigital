@@ -2,7 +2,7 @@ import Reveal from './Reveal.jsx'
 import { Icon } from './icons.jsx'
 
 /** variant: 'grid' (tarjetas) | 'list' (fila horizontal) */
-export default function Services({ id = 'servicios', eyebrow, title, intro, variant = 'grid', items = [] }) {
+export default function Services({ id = 'services', eyebrow, title, intro, variant = 'grid', items = [] }) {
   return (
     <section id={id} className="demo-section">
       <div className="demo-container">

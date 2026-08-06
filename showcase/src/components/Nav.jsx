@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
-export default function Nav({ brand, links = [], ctaLabel, ctaHref = '#reservar' }) {
+export default function Nav({ brand, links = [], ctaLabel, ctaHref = '#book' }) {
   const [open, setOpen] = useState(false)
 
   return (
     <nav className="demo-nav">
       <div className="demo-nav-inner">
-        <a href="#inicio" className="demo-logo">{brand}</a>
+        <a href="#home" className="demo-logo">{brand}</a>
         <ul className={`demo-nav-links${open ? ' is-open' : ''}`}>
           {links.map((l) => (
             <li key={l.href}>
@@ -19,7 +19,7 @@ export default function Nav({ brand, links = [], ctaLabel, ctaHref = '#reservar'
         )}
         <button
           className="demo-nav-toggle"
-          aria-label="Abrir menú"
+          aria-label="Open menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >

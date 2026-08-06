@@ -1,15 +1,15 @@
-// Demo de NICHO — se indexa. Ver src/demos/README.md antes de duplicar esto
-// para un nuevo nicho o para un prospecto puntual.
+// NICHE demo — gets indexed. See src/demos/README.md before duplicating this
+// for a new niche or for a specific prospect.
 export default {
   slug: 'salon-belleza',
   brand: 'Bella Aura Studio',
-  niche: 'Salón de belleza y estética',
-  kind: 'nicho', // 'nicho' | 'prospecto'
+  niche: 'Beauty Salon & Spa',
+  kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
   seo: {
-    title: 'Diseño Web para Salones de Belleza y Estética (Ejemplo) | Easy Pro Digital',
+    title: 'Website Design for Beauty Salons & Spas (Example) | Easy Pro Digital',
     description:
-      'Ejemplo real de sitio web para salones de belleza y centros de estética, creado por Easy Pro Digital. Así de bien puede lucir la web de tu negocio: servicios, reservas, testimonios y más.',
+      'A real example website for beauty salons and spas, built by Easy Pro Digital. This is how great your business website can look: services, bookings, testimonials and more.',
     robots: 'index, follow',
   },
 
@@ -30,86 +30,86 @@ export default {
 
   nav: {
     links: [
-      { label: 'Inicio', href: '#inicio' },
-      { label: 'Servicios', href: '#servicios' },
-      { label: 'Nosotros', href: '#nosotros' },
-      { label: 'Galería', href: '#galeria' },
-      { label: 'Testimonios', href: '#testimonios' },
+      { label: 'Home', href: '#home' },
+      { label: 'Services', href: '#services' },
+      { label: 'About', href: '#about' },
+      { label: 'Gallery', href: '#gallery' },
+      { label: 'Testimonials', href: '#testimonials' },
     ],
-    ctaLabel: 'Reservar cita',
+    ctaLabel: 'Book Now',
   },
 
   hero: {
     variant: 'split',
-    eyebrow: 'Salón de Belleza & Estética',
-    title: 'Realza tu belleza, siéntete increíble',
-    text: 'Cortes, color, manicure, tratamientos faciales y maquillaje profesional en un espacio pensado para que te consientas. Reserva en minutos, sin llamadas ni esperas.',
-    primaryCta: { label: 'Reservar cita', href: '#reservar' },
-    secondaryCta: { label: 'Ver servicios', href: '#servicios' },
+    eyebrow: 'Beauty Salon & Spa',
+    title: 'Enhance your beauty, feel amazing',
+    text: 'Haircuts, color, manicures, facial treatments and professional makeup in a space designed for you to relax and be pampered. Book in minutes, no calls or waiting.',
+    primaryCta: { label: 'Book Now', href: '#book' },
+    secondaryCta: { label: 'View Services', href: '#services' },
     trust: [
-      { value: '4.9 ★', label: 'valoración promedio' },
-      { value: '+500', label: 'clientas atendidas' },
-      { value: '8 años', label: 'de experiencia' },
+      { value: '4.9 ★', label: 'average rating' },
+      { value: '500+', label: 'clients served' },
+      { value: '8 years', label: 'of experience' },
     ],
     visualIcon: 'flower',
   },
 
   services: {
-    eyebrow: 'Lo que hacemos',
-    title: 'Servicios pensados para ti',
-    intro: 'Precios de ejemplo — así se vería la sección de servicios y tarifas en tu propia web.',
+    eyebrow: 'What We Do',
+    title: 'Services designed for you',
+    intro: 'Sample pricing — this is how the services and rates section would look on your own website.',
     variant: 'grid',
     items: [
-      { icon: 'scissors', title: 'Corte y peinado', text: 'Cortes a la medida y peinados para cualquier ocasión, con acabado profesional.', price: 'Desde $35.000' },
-      { icon: 'droplet', title: 'Coloración y mechas', text: 'Técnicas de color, balayage y mechas con productos de alta gama.', price: 'Desde $90.000' },
-      { icon: 'sparkle', title: 'Manicure & pedicure', text: 'Esmaltado tradicional, semipermanente y nail art personalizado.', price: 'Desde $28.000' },
-      { icon: 'leaf', title: 'Tratamientos faciales', text: 'Limpieza profunda, hidratación y rutinas anti-edad personalizadas.', price: 'Desde $60.000' },
-      { icon: 'sun', title: 'Depilación', text: 'Cera tibia y depilación facial y corporal en un ambiente cómodo y privado.', price: 'Desde $22.000' },
-      { icon: 'brush', title: 'Maquillaje profesional', text: 'Maquillaje social y de novia, con prueba previa incluida.', price: 'Desde $70.000' },
+      { icon: 'scissors', title: 'Haircut & Styling', text: 'Custom cuts and styling for any occasion, with a professional finish.', price: 'From $35' },
+      { icon: 'droplet', title: 'Color & Highlights', text: 'Color techniques, balayage and highlights with premium products.', price: 'From $90' },
+      { icon: 'sparkle', title: 'Manicure & Pedicure', text: 'Classic polish, gel, and personalized nail art.', price: 'From $28' },
+      { icon: 'leaf', title: 'Facial Treatments', text: 'Deep cleansing, hydration and personalized anti-aging routines.', price: 'From $60' },
+      { icon: 'sun', title: 'Waxing', text: 'Warm wax facial and body waxing in a comfortable, private setting.', price: 'From $22' },
+      { icon: 'brush', title: 'Professional Makeup', text: 'Event and bridal makeup, with a trial session included.', price: 'From $70' },
     ],
   },
 
   features: {
-    eyebrow: 'Por qué elegirnos',
-    title: 'Un espacio pensado para consentirte',
-    intro: 'Cuatro razones por las que nuestras clientas vuelven una y otra vez.',
+    eyebrow: 'Why Choose Us',
+    title: 'A space designed to pamper you',
+    intro: 'Four reasons our clients keep coming back.',
     items: [
-      { icon: 'award', title: 'Profesionales certificadas', text: 'Equipo con formación continua en las últimas técnicas del sector.' },
-      { icon: 'droplet', title: 'Productos premium', text: 'Trabajamos solo con marcas profesionales, seguras para tu piel y cabello.' },
-      { icon: 'waves', title: 'Ambiente relajante', text: 'Un espacio diseñado para desconectar mientras te cuidamos.' },
-      { icon: 'users', title: 'Atención personalizada', text: 'Cada servicio se adapta a lo que tu cabello, piel y estilo necesitan.' },
+      { icon: 'award', title: 'Certified Professionals', text: 'A team with ongoing training in the latest industry techniques.' },
+      { icon: 'droplet', title: 'Premium Products', text: 'We only work with professional brands that are safe for your skin and hair.' },
+      { icon: 'waves', title: 'Relaxing Atmosphere', text: 'A space designed to help you unwind while we take care of you.' },
+      { icon: 'users', title: 'Personalized Care', text: 'Every service is tailored to what your hair, skin and style need.' },
     ],
   },
 
   gallery: {
-    eyebrow: 'Nuestro trabajo',
-    title: 'Galería',
-    intro: 'En tu web real, aquí van fotos de tus trabajos, tu local y tu equipo.',
-    items: ['Coloración', 'Estudio', 'Manicure', 'Peinados', 'Faciales', 'Maquillaje'],
+    eyebrow: 'Our Work',
+    title: 'Gallery',
+    intro: 'On your real website, this is where photos of your work, your space and your team would go.',
+    items: ['Coloring', 'Studio', 'Manicure', 'Styling', 'Facials', 'Makeup'],
   },
 
   testimonials: {
-    eyebrow: 'Clientas felices',
-    title: 'Lo que dicen de nosotras',
-    intro: 'Testimonios de ejemplo — en tu web irían reseñas reales de tus clientas.',
+    eyebrow: 'Happy Clients',
+    title: 'What people say about us',
+    intro: 'Sample testimonials — your website would feature real reviews from your clients.',
     items: [
-      { name: 'Mariana G.', role: 'Cliente frecuente', quote: 'Cambié de look completamente y quedé feliz. El equipo es súper profesional y el ambiente muy relajante.' },
-      { name: 'Laura P.', role: 'Cliente nueva', quote: 'Reservar fue facilísimo y llegué sin esperar nada. El resultado de mi manicure duró semanas.' },
-      { name: 'Camila R.', role: 'Cliente frecuente', quote: 'El tratamiento facial me dejó la piel increíble. Ya es mi lugar de confianza para todo.' },
+      { name: 'Mariana G.', role: 'Regular client', quote: 'I completely changed my look and I couldn’t be happier. The team is super professional and the atmosphere is so relaxing.' },
+      { name: 'Laura P.', role: 'New client', quote: 'Booking was so easy and I didn’t wait at all. My manicure result lasted for weeks.' },
+      { name: 'Camila R.', role: 'Regular client', quote: 'The facial treatment left my skin looking amazing. This is already my go-to place for everything.' },
     ],
   },
 
   cta: {
-    heading: '¿Lista para tu transformación?',
-    text: 'Agenda tu cita hoy mismo y déjate consentir por nuestro equipo.',
+    heading: 'Ready for your transformation?',
+    text: 'Book your appointment today and let our team take care of you.',
     actions: [
-      { label: 'Reservar cita', href: '#quieres-esto' },
-      { label: 'Ver más servicios', href: '#quieres-esto', variant: 'outline' },
+      { label: 'Book Now', href: '#want-this' },
+      { label: 'View More Services', href: '#want-this', variant: 'outline' },
     ],
   },
 
   disclosure: {
-    heading: 'Esta es una web de muestra',
-    text: '"Bella Aura Studio" no es un negocio real: esta página es un ejemplo de diseño web para salones de belleza y centros de estética, creado por Easy Pro Digital. Si tienes un negocio de este rubro y quieres una web así (o mejor, con tu marca, tus fotos y sistema de reservas real), hablemos.',
+    heading: 'This is a sample website',
+    text: '"Bella Aura Studio" is not a real business: this page is a web design example for beauty salons and spas, built by Easy Pro Digital. If you run a business like this and want a website like this one (or better, with your brand, your photos and a real booking system), let’s talk.',
   },
 }

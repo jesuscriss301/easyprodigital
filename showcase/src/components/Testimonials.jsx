@@ -1,6 +1,6 @@
 import Reveal from './Reveal.jsx'
 
-export default function Testimonials({ id = 'testimonios', eyebrow, title, intro, items = [] }) {
+export default function Testimonials({ id = 'testimonials', eyebrow, title, intro, items = [] }) {
   return (
     <section id={id} className="demo-section demo-section--alt">
       <div className="demo-container">

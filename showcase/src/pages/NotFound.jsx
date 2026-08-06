@@ -2,10 +2,10 @@ export default function NotFound() {
   return (
     <div className="showcase-home">
       <div className="showcase-home-hero">
-        <h1>Demo no encontrada</h1>
+        <h1>Demo not found</h1>
         <p>
-          No existe una web de muestra en esta dirección.{' '}
-          <a href="/" style={{ color: '#fff', textDecoration: 'underline' }}>Ver todas las demos</a>.
+          There's no sample website at this address.{' '}
+          <a href="/" style={{ color: '#fff', textDecoration: 'underline' }}>View all demos</a>.
         </p>
       </div>
     </div>
