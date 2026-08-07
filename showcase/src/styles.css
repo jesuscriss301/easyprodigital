@@ -107,6 +107,11 @@ h1, h2, h3, h4 {
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--demo-line);
 }
+/* El nav queda sticky (siempre visible) — sin esto, al saltar a un ancla
+   (click en el menú, incluso el móvil ya cerrado) el navegador alinea el
+   destino justo debajo del borde superior, que el nav sticky tapa. */
+.demo-hero,
+.demo-section { scroll-margin-top: 76px; }
 .demo-nav-inner {
   max-width: var(--demo-maxw);
   margin: 0 auto;
@@ -177,6 +182,36 @@ h1, h2, h3, h4 {
   .demo-nav-cta-mobile-item { display: block; border-bottom: none; margin-top: 16px; }
   .demo-nav-cta-mobile-item a { padding: 14px 20px; text-align: center; }
   .demo-nav-toggle { display: flex; }
+}
+
+/* ---------- selector de estilo (mismo sitio, otra paleta/tipografía) ---------- */
+.demo-style-switcher {
+  background: var(--demo-surface);
+  border-bottom: 1px solid var(--demo-line);
+}
+.demo-style-switcher-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 24px;
+  flex-wrap: wrap;
+}
+.demo-style-switcher-label { font-size: 13px; color: var(--demo-muted); white-space: nowrap; }
+.demo-style-switcher-options { display: flex; gap: 8px; flex-wrap: wrap; }
+.demo-style-pill {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--demo-line);
+  color: var(--demo-ink);
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.demo-style-pill:hover { border-color: var(--demo-primary); color: var(--demo-primary); }
+.demo-style-pill.is-active { background: var(--demo-primary); border-color: var(--demo-primary); color: #fff; }
+@media (max-width: 560px) {
+  .demo-style-switcher-inner { padding: 10px 16px; }
+  .demo-style-switcher-label { width: 100%; }
 }
 
 /* ---------- hero ---------- */
@@ -376,8 +411,37 @@ h1, h2, h3, h4 {
   transition: transform 0.2s ease;
 }
 .demo-badge:hover { transform: translateY(-3px); }
-.demo-badge span.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--demo-accent); }
-@media (max-width: 560px) { .demo-badge { left: 12px; bottom: 12px; padding: 9px 13px; font-size: 11.5px; } }
+.demo-badge span.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--demo-accent); flex-shrink: 0; }
+/* En móvil, position:fixed sobre una grilla de fotos angosta tapa demasiado
+   contenido (etiquetas de la galería, botones) sin importar el scroll. Se
+   reduce a solo el punto dentro de un círculo pequeño — ocupa una esquina
+   mínima en vez de un pill largo — y el texto completo vuelve al hacer tap. */
+@media (max-width: 560px) {
+  .demo-badge {
+    left: 12px;
+    bottom: 12px;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .demo-badge-label { display: none; }
+  .demo-badge:focus-visible .demo-badge-label,
+  .demo-badge:active .demo-badge-label {
+    display: inline;
+    position: fixed;
+    left: 52px;
+    bottom: 18px;
+    background: var(--demo-ink);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    white-space: nowrap;
+    box-shadow: 0 10px 24px -10px rgba(0,0,0,0.4);
+  }
+}
 
 /* ---------- reveal on scroll ---------- */
 .demo-reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s var(--demo-ease), transform 0.6s var(--demo-ease); }

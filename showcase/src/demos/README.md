@@ -38,7 +38,18 @@
    (ej. Pixabay, licencia libre sin atribución obligatoria), deja un
    `CREDITS.md` en esa misma carpeta con el link de cada foto por trazabilidad
    (ver `public/images/salon-belleza/CREDITS.md` de ejemplo).
-7. Registra la demo en `src/demos/index.js`:
+7. **Variantes de estilo** (opcional): si quieres ofrecer la misma demo en
+   varias paletas/tipografías (ej. para que un prospecto elija look), no
+   dupliques el contenido — crea un archivo que importe la demo base y
+   sobrescriba solo `slug`, `seo` y `theme` (ver `salonBellezaModern.js` /
+   `salonBellezaBotanical.js`). Agrega el array `styleVariants: [{ slug,
+   label }, ...]` (idéntico, con las 3+ variantes) a **cada** archivo de la
+   familia — `DemoPage.jsx` lo usa para mostrar el selector "Same website,
+   another style" arriba de las secciones. Registra las variantes de estilo
+   en `demos/index.js` dentro de `styleOnlyVariants`, no en `demos` (así no
+   se duplica la tarjeta en la home) y márcalas `kind: 'prospecto'` +
+   `seo.robots: 'noindex, nofollow'` para no indexar contenido duplicado.
+8. Registra la demo en `src/demos/index.js`:
    ```js
    import restaurantes from './restaurantes.js'
    const demos = [salonBelleza, restaurantes]
@@ -47,10 +58,10 @@
    página de inicio del showcase (para no exponerla públicamente aunque no
    se indexe en Google), no la agregues al arreglo `demos` — en su lugar
    impórtala directamente en una ruta dedicada en `App.jsx`.
-8. El WhatsApp de contacto en `Disclosure` ya apunta por defecto al número
+9. El WhatsApp de contacto en `Disclosure` ya apunta por defecto al número
    real de Easy Pro Digital — no lo cambies por uno inventado del negocio
    ficticio.
-9. Corre `npm run dev` y revisa `http://localhost:5174/<slug>` antes de
-   hacer commit.
+10. Corre `npm run dev` y revisa `http://localhost:5174/<slug>` antes de
+    hacer commit.
 
 Ver `../../README.md` para las instrucciones de despliegue en Dokploy.

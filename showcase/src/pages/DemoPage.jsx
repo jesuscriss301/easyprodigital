@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import Seo from '../components/Seo.jsx'
 import Nav from '../components/Nav.jsx'
+import StyleSwitcher from '../components/StyleSwitcher.jsx'
 import Hero from '../components/Hero.jsx'
 import Services from '../components/Services.jsx'
 import Features from '../components/Features.jsx'
@@ -69,6 +70,7 @@ export default function DemoPage({ demo }) {
         robots={demo.seo.robots}
       />
       <Nav brand={demo.brand} links={demo.nav.links} ctaLabel={demo.nav.ctaLabel} />
+      <StyleSwitcher variants={demo.styleVariants} current={demo.slug} />
       {sections}
       <Disclosure {...demo.disclosure} />
       <Footer brand={demo.brand} />

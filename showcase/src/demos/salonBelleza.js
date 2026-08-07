@@ -6,6 +6,15 @@ export default {
   niche: 'Beauty Salon & Spa',
   kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
+  // Same content, different look — lets a visitor compare palettes/fonts on
+  // the same business without leaving the demo. See salonBellezaModern.js /
+  // salonBellezaBotanical.js (same array, repeated on all three).
+  styleVariants: [
+    { slug: 'salon-belleza', label: 'Classic Romance' },
+    { slug: 'salon-belleza-modern', label: 'Modern Minimal' },
+    { slug: 'salon-belleza-botanical', label: 'Botanical Spa' },
+  ],
+
   seo: {
     title: 'Website Design for Beauty Salons & Spas (Example) | Easy Pro Digital',
     description:
