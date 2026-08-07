@@ -226,6 +226,17 @@ export function Crane(props) {
   )
 }
 
+export function Key(props) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="7.5" cy="15.5" r="4.5" />
+      <path d="M10.8 12.2 20 3" />
+      <path d="M16 7l3 3" />
+      <path d="M13.5 9.5l2.5 2.5" />
+    </svg>
+  )
+}
+
 export function Gauge(props) {
   return (
     <svg {...base} {...props}>
@@ -261,6 +272,7 @@ export const ICONS = {
   brick: Brick,
   crane: Crane,
   gauge: Gauge,
+  key: Key,
 }
 
 export function Icon({ name, ...props }) {
