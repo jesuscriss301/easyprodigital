@@ -108,6 +108,135 @@ export function Flower(props) {
   )
 }
 
+export function Car(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M3 13l1.5-4.5A2 2 0 0 1 6.4 7h11.2a2 2 0 0 1 1.9 1.5L21 13" />
+      <path d="M3 13h18v4a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H6v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z" />
+      <circle cx="7.5" cy="17.5" r="1.5" />
+      <circle cx="16.5" cy="17.5" r="1.5" />
+    </svg>
+  )
+}
+
+export function Bucket(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M4 8h16l-1.5 11a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8z" />
+      <path d="M2 8h20" />
+      <path d="M8 8V6a4 4 0 0 1 8 0v2" />
+    </svg>
+  )
+}
+
+export function Clock(props) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3.5 2" />
+    </svg>
+  )
+}
+
+export function MapPin(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z" />
+      <circle cx="12" cy="9.5" r="2.5" />
+    </svg>
+  )
+}
+
+export function Phone(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M5 4h3.5l1.5 4.5-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4.5 1.5V19a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-1z" />
+    </svg>
+  )
+}
+
+export function ShieldCheck(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 2l8 3.5v5.5c0 5-3.4 8.7-8 10-4.6-1.3-8-5-8-10V5.5z" />
+      <path d="M8.5 12l2.5 2.5 4.5-4.5" />
+    </svg>
+  )
+}
+
+export function Hammer(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M15 12l-8.5 8.5a1.5 1.5 0 0 1-2-2L13 10" />
+      <path d="M12.5 8.5l3-3 5 5-3 3z" />
+      <path d="M14 5l3-3 4 4-3 3" />
+    </svg>
+  )
+}
+
+export function Tree(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 2 7 9h2l-4 6h3l-3 5h14l-3-5h3l-4-6h2z" />
+      <line x1="12" y1="22" x2="12" y2="17" />
+    </svg>
+  )
+}
+
+export function Wrench(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2-2z" />
+    </svg>
+  )
+}
+
+export function House(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M3 11l9-7 9 7" />
+      <path d="M5 10v10h14V10" />
+      <path d="M9 20v-6h6v6" />
+    </svg>
+  )
+}
+
+export function Brick(props) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="2.5" y="4" width="8" height="6" rx="0.5" />
+      <rect x="13.5" y="4" width="8" height="6" rx="0.5" />
+      <rect x="8" y="14" width="8" height="6" rx="0.5" />
+      <rect x="2.5" y="14" width="3" height="6" rx="0.5" />
+      <rect x="18.5" y="14" width="3" height="6" rx="0.5" />
+    </svg>
+  )
+}
+
+export function Crane(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M4 21V6l9-3v4" />
+      <path d="M13 7h8" />
+      <path d="M18 7v5" />
+      <path d="M18 12l3 3" />
+      <path d="M4 21h9" />
+      <path d="M4 13h6" />
+    </svg>
+  )
+}
+
+export function Gauge(props) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="13" r="8" />
+      <path d="M12 13l4-4" />
+      <path d="M8 4.5 9 6" />
+      <path d="M16 4.5 15 6" />
+    </svg>
+  )
+}
+
 export const ICONS = {
   scissors: Scissors,
   droplet: Droplet,
@@ -119,6 +248,19 @@ export const ICONS = {
   waves: Waves,
   users: Users,
   flower: Flower,
+  car: Car,
+  bucket: Bucket,
+  clock: Clock,
+  mapPin: MapPin,
+  phone: Phone,
+  shieldCheck: ShieldCheck,
+  hammer: Hammer,
+  tree: Tree,
+  wrench: Wrench,
+  house: House,
+  brick: Brick,
+  crane: Crane,
+  gauge: Gauge,
 }
 
 export function Icon({ name, ...props }) {

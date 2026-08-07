@@ -8,6 +8,7 @@ import Features from '../components/Features.jsx'
 import Gallery from '../components/Gallery.jsx'
 import Testimonials from '../components/Testimonials.jsx'
 import CtaBanner from '../components/CtaBanner.jsx'
+import MapSection from '../components/MapSection.jsx'
 import Disclosure from '../components/Disclosure.jsx'
 import Footer from '../components/Footer.jsx'
 import Badge from '../components/Badge.jsx'
@@ -34,10 +35,11 @@ const SECTION_RENDERERS = {
   features: (demo) => (demo.features ? <Features key="features" {...demo.features} /> : null),
   gallery: (demo) => (demo.gallery ? <Gallery key="gallery" {...demo.gallery} theme={demo.theme} /> : null),
   testimonials: (demo) => (demo.testimonials ? <Testimonials key="testimonials" {...demo.testimonials} /> : null),
+  map: (demo) => (demo.map ? <MapSection key="map" {...demo.map} /> : null),
   cta: (demo) => (demo.cta ? <CtaBanner key="cta" {...demo.cta} theme={demo.theme} /> : null),
 }
 
-const DEFAULT_ORDER = ['hero', 'services', 'features', 'gallery', 'testimonials', 'cta']
+const DEFAULT_ORDER = ['hero', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta']
 
 /** Renderiza cualquier demo a partir de su objeto de configuración (src/demos/*.js). */
 export default function DemoPage({ demo }) {

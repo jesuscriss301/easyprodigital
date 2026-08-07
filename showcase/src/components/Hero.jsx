@@ -1,4 +1,5 @@
 import Reveal from './Reveal.jsx'
+import CountUp from './CountUp.jsx'
 import { Icon } from './icons.jsx'
 
 /** variant: 'split' (visual al lado) | 'centered' (fondo a todo lo ancho) */
@@ -13,6 +14,8 @@ export default function Hero({
   visualIcon = 'sparkle',
   image,
   imageAlt = '',
+  video,
+  videoPoster,
 }) {
   const modifier = variant === 'centered' ? 'demo-hero--centered' : 'demo-hero--split'
 
@@ -38,7 +41,16 @@ export default function Hero({
       {trust.length > 0 && (
         <div className="demo-hero-trust">
           {trust.map((t) => (
-            <div key={t.label}><strong>{t.value}</strong>{t.label}</div>
+            <div key={t.label}>
+              <strong>
+                {typeof t.end === 'number' ? (
+                  <CountUp end={t.end} prefix={t.prefix} suffix={t.suffix} decimals={t.decimals} />
+                ) : (
+                  t.value
+                )}
+              </strong>
+              {t.label}
+            </div>
           ))}
         </div>
       )}
@@ -53,7 +65,9 @@ export default function Hero({
         <div className="demo-container demo-hero-inner">
           {copy}
           <Reveal className="demo-hero-visual">
-            {image ? (
+            {video ? (
+              <video src={video} poster={videoPoster} autoPlay muted loop playsInline aria-label={imageAlt} />
+            ) : image ? (
               <img src={image} alt={imageAlt} loading="eager" />
             ) : (
               <Icon name={visualIcon} />

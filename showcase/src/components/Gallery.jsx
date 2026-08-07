@@ -26,15 +26,18 @@ export default function Gallery({ id = 'gallery', eyebrow, title, intro, items =
         </Reveal>
         <Reveal as="div" className="demo-gallery">
           {items.map((item, i) => {
-            const isImage = typeof item === 'object' && item !== null
-            const label = isImage ? item.label : item
+            const isMedia = typeof item === 'object' && item !== null
+            const label = isMedia ? item.label : item
             return (
               <div
                 className="demo-gallery-tile"
                 key={label}
-                style={isImage ? undefined : { background: gradientForIndex(i, theme) }}
+                style={isMedia ? undefined : { background: gradientForIndex(i, theme) }}
               >
-                {isImage && <img src={item.image} alt={item.alt || label} loading="lazy" />}
+                {isMedia && item.video && (
+                  <video src={item.video} poster={item.poster} autoPlay muted loop playsInline aria-label={item.alt || label} />
+                )}
+                {isMedia && !item.video && item.image && <img src={item.image} alt={item.alt || label} loading="lazy" />}
                 <span>{label}</span>
               </div>
             )
