@@ -10,12 +10,15 @@ import cleanersMono from './cleanersMono.js'
 import carpenters from './carpenters.js'
 import carpentersRustic from './carpentersRustic.js'
 import carpentersModern from './carpentersModern.js'
+import gardeners from './gardeners.js'
+import gardenersTerracotta from './gardenersTerracotta.js'
+import gardenersSage from './gardenersSage.js'
 
 // Registro central de demos QUE SE LISTAN en la página de inicio del
 // showcase — una tarjeta por rubro/nicho distinto. Cada entrada se convierte
 // en una ruta /<slug>. Ver src/demos/README.md para la guía de cómo agregar
 // una nueva.
-const demos = [salonBelleza, carWash, cleaners, carpenters]
+const demos = [salonBelleza, carWash, cleaners, carpenters, gardeners]
 
 // Variantes de estilo (mismo contenido/rubro, distinta paleta + tipografía)
 // — deliberadamente fuera de `demos` para no duplicar la tarjeta del mismo
@@ -30,6 +33,8 @@ const styleOnlyVariants = [
   cleanersMono,
   carpentersRustic,
   carpentersModern,
+  gardenersTerracotta,
+  gardenersSage,
 ]
 
 const allDemos = [...demos, ...styleOnlyVariants]
