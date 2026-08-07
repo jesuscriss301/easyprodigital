@@ -19,12 +19,15 @@ import plumbersSteel from './plumbersSteel.js'
 import realestate from './realestate.js'
 import realestateCoastal from './realestateCoastal.js'
 import realestateModern from './realestateModern.js'
+import masons from './masons.js'
+import masonsSlate from './masonsSlate.js'
+import masonsTerracotta from './masonsTerracotta.js'
 
 // Registro central de demos QUE SE LISTAN en la página de inicio del
 // showcase — una tarjeta por rubro/nicho distinto. Cada entrada se convierte
 // en una ruta /<slug>. Ver src/demos/README.md para la guía de cómo agregar
 // una nueva.
-const demos = [salonBelleza, carWash, cleaners, carpenters, gardeners, plumbers, realestate]
+const demos = [salonBelleza, carWash, cleaners, carpenters, gardeners, plumbers, realestate, masons]
 
 // Variantes de estilo (mismo contenido/rubro, distinta paleta + tipografía)
 // — deliberadamente fuera de `demos` para no duplicar la tarjeta del mismo
@@ -45,6 +48,8 @@ const styleOnlyVariants = [
   plumbersSteel,
   realestateCoastal,
   realestateModern,
+  masonsSlate,
+  masonsTerracotta,
 ]
 
 const allDemos = [...demos, ...styleOnlyVariants]
