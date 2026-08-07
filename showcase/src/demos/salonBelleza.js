@@ -9,10 +9,14 @@ export default {
   // Same content, different look — lets a visitor compare palettes/fonts on
   // the same business without leaving the demo. See salonBellezaModern.js /
   // salonBellezaBotanical.js (same array, repeated on all three).
+  // `primary` here is only for the pill color in the style switcher (so each
+  // option previews its own palette instead of inheriting the current
+  // page's theme) — keep it in sync with `theme.primary` below/in the
+  // sibling files.
   styleVariants: [
-    { slug: 'salon-belleza', label: 'Classic Romance' },
-    { slug: 'salon-belleza-modern', label: 'Modern Minimal' },
-    { slug: 'salon-belleza-botanical', label: 'Botanical Spa' },
+    { slug: 'salon-belleza', label: 'Classic Romance', primary: '#b76e79' },
+    { slug: 'salon-belleza-modern', label: 'Modern Minimal', primary: '#1c1c1c' },
+    { slug: 'salon-belleza-botanical', label: 'Botanical Spa', primary: '#4a5d43' },
   ],
 
   seo: {

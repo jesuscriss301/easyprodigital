@@ -198,17 +198,21 @@ h1, h2, h3, h4 {
 }
 .demo-style-switcher-label { font-size: 13px; color: var(--demo-muted); white-space: nowrap; }
 .demo-style-switcher-options { display: flex; gap: 8px; flex-wrap: wrap; }
+/* El color de cada pill viene inline (style={...} en StyleSwitcher.jsx) con
+   el `primary` propio de esa variante, no con --demo-primary de la página
+   actual — así cada opción se ve con su propia paleta antes de hacer click. */
 .demo-style-pill {
   font-size: 13px;
   font-weight: 500;
   padding: 6px 14px;
   border-radius: 999px;
-  border: 1px solid var(--demo-line);
+  border: 1.5px solid var(--demo-line);
+  background: transparent;
   color: var(--demo-ink);
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.demo-style-pill:hover { border-color: var(--demo-primary); color: var(--demo-primary); }
-.demo-style-pill.is-active { background: var(--demo-primary); border-color: var(--demo-primary); color: #fff; }
+.demo-style-pill:hover { transform: translateY(-1px); box-shadow: 0 6px 14px -8px rgba(0,0,0,0.35); }
+.demo-style-pill.is-active { box-shadow: 0 6px 14px -8px rgba(0,0,0,0.35); }
 @media (max-width: 560px) {
   .demo-style-switcher-inner { padding: 10px 16px; }
   .demo-style-switcher-label { width: 100%; }
