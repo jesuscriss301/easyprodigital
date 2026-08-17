@@ -30,7 +30,7 @@ export default {
   // 'hero' | 'services' | 'features' | 'gallery' | 'testimonials' | 'cta' is
   // valid — DemoPage.jsx renders whatever is listed here, skipping the rest.
   layout: {
-    order: ['hero', 'gallery', 'services', 'features', 'testimonials', 'cta'],
+    order: ['hero', 'gallery', 'services', 'features', 'testimonials', 'map', 'cta'],
   },
 
   theme: {
@@ -55,6 +55,7 @@ export default {
       { label: 'About', href: '#about' },
       { label: 'Gallery', href: '#gallery' },
       { label: 'Testimonials', href: '#testimonials' },
+      { label: 'Location', href: '#location' },
     ],
     ctaLabel: 'Book Now',
   },
@@ -68,8 +69,8 @@ export default {
     secondaryCta: { label: 'View Services', href: '#services' },
     trust: [
       { value: '4.9 ★', label: 'average rating' },
-      { value: '500+', label: 'clients served' },
-      { value: '8 years', label: 'of experience' },
+      { end: 500, suffix: '+', label: 'clients served' },
+      { end: 8, label: 'years of experience' },
     ],
     visualIcon: 'flower',
     image: '/images/salon-belleza/hero.jpg',
@@ -125,6 +126,21 @@ export default {
       { name: 'Mariana G.', role: 'Regular client', quote: 'I completely changed my look and I couldn’t be happier. The team is super professional and the atmosphere is so relaxing.' },
       { name: 'Laura P.', role: 'New client', quote: 'Booking was so easy and I didn’t wait at all. My manicure result lasted for weeks.' },
       { name: 'Camila R.', role: 'Regular client', quote: 'The facial treatment left my skin looking amazing. This is already my go-to place for everything.' },
+    ],
+  },
+
+  map: {
+    eyebrow: 'Find Us',
+    title: 'Visit the studio',
+    intro: 'Walk-ins welcome when the chairs are free — or book ahead and skip the wait.',
+    id: 'location',
+    query: 'Bella Aura Studio, Miami, FL',
+    address: '742 Coral Way, Miami, FL 33145',
+    phone: '+1 (305) 555-0184',
+    hours: [
+      { days: 'Tue – Fri', time: '9:00 AM – 7:00 PM' },
+      { days: 'Saturday', time: '9:00 AM – 5:00 PM' },
+      { days: 'Sun – Mon', time: 'Closed' },
     ],
   },
 

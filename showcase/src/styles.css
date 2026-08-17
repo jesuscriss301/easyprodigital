@@ -42,6 +42,15 @@ body {
 
 img, svg { display: block; max-width: 100%; }
 
+/* Cada demo pinta su propio fondo/tinta desde sus variables de tema (las
+   variables viven en este wrapper, no en <body> — imprescindible para los
+   temas oscuros como adult-creator). */
+.demo-root {
+  background: var(--demo-bg);
+  color: var(--demo-ink);
+  min-height: 100vh;
+}
+
 a { color: inherit; text-decoration: none; }
 
 h1, h2, h3, h4 {

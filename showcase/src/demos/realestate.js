@@ -28,7 +28,7 @@ export default {
   // 'cta' is valid — DemoPage.jsx renders whatever is listed here, skipping
   // the rest.
   layout: {
-    order: ['hero', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'gallery', 'services', 'features', 'testimonials', 'map', 'cta'],
   },
 
   theme: {

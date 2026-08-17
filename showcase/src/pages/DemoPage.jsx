@@ -64,7 +64,7 @@ export default function DemoPage({ demo }) {
     .map((key) => SECTION_RENDERERS[key](demo))
 
   return (
-    <div style={themeVars}>
+    <div className="demo-root" style={themeVars}>
       <Seo
         title={demo.seo.title}
         description={demo.seo.description}
