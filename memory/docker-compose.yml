@@ -1,0 +1,54 @@
+# Servidor de memoria persistente (Graphiti + FalkorDB) para Claude.
+# Se despliega como una "Compose Application" independiente en Dokploy,
+# apuntando a esta carpeta (memory/) — mismo patrón que showcase/, blog/ y
+# server/ dentro del monorepo, pero como servicio propio, no parte del sitio.
+#
+# No usa build local: toma la imagen ya publicada por el proyecto Graphiti
+# (getzep/graphiti) en Docker Hub, así este repo no necesita vendorizar su
+# código fuente.
+services:
+  falkordb:
+    image: falkordb/falkordb:latest
+    environment:
+      - FALKORDB_PASSWORD=${FALKORDB_PASSWORD:-}
+      - BROWSER=0
+    volumes:
+      - falkordb_data:/var/lib/falkordb/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "-p", "6379", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  graphiti-mcp:
+    image: zepai/knowledge-graph-mcp:standalone
+    depends_on:
+      falkordb:
+        condition: service_healthy
+    environment:
+      # Base de datos (FalkorDB, dentro de esta misma red de docker compose)
+      - FALKORDB_URI=redis://falkordb:6379
+      - FALKORDB_PASSWORD=${FALKORDB_PASSWORD:-}
+      - FALKORDB_DATABASE=${FALKORDB_DATABASE:-default_db}
+      # LLM para extraer hechos/entidades de las conversaciones
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:?falta ANTHROPIC_API_KEY en el panel de Dokploy}
+      - MODEL_NAME=${MODEL_NAME:-claude-sonnet-4-5}
+      # Embeddings (Anthropic no ofrece API de embeddings propia; Voyage AI
+      # es su alternativa recomendada — tiene capa gratuita, ver README).
+      - VOYAGE_API_KEY=${VOYAGE_API_KEY:?falta VOYAGE_API_KEY en el panel de Dokploy}
+      # Namespacing / concurrencia
+      - GRAPHITI_GROUP_ID=${GRAPHITI_GROUP_ID:-jesus-cristancho}
+      - SEMAPHORE_LIMIT=${SEMAPHORE_LIMIT:-8}
+      - CONFIG_PATH=/app/mcp/config/config.yaml
+    volumes:
+      - ./config/config.yaml:/app/mcp/config/config.yaml:ro
+    ports:
+      - "8000:8000" # Expone el servidor MCP vía HTTP — Dokploy lo publica con su propio dominio/HTTPS
+    command: ["uv", "run", "main.py"]
+    restart: unless-stopped
+
+volumes:
+  falkordb_data:
+    driver: local
