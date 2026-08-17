@@ -82,6 +82,7 @@ export default {
   },
 
   gallery: {
+    hover: 'glare', // GlareHover (React Bits, CSS sin deps) — brillo al pasar sobre el estudio
     eyebrow: 'Behind the Scenes',
     title: 'The studio',
     intro: 'On your real website, this is where your own studio, thumbnails and setup shots would go.',

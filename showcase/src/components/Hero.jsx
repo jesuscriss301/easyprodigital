@@ -12,6 +12,7 @@ export default function Hero({
   secondaryCta,
   trust = [],
   visualIcon = 'sparkle',
+  visualFrame,
   image,
   imageAlt = '',
   video,
@@ -64,7 +65,7 @@ export default function Hero({
       ) : (
         <div className="demo-container demo-hero-inner">
           {copy}
-          <Reveal className="demo-hero-visual">
+          <Reveal className={`demo-hero-visual${visualFrame === 'electric' ? ' demo-hero-visual--electric' : ''}`}>
             {video ? (
               <video src={video} poster={videoPoster} autoPlay muted loop playsInline aria-label={imageAlt} />
             ) : image ? (

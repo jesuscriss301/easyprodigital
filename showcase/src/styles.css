@@ -495,6 +495,93 @@ h1, h2, h3, h4 {
   }
 }
 
+/* ============================================================
+   Efectos opt-in por demo (adaptados de React Bits, reescritos
+   sin dependencias — 0 KB de librerías nuevas)
+   ============================================================ */
+
+/* ElectricBorder (nicho electricistas): corriente de energía recorriendo el
+   marco de la foto del hero. Conic-gradient rotando tras la imagen + glow. */
+.demo-hero-visual--electric { position: relative; border-radius: var(--demo-radius, 20px); }
+.demo-hero-visual--electric::before,
+.demo-hero-visual--electric::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  /* la base .demo-hero-visual::before/after define círculos decorativos con
+     width/height fijos — anularlos para que el marco cubra todo el visual */
+  width: auto;
+  height: auto;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--electric-angle, 0deg),
+    transparent 0 40%,
+    color-mix(in srgb, var(--demo-primary) 85%, #fff) 47%,
+    #fff 50%,
+    color-mix(in srgb, var(--demo-primary) 85%, #fff) 53%,
+    transparent 60% 100%
+  );
+  animation: demo-electric-spin 3.2s linear infinite;
+  z-index: 0;
+}
+.demo-hero-visual--electric::after { filter: blur(14px); opacity: 0.7; }
+.demo-hero-visual--electric > img,
+.demo-hero-visual--electric > video,
+.demo-hero-visual--electric > svg { position: relative; z-index: 1; }
+@property --electric-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes demo-electric-spin {
+  to { --electric-angle: 360deg; }
+}
+
+/* GlareHover (galerías visuales: chef, youtuber, adult-creator): barrido de
+   brillo diagonal al pasar el cursor sobre un tile. */
+.demo-gallery--glare .demo-gallery-tile { overflow: hidden; }
+.demo-gallery--glare .demo-gallery-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 65%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.7s var(--demo-ease);
+  pointer-events: none;
+  z-index: 2;
+}
+.demo-gallery--glare .demo-gallery-tile:hover::after { transform: translateX(120%); }
+
+/* Spotlight (bio-link adult-creator): halo radial que sigue al cursor en las
+   filas de links. Solo en hover — sin bucle de animación. */
+.demo-spotlight { position: relative; overflow: hidden; }
+.demo-spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    240px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    color-mix(in srgb, var(--demo-primary) 16%, transparent),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.demo-spotlight:hover::before { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .demo-hero-visual--electric::before,
+  .demo-hero-visual--electric::after { animation: none; }
+  .demo-gallery--glare .demo-gallery-tile::after { display: none; }
+  .demo-spotlight::before { display: none; }
+}
+
 /* ---------- reveal on scroll ---------- */
 .demo-reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s var(--demo-ease), transform 0.6s var(--demo-ease); }
 .demo-reveal.is-visible { opacity: 1; transform: translateY(0); }

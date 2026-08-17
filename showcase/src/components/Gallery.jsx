@@ -15,7 +15,7 @@ function gradientForIndex(i, theme) {
   return `linear-gradient(140deg, ${a}, ${b})`
 }
 
-export default function Gallery({ id = 'gallery', eyebrow, title, intro, items = [], theme }) {
+export default function Gallery({ id = 'gallery', eyebrow, title, intro, items = [], hover, theme }) {
   return (
     <section id={id} className="demo-section">
       <div className="demo-container">
@@ -24,7 +24,7 @@ export default function Gallery({ id = 'gallery', eyebrow, title, intro, items =
           <SplitText tag="h2" text={title} textAlign="center" splitType="chars" delay={30} duration={0.8} />
           {intro && <p>{intro}</p>}
         </Reveal>
-        <Reveal as="div" className="demo-gallery">
+        <Reveal as="div" className={`demo-gallery${hover === 'glare' ? ' demo-gallery--glare' : ''}`}>
           {items.map((item, i) => {
             const isMedia = typeof item === 'object' && item !== null
             const label = isMedia ? item.label : item

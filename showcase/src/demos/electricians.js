@@ -68,6 +68,9 @@ export default {
       { value: '24/7', label: 'emergency service' },
     ],
     visualIcon: 'bolt',
+    // ElectricBorder (React Bits, adaptación CSS sin deps): corriente
+    // recorriendo el marco de la foto — el efecto insignia del rubro.
+    visualFrame: 'electric',
     image: '/images/electricians/hero.jpg',
     imageAlt: 'Electrician installing a wall outlet',
   },

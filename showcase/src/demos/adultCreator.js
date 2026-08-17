@@ -76,6 +76,7 @@ export default {
   },
 
   services: {
+    hover: 'spotlight', // SpotlightCard (React Bits, adaptación CSS sin deps) — halo que sigue al cursor en las filas de links
     eyebrow: 'My Links',
     title: 'Everything in one place',
     intro: 'Sample link hub — on a real page each row links out to the creator’s actual platforms.',
@@ -90,6 +91,7 @@ export default {
   },
 
   gallery: {
+    hover: 'glare', // GlareHover — refuerza el "hay algo detrás" de los tiles censurados
     eyebrow: 'Previews',
     title: 'Censored previews',
     intro: 'Real content stays behind the paywall — subscribers unlock the full versions. These tiles are intentionally shaded placeholders.',

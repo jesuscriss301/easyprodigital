@@ -100,6 +100,7 @@ export default {
   },
 
   gallery: {
+    hover: 'glare', // GlareHover (React Bits, CSS sin deps) — brillo al pasar sobre los platos
     eyebrow: 'From the Kitchen',
     title: 'A taste of what lands on the table',
     intro: 'On your real website, this is where photos of your own dishes and events would go.',
