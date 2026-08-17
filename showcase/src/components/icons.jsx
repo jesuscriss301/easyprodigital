@@ -248,6 +248,148 @@ export function Gauge(props) {
   )
 }
 
+export function Bolt(props) {
+  return (
+    <svg {...base} {...props}>
+      <polygon points="13 2 3 14 11 14 10 22 21 9 13 9 13 2" />
+    </svg>
+  )
+}
+
+export function Plug(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M9 2v6" />
+      <path d="M15 2v6" />
+      <path d="M6 8h12v3a6 6 0 0 1-6 6 6 6 0 0 1-6-6z" />
+      <path d="M12 17v5" />
+    </svg>
+  )
+}
+
+export function ChefHat(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M6.5 11.2A3.7 3.7 0 0 1 7 3.9a4.6 4.6 0 0 1 10 0 3.7 3.7 0 0 1 .5 7.3V17h-11z" />
+      <path d="M6.5 17h11v3.5h-11z" />
+    </svg>
+  )
+}
+
+export function Utensils(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M7 2v8" />
+      <path d="M4 2v5a3 3 0 0 0 6 0V2" />
+      <path d="M7 13v9" />
+      <path d="M17 2c-1.7 1-3 3.6-3 6.5 0 2 1 3.5 3 3.5v10" />
+    </svg>
+  )
+}
+
+export function Flame(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-2.5-5.5C15 8 13.5 6 13 3.5c-2.5 2-4 4.5-4 7 0-.8-.5-2-1.5-3C6 9 5 12 5 15a7 7 0 0 0 7 7z" />
+    </svg>
+  )
+}
+
+export function Lock(props) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="4.5" y="10.5" width="15" height="10" rx="2" />
+      <path d="M8 10.5V7a4 4 0 0 1 8 0v3.5" />
+      <path d="M12 14.5v2.5" />
+    </svg>
+  )
+}
+
+export function Heart(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 20.5S4 15.4 4 9.9A4.4 4.4 0 0 1 8.4 5.5c1.6 0 2.9.8 3.6 2 .7-1.2 2-2 3.6-2A4.4 4.4 0 0 1 20 9.9c0 5.5-8 10.6-8 10.6z" />
+    </svg>
+  )
+}
+
+export function Play(props) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="12" r="9.5" />
+      <polygon points="10 8.5 16 12 10 15.5 10 8.5" />
+    </svg>
+  )
+}
+
+export function Camera(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M4 7.5h3l1.5-2.5h7L17 7.5h3a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 20 19.5H4A1.5 1.5 0 0 1 2.5 18V9A1.5 1.5 0 0 1 4 7.5z" />
+      <circle cx="12" cy="13" r="3.5" />
+    </svg>
+  )
+}
+
+export function Mic(props) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="9" y="2.5" width="6" height="11" rx="3" />
+      <path d="M5.5 11a6.5 6.5 0 0 0 13 0" />
+      <path d="M12 17.5V21" />
+      <path d="M8.5 21h7" />
+    </svg>
+  )
+}
+
+export function Cross(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M10.5 3h3v5.5H19v3h-5.5V21h-3v-9.5H5v-3h5.5z" />
+    </svg>
+  )
+}
+
+export function Book(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z" />
+      <path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5" />
+    </svg>
+  )
+}
+
+export function Music(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M9 18V5l11-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="17" cy="16" r="3" />
+    </svg>
+  )
+}
+
+export function Globe(props) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="12" r="9.5" />
+      <path d="M2.5 12h19" />
+      <path d="M12 2.5c2.7 2.6 4 6 4 9.5s-1.3 6.9-4 9.5c-2.7-2.6-4-6-4-9.5s1.3-6.9 4-9.5z" />
+    </svg>
+  )
+}
+
+export function HandHeart(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 9.5S8.5 7.3 8.5 5A2.2 2.2 0 0 1 10.7 2.8c.5 0 1 .3 1.3.7.3-.4.8-.7 1.3-.7A2.2 2.2 0 0 1 15.5 5c0 2.3-3.5 4.5-3.5 4.5z" />
+      <path d="M3 14.5h3.5l3 1.5h4a1.25 1.25 0 0 1 0 2.5H10" />
+      <path d="M6.5 20.5H3" />
+      <path d="M13.5 18.3l4.6-1.6a1.3 1.3 0 0 1 1.1 2.3l-6.2 3H6.5v-5.5" />
+    </svg>
+  )
+}
+
 export const ICONS = {
   scissors: Scissors,
   droplet: Droplet,
@@ -273,6 +415,21 @@ export const ICONS = {
   crane: Crane,
   gauge: Gauge,
   key: Key,
+  bolt: Bolt,
+  plug: Plug,
+  chefHat: ChefHat,
+  utensils: Utensils,
+  flame: Flame,
+  lock: Lock,
+  heart: Heart,
+  play: Play,
+  camera: Camera,
+  mic: Mic,
+  cross: Cross,
+  book: Book,
+  music: Music,
+  globe: Globe,
+  handHeart: HandHeart,
 }
 
 export function Icon({ name, ...props }) {
