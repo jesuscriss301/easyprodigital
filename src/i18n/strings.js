@@ -8,14 +8,14 @@ export const en = {
   nav: {
     services: 'Services',
     portfolio: 'Portfolio',
-    demos: 'Demos',
+    blog: 'Blog',
     about: 'About',
     startProject: 'Start a project',
   },
   footer: {
     services: 'Services',
     portfolio: 'Portfolio',
-    demos: 'Demos',
+    blog: 'Blog',
     about: 'About',
     contact: 'Contact',
     privacy: 'Privacy',
@@ -272,14 +272,14 @@ export const es = {
   nav: {
     services: 'Servicios',
     portfolio: 'Portafolio',
-    demos: 'Demos',
+    blog: 'Blog',
     about: 'Sobre mí',
     startProject: 'Empezar un proyecto',
   },
   footer: {
     services: 'Servicios',
     portfolio: 'Portafolio',
-    demos: 'Demos',
+    blog: 'Blog',
     about: 'Sobre mí',
     contact: 'Contacto',
     privacy: 'Privacidad',
