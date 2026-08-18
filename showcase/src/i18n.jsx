@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 
-// Lightweight i18n for the showcase's SHARED chrome (index page, nav
-// language toggle, footer, disclosure CTAs, style switcher label) — NOT a
-// full translation of each niche demo's own marketing copy (hero, services,
-// testimonials, etc. stay authored in English per demo, same as today).
-// Adding full bilingual content per niche is a much larger content task;
-// this covers the surrounding chrome so demos.easyprodigital.com itself can
-// be browsed in Spanish, matching the main site's /es support.
+// Lightweight i18n for the showcase. Covers two things:
+// 1) The shared chrome (index page, nav language toggle, footer, disclosure
+//    CTAs, style switcher label) via the STRINGS dict below.
+// 2) Each niche demo's own marketing copy (hero, services, features,
+//    gallery, testimonials, map, cta, disclosure) via per-niche ES content
+//    packs under demos/i18n/es/*.js, applied at render time with
+//    `mergeLang` — see demos/i18n/es/index.js for the lookup + helper.
 const STRINGS = {
   en: {
     nav: { openMenu: 'Open menu', closeMenu: 'Close menu' },
@@ -85,4 +85,30 @@ export function useLanguage() {
   const ctx = useContext(LanguageContext)
   if (!ctx) throw new Error('useLanguage must be used within a LanguageProvider')
   return ctx
+}
+
+function isPlainObject(v) {
+  return typeof v === 'object' && v !== null && !Array.isArray(v)
+}
+
+/** Recursively overlays `override` onto `base`: plain objects merge key by
+ * key, arrays merge element-by-element by index (so a translated
+ * `services.items[2].title` lands on the same item as the English one),
+ * and anything else (strings, numbers, missing keys) falls back to `base`.
+ * Used to apply a demo's ES content pack (see demos/i18n/es/) on top of its
+ * English config without needing every field translated. */
+export function mergeLang(base, override) {
+  if (override === undefined || override === null) return base
+  if (Array.isArray(base)) {
+    if (!Array.isArray(override)) return base
+    return base.map((item, i) => (i < override.length ? mergeLang(item, override[i]) : item))
+  }
+  if (isPlainObject(base) && isPlainObject(override)) {
+    const result = { ...base }
+    for (const key of Object.keys(override)) {
+      result[key] = mergeLang(base[key], override[key])
+    }
+    return result
+  }
+  return override
 }

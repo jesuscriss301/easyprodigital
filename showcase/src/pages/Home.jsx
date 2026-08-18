@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import demos from '../demos/index.js'
 import { Icon } from '../components/icons.jsx'
 import { useLanguage } from '../i18n.jsx'
+import { getLocalizedDemo } from '../demos/i18n/es/index.js'
 
 /** First real photo available for a demo (hero image, falling back to the
  * first gallery photo — e.g. adult-creator, whose hero has no image and
@@ -43,7 +44,8 @@ export default function Home() {
       </div>
 
       <div className="showcase-grid">
-        {demos.map((d) => {
+        {demos.map((rawDemo) => {
+          const d = getLocalizedDemo(rawDemo, lang)
           const photo = cardImage(d)
           const variants = d.styleVariants || []
           return (
