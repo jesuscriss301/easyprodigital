@@ -14,6 +14,7 @@ export default {
     { slug: 'cleaners', label: 'Fresh Teal', primary: '#0e9594' },
     { slug: 'cleaners-sunny', label: 'Sunny Citrus', primary: '#e8871e' },
     { slug: 'cleaners-mono', label: 'Modern Mono', primary: '#2b2d34' },
+    { slug: 'cleaners-night', label: 'Midnight Shine', primary: '#4bdddc' },
   ],
 
   seo: {

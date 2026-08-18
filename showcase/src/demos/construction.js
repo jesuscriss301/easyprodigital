@@ -14,6 +14,7 @@ export default {
     { slug: 'construction', label: 'Steel Blue', primary: '#1f3a52' },
     { slug: 'construction-orange', label: 'Safety Orange', primary: '#e0501c' },
     { slug: 'construction-gray', label: 'Concrete Gray', primary: '#5a5f66' },
+    { slug: 'construction-night', label: 'Site Lights', primary: '#4b98dd' },
   ],
 
   seo: {

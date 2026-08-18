@@ -17,6 +17,7 @@ export default {
     { slug: 'salon-belleza', label: 'Classic Romance', primary: '#b76e79' },
     { slug: 'salon-belleza-modern', label: 'Modern Minimal', primary: '#1c1c1c' },
     { slug: 'salon-belleza-botanical', label: 'Botanical Spa', primary: '#4a5d43' },
+    { slug: 'salon-belleza-night', label: 'Midnight Rose', primary: '#dd4b61' },
   ],
 
   seo: {

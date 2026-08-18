@@ -14,6 +14,7 @@ export default {
     { slug: 'automechanics', label: 'Racing Red', primary: '#c8102e' },
     { slug: 'automechanics-yellow', label: 'Shop Yellow', primary: '#f2a900' },
     { slug: 'automechanics-blue', label: 'Midnight Blue', primary: '#1d4e6b' },
+    { slug: 'automechanics-night', label: 'Night Garage', primary: '#dd4b63' },
   ],
 
   seo: {

@@ -14,6 +14,7 @@ export default {
     { slug: 'realestate', label: 'Harbor Navy', primary: '#1b3a5c' },
     { slug: 'realestate-coastal', label: 'Coastal Sand', primary: '#b08a5a' },
     { slug: 'realestate-modern', label: 'Modern Charcoal', primary: '#2b2b2e' },
+    { slug: 'realestate-night', label: 'Midnight Listing', primary: '#4b91dd' },
   ],
 
   seo: {

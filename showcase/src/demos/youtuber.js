@@ -14,6 +14,7 @@ export default {
     { slug: 'youtuber', label: 'Creator Red', primary: '#e5383b' },
     { slug: 'youtuber-purple', label: 'Stream Purple', primary: '#6d3bd6' },
     { slug: 'youtuber-mint', label: 'Fresh Mint', primary: '#12a594' },
+    { slug: 'youtuber-night', label: 'Dark Mode', primary: '#dd4b4e' },
   ],
 
   seo: {

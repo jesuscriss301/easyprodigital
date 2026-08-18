@@ -14,6 +14,7 @@ export default {
     { slug: 'private-chef', label: 'Warm Bistro', primary: '#8c3b2e' },
     { slug: 'private-chef-noir', label: 'Fine Dining Noir', primary: '#191714' },
     { slug: 'private-chef-fresh', label: 'Fresh Market', primary: '#4c7a3d' },
+    { slug: 'private-chef-night', label: 'Midnight Kitchen', primary: '#dd5f4b' },
   ],
 
   seo: {

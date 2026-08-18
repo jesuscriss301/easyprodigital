@@ -14,6 +14,7 @@ export default {
     { slug: 'masons', label: 'Brick Red', primary: '#8a3324' },
     { slug: 'masons-slate', label: 'Slate Gray', primary: '#4a4f56' },
     { slug: 'masons-terracotta', label: 'Terracotta Warm', primary: '#b5652f' },
+    { slug: 'masons-night', label: 'Firebrick Night', primary: '#dd604b' },
   ],
 
   seo: {

@@ -14,6 +14,7 @@ export default {
     { slug: 'church', label: 'Warm Welcome', primary: '#7a5c3e' },
     { slug: 'church-modern', label: 'Modern Sanctuary', primary: '#20415e' },
     { slug: 'church-dawn', label: 'Morning Light', primary: '#886a9e' },
+    { slug: 'church-night', label: 'Evening Vespers', primary: '#dd944b' },
   ],
 
   seo: {

@@ -170,10 +170,35 @@ h1, h2, h3, h4 {
 .demo-nav-toggle.is-open span:nth-child(2) { opacity: 0; }
 .demo-nav-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* EN/ES toggle — shared chrome only (nav, footer, disclosure, style
+   switcher, index page); each demo's own marketing copy stays as authored. */
+.demo-lang-toggle {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--demo-line);
+  background: none;
+  color: var(--demo-ink);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.demo-lang-toggle:hover { border-color: var(--demo-primary); color: var(--demo-primary); }
+
 @media (max-width: 860px) {
   .demo-nav-links {
     position: fixed;
     inset: 69px 0 0 0;
+    /* `inset`'s top+bottom should be enough to stretch a position:fixed
+       box to fill the remaining viewport, but this flex column with
+       overflow-y:auto ends up sized to its own content instead (observed
+       in Chromium) — pin the height explicitly so the closed/open panel
+       always covers the full screen instead of leaving a content-sized
+       gap under it. */
+    height: calc(100vh - 69px);
     z-index: 39;
     background: var(--demo-bg);
     flex-direction: column;
@@ -181,7 +206,14 @@ h1, h2, h3, h4 {
     padding: 32px 24px;
     gap: 8px;
     overflow-y: auto;
-    transform: translateY(-110%);
+    /* -100vh (not -110%): percentage transforms resolve against this
+       element's OWN box, and its height here is content-based rather than
+       stretched to fill the `inset` box in every browser — with a short
+       link list that leaves it only ~60-70px tall, "-110%" only moves it
+       up ~70px, not off-screen, so the "closed" panel stays visible
+       overlapping the hero. A viewport-relative unit clears the screen
+       regardless of content length. */
+    transform: translateY(-100vh);
     transition: transform 0.3s var(--demo-ease);
   }
   .demo-nav-links.is-open { transform: translateY(0); }
@@ -592,23 +624,128 @@ h1, h2, h3, h4 {
 
 /* ============================================================
    Página índice (Home) del showcase — lista de demos disponibles
+   Paleta y tipografía alineadas a easyprodigital.com (--porcelain/--ink/
+   --accent/--lime, Archivo + Instrument Sans) para que la galería se sienta
+   como una extensión del sitio principal, no como un proyecto aparte.
    ============================================================ */
-.showcase-home { min-height: 100vh; background: #0f1115; color: #f3f1ee; }
-.showcase-home-hero { padding: 90px 24px 60px; text-align: center; max-width: 720px; margin: 0 auto; }
-.showcase-home-hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(32px, 5vw, 48px); margin-bottom: 16px; }
-.showcase-home-hero p { color: #b7b3ad; font-size: 17px; }
+.showcase-home {
+  --sc-bg: #f2f5f7;
+  --sc-paper: #ffffff;
+  --sc-ink: #071f42;
+  --sc-slate: #51617a;
+  --sc-line: #d7dfe6;
+  --sc-accent: #117ead;
+  --sc-accent-dark: #0c5f84;
+  --sc-lime: #c6f135;
+  --sc-font-display: 'Archivo', system-ui, sans-serif;
+  --sc-font-body: 'Instrument Sans', system-ui, sans-serif;
+  min-height: 100vh;
+  background: var(--sc-bg);
+  color: var(--sc-ink);
+  font-family: var(--sc-font-body);
+}
+
+.showcase-topbar {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 24px 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.showcase-wordmark {
+  font-family: var(--sc-font-display);
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--sc-ink);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+.showcase-lang-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--sc-line);
+  background: var(--sc-paper);
+  color: var(--sc-ink);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.showcase-lang-toggle:hover { border-color: var(--sc-accent); color: var(--sc-accent); }
+
+.showcase-home-hero { padding: 56px 24px 60px; text-align: center; max-width: 720px; margin: 0 auto; }
+.showcase-eyebrow {
+  display: inline-block;
+  font-family: var(--sc-font-body);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sc-accent-dark);
+  margin-bottom: 14px;
+}
+.showcase-home-hero h1 {
+  font-family: var(--sc-font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: clamp(32px, 5vw, 48px);
+  margin-bottom: 16px;
+}
+.showcase-home-hero p { color: var(--sc-slate); font-size: 17px; line-height: 1.6; }
+.showcase-home-hero p a { color: var(--sc-accent-dark); font-weight: 600; text-decoration: underline; }
+
 .showcase-grid {
-  max-width: 1100px; margin: 0 auto; padding: 0 24px 100px;
+  max-width: 1160px; margin: 0 auto; padding: 0 24px 100px;
   display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
 }
 .showcase-card {
+  display: flex;
+  flex-direction: column;
   border-radius: 18px; overflow: hidden; text-decoration: none; color: inherit;
-  background: #171a20; border: 1px solid #2a2e37; transition: transform 0.2s ease, border-color 0.2s ease;
+  background: var(--sc-paper); border: 1px solid var(--sc-line);
+  box-shadow: 0 1px 2px rgba(7, 31, 66, 0.04);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
-.showcase-card:hover { transform: translateY(-4px); border-color: #4a4038; }
-.showcase-card-visual { height: 140px; display: flex; align-items: center; justify-content: center; }
-.showcase-card-visual svg { width: 40px; height: 40px; color: #fff; opacity: 0.9; }
-.showcase-card-body { padding: 22px 24px 26px; }
-.showcase-card-body .tag { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #b7b3ad; margin-bottom: 8px; display: block; }
-.showcase-card-body h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; margin-bottom: 8px; }
-.showcase-card-body p { font-size: 14px; color: #a19d96; }
+.showcase-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--sc-accent);
+  box-shadow: 0 12px 28px rgba(7, 31, 66, 0.12);
+}
+.showcase-card-visual { position: relative; height: 168px; overflow: hidden; background: var(--sc-line); }
+.showcase-card-visual img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.35s ease;
+}
+.showcase-card:hover .showcase-card-visual img { transform: scale(1.05); }
+.showcase-card-visual-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+.showcase-card-visual-fallback svg { width: 40px; height: 40px; color: #fff; opacity: 0.9; }
+.showcase-card-tag {
+  position: absolute; left: 12px; bottom: 12px;
+  font-family: var(--sc-font-body); font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: #fff; background: rgba(7, 21, 42, 0.6); backdrop-filter: blur(4px);
+  padding: 5px 10px; border-radius: 999px;
+}
+.showcase-card-body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.showcase-card-body h3 { font-family: var(--sc-font-display); font-weight: 700; font-size: 19px; letter-spacing: -0.01em; }
+.showcase-card-desc {
+  font-size: 13.5px; line-height: 1.5; color: var(--sc-slate);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  flex: 1;
+}
+.showcase-card-footer {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  margin-top: 4px; padding-top: 12px; border-top: 1px solid var(--sc-line);
+}
+.showcase-card-palettes { display: flex; gap: 5px; }
+.showcase-swatch {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 1px solid rgba(7, 31, 66, 0.15);
+}
+.showcase-card-cta { font-size: 13px; font-weight: 700; color: var(--sc-accent-dark); white-space: nowrap; }
+
+.showcase-home-footer { max-width: 1160px; margin: 0 auto; padding: 0 24px 48px; text-align: center; }
+.showcase-home-footer p { font-size: 13px; color: var(--sc-slate); }
+.showcase-home-footer a { color: var(--sc-accent-dark); text-decoration: underline; }

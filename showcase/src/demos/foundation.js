@@ -14,6 +14,7 @@ export default {
     { slug: 'foundation', label: 'Hopeful Green', primary: '#2e7d5b' },
     { slug: 'foundation-sky', label: 'Open Sky', primary: '#2c6e9e' },
     { slug: 'foundation-sunrise', label: 'Sunrise', primary: '#c05621' },
+    { slug: 'foundation-night', label: 'Midnight Mission', primary: '#4bdd9e' },
   ],
 
   seo: {

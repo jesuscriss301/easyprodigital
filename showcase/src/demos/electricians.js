@@ -14,6 +14,7 @@ export default {
     { slug: 'electricians', label: 'Amp Amber', primary: '#e8940c' },
     { slug: 'electricians-navy', label: 'Circuit Navy', primary: '#12395c' },
     { slug: 'electricians-volt', label: 'High Voltage', primary: '#3d9970' },
+    { slug: 'electricians-night', label: 'Night Circuit', primary: '#dda54b' },
   ],
 
   seo: {

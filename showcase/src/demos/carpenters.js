@@ -14,6 +14,7 @@ export default {
     { slug: 'carpenters', label: 'Classic Oak', primary: '#8b5a2b' },
     { slug: 'carpenters-rustic', label: 'Rustic Barn', primary: '#6b3226' },
     { slug: 'carpenters-modern', label: 'Modern Slate', primary: '#3f4a4d' },
+    { slug: 'carpenters-night', label: 'Nightwood', primary: '#dd924b' },
   ],
 
   seo: {

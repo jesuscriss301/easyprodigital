@@ -14,6 +14,7 @@ export default {
     { slug: 'gardeners', label: 'Garden Green', primary: '#3f7d32' },
     { slug: 'gardeners-terracotta', label: 'Terracotta Bloom', primary: '#c1622d' },
     { slug: 'gardeners-sage', label: 'Modern Sage', primary: '#6b8f71' },
+    { slug: 'gardeners-night', label: 'Moonlit Garden', primary: '#64dd4b' },
   ],
 
   seo: {

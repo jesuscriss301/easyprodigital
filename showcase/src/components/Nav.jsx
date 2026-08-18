@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useLanguage } from '../i18n.jsx'
 
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
@@ -15,6 +16,7 @@ const MOBILE_MENU_CLOSE_MS = 300
 export default function Nav({ brand, links = [], ctaLabel, ctaHref = '#book' }) {
   const [open, setOpen] = useState(false)
   const navRef = useRef(null)
+  const { lang, t, toggleLang } = useLanguage()
 
   // Close on Escape, close on outside click, and lock body scroll while the
   // mobile panel is open so the page behind it doesn't scroll.
@@ -82,6 +84,15 @@ export default function Nav({ brand, links = [], ctaLabel, ctaHref = '#book' }) 
             </li>
           )}
         </ul>
+        <button
+          type="button"
+          className="demo-lang-toggle"
+          onClick={toggleLang}
+          title={t.home.langToggleTo}
+          aria-label={t.home.langToggleTo}
+        >
+          {lang === 'en' ? 'ES' : 'EN'}
+        </button>
         {ctaLabel && (
           <a href={ctaHref} className="demo-btn demo-btn-primary demo-nav-cta" onClick={(e) => handleAnchorClick(e, ctaHref)}>
             {ctaLabel}
@@ -89,7 +100,7 @@ export default function Nav({ brand, links = [], ctaLabel, ctaHref = '#book' }) 
         )}
         <button
           className={`demo-nav-toggle${open ? ' is-open' : ''}`}
-          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >

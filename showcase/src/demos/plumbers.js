@@ -14,6 +14,7 @@ export default {
     { slug: 'plumbers', label: 'Reliable Blue', primary: '#1d6fa5' },
     { slug: 'plumbers-emergency', label: 'Emergency Orange', primary: '#d9531e' },
     { slug: 'plumbers-steel', label: 'Steel Navy', primary: '#2c3e50' },
+    { slug: 'plumbers-night', label: 'Night Call', primary: '#4ba3dd' },
   ],
 
   seo: {

@@ -14,6 +14,7 @@ export default {
     { slug: 'car-wash', label: 'Aqua Pro', primary: '#0f7ea3' },
     { slug: 'car-wash-turbo', label: 'Turbo Red', primary: '#c2261e' },
     { slug: 'car-wash-eco', label: 'Eco Green', primary: '#2f7d4f' },
+    { slug: 'car-wash-night', label: 'Night Shift', primary: '#4bb8dd' },
   ],
 
   seo: {
