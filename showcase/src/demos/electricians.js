@@ -72,6 +72,10 @@ export default {
     // ElectricBorder (React Bits, adaptación CSS sin deps): corriente
     // recorriendo el marco de la foto — el efecto insignia del rubro.
     visualFrame: 'electric',
+    // BackgroundFX 'circuit' (canvas, sin deps nuevas): cuadrícula de
+    // circuito con pulsos de energía viajando por los trazos, detrás de
+    // todo el hero.
+    background: 'circuit',
     image: '/images/electricians/hero.jpg',
     imageAlt: 'Electrician installing a wall outlet',
   },

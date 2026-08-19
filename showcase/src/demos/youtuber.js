@@ -68,6 +68,9 @@ export default {
       { end: 38, suffix: 'M', label: 'total views' },
     ],
     visualIcon: 'play',
+    // BackgroundFX 'aurora' (canvas, sin deps nuevas): manchas de color en
+    // movimiento, energía de estudio, detrás de todo el hero.
+    background: 'aurora',
   },
 
   features: {

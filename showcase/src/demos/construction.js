@@ -71,6 +71,9 @@ export default {
       { end: 300, suffix: '+', label: 'projects delivered' },
     ],
     visualIcon: 'hammer',
+    // BackgroundFX 'blueprint' (canvas, sin deps nuevas): cuadrícula de
+    // plano + línea de escaneo, detrás de todo el hero.
+    background: 'blueprint',
     image: '/images/construction/hero.jpg',
     imageAlt: 'Construction worker on a tower crane at a building site',
   },

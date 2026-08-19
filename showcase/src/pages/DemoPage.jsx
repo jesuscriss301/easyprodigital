@@ -30,7 +30,7 @@ function useGoogleFont(href) {
  * render in the same place (top / bottom).
  */
 const SECTION_RENDERERS = {
-  hero: (demo) => <Hero key="hero" {...demo.hero} />,
+  hero: (demo) => <Hero key="hero" {...demo.hero} theme={demo.theme} />,
   services: (demo) => (demo.services ? <Services key="services" {...demo.services} /> : null),
   features: (demo) => (demo.features ? <Features key="features" {...demo.features} /> : null),
   gallery: (demo) => (demo.gallery ? <Gallery key="gallery" {...demo.gallery} theme={demo.theme} /> : null),

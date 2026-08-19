@@ -74,6 +74,9 @@ export default {
     // Ripple (React Bits, adaptación CSS sin deps nuevas): dos anillos de
     // agua se expanden y se desvanecen alrededor de la foto del hero.
     visualFrame: 'ripple',
+    // BackgroundFX 'waves' (canvas, sin deps nuevas): líneas de onda de
+    // agua fluyendo detrás de todo el hero.
+    background: 'waves',
     image: '/images/plumbers/hero.jpg',
     imageAlt: 'A plumber adjusting a kitchen faucet under the sink',
   },

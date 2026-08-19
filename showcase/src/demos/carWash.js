@@ -75,6 +75,9 @@ export default {
     // brillo diagonal en bucle sobre la foto del hero — cera húmeda
     // reflejando luz, el "efecto firma" del rubro.
     visualFrame: 'shine',
+    // BackgroundFX 'bubbles' (canvas, sin deps nuevas): burbujas subiendo
+    // detrás de todo el hero.
+    background: 'bubbles',
     image: '/images/car-wash/hero.jpg',
     imageAlt: 'Car entering an automatic car wash tunnel with colorful brushes',
   },

@@ -1,8 +1,12 @@
 import Reveal from './Reveal.jsx'
 import CountUp from './CountUp.jsx'
 import { Icon } from './icons.jsx'
+import BackgroundFX from './BackgroundFX.jsx'
 
-/** variant: 'split' (visual al lado) | 'centered' (fondo a todo lo ancho) */
+/** variant: 'split' (visual al lado) | 'centered' (fondo a todo lo ancho)
+ *  background: nombre de variante de BackgroundFX (canvas, ver ese archivo)
+ *  — un fondo animado distinto por nicho, detrás de TODO el hero (no solo
+ *  alrededor de la foto, a diferencia de visualFrame). */
 export default function Hero({
   variant = 'split',
   eyebrow,
@@ -13,6 +17,8 @@ export default function Hero({
   trust = [],
   visualIcon = 'sparkle',
   visualFrame,
+  background,
+  theme,
   image,
   imageAlt = '',
   video,
@@ -60,6 +66,19 @@ export default function Hero({
 
   return (
     <header id="home" className={`demo-hero ${modifier}`}>
+      {background && theme && (
+        // variant 'centered' ya pinta un degradado saturado con
+        // primary/primaryDark de fondo (ver .demo-hero--centered en
+        // styles.css) — dibujar el efecto con esos mismos colores lo
+        // volvería invisible por falta de contraste, así que ahí se usa
+        // blanco (el efecto lee como luz sobre el color, no como el color
+        // mismo). En 'split' el fondo es claro, así que sí usa la paleta.
+        <BackgroundFX
+          variant={background}
+          colors={variant === 'centered' ? ['#ffffff', '#ffffff', '#ffffff'] : [theme.primary, theme.accent, theme.primaryDark]}
+          opacity={variant === 'centered' ? 0.8 : 0.55}
+        />
+      )}
       {variant === 'centered' ? (
         <div className="demo-container">{copy}</div>
       ) : (

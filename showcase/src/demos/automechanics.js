@@ -75,6 +75,9 @@ export default {
     // diagonal tipo motion-blur cruza el hero como un auto pasando rápido,
     // con pausa larga entre pasadas.
     visualFrame: 'streak',
+    // BackgroundFX 'beams' (canvas, sin deps nuevas): haces de luz
+    // diagonales cruzando detrás de todo el hero, como focos de taller.
+    background: 'beams',
     image: '/images/automechanics/hero.jpg',
     imageAlt: 'Mechanic working underneath a classic car in a garage',
   },

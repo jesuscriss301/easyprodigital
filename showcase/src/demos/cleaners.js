@@ -71,6 +71,9 @@ export default {
       { end: 8, label: 'years in business' },
     ],
     visualIcon: 'bucket',
+    // BackgroundFX 'sparkle' (canvas, sin deps nuevas): puntos titilando —
+    // brillo limpio, detrás de todo el hero.
+    background: 'sparkle',
     image: '/images/cleaners/hero.jpg',
     imageAlt: 'Two cleaning staff in uniform washing office windows',
   },

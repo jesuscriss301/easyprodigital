@@ -71,6 +71,9 @@ export default {
       { end: 15, label: 'years in real estate' },
     ],
     visualIcon: 'house',
+    // BackgroundFX 'mesh' (canvas, sin deps nuevas): malla de gradiente
+    // suave y lenta, editorial/premium, detrás de todo el hero.
+    background: 'mesh',
     image: '/images/realestate/hero.jpg',
     imageAlt: 'A two-story stone and brick home with a manicured front lawn at golden hour',
   },

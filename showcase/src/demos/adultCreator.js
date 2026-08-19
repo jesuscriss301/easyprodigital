@@ -73,6 +73,9 @@ export default {
       { value: 'Top 4%', label: 'on my main platform' },
     ],
     visualIcon: 'heart',
+    // BackgroundFX 'dotgrid' (canvas, sin deps nuevas): cuadrícula de
+    // puntos con una onda de pulso viajando, detrás de todo el hero.
+    background: 'dotgrid',
   },
 
   services: {

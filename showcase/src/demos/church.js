@@ -73,6 +73,9 @@ export default {
     // respira lento alrededor de la foto — reverente y calmo, sin brillo
     // ni giro (restraint deliberado para este rubro).
     visualFrame: 'halo',
+    // BackgroundFX 'rays' (canvas, sin deps nuevas): rayos de luz suaves
+    // rotando muy lento desde arriba, detrás de todo el hero.
+    background: 'rays',
     image: '/images/church/hero.jpg',
     imageAlt: 'Sunlit church interior with wooden pews',
   },

@@ -69,6 +69,9 @@ export default {
       { value: '5.0 ★', label: 'average rating' },
     ],
     visualIcon: 'chefHat',
+    // BackgroundFX 'steam' (canvas, sin deps nuevas): vapor subiendo
+    // detrás de todo el hero.
+    background: 'steam',
     image: '/images/private-chef/hero.jpg',
     imageAlt: 'Chef plating an elegant dish in a professional kitchen',
   },

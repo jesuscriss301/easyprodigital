@@ -71,6 +71,9 @@ export default {
       { end: 12, label: 'years in business' },
     ],
     visualIcon: 'tree',
+    // BackgroundFX 'pollen' (canvas, sin deps nuevas): polen/hojas
+    // derivando en diagonal, orgánico, detrás de todo el hero.
+    background: 'pollen',
     image: '/images/gardeners/hero.jpg',
     imageAlt: 'A gardener kneeling in a flower bed trimming with garden shears',
   },

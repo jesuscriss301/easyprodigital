@@ -71,6 +71,9 @@ export default {
       { end: 300, suffix: '+', label: 'custom pieces built' },
     ],
     visualIcon: 'hammer',
+    // BackgroundFX 'grain' (canvas, sin deps nuevas): veta de madera sutil
+    // detrás de todo el hero.
+    background: 'grain',
     image: '/images/carpenters/hero.jpg',
     imageAlt: 'Carpenter in a wood workshop surrounded by hand tools',
   },

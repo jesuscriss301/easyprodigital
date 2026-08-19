@@ -70,6 +70,9 @@ export default {
       { value: '87¢', label: 'of every $1 goes to programs' },
     ],
     visualIcon: 'handHeart',
+    // BackgroundFX 'stars' (canvas, sin deps nuevas): estrellas titilando —
+    // guía/esperanza, detrás de todo el hero.
+    background: 'stars',
     image: '/images/foundation/hero.jpg',
     imageAlt: 'Children raising hands in a classroom',
   },
