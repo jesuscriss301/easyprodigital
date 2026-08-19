@@ -65,7 +65,10 @@ export default function Hero({
       ) : (
         <div className="demo-container demo-hero-inner">
           {copy}
-          <Reveal className={`demo-hero-visual${visualFrame === 'electric' ? ' demo-hero-visual--electric' : ''}`}>
+          {/* visualFrame: 'electric' | 'shine' | 'ripple' | 'streak' | 'halo' —
+              cada valor activa un marco decorativo distinto (ver styles.css,
+              sección "Efectos opt-in por demo"), uno por nicho. */}
+          <Reveal className={`demo-hero-visual${visualFrame ? ` demo-hero-visual--${visualFrame}` : ''}`}>
             {video ? (
               <video src={video} poster={videoPoster} autoPlay muted loop playsInline aria-label={imageAlt} />
             ) : image ? (

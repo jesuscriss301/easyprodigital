@@ -103,6 +103,10 @@ export default {
   },
 
   gallery: {
+    // GradualBlur reveal (React Bits, adaptación CSS sin deps nuevas): las
+    // fotos entran desenfocadas y se enfocan al hacer scroll — "todo queda
+    // nítido y limpio".
+    hover: 'blur',
     eyebrow: 'Our Work',
     title: 'See the Bright Home difference',
     intro: 'On your real website, this is where photos of your team at work would go.',

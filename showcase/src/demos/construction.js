@@ -103,6 +103,9 @@ export default {
   },
 
   gallery: {
+    // Peel (React Bits, adaptación CSS sin deps nuevas): la esquina de cada
+    // foto se levanta como un plano/blueprint al pasar el cursor.
+    hover: 'peel',
     eyebrow: 'Our Work',
     title: 'A closer look at the build process',
     intro: 'On your real website, this is where photos of your own completed projects would go.',

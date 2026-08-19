@@ -91,7 +91,10 @@ export default {
   },
 
   gallery: {
-    hover: 'glare', // GlareHover — refuerza el "hay algo detrás" de los tiles censurados
+    // Sin hover extra aquí a propósito: el efecto "glare" ya es la firma de
+    // la galería de chef y el propio Spotlight de la sección de servicios
+    // (arriba) es suficiente firma visual para este nicho — cada demo debe
+    // tener un efecto distinto, no acumular varios.
     eyebrow: 'Previews',
     title: 'Censored previews',
     intro: 'Real content stays behind the paywall — subscribers unlock the full versions. These tiles are intentionally shaded placeholders.',

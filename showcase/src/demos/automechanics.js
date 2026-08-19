@@ -71,6 +71,10 @@ export default {
       { end: 12000, suffix: '+', label: 'cars serviced' },
     ],
     visualIcon: 'wrench',
+    // SpeedStreak (React Bits, adaptación CSS sin deps nuevas): franja
+    // diagonal tipo motion-blur cruza el hero como un auto pasando rápido,
+    // con pausa larga entre pasadas.
+    visualFrame: 'streak',
     image: '/images/automechanics/hero.jpg',
     imageAlt: 'Mechanic working underneath a classic car in a garage',
   },

@@ -79,6 +79,10 @@ export default {
   },
 
   services: {
+    // Magnet (React Bits, adaptación CSS/JS sin deps nuevas): el ícono de
+    // cada servicio se deja atraer sutilmente por el cursor — coquetería
+    // premium que encaja con un salón/spa.
+    hover: 'magnet',
     eyebrow: 'What We Do',
     title: 'Services designed for you',
     intro: 'Sample pricing — this is how the services and rates section would look on your own website.',

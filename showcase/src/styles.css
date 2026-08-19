@@ -607,11 +607,247 @@ h1, h2, h3, h4 {
 }
 .demo-spotlight:hover::before { opacity: 1; }
 
+/* ShineSweep (nicho car wash): barrido continuo de brillo diagonal sobre la
+   foto del hero — evoca cera húmeda reflejando luz. A diferencia de
+   GlareHover (que solo corre en :hover sobre tiles de galería), este corre
+   en bucle porque el "brillo" ES el mensaje de marca del rubro. */
+.demo-hero-visual--shine { overflow: hidden; }
+.demo-hero-visual--shine::before {
+  inset: 0;
+  width: auto; height: auto;
+  border-radius: inherit;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.55) 48%, rgba(255,255,255,0.15) 52%, transparent 70%);
+  transform: translateX(-130%);
+  animation: demo-shine-sweep 3.6s ease-in-out infinite;
+  z-index: 2;
+}
+.demo-hero-visual--shine::after { display: none; }
+@keyframes demo-shine-sweep {
+  0%, 15% { transform: translateX(-130%); }
+  55%, 100% { transform: translateX(130%); }
+}
+
+/* Ripple (nicho plomeros): dos anillos concéntricos se expanden y se
+   desvanecen, alternados — ondas de agua alrededor de la foto del hero. */
+.demo-hero-visual--ripple::before,
+.demo-hero-visual--ripple::after {
+  inset: 0;
+  width: auto; height: auto;
+  border-radius: inherit;
+  background: none;
+  border: 2px solid color-mix(in srgb, var(--demo-primary) 60%, #fff);
+  opacity: 0;
+  animation: demo-ripple-pulse 3s ease-out infinite;
+}
+.demo-hero-visual--ripple::after { animation-delay: 1.5s; }
+@keyframes demo-ripple-pulse {
+  0% { transform: scale(0.94); opacity: 0.7; }
+  100% { transform: scale(1.08); opacity: 0; }
+}
+
+/* SpeedStreak (nicho mecánicos): franja diagonal tipo motion-blur que cruza
+   el hero como un auto pasando a toda velocidad, con pausa larga entre
+   pasadas (a diferencia del barrido suave y continuo de ShineSweep). */
+.demo-hero-visual--streak { overflow: hidden; }
+.demo-hero-visual--streak::before {
+  inset: 0;
+  width: auto; height: auto;
+  border-radius: inherit;
+  background: linear-gradient(100deg, transparent 40%, rgba(255,255,255,0.5) 47%, rgba(255,255,255,0.5) 50%, transparent 57%);
+  transform: skewX(-18deg) translateX(-160%);
+  animation: demo-streak-pass 4.2s cubic-bezier(0.6,0,0.4,1) infinite;
+  z-index: 2;
+}
+.demo-hero-visual--streak::after { display: none; }
+@keyframes demo-streak-pass {
+  0%, 60% { transform: skewX(-18deg) translateX(-160%); }
+  80%, 100% { transform: skewX(-18deg) translateX(160%); }
+}
+
+/* HaloGlow (nicho iglesias): resplandor suave que respira lento alrededor
+   de la foto del hero — reverente y calmo, sin brillo ni giro. */
+.demo-hero-visual--halo::before {
+  inset: -18px;
+  width: auto; height: auto;
+  border-radius: inherit;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--demo-accent) 55%, transparent), transparent 75%);
+  animation: demo-halo-pulse 5s ease-in-out infinite;
+  z-index: 0;
+}
+.demo-hero-visual--halo::after { display: none; }
+.demo-hero-visual--halo > img,
+.demo-hero-visual--halo > video,
+.demo-hero-visual--halo > svg { position: relative; z-index: 1; }
+@keyframes demo-halo-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(0.96); }
+  50% { opacity: 0.95; transform: scale(1.04); }
+}
+
+/* TiltedCard (nicho carpinteros): inclinación 3D que sigue al cursor en
+   cada tile de galería — la pieza de trabajo "se voltea" hacia quien mira. */
+.demo-gallery--tilt .demo-gallery-tile {
+  transform: perspective(600px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+}
+
+/* Peel (nicho construcción): esquina tipo "plano/blueprint" que se levanta
+   al pasar el cursor, revelando la foto debajo. */
+.demo-gallery--peel .demo-gallery-tile::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 46px; height: 46px;
+  background: linear-gradient(135deg, transparent 50%, rgba(255,255,255,0.92) 50.5%, rgba(255,255,255,0.6) 60%, transparent 62%);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  transform-origin: top right;
+  transition: transform 0.4s var(--demo-ease);
+  box-shadow: -2px 2px 6px rgba(0,0,0,0.18);
+  pointer-events: none;
+  z-index: 3;
+  /* el tile conserva overflow:hidden (heredado) para no perder el recorte
+     redondeado de la foto; la esquina crece hacia ADENTRO en vez de
+     proyectarse fuera del marco, así no queda cortada por el clip. */
+}
+.demo-gallery--peel .demo-gallery-tile:hover::before { transform: scale(1.5) rotate(-4deg); }
+
+/* ChromaGrid (nicho youtuber): halo de color que sigue al cursor dentro de
+   cada tile, mezclado en "screen" para sensación de luz RGB de estudio. */
+.demo-gallery--chroma .demo-gallery-tile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(160px circle at var(--chroma-x, 50%) var(--chroma-y, 50%),
+    color-mix(in srgb, var(--demo-primary) 60%, transparent), transparent 65%);
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+.demo-gallery--chroma .demo-gallery-tile:hover::before { opacity: 0.9; }
+
+/* GradualBlur reveal (nicho limpieza): las fotos entran desenfocadas y se
+   enfocan al hacer scroll hasta la galería — "todo queda nítido y limpio". */
+.demo-gallery--blur .demo-gallery-tile img,
+.demo-gallery--blur .demo-gallery-tile video {
+  filter: blur(10px) saturate(0.7);
+  transform: scale(1.06);
+  transition: filter 0.9s var(--demo-ease), transform 0.9s var(--demo-ease);
+}
+.demo-reveal.is-visible.demo-gallery--blur .demo-gallery-tile img,
+.demo-reveal.is-visible.demo-gallery--blur .demo-gallery-tile video {
+  filter: blur(0) saturate(1);
+  transform: scale(1);
+}
+.demo-gallery--blur .demo-gallery-tile:nth-child(2) img, .demo-gallery--blur .demo-gallery-tile:nth-child(2) video { transition-delay: 0.08s; }
+.demo-gallery--blur .demo-gallery-tile:nth-child(3) img, .demo-gallery--blur .demo-gallery-tile:nth-child(3) video { transition-delay: 0.16s; }
+.demo-gallery--blur .demo-gallery-tile:nth-child(4) img, .demo-gallery--blur .demo-gallery-tile:nth-child(4) video { transition-delay: 0.24s; }
+.demo-gallery--blur .demo-gallery-tile:nth-child(5) img, .demo-gallery--blur .demo-gallery-tile:nth-child(5) video { transition-delay: 0.32s; }
+.demo-gallery--blur .demo-gallery-tile:nth-child(6) img, .demo-gallery--blur .demo-gallery-tile:nth-child(6) video { transition-delay: 0.4s; }
+
+/* Float (nicho inmobiliaria): las fotos de la galería flotan en un vaivén
+   suave y desincronizado una vez que entran en pantalla — sobriedad
+   editorial, sin efectos "tech". */
+.demo-reveal.is-visible.demo-gallery--float .demo-gallery-tile { animation: demo-float-bob 5s ease-in-out infinite; }
+.demo-gallery--float .demo-gallery-tile:nth-child(2) { animation-delay: 0.4s; }
+.demo-gallery--float .demo-gallery-tile:nth-child(3) { animation-delay: 0.8s; }
+.demo-gallery--float .demo-gallery-tile:nth-child(4) { animation-delay: 1.2s; }
+.demo-gallery--float .demo-gallery-tile:nth-child(5) { animation-delay: 0.2s; }
+.demo-gallery--float .demo-gallery-tile:nth-child(6) { animation-delay: 0.6s; }
+@keyframes demo-float-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Magnet (nicho salón de belleza): el ícono del servicio se deja "atraer"
+   por el cursor dentro de la tarjeta — el propio <Services> mueve el ícono
+   vía JS; aquí solo se define la transición para que se sienta suave. */
+.demo-services .demo-service-icon { transition: transform 0.2s ease-out; }
+
+/* GlassSurface (nicho jardineros): tarjetas de servicio con vidrio
+   esmerilado sobre dos manchas de color desenfocadas — frescura de mañana
+   de jardín en vez de tarjetas planas. */
+.demo-section--glass { position: relative; overflow: hidden; }
+.demo-section--glass::before,
+.demo-section--glass::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.35;
+  z-index: 0;
+  pointer-events: none;
+}
+.demo-section--glass::before { width: 320px; height: 320px; background: var(--demo-primary); top: -80px; left: -60px; }
+.demo-section--glass::after { width: 260px; height: 260px; background: var(--demo-accent); bottom: -60px; right: -40px; }
+.demo-section--glass .demo-container { position: relative; z-index: 1; }
+.demo-service-card.demo-glass,
+.demo-service-row.demo-glass {
+  background: color-mix(in srgb, var(--demo-surface) 55%, transparent);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  border: 1px solid color-mix(in srgb, #fff 40%, var(--demo-line));
+}
+
+/* ClickSpark (nicho albañiles/masons): chispas cortas saltan del punto de
+   click en el botón principal del CTA — chispas de corte de piedra. */
+.demo-btn--spark { position: relative; overflow: visible; }
+.demo-spark {
+  position: absolute;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: #fff;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: demo-spark-fly 0.5s ease-out forwards;
+}
+@keyframes demo-spark-fly {
+  to { transform: translate(calc(-50% + var(--spark-x)), calc(-50% + var(--spark-y))); opacity: 0; }
+}
+
+/* StarBorder (nicho fundaciones): anillo de puntos rotando muy lento
+   alrededor del CTA — guía/esperanza, deliberadamente más lento y punteado
+   que el ElectricBorder sólido de electricistas. */
+.demo-cta--star::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border-radius: inherit;
+  padding: 2px;
+  background: repeating-conic-gradient(
+    from var(--star-angle, 0deg),
+    rgba(255,255,255,0.9) 0deg 2deg,
+    transparent 2deg 18deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: demo-star-spin 14s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+@property --star-angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+@keyframes demo-star-spin { to { --star-angle: 360deg; } }
+
 @media (prefers-reduced-motion: reduce) {
   .demo-hero-visual--electric::before,
-  .demo-hero-visual--electric::after { animation: none; }
+  .demo-hero-visual--electric::after,
+  .demo-hero-visual--shine::before,
+  .demo-hero-visual--ripple::before,
+  .demo-hero-visual--ripple::after,
+  .demo-hero-visual--streak::before,
+  .demo-hero-visual--halo::before { animation: none; display: none; }
   .demo-gallery--glare .demo-gallery-tile::after { display: none; }
   .demo-spotlight::before { display: none; }
+  .demo-gallery--tilt .demo-gallery-tile { transform: none !important; transition: none; }
+  .demo-gallery--chroma .demo-gallery-tile::before { display: none; }
+  .demo-gallery--peel .demo-gallery-tile::before { transition: none; }
+  .demo-reveal.is-visible.demo-gallery--float .demo-gallery-tile { animation: none; }
+  .demo-gallery--blur .demo-gallery-tile img,
+  .demo-gallery--blur .demo-gallery-tile video { transition: none; filter: none; transform: none; }
+  .demo-cta--star::before { animation: none; }
+  .demo-spark { animation: none; opacity: 0; }
 }
 
 /* ---------- reveal on scroll ---------- */

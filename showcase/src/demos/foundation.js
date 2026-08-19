@@ -140,6 +140,10 @@ export default {
   },
 
   cta: {
+    // StarBorder (React Bits, adaptación CSS sin deps nuevas): anillo de
+    // puntos rotando muy lento alrededor del CTA — guía/esperanza, mucho
+    // más lento y punteado que el ElectricBorder sólido de electricistas.
+    effect: 'star',
     heading: '$30 a month changes a child’s year',
     text: 'Join 400+ monthly donors — or give your time as a tutor or mentor.',
     actions: [

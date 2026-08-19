@@ -103,6 +103,10 @@ export default {
   },
 
   gallery: {
+    // TiltedCard (React Bits usa `motion`; aquí adaptado a mousemove + CSS
+    // sin sumar un segundo runtime DOM): cada foto se inclina en 3D hacia
+    // el cursor, como si se volteara la pieza para mostrar el trabajo.
+    hover: 'tilt',
     eyebrow: 'Our Work',
     title: 'A closer look at the craft',
     intro: 'On your real website, this is where photos of your own finished projects would go.',

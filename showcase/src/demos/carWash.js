@@ -71,6 +71,10 @@ export default {
       { end: 18, suffix: ' min', label: 'average wait' },
     ],
     visualIcon: 'car',
+    // ShineSweep (React Bits, adaptación CSS sin deps nuevas): barrido de
+    // brillo diagonal en bucle sobre la foto del hero — cera húmeda
+    // reflejando luz, el "efecto firma" del rubro.
+    visualFrame: 'shine',
     image: '/images/car-wash/hero.jpg',
     imageAlt: 'Car entering an automatic car wash tunnel with colorful brushes',
   },

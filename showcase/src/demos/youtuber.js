@@ -83,7 +83,12 @@ export default {
   },
 
   gallery: {
-    hover: 'glare', // GlareHover (React Bits, CSS sin deps) — brillo al pasar sobre el estudio
+    // ChromaGrid (React Bits — gsap ya es runtime del bundle, el efecto en
+    // sí es solo mousemove + custom properties): halo de color RGB que
+    // sigue al cursor tile a tile, energía de estudio de creador.
+    // (Antes usaba 'glare', igual que la galería de chef — se cambia para
+    // que cada nicho tenga un efecto propio, sin repetir.)
+    hover: 'chroma',
     eyebrow: 'Behind the Scenes',
     title: 'The studio',
     intro: 'On your real website, this is where your own studio, thumbnails and setup shots would go.',

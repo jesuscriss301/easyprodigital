@@ -139,6 +139,10 @@ export default {
   },
 
   cta: {
+    // ClickSpark (React Bits, adaptación DOM/CSS sin deps nuevas): chispas
+    // cortas saltan del botón principal al hacer click — chispas de corte
+    // de piedra/ladrillo, metáfora directa del oficio.
+    effect: 'spark',
     heading: 'Ready to build something that lasts?',
     text: 'Get a free, no-obligation estimate for your project.',
     actions: [

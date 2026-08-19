@@ -103,6 +103,10 @@ export default {
   },
 
   gallery: {
+    // ScrollFloat (React Bits, gsap ya es runtime del bundle): las fotos
+    // flotan en un vaivén suave y desincronizado al entrar en pantalla —
+    // sobriedad editorial, el protagonista es la propiedad, no el efecto.
+    hover: 'float',
     eyebrow: 'Our Work',
     title: 'A closer look at what we do',
     intro: 'On your real website, this is where photos of your own listings and closings would go.',

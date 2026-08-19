@@ -69,6 +69,10 @@ export default {
       { end: 14, label: 'active ministries' },
     ],
     visualIcon: 'cross',
+    // HaloGlow (React Bits, adaptación CSS sin deps nuevas): resplandor que
+    // respira lento alrededor de la foto — reverente y calmo, sin brillo
+    // ni giro (restraint deliberado para este rubro).
+    visualFrame: 'halo',
     image: '/images/church/hero.jpg',
     imageAlt: 'Sunlit church interior with wooden pews',
   },

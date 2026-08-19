@@ -76,6 +76,10 @@ export default {
   },
 
   services: {
+    // GlassSurface (React Bits, adaptación CSS sin deps nuevas): tarjetas
+    // de vidrio esmerilado sobre manchas de color desenfocadas — frescura
+    // de mañana de jardín.
+    hover: 'glass',
     eyebrow: 'What We Do',
     title: 'Garden and yard care for every season',
     intro: 'Sample pricing — this is how your services and rates would look on your own website.',
