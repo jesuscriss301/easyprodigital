@@ -262,11 +262,28 @@ h1, h2, h3, h4 {
 /* ---------- hero ---------- */
 .demo-hero { padding: 72px 0 96px; overflow: hidden; position: relative; }
 
-/* BackgroundFX (canvas, ver components/BackgroundFX.jsx): fondo animado
+/* EffectHeroBackground (componentes reales de React Bits, cargados
+   perezosamente, ver components/EffectHeroBackground.jsx): fondo animado
    opt-in detrás de TODO el hero, uno por nicho. `.demo-hero` ya tiene
    overflow:hidden, así que el canvas queda recortado a sus bordes gratis. */
 .demo-hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+.demo-hero-bg--static { z-index: 0; }
 .demo-hero > .demo-container { position: relative; z-index: 1; }
+
+/* Efectos de React Bits montados DENTRO del visual del hero (reemplazan la
+   foto/ícono o se superponen a ella) en vez de ser un fondo ambiental —
+   ver heroEffect en Hero.jsx. Necesitan llenar el marco 4/5 y respetar su
+   border-radius igual que <img>/<video>. */
+.demo-hero-visual { overflow: hidden; }
+.demo-hero-visual .ripple-distortion,
+.demo-hero-visual .pixel-swap,
+.demo-hero-visual .spark-model {
+  border-radius: inherit;
+}
+.demo-hero-visual .ripple-distortion canvas,
+.demo-hero-visual .spark-model canvas {
+  border-radius: inherit;
+}
 
 .demo-hero--split .demo-hero-inner {
   display: grid;

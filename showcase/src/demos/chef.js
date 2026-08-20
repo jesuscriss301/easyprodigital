@@ -6,6 +6,12 @@ export default {
   niche: 'Private Chefs & Catering',
   kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
+  // SplashCursor (React Bits, WebGL fluid-sim, lazy): un rastro de fluido de
+  // color de marca sigue al cursor en toda la página — único efecto de
+  // página completa de la lista, es caro de por sí así que solo este nicho
+  // lo usa. DemoPage.jsx lo monta guardado por prefers-reduced-motion.
+  cursorEffect: 'splash',
+
   // `primary` here is only for the pill color in the style switcher (so each
   // option previews its own palette instead of inheriting the current
   // page's theme) — keep it in sync with `theme.primary` below/in the
@@ -69,9 +75,6 @@ export default {
       { value: '5.0 ★', label: 'average rating' },
     ],
     visualIcon: 'chefHat',
-    // BackgroundFX 'steam' (canvas, sin deps nuevas): vapor subiendo
-    // detrás de todo el hero.
-    background: 'steam',
     image: '/images/private-chef/hero.jpg',
     imageAlt: 'Chef plating an elegant dish in a professional kitchen',
   },

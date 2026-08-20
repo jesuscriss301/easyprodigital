@@ -75,9 +75,11 @@ export default {
     // diagonal tipo motion-blur cruza el hero como un auto pasando rápido,
     // con pausa larga entre pasadas.
     visualFrame: 'streak',
-    // BackgroundFX 'beams' (canvas, sin deps nuevas): haces de luz
-    // diagonales cruzando detrás de todo el hero, como focos de taller.
-    background: 'beams',
+    // GradualBlur (React Bits, sin deps de motor — solo CSS backdrop-filter,
+    // lazy): desenfoque progresivo en el borde inferior de la foto, como si
+    // se fundiera con el taller detrás — el efecto pedido para Mecánicos no
+    // es un fondo ambiental sino un tratamiento de borde sobre el visual.
+    heroEffect: { type: 'gradualBlur' },
     image: '/images/automechanics/hero.jpg',
     imageAlt: 'Mechanic working underneath a classic car in a garage',
   },

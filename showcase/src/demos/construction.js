@@ -71,9 +71,20 @@ export default {
       { end: 300, suffix: '+', label: 'projects delivered' },
     ],
     visualIcon: 'hammer',
-    // BackgroundFX 'blueprint' (canvas, sin deps nuevas): cuadrícula de
-    // plano + línea de escaneo, detrás de todo el hero.
-    background: 'blueprint',
+    // PixelSwap (React Bits, sin deps de motor, lazy): al pasar el cursor,
+    // la foto del hero se disuelve en un mosaico de píxeles que revela un
+    // "antes/después" del proyecto — obra en excavación vs. estructura de
+    // acero ya levantada. No es un fondo ambiental, reemplaza la foto.
+    heroEffect: {
+      type: 'pixelSwap',
+      props: {
+        firstImage: '/images/construction/excavation.jpg',
+        firstAlt: 'Pipeline being laid in an excavated construction trench',
+        secondImage: '/images/construction/steelframe.jpg',
+        secondAlt: 'Worker on a steel-framed building under construction',
+        aspectRatio: '4 / 5',
+      },
+    },
     image: '/images/construction/hero.jpg',
     imageAlt: 'Construction worker on a tower crane at a building site',
   },

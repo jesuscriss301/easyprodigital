@@ -29,7 +29,7 @@ export default {
   // 'cta' is valid — DemoPage.jsx renders whatever is listed here, skipping
   // the rest.
   layout: {
-    order: ['hero', 'services', 'gallery', 'features', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'scrollFeature', 'services', 'gallery', 'features', 'testimonials', 'map', 'cta'],
   },
 
   theme: {
@@ -71,11 +71,20 @@ export default {
       { end: 12, label: 'years in business' },
     ],
     visualIcon: 'tree',
-    // BackgroundFX 'pollen' (canvas, sin deps nuevas): polen/hojas
-    // derivando en diagonal, orgánico, detrás de todo el hero.
-    background: 'pollen',
     image: '/images/gardeners/hero.jpg',
     imageAlt: 'A gardener kneeling in a flower bed trimming with garden shears',
+  },
+
+  // ScrollExpand (React Bits, sin deps de motor — CSS clip-path + scroll,
+  // lazy): sección propia justo debajo del hero — la foto se expande a
+  // pantalla completa a medida que se hace scroll. El efecto pedido para
+  // Jardineros necesita ser dueño de su propio tramo de scroll, así que no
+  // vive dentro del hero como los otros nichos.
+  scrollFeature: {
+    src: '/images/gardeners/planting.jpg',
+    alt: 'Gardener planting flowers in a garden bed',
+    title: 'Evergreen Yard Co.',
+    scrollHint: 'Scroll',
   },
 
   services: {

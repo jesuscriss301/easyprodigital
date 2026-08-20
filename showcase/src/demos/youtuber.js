@@ -68,9 +68,9 @@ export default {
       { end: 38, suffix: 'M', label: 'total views' },
     ],
     visualIcon: 'play',
-    // BackgroundFX 'aurora' (canvas, sin deps nuevas): manchas de color en
-    // movimiento, energía de estudio, detrás de todo el hero.
-    background: 'aurora',
+    // PixelSnow (React Bits, motor three, lazy): partículas cayendo en 3D,
+    // estética de stream/overlay, detrás de todo el hero.
+    background: 'pixelSnow',
   },
 
   features: {

@@ -71,9 +71,9 @@ export default {
       { end: 600, suffix: '+', label: 'projects completed' },
     ],
     visualIcon: 'brick',
-    // BackgroundFX 'rings' (canvas, sin deps nuevas): anillos concéntricos
-    // expandiéndose — capas de piedra, detrás de todo el hero.
-    background: 'rings',
+    // SideRays (React Bits, motor ogl, lazy): rayos de luz lateral cruzando
+    // el encuadre — capas/textura de piedra, detrás de todo el hero.
+    background: 'sideRays',
     image: '/images/masons/hero.jpg',
     imageAlt: 'Two masons applying render to the exterior wall of a building',
   },

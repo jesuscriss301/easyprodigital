@@ -74,9 +74,9 @@ export default {
       { end: 8, label: 'years of experience' },
     ],
     visualIcon: 'flower',
-    // BackgroundFX 'threads' (canvas, sin deps nuevas): cintas curvas
-    // fluyendo, elegante, detrás de todo el hero.
-    background: 'threads',
+    // LineWaves (React Bits, motor ogl, lazy): líneas onduladas fluyendo,
+    // elegante, detrás de todo el hero.
+    background: 'lineWaves',
     image: '/images/salon-belleza/hero.jpg',
     imageAlt: 'Hairdresser styling a client\'s hair in a bright salon',
   },

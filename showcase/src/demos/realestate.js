@@ -71,9 +71,12 @@ export default {
       { end: 15, label: 'years in real estate' },
     ],
     visualIcon: 'house',
-    // BackgroundFX 'mesh' (canvas, sin deps nuevas): malla de gradiente
-    // suave y lenta, editorial/premium, detrás de todo el hero.
-    background: 'mesh',
+    // GridScan (React Bits, motor three + postprocessing, lazy): cuadrícula
+    // técnica con barridos de escaneo, editorial/premium — el tracking
+    // facial vía webcam del componente original se deja apagado a propósito
+    // (ver EffectHeroBackground.jsx: pedirle la cámara a alguien que solo
+    // vino a ver un ejemplo inmobiliario es mala UX), queda solo el shader.
+    background: 'gridScan',
     image: '/images/realestate/hero.jpg',
     imageAlt: 'A two-story stone and brick home with a manicured front lawn at golden hour',
   },

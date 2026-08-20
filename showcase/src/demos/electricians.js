@@ -69,13 +69,21 @@ export default {
       { value: '24/7', label: 'emergency service' },
     ],
     visualIcon: 'bolt',
-    // ElectricBorder (React Bits, adaptación CSS sin deps): corriente
-    // recorriendo el marco de la foto — el efecto insignia del rubro.
-    visualFrame: 'electric',
-    // BackgroundFX 'circuit' (canvas, sin deps nuevas): cuadrícula de
-    // circuito con pulsos de energía viajando por los trazos, detrás de
-    // todo el hero.
-    background: 'circuit',
+    // ElectricBorder (visualFrame: 'electric') se retira de este hero: era
+    // el efecto insignia del rubro ANTES de este pase, pero ahora compite
+    // con la bombilla 3D en el mismo slot — la corriente animada del marco
+    // (conic-gradient a pantalla completa, no un anillo fino) se veía como
+    // un rayo cruzando la bombilla. Un solo protagonista por sección, como
+    // pide la skill: la bombilla 3D es el nuevo efecto insignia.
+    // "Model Viewer" pedido para Electricistas: el componente original de
+    // React Bits (ModelViewer) carga un archivo .glb externo vía
+    // @react-three/drei — este proyecto no tiene ningún modelo 3D de
+    // electricista disponible como asset, así que en su lugar se construyó
+    // SparkModel (mismas dependencias reales: three + @react-three/fiber +
+    // @react-three/drei), una bombilla 3D orbitable con filamento
+    // incandescente, sin depender de ningún archivo externo. Ver
+    // components/reactbits/SparkModel/SparkModel.jsx.
+    heroEffect: { type: 'sparkModel' },
     image: '/images/electricians/hero.jpg',
     imageAlt: 'Electrician installing a wall outlet',
   },

@@ -71,9 +71,9 @@ export default {
       { end: 8, label: 'years in business' },
     ],
     visualIcon: 'bucket',
-    // BackgroundFX 'sparkle' (canvas, sin deps nuevas): puntos titilando —
-    // brillo limpio, detrás de todo el hero.
-    background: 'sparkle',
+    // Beams (React Bits, motor three, lazy): haces de luz volumétricos
+    // barriendo suavemente — brillo limpio, detrás de todo el hero.
+    background: 'beams',
     image: '/images/cleaners/hero.jpg',
     imageAlt: 'Two cleaning staff in uniform washing office windows',
   },

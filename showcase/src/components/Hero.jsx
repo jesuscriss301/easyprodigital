@@ -1,12 +1,24 @@
+import { Suspense } from 'react'
 import Reveal from './Reveal.jsx'
 import CountUp from './CountUp.jsx'
 import { Icon } from './icons.jsx'
-import BackgroundFX from './BackgroundFX.jsx'
+import EffectHeroBackground from './EffectHeroBackground.jsx'
+import { prefersReducedMotion } from './motionUtils.js'
+import {
+  LazyRippleDistortion,
+  LazyPixelSwap,
+  LazyGradualBlur,
+  LazySparkModel,
+} from './reactbits/registry.js'
 
 /** variant: 'split' (visual al lado) | 'centered' (fondo a todo lo ancho)
- *  background: nombre de variante de BackgroundFX (canvas, ver ese archivo)
- *  — un fondo animado distinto por nicho, detrás de TODO el hero (no solo
- *  alrededor de la foto, a diferencia de visualFrame). */
+ *  background: nombre de variante de EffectHeroBackground — un componente
+ *  REAL de React Bits, cargado perezosamente, animado detrás de TODO el
+ *  hero (no solo alrededor de la foto, a diferencia de visualFrame).
+ *  heroEffect: { type: 'ripple' | 'pixelSwap' | 'gradualBlur' | 'sparkModel',
+ *  props }  — para los 4 nichos cuyo efecto pedido no es un fondo ambiental
+ *  sino algo que reemplaza o se superpone al visual del hero (foto/ícono).
+ *  Ver componentes/reactbits/registry.js. */
 export default function Hero({
   variant = 'split',
   eyebrow,
@@ -18,12 +30,48 @@ export default function Hero({
   visualIcon = 'sparkle',
   visualFrame,
   background,
+  heroEffect,
   theme,
   image,
   imageAlt = '',
   video,
   videoPoster,
 }) {
+  const reduced = prefersReducedMotion()
+
+  const renderVisualContent = () => {
+    if (heroEffect?.type === 'ripple' && !reduced) {
+      return (
+        <Suspense fallback={<img src={image} alt={imageAlt} loading="eager" />}>
+          <LazyRippleDistortion src={image} tint={theme?.primary} grayscale={false} {...heroEffect.props} />
+        </Suspense>
+      )
+    }
+    if (heroEffect?.type === 'pixelSwap' && !reduced) {
+      const { firstImage, secondImage, firstAlt, secondAlt, ...rest } = heroEffect.props || {}
+      return (
+        <Suspense fallback={<img src={image} alt={imageAlt} loading="eager" />}>
+          <LazyPixelSwap
+            firstContent={<img src={firstImage} alt={firstAlt} />}
+            secondContent={<img src={secondImage} alt={secondAlt} />}
+            trigger="hover"
+            pattern="diagonal"
+            {...rest}
+          />
+        </Suspense>
+      )
+    }
+    if (heroEffect?.type === 'sparkModel' && !reduced) {
+      return (
+        <Suspense fallback={<Icon name={visualIcon} />}>
+          <LazySparkModel filamentColor={theme?.accent} height={420} {...heroEffect.props} />
+        </Suspense>
+      )
+    }
+    if (video) return <video src={video} poster={videoPoster} autoPlay muted loop playsInline aria-label={imageAlt} />
+    if (image) return <img src={image} alt={imageAlt} loading="eager" />
+    return <Icon name={visualIcon} />
+  }
   const modifier = variant === 'centered' ? 'demo-hero--centered' : 'demo-hero--split'
 
   const copy = (
@@ -67,17 +115,7 @@ export default function Hero({
   return (
     <header id="home" className={`demo-hero ${modifier}`}>
       {background && theme && (
-        // variant 'centered' ya pinta un degradado saturado con
-        // primary/primaryDark de fondo (ver .demo-hero--centered en
-        // styles.css) — dibujar el efecto con esos mismos colores lo
-        // volvería invisible por falta de contraste, así que ahí se usa
-        // blanco (el efecto lee como luz sobre el color, no como el color
-        // mismo). En 'split' el fondo es claro, así que sí usa la paleta.
-        <BackgroundFX
-          variant={background}
-          colors={variant === 'centered' ? ['#ffffff', '#ffffff', '#ffffff'] : [theme.primary, theme.accent, theme.primaryDark]}
-          opacity={variant === 'centered' ? 0.8 : 0.55}
-        />
+        <EffectHeroBackground variant={background} theme={theme} centered={variant === 'centered'} />
       )}
       {variant === 'centered' ? (
         <div className="demo-container">{copy}</div>
@@ -88,12 +126,11 @@ export default function Hero({
               cada valor activa un marco decorativo distinto (ver styles.css,
               sección "Efectos opt-in por demo"), uno por nicho. */}
           <Reveal className={`demo-hero-visual${visualFrame ? ` demo-hero-visual--${visualFrame}` : ''}`}>
-            {video ? (
-              <video src={video} poster={videoPoster} autoPlay muted loop playsInline aria-label={imageAlt} />
-            ) : image ? (
-              <img src={image} alt={imageAlt} loading="eager" />
-            ) : (
-              <Icon name={visualIcon} />
+            {renderVisualContent()}
+            {heroEffect?.type === 'gradualBlur' && !reduced && (
+              <Suspense fallback={null}>
+                <LazyGradualBlur position="bottom" height="35%" strength={2.5} divCount={6} {...heroEffect.props} />
+              </Suspense>
             )}
           </Reveal>
         </div>

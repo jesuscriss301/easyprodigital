@@ -75,14 +75,18 @@ export default {
     // brillo diagonal en bucle sobre la foto del hero — cera húmeda
     // reflejando luz, el "efecto firma" del rubro.
     visualFrame: 'shine',
-    // BackgroundFX 'bubbles' (canvas, sin deps nuevas): burbujas subiendo
-    // detrás de todo el hero.
-    background: 'bubbles',
     image: '/images/car-wash/hero.jpg',
     imageAlt: 'Car entering an automatic car wash tunnel with colorful brushes',
   },
 
   services: {
+    // MagicBento (React Bits, lazy): grid de tarjetas con spotlight de
+    // partículas siguiendo el cursor y magnetismo sutil — el contenido de
+    // las 6 tarjetas (título/precio/descripción) vive en
+    // components/reactbits/MagicBento/MagicBento.jsx, reescrito con estos
+    // mismos paquetes reales (ver la nota ahí). `items` se deja abajo sin
+    // usar, documentando la paridad de contenido entre ambas rutas.
+    bento: true,
     eyebrow: 'Packages',
     title: 'A wash for every need',
     intro: 'Sample pricing — this is how your packages and rates would look on your own website.',

@@ -74,9 +74,12 @@ export default {
     // Ripple (React Bits, adaptación CSS sin deps nuevas): dos anillos de
     // agua se expanden y se desvanecen alrededor de la foto del hero.
     visualFrame: 'ripple',
-    // BackgroundFX 'waves' (canvas, sin deps nuevas): líneas de onda de
-    // agua fluyendo detrás de todo el hero.
-    background: 'waves',
+    // RippleDistortion (React Bits, motor ogl, lazy): la foto del hero
+    // reacciona al cursor/tap con ondas de agua reales sobre la imagen —
+    // el efecto pedido para Plomeros reemplaza la foto estática por esta
+    // versión interactiva (no es un fondo ambiental como los otros 9
+    // nichos, así que no usa el campo `background`).
+    heroEffect: { type: 'ripple' },
     image: '/images/plumbers/hero.jpg',
     imageAlt: 'A plumber adjusting a kitchen faucet under the sink',
   },
