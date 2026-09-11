@@ -7,6 +7,9 @@
 export const site = {
   domain: 'https://easyprodigital.com',
   brand: 'Easy Pro Digital',
+  // 1200x630 social preview image, shared across pages/languages unless a
+  // page passes its own <Seo image="..."> override.
+  ogImage: '/og-image.jpg',
 }
 
 export const profile = {

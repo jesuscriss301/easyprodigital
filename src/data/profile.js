@@ -5,6 +5,9 @@
 export const site = {
   domain: 'https://easyprodigital.com',
   brand: 'Easy Pro Digital',
+  // Imagen de preview social 1200x630, compartida entre páginas/idiomas
+  // salvo que una página pase su propio <Seo image="..."> distinto.
+  ogImage: '/og-image.jpg',
 }
 
 export const profile = {
