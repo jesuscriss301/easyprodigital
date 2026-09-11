@@ -45,7 +45,7 @@ Puntos clave del diseño:
 - **`src/pages/pages.jsx` contiene varias páginas en un solo archivo** (Home, Services, Portfolio, About, Contact, Legal, NotFound). Solo `RagForm` y `Blog` tienen archivo propio.
 - **El blog no tiene backend**: `Blog.jsx` lee el manifiesto `/blog/posts.json` y enlaza HTML estático en `public/blog/`. Los artículos se generan con `blog/` y se copian a `public/blog/`.
 - **SEO**: cada página usa el componente `Seo` (title/description/canonical/OG únicos + JSON-LD). Hay redirects de URLs del sitio anterior (`/plan`, `/sign_in`, `/log_in`) en `App.jsx` para conservar enlaces indexados. `sitemap.xml` y `robots.txt` en `public/`.
-- **SPA en GitHub Pages**: el build copia `dist/index.html` a `dist/404.html` para que las rutas profundas funcionen. `public/CNAME` mantiene el dominio propio (`base: '/'` en `vite.config.js`).
+- **SPA en GitHub Pages**: el build copia `dist/index.html` a `dist/404.html` para que las rutas profundas no rompan al recargar en el navegador. Pero eso solo evita que el usuario vea un error — GitHub Pages sigue respondiendo con status HTTP 404 real para cualquier ruta sin archivo físico, y Google no indexa una página que responde 404 aunque el contenido se vea bien. Por eso `scripts/prerender.mjs` corre al final de `npm run build`: levanta el `dist/` ya compilado con `vite preview`, visita cada ruta real de `App.jsx` con Playwright/Chromium y guarda el HTML ya renderizado como `dist/<ruta>/index.html` (p. ej. `dist/services/index.html`, `dist/es/about/index.html`). Así cada URL del sitemap es un archivo estático real que GitHub Pages sirve con 200, con el `<title>`/canonical/meta description correctos, y el bundle de JS se sigue hidratando igual para la interactividad. **Si agregas una ruta nueva en `RouteChildren` (`src/App.jsx`), agrégala también a `ROUTE_PATHS` en `scripts/prerender.mjs`** o no se generará su versión estática. `public/CNAME` mantiene el dominio propio (`base: '/'` en `vite.config.js`).
 
 ## Comandos
 
@@ -55,7 +55,7 @@ Puntos clave del diseño:
 npm install
 npm run dev        # Vite en http://localhost:5173
 npm run dev:all    # frontend + backend juntos (scripts/run-dev.mjs, busca puerto libre desde 3001)
-npm run build      # vite build → dist/ + copia dist/index.html a dist/404.html
+npm run build      # vite build → dist/ + copia dist/index.html a dist/404.html + prerender de cada ruta (scripts/prerender.mjs)
 npm run preview
 ```
 
@@ -88,7 +88,7 @@ No hay tests ni linter configurados.
 
 ## Deploy — ⚠️ regla crítica
 
-El deploy a producción del **sitio principal** es **solo** vía `.github/workflows/deploy.yml`: push a `main` → `npm ci && npm run build` (raíz) → publica `dist/` en GitHub Pages (Settings → Pages → Source: **GitHub Actions**). Ese workflow solo construye la raíz del repo; no toca `server/`, `blog/` ni `showcase/`. El proyecto `showcase/` se despliega por separado en Dokploy (ver `showcase/README.md`) — un push a `main` no lo actualiza automáticamente salvo que Dokploy tenga su propio webhook configurado.
+El deploy a producción del **sitio principal** es **solo** vía `.github/workflows/deploy.yml`: push a `main` → `npm ci` → `npx playwright install --with-deps chromium` (necesario para el prerender SEO, ver arriba) → `npm run build` (raíz) → publica `dist/` en GitHub Pages (Settings → Pages → Source: **GitHub Actions**). Ese workflow solo construye la raíz del repo; no toca `server/`, `blog/` ni `showcase/`. El proyecto `showcase/` se despliega por separado en Dokploy (ver `showcase/README.md`) — un push a `main` no lo actualiza automáticamente salvo que Dokploy tenga su propio webhook configurado.
 
 **Nunca agregar otro workflow que publique a Pages** (p. ej. el sample "Deploy Jekyll" que sugiere GitHub, o "deploy from branch"). En julio de 2026 un `jekyll-gh-pages.yml` agregado desde la UI compitió con `deploy.yml` y desplegó el código fuente sin compilar (`index.html` apuntando a `/src/main.jsx`), dejando el sitio en blanco. Si el sitio vuelve a quedar en blanco, verificar primero que `curl https://easyprodigital.com` devuelva un `index.html` con `/assets/index-*.js` (build real) y no `/src/main.jsx` (fuente sin compilar).
 
