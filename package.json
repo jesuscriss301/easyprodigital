@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "dev:all": "node scripts/run-dev.mjs",
-    "build": "vite build && node -e \"import { copyFileSync } from 'fs'; copyFileSync('dist/index.html', 'dist/404.html')\"",
+    "build": "vite build && node -e \"import { copyFileSync } from 'fs'; copyFileSync('dist/index.html', 'dist/404.html')\" && node scripts/prerender.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
+    "playwright": "^1.62.1",
     "vite": "^5.4.11"
   }
 }

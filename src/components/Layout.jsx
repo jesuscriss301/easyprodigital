@@ -128,6 +128,7 @@ export function Header() {
             <a href="https://demos.easyprodigital.com" target="_blank" rel="noopener noreferrer">
               {t.nav.demos}
             </a>
+            <NavLink to={href('/faq/')}>{t.nav.faq}</NavLink>
             <NavLink to={href('/about/')}>{t.nav.about}</NavLink>
             <NavLink to={href('/contact/')} className="nav-cta">
               {t.nav.startProject}
@@ -192,6 +193,7 @@ export function Footer() {
           <a href="https://demos.easyprodigital.com" target="_blank" rel="noopener noreferrer">
             {t.footer.demos}
           </a>
+          <Link to={href('/faq/')}>{t.footer.faq}</Link>
           <Link to={href('/about/')}>{t.footer.about}</Link>
           <Link to={href('/contact/')}>{t.footer.contact}</Link>
         </nav>
