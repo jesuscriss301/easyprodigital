@@ -126,7 +126,6 @@ export function Header() {
             <NavLink to={href('/services/')}>{t.nav.services}</NavLink>
             <NavLink to={href('/portfolio/')}>{t.nav.portfolio}</NavLink>
             <NavLink to={href('/blog/')}>{t.nav.blog}</NavLink>
-            <NavLink to={href('/faq/')}>{t.nav.faq}</NavLink>
             <NavLink to={href('/about/')}>{t.nav.about}</NavLink>
             <NavLink to={href('/contact/')} className="nav-cta">
               {t.nav.startProject}
@@ -189,7 +188,6 @@ export function Footer() {
           <Link to={href('/services/')}>{t.footer.services}</Link>
           <Link to={href('/portfolio/')}>{t.footer.portfolio}</Link>
           <Link to={href('/blog/')}>{t.footer.blog}</Link>
-          <Link to={href('/faq/')}>{t.footer.faq}</Link>
           <Link to={href('/about/')}>{t.footer.about}</Link>
           <Link to={href('/contact/')}>{t.footer.contact}</Link>
         </nav>

@@ -32,7 +32,7 @@ function upsertLink(rel, hreflang, href) {
   el.setAttribute('href', href)
 }
 
-export default function Seo({ title, description, path = '/', jsonLd = null, image = null, imageAlt = null }) {
+export default function Seo({ title, description, path = '/', jsonLd = null }) {
   const { lang, data } = useLanguage()
   const { site } = data
 
@@ -40,12 +40,6 @@ export default function Seo({ title, description, path = '/', jsonLd = null, ima
     const enUrl = site.domain + path
     const esUrl = site.domain + '/es' + path
     const url = lang === 'es' ? esUrl : enUrl
-
-    // Falls back to the site-wide 1200x630 social preview (site.ogImage) so
-    // every page shares a link with a real thumbnail instead of none at all.
-    const imagePath = image || site.ogImage
-    const imageUrl = imagePath ? site.domain + imagePath : null
-    const altText = imageAlt || title
 
     document.documentElement.lang = lang
     document.title = title
@@ -63,18 +57,9 @@ export default function Seo({ title, description, path = '/', jsonLd = null, ima
     upsertMeta('property', 'og:url', url)
     upsertMeta('property', 'og:type', 'website')
     upsertMeta('property', 'og:locale', lang === 'es' ? 'es_CO' : 'en_US')
+    upsertMeta('name', 'twitter:card', 'summary')
     upsertMeta('name', 'twitter:title', title)
     upsertMeta('name', 'twitter:description', description)
-    if (imageUrl) {
-      upsertMeta('property', 'og:image', imageUrl)
-      upsertMeta('property', 'og:image:width', '1200')
-      upsertMeta('property', 'og:image:height', '630')
-      upsertMeta('property', 'og:image:alt', altText)
-      upsertMeta('name', 'twitter:card', 'summary_large_image')
-      upsertMeta('name', 'twitter:image', imageUrl)
-    } else {
-      upsertMeta('name', 'twitter:card', 'summary')
-    }
 
     // Per-page JSON-LD
     const prev = document.getElementById('page-jsonld')
@@ -86,7 +71,7 @@ export default function Seo({ title, description, path = '/', jsonLd = null, ima
       script.textContent = JSON.stringify({ inLanguage: lang, ...jsonLd })
       document.head.appendChild(script)
     }
-  }, [title, description, path, jsonLd, image, imageAlt, lang, site.domain, site.ogImage])
+  }, [title, description, path, jsonLd, lang, site.domain])
 
   return null
 }

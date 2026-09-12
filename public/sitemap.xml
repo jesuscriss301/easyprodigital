@@ -44,13 +44,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://easyprodigital.com/contact/" />
   </url>
   <url>
-    <loc>https://easyprodigital.com/faq/</loc>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/faq/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/faq/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://easyprodigital.com/faq/" />
-  </url>
-  <url>
     <loc>https://easyprodigital.com/es/</loc>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/" />
@@ -91,13 +84,6 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/contact/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/contact/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://easyprodigital.com/contact/" />
-  </url>
-  <url>
-    <loc>https://easyprodigital.com/es/faq/</loc>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/faq/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/faq/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://easyprodigital.com/faq/" />
   </url>
   <url><loc>https://store.easyprodigital.com/</loc><priority>0.6</priority></url>
   <url><loc>https://turnero.easyprodigital.com/</loc><priority>0.6</priority></url>

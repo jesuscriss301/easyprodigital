@@ -9,7 +9,6 @@ export const en = {
     services: 'Services',
     portfolio: 'Portfolio',
     blog: 'Blog',
-    faq: 'FAQ',
     about: 'About',
     startProject: 'Start a project',
   },
@@ -17,7 +16,6 @@ export const en = {
     services: 'Services',
     portfolio: 'Portfolio',
     blog: 'Blog',
-    faq: 'FAQ',
     about: 'About',
     contact: 'Contact',
     privacy: 'Privacy',
@@ -115,44 +113,6 @@ export const en = {
       'Start a project with freelance full-stack developer Jesús Manuel Cristancho. Email, WhatsApp and LinkedIn — direct communication, no middlemen.',
     eyebrow: 'Contact',
     title: 'Have a project in mind?',
-  },
-  faq: {
-    seoTitle: 'FAQ — Pricing, Process, Tech Stack & AI | Jesús Manuel Cristancho',
-    seoDescription:
-      'Straight answers about pricing, timelines, remote work with US and Canada clients, tech stack and AI integrations — from freelance full-stack developer Jesús Manuel Cristancho.',
-    eyebrow: 'FAQ',
-    title: 'Questions clients actually ask',
-    intro: 'Direct answers, no sales pitch — if something else is unclear, just ask.',
-    items: [
-      {
-        q: 'Is Easy Pro Digital an agency or an independent developer?',
-        a: "Easy Pro Digital started as an agency brand. Today it's the independent practice of one developer, Jesús Manuel Cristancho — every project is designed, built and delivered by the same person you talk to, with no account managers or subcontracted teams in between.",
-      },
-      {
-        q: 'What services do you offer?',
-        a: 'Web development (custom apps and e-commerce), hybrid mobile apps, SaaS platforms, technical and on-page SEO, digital marketing automation, and applied AI integrations — cloud APIs (OpenAI, Gemini, Claude) or private local models (DeepSeek, Qwen) for clients who need data privacy.',
-      },
-      {
-        q: 'How much does a website or SaaS MVP cost?',
-        a: "It depends on scope, integrations and timeline, so there's no fixed price list. The usual process is a short discovery call, then a written proposal with a fixed scope and price before any work starts — no open-ended hourly billing.",
-      },
-      {
-        q: 'How do you work with clients in the US and Canada while based in Colombia?',
-        a: "Fully remote. I'm based in Medellín (GMT-5), which overlaps with US Eastern and Central business hours for most of the day. Communication runs over email and WhatsApp, with a written scope for every project so expectations are clear from day one.",
-      },
-      {
-        q: "What's your tech stack?",
-        a: "Java (Spring Boot) and PHP (Symfony/Laravel) on the backend, React/TypeScript on the frontend, and Python for AI and automation work. I've used this stack to ship production systems for healthcare — including an integration with Colombia's Ministry of Health — mining and e-commerce.",
-      },
-      {
-        q: 'Do you build AI features, or just talk about AI?',
-        a: 'Both cloud and private AI: chatbots on WhatsApp Business using the OpenAI API, content pipelines built on the Gemini API, and local deployments of open-source models (DeepSeek, Qwen) for clients who need data privacy. See the AI Integrations service for specifics.',
-      },
-      {
-        q: 'Do you only build sites, or do you also handle SEO?',
-        a: 'SEO is built in from the start, not bolted on afterward — structured data, URL architecture, Core Web Vitals and on-page optimization are part of every build. I also offer it as a standalone service for existing sites.',
-      },
-    ],
   },
   blog: {
     seoTitle: 'Blog — Easy Pro Digital',
@@ -313,7 +273,6 @@ export const es = {
     services: 'Servicios',
     portfolio: 'Portafolio',
     blog: 'Blog',
-    faq: 'Preguntas',
     about: 'Sobre mí',
     startProject: 'Empezar un proyecto',
   },
@@ -321,7 +280,6 @@ export const es = {
     services: 'Servicios',
     portfolio: 'Portafolio',
     blog: 'Blog',
-    faq: 'Preguntas',
     about: 'Sobre mí',
     contact: 'Contacto',
     privacy: 'Privacidad',
@@ -419,44 +377,6 @@ export const es = {
       'Inicia un proyecto con el desarrollador full-stack freelance Jesús Manuel Cristancho. Email, WhatsApp y LinkedIn — comunicación directa, sin intermediarios.',
     eyebrow: 'Contacto',
     title: '¿Tienes un proyecto en mente?',
-  },
-  faq: {
-    seoTitle: 'Preguntas frecuentes — Precios, proceso, stack e IA | Jesús Manuel Cristancho',
-    seoDescription:
-      'Respuestas directas sobre precios, plazos, trabajo remoto con clientes internacionales, stack tecnológico e integraciones de IA — del desarrollador full-stack freelance Jesús Manuel Cristancho.',
-    eyebrow: 'Preguntas frecuentes',
-    title: 'Lo que los clientes suelen preguntar',
-    intro: 'Respuestas directas, sin discurso de venta — si algo más no queda claro, pregunta.',
-    items: [
-      {
-        q: '¿Easy Pro Digital es una agencia o un desarrollador independiente?',
-        a: 'Easy Pro Digital nació como marca de agencia. Hoy es la práctica independiente de un solo desarrollador, Jesús Manuel Cristancho — cada proyecto lo diseño, construyo y entrego yo mismo, sin account managers ni equipos subcontratados de por medio.',
-      },
-      {
-        q: '¿Qué servicios ofreces?',
-        a: 'Desarrollo web (aplicaciones a medida y e-commerce), apps móviles híbridas, plataformas SaaS, SEO técnico y on-page, automatización de marketing digital, e integraciones de IA aplicada — APIs en la nube (OpenAI, Gemini, Claude) o modelos locales privados (DeepSeek, Qwen) para clientes que necesitan privacidad de datos.',
-      },
-      {
-        q: '¿Cuánto cuesta una web o un MVP de SaaS?',
-        a: 'Depende del alcance, las integraciones y el plazo, así que no hay una lista de precios fija. El proceso habitual es una llamada corta de descubrimiento y luego una propuesta escrita con alcance y precio cerrados antes de empezar — sin facturación abierta por horas.',
-      },
-      {
-        q: '¿Cómo trabajas con clientes internacionales estando en Colombia?',
-        a: 'Cien por ciento remoto. Estoy en Medellín (GMT-5), con buen solape horario con Latinoamérica y con EE. UU./Canadá gran parte del día. La comunicación es por email y WhatsApp, con un alcance por escrito en cada proyecto para que las expectativas queden claras desde el día uno.',
-      },
-      {
-        q: '¿Cuál es tu stack tecnológico?',
-        a: 'Java (Spring Boot) y PHP (Symfony/Laravel) en backend, React/TypeScript en frontend, y Python para IA y automatización. Con este stack he entregado sistemas en producción para salud — incluida una integración con el Ministerio de Salud de Colombia —, minería y comercio electrónico.',
-      },
-      {
-        q: '¿Realmente construyes funcionalidades de IA, o solo hablas de IA?',
-        a: 'Las dos: IA en la nube y privada — chatbots en WhatsApp Business con la API de OpenAI, pipelines de contenido con la API de Gemini, y despliegues locales de modelos open-source (DeepSeek, Qwen) para clientes que necesitan privacidad de datos. Más detalle en el servicio de Integraciones de IA.',
-      },
-      {
-        q: '¿Solo construyes sitios, o también te encargas del SEO?',
-        a: 'El SEO va integrado desde el inicio, no se agrega después: datos estructurados, arquitectura de URLs, Core Web Vitals y optimización on-page forman parte de cada build. También lo ofrezco como servicio independiente para sitios ya existentes.',
-      },
-    ],
   },
   blog: {
     seoTitle: 'Blog — Easy Pro Digital',

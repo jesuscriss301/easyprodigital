@@ -529,46 +529,6 @@ export function Contact() {
   )
 }
 
-/* ============ FAQ ============ */
-export function Faq() {
-  const { t } = useLanguage()
-  const { items } = t.faq
-
-  return (
-    <>
-      <Seo
-        title={t.faq.seoTitle}
-        description={t.faq.seoDescription}
-        path="/faq/"
-        jsonLd={{
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity: items.map((item) => ({
-            '@type': 'Question',
-            name: item.q,
-            acceptedAnswer: { '@type': 'Answer', text: item.a },
-          })),
-        }}
-      />
-      <div className="page-head container">
-        <p className="eyebrow">{t.faq.eyebrow}</p>
-        <h1 className="section-title">{t.faq.title}</h1>
-        <p className="page-intro">{t.faq.intro}</p>
-      </div>
-      <section className="first-section">
-        <Reveal as="div" className="container faq-list">
-          {items.map((item) => (
-            <details className="faq-item" key={item.q}>
-              <summary>{item.q}</summary>
-              <p>{item.a}</p>
-            </details>
-          ))}
-        </Reveal>
-      </section>
-    </>
-  )
-}
-
 /* ============ Legal (Privacy / Terms / Cookies) ============ */
 export function Legal({ kind }) {
   const { data, t } = useLanguage()

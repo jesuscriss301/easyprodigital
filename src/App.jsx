@@ -7,7 +7,6 @@ import {
   Portfolio,
   About,
   Contact,
-  Faq,
   Legal,
   NotFound,
 } from './pages/pages.jsx'
@@ -44,7 +43,6 @@ function RouteChildren() {
       <Route path="blog" element={<Blog />} />
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
-      <Route path="faq" element={<Faq />} />
       <Route path="rag-form" element={<RagForm />} />
       <Route path="privacy" element={<Legal kind="privacy" />} />
       <Route path="terms" element={<Legal kind="terms" />} />
