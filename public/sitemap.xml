@@ -3,6 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://easyprodigital.com/</loc>
+    <lastmod>2026-09-11</lastmod>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/" />
@@ -10,6 +11,7 @@
   </url>
   <url>
     <loc>https://easyprodigital.com/services/</loc>
+    <lastmod>2026-09-11</lastmod>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/services/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/services/" />
@@ -17,20 +19,15 @@
   </url>
   <url>
     <loc>https://easyprodigital.com/portfolio/</loc>
+    <lastmod>2026-09-11</lastmod>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/portfolio/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/portfolio/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://easyprodigital.com/portfolio/" />
   </url>
   <url>
-    <loc>https://easyprodigital.com/blog/</loc>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/blog/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/blog/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://easyprodigital.com/blog/" />
-  </url>
-  <url>
     <loc>https://easyprodigital.com/about/</loc>
+    <lastmod>2026-09-11</lastmod>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/about/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/about/" />
@@ -38,6 +35,7 @@
   </url>
   <url>
     <loc>https://easyprodigital.com/contact/</loc>
+    <lastmod>2026-09-11</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/contact/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/contact/" />
@@ -45,13 +43,23 @@
   </url>
   <url>
     <loc>https://easyprodigital.com/faq/</loc>
+    <lastmod>2026-09-11</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/faq/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/faq/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://easyprodigital.com/faq/" />
   </url>
   <url>
+    <loc>https://easyprodigital.com/rag-form/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/rag-form/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/rag-form/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easyprodigital.com/rag-form/" />
+  </url>
+  <url>
     <loc>https://easyprodigital.com/es/</loc>
+    <lastmod>2026-09-11</lastmod>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/" />
@@ -59,6 +67,7 @@
   </url>
   <url>
     <loc>https://easyprodigital.com/es/services/</loc>
+    <lastmod>2026-09-11</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/services/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/services/" />
@@ -66,20 +75,15 @@
   </url>
   <url>
     <loc>https://easyprodigital.com/es/portfolio/</loc>
+    <lastmod>2026-09-11</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/portfolio/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/portfolio/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://easyprodigital.com/portfolio/" />
   </url>
   <url>
-    <loc>https://easyprodigital.com/es/blog/</loc>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/blog/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/blog/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://easyprodigital.com/blog/" />
-  </url>
-  <url>
     <loc>https://easyprodigital.com/es/about/</loc>
+    <lastmod>2026-09-11</lastmod>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/about/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/about/" />
@@ -87,6 +91,7 @@
   </url>
   <url>
     <loc>https://easyprodigital.com/es/contact/</loc>
+    <lastmod>2026-09-11</lastmod>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/contact/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/contact/" />
@@ -94,17 +99,76 @@
   </url>
   <url>
     <loc>https://easyprodigital.com/es/faq/</loc>
+    <lastmod>2026-09-11</lastmod>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/faq/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/faq/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://easyprodigital.com/faq/" />
   </url>
-  <url><loc>https://store.easyprodigital.com/</loc><priority>0.6</priority></url>
-  <url><loc>https://turnero.easyprodigital.com/</loc><priority>0.6</priority></url>
-  <url><loc>https://easyprodigital.com/privacy/</loc><priority>0.2</priority></url>
-  <url><loc>https://easyprodigital.com/terms/</loc><priority>0.2</priority></url>
-  <url><loc>https://easyprodigital.com/cookies/</loc><priority>0.2</priority></url>
-  <url><loc>https://easyprodigital.com/es/privacy/</loc><priority>0.2</priority></url>
-  <url><loc>https://easyprodigital.com/es/terms/</loc><priority>0.2</priority></url>
-  <url><loc>https://easyprodigital.com/es/cookies/</loc><priority>0.2</priority></url>
+  <url>
+    <loc>https://easyprodigital.com/es/rag-form/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/rag-form/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/rag-form/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easyprodigital.com/rag-form/" />
+  </url>
+  <url>
+    <loc>https://store.easyprodigital.com/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://turnero.easyprodigital.com/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://easyprodigital.com/privacy/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/privacy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easyprodigital.com/privacy/" />
+  </url>
+  <url>
+    <loc>https://easyprodigital.com/terms/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/terms/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/terms/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easyprodigital.com/terms/" />
+  </url>
+  <url>
+    <loc>https://easyprodigital.com/es/privacy/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/privacy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easyprodigital.com/privacy/" />
+  </url>
+  <url>
+    <loc>https://easyprodigital.com/es/terms/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/terms/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/terms/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easyprodigital.com/terms/" />
+  </url>
+  <url>
+    <loc>https://easyprodigital.com/cookies/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/cookies/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/cookies/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easyprodigital.com/cookies/" />
+  </url>
+  <url>
+    <loc>https://easyprodigital.com/es/cookies/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easyprodigital.com/cookies/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://easyprodigital.com/es/cookies/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easyprodigital.com/cookies/" />
+  </url>
 </urlset>
