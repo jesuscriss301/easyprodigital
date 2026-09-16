@@ -28,6 +28,10 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/jesus-cristancho',
   tiktok: 'https://www.tiktok.com/@easyprodigital',
   github: 'https://github.com/jesuscriss301',
+  instagram: 'https://www.instagram.com/easyprodigital_dev/',
+  facebook: 'https://www.facebook.com/profile.php?id=61593168882832',
+  x: 'https://x.com/easyprodigital',
+  reddit: 'https://www.reddit.com/user/Easyprodigital/',
 
   // Path to a professional photo. Leave null to use the built-in monogram fallback.
   photo: '/photo-jesus-cristancho.jpg',
