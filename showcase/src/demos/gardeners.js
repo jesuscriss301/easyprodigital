@@ -32,6 +32,11 @@ export default {
     order: ['hero', 'scrollFeature', 'services', 'gallery', 'features', 'testimonials', 'map', 'cta'],
   },
 
+  // Enredaderas decorativas (components/Vines.jsx): una especie distinta en
+  // cada tarjeta + contorno de la página con enredaderas a ambos lados.
+  // Lo heredan todas las variantes de estilo vía `...base`.
+  vines: true,
+
   theme: {
     primary: '#3f7d32',
     primaryDark: '#2c5b23',
