@@ -1,8 +1,9 @@
 import Reveal from './Reveal.jsx'
 import SplitText from './SplitText.jsx'
 import { Icon } from './icons.jsx'
+import { VineDecor, speciesFor } from './Vines.jsx'
 
-export default function Features({ id = 'about', eyebrow, title, intro, items = [] }) {
+export default function Features({ id = 'about', eyebrow, title, intro, items = [], vines = false }) {
   return (
     <section id={id} className="demo-section demo-section--alt">
       <div className="demo-container">
@@ -12,8 +13,9 @@ export default function Features({ id = 'about', eyebrow, title, intro, items = 
           {intro && <p>{intro}</p>}
         </Reveal>
         <Reveal as="div" className="demo-features">
-          {items.map((f) => (
-            <div className="demo-feature" key={f.title}>
+          {items.map((f, i) => (
+            <div className={`demo-feature${vines ? ' has-vines' : ''}`} key={f.title}>
+              {vines && <VineDecor species={speciesFor('features', i)} seed={i + 11} side={i < items.length / 2 ? 'left' : 'right'} />}
               <div className="demo-service-icon"><Icon name={f.icon} /></div>
               <h3>{f.title}</h3>
               <p>{f.text}</p>
