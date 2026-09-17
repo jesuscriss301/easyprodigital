@@ -166,7 +166,15 @@ function buildPersonJsonLd({ profile, site, education }) {
       addressCountry: 'CO',
     },
     alumniOf: education.map((e) => ({ '@type': 'EducationalOrganization', name: e.school })),
-    sameAs: [profile.linkedin, profile.tiktok, profile.github],
+    sameAs: [
+      profile.linkedin,
+      profile.tiktok,
+      profile.github,
+      profile.instagram,
+      profile.facebook,
+      profile.x,
+      profile.reddit,
+    ].filter(Boolean),
   }
 }
 

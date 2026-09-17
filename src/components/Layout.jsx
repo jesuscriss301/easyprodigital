@@ -171,6 +171,77 @@ export function WhatsAppFloat() {
   )
 }
 
+/* ---------------- Redes sociales ---------------- */
+const SOCIAL_ICONS = {
+  instagram: (
+    <>
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4.2" />
+      <circle cx="17.2" cy="6.9" r="1.1" fill="currentColor" stroke="none" />
+    </>
+  ),
+  facebook: <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />,
+  x: (
+    <path
+      fill="currentColor"
+      stroke="none"
+      d="M17.53 3h3.03l-6.62 7.57L21.75 21h-5.98l-4.68-6.12L5.7 21H2.66l7.08-8.09L2.25 3h6.13l4.23 5.59L17.53 3Zm-1.06 16.2h1.68L7.6 4.72H5.8l10.67 14.48Z"
+    />
+  ),
+  reddit: (
+    <>
+      <ellipse cx="12" cy="14.2" rx="8.5" ry="6" />
+      <circle cx="17.2" cy="4.2" r="1.7" />
+      <path d="M12.6 8.3 16.1 5.2" />
+      <circle cx="9.2" cy="13.6" r="1.15" fill="currentColor" stroke="none" />
+      <circle cx="14.8" cy="13.6" r="1.15" fill="currentColor" stroke="none" />
+      <path d="M8.9 17.1c1.9 1.5 4.3 1.5 6.2 0" />
+    </>
+  ),
+}
+
+const SOCIAL_LINKS = [
+  { key: 'instagram', label: 'Instagram' },
+  { key: 'facebook', label: 'Facebook' },
+  { key: 'x', label: 'X' },
+  { key: 'reddit', label: 'Reddit' },
+]
+
+export function SocialLinks({ profile, label }) {
+  const items = SOCIAL_LINKS.filter((s) => profile[s.key])
+  if (!items.length) return null
+  return (
+    <ul className="footer-social" aria-label={label}>
+      {items.map((s) => (
+        <li key={s.key}>
+          <a
+            href={profile[s.key]}
+            target="_blank"
+            rel="me noopener noreferrer"
+            aria-label={s.label}
+            title={s.label}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              {SOCIAL_ICONS[s.key]}
+            </svg>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 export function Footer() {
   const { href, data, t } = useLanguage()
   const { profile } = data
@@ -186,6 +257,7 @@ export function Footer() {
           </Link>
           <p className="footer-name">{profile.name}</p>
           <p className="footer-role">{profile.role} · {profile.location}</p>
+          <SocialLinks profile={profile} label={t.footer.social} />
         </div>
         <nav className="footer-nav" aria-label="Footer">
           <Link to={href('/services/')}>{t.footer.services}</Link>
