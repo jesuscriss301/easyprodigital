@@ -1034,7 +1034,7 @@ h1, h2, h3, h4 {
 .demo-vines-on .demo-features,
 .demo-vines-on .demo-testimonials { gap: 44px 36px; }
 .demo-vines-on .demo-service-card:hover { transform: translateY(-4px); }
-.demo-vines-on .has-vines > :not(.demo-vine):not(img):not(video) { position: relative; z-index: 2; }
+.demo-vines-on .has-vines > :not(.demo-vine):not(.demo-mat):not(img):not(video) { position: relative; z-index: 2; }
 .demo-vines-on .demo-gallery-tile.has-vines { overflow: visible; }
 .demo-vines-on .demo-gallery-tile img,
 .demo-vines-on .demo-gallery-tile video,
@@ -1086,4 +1086,64 @@ h1, h2, h3, h4 {
   .vine-stem { stroke-dashoffset: 0; transition: none; }
   .vine-pop { transform: none; opacity: 1; transition: none; }
   .vine-rustle, .vine-sway, .vine-glow { animation: none; }
+}
+
+/* ---------- Materiales de obra (albañilería / carpintería / plomería — demo.materials, ver Materials.jsx) ---------- */
+/* Reutiliza las tarjetas de vidrio de .demo-vines-on (la raíz lleva ambas clases). */
+.demo-materials-on .demo-services--grid,
+.demo-materials-on .demo-features,
+.demo-materials-on .demo-testimonials { gap: 56px 48px; }
+.demo-materials-on .demo-gallery { gap: 52px; }
+
+.demo-mat,
+.demo-gallery-tile .demo-mat { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.demo-mat svg { position: absolute; overflow: visible; max-width: none; filter: drop-shadow(0 6px 6px rgba(0, 0, 0, 0.35)); }
+.demo-mat-main { top: -91px; right: -104px; }
+.demo-mat-accent { bottom: -56px; left: -56px; }
+.demo-mat--left .demo-mat-main { right: auto; left: -104px; transform: scaleX(-1); }
+.demo-mat--left .demo-mat-accent { left: auto; right: -56px; }
+
+.mat-glow { fill: none; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 0.35 0.65; stroke-dashoffset: 1; opacity: 0; filter: drop-shadow(0 0 3px currentColor) drop-shadow(0 0 7px currentColor); }
+.is-built .mat-glow { opacity: 0.9; animation: mat-glow-run 4.5s linear infinite; }
+@keyframes mat-glow-run { to { stroke-dashoffset: -1; } }
+
+/* armado al entrar en pantalla: cada pieza cae a su sitio en cascada */
+.mat-piece { opacity: 0; transform: translateY(-18px) scale(0.92); transition: transform 0.55s cubic-bezier(.34,1.56,.64,1), opacity 0.35s ease; transition-delay: calc(var(--i, 0) * 0.07s + 0.1s); }
+.is-built .mat-piece { opacity: 1; transform: none; }
+.mat-frame-piece { opacity: 0; transition: opacity 0.8s ease 0.2s; }
+.is-built .mat-frame-piece { opacity: 1; }
+.is-built .mat-float { animation: mat-float 4s ease-in-out infinite alternate; }
+@keyframes mat-float { from { translate: 0 -2px; } to { translate: 0 3px; } }
+.mat-drip { animation: mat-drip 2.4s ease-in infinite; }
+.mat-drip--2 { animation-delay: 1.2s; }
+@keyframes mat-drip { 0% { transform: translateY(0) scale(0.4); opacity: 0; } 20% { opacity: 1; transform: translateY(0) scale(1); } 100% { transform: translateY(46px); opacity: 0; } }
+.mat-needle { animation: mat-needle 3s ease-in-out infinite alternate; }
+@keyframes mat-needle { from { transform: rotate(-18deg); } to { transform: rotate(14deg); } }
+.mat-shower path { animation: mat-shower 0.6s linear infinite; }
+@keyframes mat-shower { to { stroke-dashoffset: -10; } }
+
+.demo-mat-frame-wrap { position: fixed; inset: 0; pointer-events: none; z-index: 40; }
+.demo-mat-frame {
+  position: absolute; top: 0; height: 100vh; width: calc(100vh * 0.17); max-width: none;
+  overflow: visible; filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.35));
+}
+.demo-mat-frame--left { left: 0; }
+.demo-mat-frame--right { right: 0; transform: scaleX(-1); }
+@media (max-width: 1280px) { .demo-mat-frame { width: calc(100vh * 0.12); } }
+@media (max-width: 900px) {
+  .demo-mat-main { transform: scale(0.75); transform-origin: top right; }
+  .demo-mat--left .demo-mat-main { transform: scale(-0.75, 0.75); transform-origin: top left; }
+  .demo-mat-accent { transform: scale(0.8); }
+}
+@media (max-width: 760px) {
+  .demo-mat-frame-wrap { display: none; }
+  .demo-mat-main { right: -78px; top: -84px; transform: scale(0.72); transform-origin: center; }
+  .demo-mat--left .demo-mat-main { left: -78px; right: auto; transform: scale(-0.72, 0.72); }
+  .demo-mat-accent { left: -40px; bottom: -44px; transform: scale(0.8); }
+  .demo-mat--left .demo-mat-accent { right: -40px; left: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mat-piece, .mat-frame-piece { opacity: 1; transform: none; transition: none; }
+  .mat-glow { animation: none; stroke-dasharray: none; }
+  .mat-float, .mat-drip, .mat-needle, .mat-shower path { animation: none; }
 }
