@@ -1,8 +1,9 @@
 import Reveal from './Reveal.jsx'
 import SplitText from './SplitText.jsx'
 import { VineDecor, speciesFor } from './Vines.jsx'
+import { MaterialDecor } from './Materials.jsx'
 
-export default function Testimonials({ id = 'testimonials', eyebrow, title, intro, items = [], vines = false }) {
+export default function Testimonials({ id = 'testimonials', eyebrow, title, intro, items = [], vines = false, materials = null }) {
   return (
     <section id={id} className="demo-section demo-section--alt">
       <div className="demo-container">
@@ -13,8 +14,9 @@ export default function Testimonials({ id = 'testimonials', eyebrow, title, intr
         </Reveal>
         <Reveal as="div" className="demo-testimonials">
           {items.map((t, i) => (
-            <div className={`demo-testimonial${vines ? ' has-vines' : ''}`} key={t.name}>
+            <div className={`demo-testimonial${vines || materials ? ' has-vines' : ''}`} key={t.name}>
               {vines && <VineDecor species={speciesFor('testimonials', i)} seed={i + 21} side={i === 0 ? 'left' : 'right'} />}
+              {materials && <MaterialDecor set={materials} section="testimonials" index={i} side={i === 0 ? 'left' : 'right'} />}
               <div className="demo-testimonial-stars">★★★★★</div>
               <p className="quote">"{t.quote}"</p>
               <div className="demo-testimonial-author">

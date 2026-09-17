@@ -3,6 +3,7 @@ import SplitText from './SplitText.jsx'
 import { Icon } from './icons.jsx'
 import { prefersReducedMotion } from './motionUtils.js'
 import { VineDecor, speciesFor } from './Vines.jsx'
+import { MaterialDecor } from './Materials.jsx'
 
 // Hover "spotlight" (adaptado de SpotlightCard de React Bits, reescrito sin
 // dependencias): un halo radial sigue al cursor dentro de la fila/tarjeta.
@@ -33,7 +34,7 @@ function magnetReset(e) {
 
 /** variant: 'grid' (tarjetas) | 'list' (fila horizontal)
  *  hover: 'spotlight' | 'magnet' | 'glass' — un efecto distinto por nicho. */
-export default function Services({ id = 'services', eyebrow, title, intro, variant = 'grid', hover, items = [], vines = false }) {
+export default function Services({ id = 'services', eyebrow, title, intro, variant = 'grid', hover, items = [], vines = false, materials = null }) {
   const spotlight = hover === 'spotlight'
   const magnet = hover === 'magnet'
   const glass = hover === 'glass'
@@ -68,8 +69,9 @@ export default function Services({ id = 'services', eyebrow, title, intro, varia
         ) : (
           <Reveal as="div" className="demo-services demo-services--grid">
             {items.map((s, i) => (
-              <div className={`demo-service-card${itemModifier}${vines ? ' has-vines' : ''}`} key={s.title} {...spotProps}>
+              <div className={`demo-service-card${itemModifier}${vines || materials ? ' has-vines' : ''}`} key={s.title} {...spotProps}>
                 {vines && <VineDecor species={speciesFor('services', i)} seed={i + 1} side="right" />}
+                {materials && <MaterialDecor set={materials} section="services" index={i} side="right" />}
                 <div className="demo-service-icon"><Icon name={s.icon} /></div>
                 <h3>{s.title}</h3>
                 <p>{s.text}</p>

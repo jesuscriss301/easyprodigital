@@ -2,6 +2,7 @@ import Reveal from './Reveal.jsx'
 import SplitText from './SplitText.jsx'
 import { prefersReducedMotion } from './motionUtils.js'
 import { VineDecor, speciesFor } from './Vines.jsx'
+import { MaterialDecor } from './Materials.jsx'
 
 // TiltedCard (React Bits usa `motion`; esta adaptación es solo mousemove +
 // custom properties para no sumar un segundo runtime DOM al bundle
@@ -46,7 +47,7 @@ function gradientForIndex(i, theme) {
   return `linear-gradient(140deg, ${a}, ${b})`
 }
 
-export default function Gallery({ id = 'gallery', eyebrow, title, intro, items = [], hover, theme, vines = false }) {
+export default function Gallery({ id = 'gallery', eyebrow, title, intro, items = [], hover, theme, vines = false, materials = null }) {
   // hover: 'glare' | 'tilt' | 'peel' | 'chroma' | 'blur' | 'float' — un
   // efecto distinto por nicho, ver styles.css "Efectos opt-in por demo".
   const tileHandlers =
@@ -69,7 +70,7 @@ export default function Gallery({ id = 'gallery', eyebrow, title, intro, items =
             const label = isMedia ? item.label : item
             return (
               <div
-                className={`demo-gallery-tile${vines ? ' has-vines' : ''}`}
+                className={`demo-gallery-tile${vines || materials ? ' has-vines' : ''}`}
                 key={label}
                 style={isMedia ? undefined : { background: gradientForIndex(i, theme) }}
                 {...tileHandlers}
@@ -80,6 +81,7 @@ export default function Gallery({ id = 'gallery', eyebrow, title, intro, items =
                 {isMedia && !item.video && item.image && <img src={item.image} alt={item.alt || label} loading="lazy" />}
                 <span>{label}</span>
                 {vines && <VineDecor species={speciesFor('gallery', i)} seed={i + 31} side={i === 0 ? 'left' : 'right'} />}
+                {materials && <MaterialDecor set={materials} section="gallery" index={i} side={i === 0 ? 'left' : 'right'} />}
               </div>
             )
           })}
