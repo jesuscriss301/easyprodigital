@@ -32,6 +32,10 @@ export default {
     order: ['hero', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
   },
 
+  // Materiales de obra decorativos (components/Materials.jsx): uno distinto
+  // en cada tarjeta + contorno de página. Lo heredan las variantes.
+  materials: 'plumbers',
+
   theme: {
     primary: '#1d6fa5',
     primaryDark: '#124a70',

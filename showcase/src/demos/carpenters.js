@@ -32,6 +32,10 @@ export default {
     order: ['hero', 'gallery', 'services', 'features', 'testimonials', 'map', 'cta'],
   },
 
+  // Materiales de obra decorativos (components/Materials.jsx): uno distinto
+  // en cada tarjeta + contorno de página. Lo heredan las variantes.
+  materials: 'carpenters',
+
   theme: {
     primary: '#8b5a2b',
     primaryDark: '#6b4520',
