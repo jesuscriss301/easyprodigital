@@ -16,6 +16,7 @@ import Footer from '../components/Footer.jsx'
 import Badge from '../components/Badge.jsx'
 import { prefersReducedMotion } from '../components/motionUtils.js'
 import { VineFrame } from '../components/Vines.jsx'
+import { MaterialFrame } from '../components/Materials.jsx'
 import { LazySplashCursor } from '../components/reactbits/registry.js'
 
 function useGoogleFont(href) {
@@ -41,13 +42,13 @@ const SECTION_RENDERERS = {
       ? null
       : demo.services.bento
         ? <BentoServicesSection key="services" {...demo.services} theme={demo.theme} />
-        : <Services key="services" {...demo.services} vines={!!demo.vines} />,
-  features: (demo) => (demo.features ? <Features key="features" {...demo.features} vines={!!demo.vines} /> : null),
-  gallery: (demo) => (demo.gallery ? <Gallery key="gallery" {...demo.gallery} theme={demo.theme} vines={!!demo.vines} /> : null),
+        : <Services key="services" {...demo.services} vines={!!demo.vines} materials={demo.materials || null} />,
+  features: (demo) => (demo.features ? <Features key="features" {...demo.features} vines={!!demo.vines} materials={demo.materials || null} /> : null),
+  gallery: (demo) => (demo.gallery ? <Gallery key="gallery" {...demo.gallery} theme={demo.theme} vines={!!demo.vines} materials={demo.materials || null} /> : null),
   // ScrollExpand (React Bits) montado como su propia sección — solo
   // Jardineros la usa (ver demos/gardeners.js → scrollFeature).
   scrollFeature: (demo) => (demo.scrollFeature ? <ScrollFeatureSection key="scrollFeature" {...demo.scrollFeature} /> : null),
-  testimonials: (demo) => (demo.testimonials ? <Testimonials key="testimonials" {...demo.testimonials} vines={!!demo.vines} /> : null),
+  testimonials: (demo) => (demo.testimonials ? <Testimonials key="testimonials" {...demo.testimonials} vines={!!demo.vines} materials={demo.materials || null} /> : null),
   map: (demo) => (demo.map ? <MapSection key="map" {...demo.map} /> : null),
   cta: (demo) => (demo.cta ? <CtaBanner key="cta" {...demo.cta} theme={demo.theme} /> : null),
 }
@@ -77,8 +78,9 @@ export default function DemoPage({ demo }) {
     .map((key) => SECTION_RENDERERS[key](demo))
 
   return (
-    <div className={`demo-root${demo.vines ? ' demo-vines-on' : ''}`} style={themeVars}>
+    <div className={`demo-root${demo.vines ? ' demo-vines-on' : ''}${demo.materials ? ' demo-vines-on demo-materials-on' : ''}`} style={themeVars}>
       {demo.vines && <VineFrame />}
+      {demo.materials && <MaterialFrame set={demo.materials} />}
       <Seo
         title={demo.seo.title}
         description={demo.seo.description}
