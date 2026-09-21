@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import DemoPage from './pages/DemoPage.jsx'
 import NotFound from './pages/NotFound.jsx'
+import ChopePage from './pages/ChopePage.jsx'
 import { getDemoBySlug } from './demos/index.js'
 import { LanguageProvider, useLanguage } from './i18n.jsx'
 import { getLocalizedDemo } from './demos/i18n/es/index.js'
@@ -28,6 +29,16 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<Home />} />
+          {/* Maquette para un prospecto concreto (La Chope Gobeline): tiene
+              su propia página en vez de pasar por DemoPage, porque su
+              composición no es la de las demos de nicho (cartas en PDF,
+              galería acordeón, decoración de taberna). Rutas propias y fuera
+              del registro de demos/index.js, así no se lista en la home del
+              showcase ni se indexa. */}
+          <Route path="chope-gobeline" element={<ChopePage styleSlug="nuit" />} />
+          <Route path="chope-gobeline-parchemin" element={<ChopePage styleSlug="parchemin" />} />
+          <Route path="chope-gobeline-forge" element={<ChopePage styleSlug="forge" />} />
+          <Route path="chope-gobeline-gobelin" element={<ChopePage styleSlug="gobelin" />} />
           <Route path=":slug" element={<DemoRoute />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

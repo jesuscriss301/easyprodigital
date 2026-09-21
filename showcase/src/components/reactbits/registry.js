@@ -37,3 +37,6 @@ export const LazyMagicBento = lazy(() => import('./MagicBento/MagicBento.jsx'))
 
 // --- Overlay global de página completa ---
 export const LazySplashCursor = lazy(() => import('./SplashCursor/SplashCursor.jsx'))
+
+// --- Overlay global de página completa (motor ogl) ---
+export const LazySwarmCursor = lazy(() => import('./SwarmCursor/SwarmCursor.jsx'))

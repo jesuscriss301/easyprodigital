@@ -1,0 +1,627 @@
+/* ==================================================================
+   La Chope Gobeline — estilos propios de la maquette.
+   Van en su propio archivo (no en styles.css) para no mezclarse con el
+   resto del showcase: esta demo tiene una identidad muy marcada y no debe
+   contaminar a las demás. Reutiliza las clases base .demo-* de styles.css
+   y solo añade lo que es de la taberna.
+   ================================================================== */
+
+.chope-root {
+  background: var(--demo-bg);
+  color: var(--demo-ink);
+  position: relative;
+  overflow-x: clip;
+}
+
+/* Textura de madera: dos gradientes repetidos, sin ninguna imagen. */
+.chope-root::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+  background:
+    repeating-linear-gradient(92deg, rgba(0, 0, 0, 0.06) 0 2px, transparent 2px 7px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 26px);
+}
+
+.chope-root > * { position: relative; z-index: 1; }
+
+.chope-link {
+  color: var(--demo-accent);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--demo-accent) 45%, transparent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.chope-link:hover { color: var(--demo-ink); border-bottom-color: currentColor; }
+.chope-link svg { width: 1em; height: 1em; }
+
+/* ------------------------------------------------------------------
+   Marco de página: cadenas, hiedra, monedas y un duende por lado
+   ------------------------------------------------------------------ */
+
+.chope-frame {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.chope-frame-col {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 74px;
+  overflow: hidden;
+}
+.chope-frame-col--left { left: 0; }
+.chope-frame-col--right { right: 0; transform: scaleX(-1); }
+.chope-frame-col svg { display: block; opacity: 0.85; }
+
+.chope-frame-climber {
+  position: absolute;
+  top: 42vh;
+  left: -6px;
+  animation: chope-climb 17s ease-in-out infinite;
+}
+
+@keyframes chope-climb {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-46px) rotate(3deg); }
+}
+
+/* monedas cayendo */
+.chope-coin {
+  position: absolute;
+  top: -40px;
+  animation-name: chope-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  opacity: 0.85;
+}
+@keyframes chope-fall {
+  0% { transform: translateY(-40px) rotate(0deg); opacity: 0; }
+  8% { opacity: 0.9; }
+  92% { opacity: 0.9; }
+  100% { transform: translateY(104vh) rotate(760deg); opacity: 0; }
+}
+
+.chope-coinrain {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.chope-coinrain .chope-coin { animation-name: chope-fall-short; }
+@keyframes chope-fall-short {
+  0% { transform: translateY(-30px) rotate(0deg); opacity: 0; }
+  12% { opacity: 0.75; }
+  88% { opacity: 0.75; }
+  100% { transform: translateY(560px) rotate(620deg); opacity: 0; }
+}
+
+/* ------------------------------------------------------------------
+   Duendes
+   ------------------------------------------------------------------ */
+
+.chope-goblin {
+  position: absolute;
+  top: -46px;
+  z-index: 3;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.45));
+  animation: chope-peek 9s ease-in-out infinite;
+}
+.chope-goblin--right { right: 14px; }
+.chope-goblin--left { left: 14px; transform: scaleX(-1); }
+
+@keyframes chope-peek {
+  0%, 46%, 100% { transform: translateY(0); }
+  52%, 88% { transform: translateY(-7px); }
+}
+.chope-goblin--left { animation-name: chope-peek-flip; }
+@keyframes chope-peek-flip {
+  0%, 46%, 100% { transform: scaleX(-1) translateY(0); }
+  52%, 88% { transform: scaleX(-1) translateY(-7px); }
+}
+
+.chope-blink { animation: chope-blink 6.5s steps(1, end) infinite; transform-origin: center; }
+@keyframes chope-blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  94%, 97% { transform: scaleY(0.08); }
+}
+
+.chope-tip { animation: chope-tip 7s ease-in-out infinite; transform-origin: 0 100%; }
+@keyframes chope-tip {
+  0%, 62%, 100% { transform: rotate(0deg); }
+  72%, 84% { transform: rotate(-26deg) translate(-4px, -2px); }
+}
+
+.chope-glint { animation: chope-glint 4.5s ease-in-out infinite; transform-origin: center; }
+@keyframes chope-glint {
+  0%, 70%, 100% { transform: rotate(0deg) scale(1); filter: none; }
+  80% { transform: rotate(180deg) scale(1.12); filter: brightness(1.5); }
+}
+
+.chope-leaf { transform-box: fill-box; transform-origin: 0 100%; animation: chope-rustle 7s ease-in-out infinite; }
+@keyframes chope-rustle {
+  0%, 100% { rotate: 0deg; }
+  50% { rotate: 6deg; }
+}
+
+/* ------------------------------------------------------------------
+   Letrero de madera como encabezado de sección
+   ------------------------------------------------------------------ */
+
+.chope-signhead { text-align: center; margin-bottom: 3rem; }
+
+.chope-sign {
+  position: relative;
+  width: min(600px, 100%);
+  margin: 0 auto;
+  aspect-ratio: 600 / 190;
+  transform-origin: 50% 4px;
+  filter: drop-shadow(0 16px 22px rgba(0, 0, 0, 0.42));
+}
+.chope-signhead.is-visible .chope-sign { animation: chope-swing 5.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) 1; }
+@keyframes chope-swing {
+  0% { transform: rotate(-4.5deg); }
+  22% { transform: rotate(3.2deg); }
+  44% { transform: rotate(-2deg); }
+  66% { transform: rotate(1.1deg); }
+  84% { transform: rotate(-0.5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.chope-sign-art { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+.chope-sign-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 34%;
+  bottom: 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  padding: 0 8%;
+}
+.chope-sign-eyebrow {
+  font-family: var(--demo-font-body);
+  font-size: clamp(0.6rem, 1.5vw, 0.72rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--demo-accent) 88%, #fff);
+}
+.chope-sign-text h2 {
+  margin: 0;
+  font-family: var(--demo-font-heading);
+  font-size: clamp(1.05rem, 3.4vw, 2rem);
+  line-height: 1.1;
+  color: #f7ecd4;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.45);
+}
+.chope-sign-intro {
+  max-width: 62ch;
+  margin: 1.4rem auto 0;
+  color: var(--demo-muted);
+}
+
+/* ------------------------------------------------------------------
+   Nav
+   ------------------------------------------------------------------ */
+
+.chope-nav { background: color-mix(in srgb, var(--demo-bg) 88%, #000); border-bottom: 1px solid var(--demo-line); }
+.chope-brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+.chope-brand img { height: 52px; width: auto; object-fit: contain; }
+.chope-brand-text {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--demo-font-heading);
+  font-size: 1.02rem;
+  letter-spacing: 0.04em;
+  color: var(--demo-ink);
+  line-height: 1.15;
+}
+.chope-brand-text em {
+  font-style: normal;
+  font-family: var(--demo-font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.15rem;
+}
+.chope-brand-text em i { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+.chope-brand-text em.is-open { color: var(--demo-primary); }
+.chope-brand-text em.is-open i { background: var(--demo-primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--demo-primary) 25%, transparent); }
+.chope-brand-text em.is-closed { color: var(--demo-muted); }
+.chope-brand-text em.is-closed i { background: var(--demo-muted); }
+
+/* Seis enlaces + marca + CTA no caben holgados a 1440px: se aprietan un
+   poco en vez de partirse en dos líneas. */
+.chope-nav .demo-nav-links > li > a { white-space: nowrap; font-size: 0.93rem; }
+@media (min-width: 981px) {
+  .chope-nav .demo-nav-links { gap: 1.15rem; }
+  .chope-nav .demo-nav-inner { gap: 0.9rem; }
+  .chope-brand-text { max-width: 12rem; }
+}
+@media (min-width: 981px) and (max-width: 1180px) {
+  .chope-nav .demo-nav-links > li > a { font-size: 0.86rem; }
+  .chope-nav .demo-nav-links { gap: 0.85rem; }
+  .chope-brand-text { font-size: 0.9rem; }
+}
+
+/* ------------------------------------------------------------------
+   Hero
+   ------------------------------------------------------------------ */
+
+.chope-hero { position: relative; overflow: hidden; padding-block: clamp(4rem, 11vw, 8rem); }
+.chope-hero-bg { position: absolute; inset: 0; z-index: 0; }
+.chope-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+.chope-hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 90% at 22% 40%, color-mix(in srgb, var(--demo-bg) 55%, transparent) 0%, var(--demo-bg) 78%),
+    linear-gradient(180deg, color-mix(in srgb, var(--demo-bg) 80%, transparent), var(--demo-bg));
+}
+.chope-hero .demo-container { position: relative; z-index: 1; }
+.chope-hero-copy { max-width: 46rem; }
+.chope-hero-copy h1 {
+  font-family: var(--demo-font-heading);
+  font-size: clamp(2.1rem, 5.6vw, 4rem);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  margin: 0.6rem 0 1rem;
+  text-wrap: balance;
+}
+.chope-hero-copy p { font-size: clamp(1rem, 1.6vw, 1.12rem); color: var(--demo-muted); max-width: 54ch; }
+
+.chope-trust strong { color: var(--demo-accent); font-family: var(--demo-font-heading); }
+
+/* ------------------------------------------------------------------
+   Cartas (menús)
+   ------------------------------------------------------------------ */
+
+.chope-menus { position: relative; }
+
+.chope-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+  gap: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.chope-menu-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  background: linear-gradient(170deg, var(--chope-wood), var(--chope-wood-dark));
+  border: 1px solid color-mix(in srgb, var(--chope-wood-dark) 70%, #000);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.chope-menu-card:hover { transform: translateY(-5px); box-shadow: 0 24px 44px rgba(0, 0, 0, 0.46); }
+
+.chope-menu-thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  background: var(--chope-parchment);
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  aspect-ratio: 5 / 3.4;
+}
+.chope-menu-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  /* la primera página del PDF asoma como si fuera la carta doblada */
+  filter: sepia(0.16) contrast(1.04);
+  transition: transform 0.6s ease;
+}
+.chope-menu-card:hover .chope-menu-thumb img { transform: scale(1.045); }
+.chope-menu-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(20, 14, 6, 0.82));
+}
+.chope-menu-thumb-hint {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-family: var(--demo-font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #f5e8cb;
+}
+.chope-menu-thumb-hint svg { width: 1.05em; height: 1.05em; }
+
+.chope-menu-body { padding: 1.2rem 1.25rem 1.4rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+.chope-menu-body h3 {
+  margin: 0;
+  font-family: var(--demo-font-heading);
+  font-size: 1.28rem;
+  color: #f7ecd4;
+}
+.chope-menu-when {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: color-mix(in srgb, var(--demo-accent) 85%, #fff);
+}
+.chope-menu-when svg { width: 1em; height: 1em; }
+.chope-menu-body p { margin: 0; font-size: 0.93rem; color: #d8c8a8; }
+
+.chope-menu-taste { list-style: none; margin: 0.4rem 0 0; padding: 0.8rem 0 0; border-top: 1px dashed rgba(255, 255, 255, 0.16); display: grid; gap: 0.42rem; }
+.chope-menu-taste li { display: flex; justify-content: space-between; gap: 0.8rem; font-size: 0.88rem; color: #eadfc4; }
+.chope-menu-taste em {
+  font-style: normal;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.22rem;
+  font-weight: 700;
+  color: var(--demo-accent);
+  white-space: nowrap;
+}
+.chope-menu-taste em svg { width: 0.85em; height: 0.85em; }
+
+.chope-menu-actions { margin-top: auto; padding-top: 1rem; display: flex; align-items: center; gap: 1rem; }
+.chope-menu-actions .demo-btn { padding: 0.55rem 1.1rem; font-size: 0.88rem; }
+
+.chope-menu-note { text-align: center; margin-top: -1rem; padding-bottom: 3rem; }
+
+/* --- hoja de pergamino ------------------------------------------- */
+
+.chope-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(10, 8, 4, 0.86);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(1rem, 3vw, 2.4rem);
+  overflow-y: auto;
+  animation: chope-fade 0.25s ease;
+}
+@keyframes chope-fade { from { opacity: 0; } to { opacity: 1; } }
+
+.chope-sheet {
+  position: relative;
+  width: min(860px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: chope-unroll 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes chope-unroll {
+  from { opacity: 0; transform: translateY(-14px) scaleY(0.94); transform-origin: top center; }
+  to { opacity: 1; transform: none; }
+}
+
+.chope-sheet-head { text-align: center; color: #f3e6c8; }
+.chope-sheet-head h3 { margin: 0; font-family: var(--demo-font-heading); font-size: clamp(1.4rem, 3.5vw, 2rem); }
+.chope-sheet-head span { font-size: 0.86rem; color: var(--demo-accent); }
+
+/* El PDF se muestra como página rasterizada: sin visor, sin barra de
+   herramientas y sin bordes grises. Solo la hoja. */
+.chope-sheet-paper {
+  background: var(--chope-parchment);
+  border-radius: 3px;
+  padding: clamp(0.5rem, 1.6vw, 1rem);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), inset 0 0 90px rgba(150, 110, 50, 0.18);
+  /* cantos ligeramente irregulares, como papel cortado a mano */
+  clip-path: polygon(0.4% 0, 99.5% 0.5%, 100% 99.4%, 0.6% 100%);
+}
+.chope-sheet-paper img { display: block; width: 100%; height: auto; mix-blend-mode: multiply; }
+
+.chope-sheet-close {
+  position: absolute;
+  top: -0.4rem;
+  right: -0.4rem;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--demo-line);
+  background: var(--demo-surface);
+  color: var(--demo-ink);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.chope-sheet-close:hover { background: var(--demo-accent); color: #1a1408; }
+
+.chope-sheet-foot { display: flex; align-items: center; justify-content: center; gap: 1.2rem; flex-wrap: wrap; padding-bottom: 1rem; }
+.chope-sheet-pager { display: inline-flex; align-items: center; gap: 0.7rem; color: #e6d8b8; }
+.chope-sheet-pager button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--demo-line);
+  background: transparent;
+  color: inherit;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.chope-sheet-pager button:disabled { opacity: 0.35; cursor: default; }
+
+/* ------------------------------------------------------------------
+   Galería acordeón
+   ------------------------------------------------------------------ */
+
+.chope-accordion { display: grid; gap: 1rem; }
+.chope-accordion-row { display: flex; gap: 0.7rem; height: clamp(230px, 34vw, 400px); }
+
+.chope-accordion-panel {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0;
+  border: 1px solid var(--demo-line);
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--chope-wood-dark);
+}
+.chope-accordion-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.82) brightness(0.72);
+  transition: filter 0.5s ease, transform 0.8s ease;
+}
+.chope-accordion-panel.is-open img { filter: saturate(1.05) brightness(1); transform: scale(1.03); }
+.chope-accordion-panel:focus-visible { outline: 2px solid var(--demo-accent); outline-offset: 3px; }
+.chope-accordion-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(12, 9, 4, 0.9));
+}
+
+.chope-accordion-label {
+  position: absolute;
+  z-index: 1;
+  left: 0.9rem;
+  bottom: 0.9rem;
+  right: 0.9rem;
+  font-family: var(--demo-font-heading);
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  color: #f6ead0;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+.chope-accordion-panel.is-open .chope-accordion-label { opacity: 1; transform: none; }
+
+/* ------------------------------------------------------------------
+   Pilares (grandes tablées / confrérie)
+   ------------------------------------------------------------------ */
+
+.chope-pillars { position: relative; }
+.chope-pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: clamp(1.6rem, 3vw, 2.2rem);
+}
+.chope-pillar {
+  position: relative;
+  padding: 2.2rem 1.4rem 1.6rem;
+  border-radius: 6px;
+  background: var(--demo-surface);
+  border: 1px solid var(--demo-line);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
+}
+.chope-pillar h3 { margin: 0.9rem 0 0.4rem; font-family: var(--demo-font-heading); font-size: 1.12rem; }
+.chope-pillar p { margin: 0 0 0.6rem; color: var(--demo-muted); font-size: 0.93rem; }
+.chope-pillar-icon {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--demo-accent) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--demo-accent) 42%, transparent);
+  color: var(--demo-accent);
+}
+.chope-pillar-icon svg { width: 22px; height: 22px; }
+
+/* ------------------------------------------------------------------
+   Contacto extra y CTA final
+   ------------------------------------------------------------------ */
+
+.chope-catering {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem 1.4rem;
+  padding: 0 0 3.5rem;
+  font-size: 0.92rem;
+  color: var(--demo-muted);
+}
+.chope-catering a { color: var(--demo-accent); text-decoration: none; }
+.chope-catering a:hover { text-decoration: underline; }
+
+.chope-final { position: relative; text-align: center; overflow: hidden; }
+.chope-final-inner { position: relative; z-index: 1; }
+.chope-final h2 { font-family: var(--demo-font-heading); font-size: clamp(1.6rem, 4vw, 2.6rem); margin: 0 0 0.6rem; }
+.chope-final p { color: var(--demo-muted); margin: 0 0 1.6rem; }
+
+/* ------------------------------------------------------------------
+   Enjambre de oro (cursor)
+   ------------------------------------------------------------------ */
+
+.chope-swarm { position: fixed; inset: 0; pointer-events: none; z-index: 50; }
+.chope-swarm-canvas { display: block; width: 100%; height: 100%; }
+
+/* ------------------------------------------------------------------
+   Responsive
+   ------------------------------------------------------------------ */
+
+@media (max-width: 1250px) {
+  .chope-frame { display: none; }
+}
+
+@media (max-width: 780px) {
+  /* El acordeón necesita hover y cinco columnas; en móvil no hay ni uno
+     ni otro, así que pasa a cuadrícula con las fotos completas. */
+  .chope-accordion-row { display: grid; grid-template-columns: repeat(2, 1fr); height: auto; }
+  .chope-accordion-panel { aspect-ratio: 4 / 3; }
+  .chope-accordion-panel img { filter: none; }
+  .chope-accordion-label { opacity: 1; transform: none; }
+  .chope-goblin { transform: scale(0.8); }
+  .chope-goblin--left { transform: scaleX(-1) scale(0.8); }
+  .chope-brand img { height: 42px; }
+  .chope-brand-text { font-size: 0.9rem; }
+}
+
+/* ------------------------------------------------------------------
+   Movimiento reducido: se apaga todo lo que se mueve solo
+   ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .chope-coin,
+  .chope-frame-climber,
+  .chope-goblin,
+  .chope-blink,
+  .chope-tip,
+  .chope-glint,
+  .chope-leaf,
+  .chope-signhead.is-visible .chope-sign,
+  .chope-sheet,
+  .chope-sheet-backdrop {
+    animation: none !important;
+  }
+  .chope-coin { display: none; }
+  .chope-accordion-panel img,
+  .chope-menu-card,
+  .chope-menu-thumb img { transition: none !important; }
+}
