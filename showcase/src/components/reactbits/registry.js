@@ -40,3 +40,6 @@ export const LazySplashCursor = lazy(() => import('./SplashCursor/SplashCursor.j
 
 // --- Overlay global de página completa (motor ogl) ---
 export const LazySwarmCursor = lazy(() => import('./SwarmCursor/SwarmCursor.jsx'))
+
+// --- Fondo de tinta del hero (motor ogl) — usado por copie-bgr ---
+export const LazyLiquidChrome = lazy(() => import('./LiquidChrome/LiquidChrome.jsx').then((m) => ({ default: m.LiquidChrome })))

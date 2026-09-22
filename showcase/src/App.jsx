@@ -3,6 +3,7 @@ import Home from './pages/Home.jsx'
 import DemoPage from './pages/DemoPage.jsx'
 import NotFound from './pages/NotFound.jsx'
 import ChopePage from './pages/ChopePage.jsx'
+import CopieBgrPage from './pages/CopieBgrPage.jsx'
 import { getDemoBySlug } from './demos/index.js'
 import { LanguageProvider, useLanguage } from './i18n.jsx'
 import { getLocalizedDemo } from './demos/i18n/es/index.js'
@@ -39,6 +40,9 @@ export default function App() {
           <Route path="chope-gobeline-parchemin" element={<ChopePage styleSlug="parchemin" />} />
           <Route path="chope-gobeline-forge" element={<ChopePage styleSlug="forge" />} />
           <Route path="chope-gobeline-gobelin" element={<ChopePage styleSlug="gobelin" />} />
+          {/* Maquette de prospecto (imprenta Copie BGR): página propia, bilingüe
+              FR/EN, fuera del registro de demos y sin indexar. */}
+          <Route path="copie-bgr" element={<CopieBgrPage />} />
           <Route path=":slug" element={<DemoRoute />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

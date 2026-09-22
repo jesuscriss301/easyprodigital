@@ -407,6 +407,49 @@ export function Facebook(props) {
   )
 }
 
+export function Printer(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M6 9V3h12v6" />
+      <rect x="3" y="9" width="18" height="8" rx="2" />
+      <rect x="7" y="14" width="10" height="6" rx="1" />
+      <circle cx="17.5" cy="12" r="0.6" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+export function Expand(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M9 3H3v6" /><path d="M15 3h6v6" />
+      <path d="M9 21H3v-6" /><path d="M15 21h6v-6" />
+    </svg>
+  )
+}
+export function Ruler(props) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="2.5" y="8.5" width="19" height="7" rx="1.4" transform="rotate(-2 12 12)" />
+      <path d="M7 9v2M11 9v3M15 9v2M19 9v3" />
+    </svg>
+  )
+}
+export function Frame(props) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="4" y="4" width="16" height="16" rx="1.5" />
+      <path d="M4 8h16M4 16h16M8 4v16M16 4v16" opacity="0.55" />
+    </svg>
+  )
+}
+export function Copy(props) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="9" y="9" width="11" height="11" rx="2" />
+      <path d="M5 15V5a2 2 0 0 1 2-2h8" />
+    </svg>
+  )
+}
+
 export const ICONS = {
   scissors: Scissors,
   droplet: Droplet,
@@ -449,6 +492,11 @@ export const ICONS = {
   handHeart: HandHeart,
   mail: Mail,
   facebook: Facebook,
+  printer: Printer,
+  expand: Expand,
+  ruler: Ruler,
+  frame: Frame,
+  copy: Copy,
 }
 
 export function Icon({ name, ...props }) {
