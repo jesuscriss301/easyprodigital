@@ -390,6 +390,23 @@ export function HandHeart(props) {
   )
 }
 
+export function Mail(props) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="2.5" y="5" width="19" height="14" rx="2.5" />
+      <path d="M3 7l9 6 9-6" />
+    </svg>
+  )
+}
+
+export function Facebook(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M14.5 8.5V6.8c0-.9.4-1.3 1.4-1.3h1.6V2.6c-.5-.1-1.4-.1-2.4-.1-2.4 0-3.9 1.4-3.9 4v2h-2.7v3h2.7v9h3.3v-9h2.5l.4-3z" />
+    </svg>
+  )
+}
+
 export const ICONS = {
   scissors: Scissors,
   droplet: Droplet,
@@ -430,6 +447,8 @@ export const ICONS = {
   music: Music,
   globe: Globe,
   handHeart: HandHeart,
+  mail: Mail,
+  facebook: Facebook,
 }
 
 export function Icon({ name, ...props }) {

@@ -75,7 +75,20 @@ export const COPY = {
       title: 'À deux pas du Vieux-Québec',
       intro: 'Pour réserver, appelez pendant les heures d’ouverture.',
       hoursTitle: 'Heures d’ouverture',
-      cateringLabel: 'Traiteur et soumissions',
+      addressTitle: 'L’adresse',
+      goblinAlt: 'Gobelin de La Chope Gobeline tenant une grande fourchette',
+      ways: {
+        phone: 'Réserver par téléphone',
+        phoneNote: 'Pendant les heures d’ouverture',
+        catering: 'Traiteur et soumissions',
+        cateringNote: 'Pour recevoir chez vous',
+        mail: 'Réserver par courriel',
+        info: 'Informations et traiteur',
+        facebook: 'Suivre la Chope',
+        facebookNote: 'Nouvelles, soirées et ménestrels',
+        order: 'Commander en ligne',
+        orderNote: 'Pour emporter',
+      },
     },
 
     finalCta: {
@@ -168,7 +181,20 @@ export const COPY = {
       title: 'A short walk from Old Québec',
       intro: 'To book a table, call during opening hours.',
       hoursTitle: 'Opening hours',
-      cateringLabel: 'Catering and quotes',
+      addressTitle: 'The address',
+      goblinAlt: 'La Chope Gobeline goblin holding a giant fork',
+      ways: {
+        phone: 'Book by phone',
+        phoneNote: 'During opening hours',
+        catering: 'Catering and quotes',
+        cateringNote: 'To feast at your place',
+        mail: 'Book by email',
+        info: 'Information and catering',
+        facebook: 'Follow the Chope',
+        facebookNote: 'News, evenings and minstrels',
+        order: 'Order online',
+        orderNote: 'For takeaway',
+      },
     },
 
     finalCta: {

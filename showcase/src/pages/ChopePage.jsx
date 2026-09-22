@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import Seo from '../components/Seo.jsx'
 import Reveal from '../components/Reveal.jsx'
 import CountUp from '../components/CountUp.jsx'
-import MapSection from '../components/MapSection.jsx'
 import ScrollFeatureSection from '../components/ScrollFeatureSection.jsx'
 import { Icon } from '../components/icons.jsx'
 import { prefersReducedMotion } from '../components/motionUtils.js'
@@ -12,6 +11,7 @@ import { LazySwarmCursor } from '../components/reactbits/registry.js'
 import ChopeNav from '../chope/ChopeNav.jsx'
 import SignHeading from '../chope/SignHeading.jsx'
 import MenuSection from '../chope/MenuSheet.jsx'
+import Contact from '../chope/Contact.jsx'
 import AccordionGallery from '../chope/AccordionGallery.jsx'
 import { TavernFrame, GoblinPeek, CoinRain } from '../chope/TavernDecor.jsx'
 import { MENUS, PHOTOS, HOURS, CONTACT, HERO_IMAGE, SCROLL_IMAGE, ENGLISH_MENU_PDF } from '../chope/content.js'
@@ -100,11 +100,6 @@ export default function ChopePage({ styleSlug = 'nuit' }) {
     const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches
     setSwarm(fine && !prefersReducedMotion())
   }, [])
-
-  const hours = HOURS.map((h) => ({
-    days: h[lang],
-    time: `${h.open.replace(':', 'h')} – ${h.close.replace(':', 'h')}`,
-  }))
 
   return (
     <div className="demo-root chope-root" style={themeVars(style.theme)}>
@@ -217,23 +212,11 @@ export default function ChopePage({ styleSlug = 'nuit' }) {
       {/* ----------------------------------------------------- confrérie */}
       <Pillars id="confrerie" copy={t.confrerie} lang={lang} />
 
-      {/* ----------------------------------------------- mapa y horarios */}
-      <MapSection
-        id="location"
-        eyebrow={t.location.eyebrow}
-        title={t.location.title}
-        intro={t.location.intro}
-        query={CONTACT.mapQuery}
-        address={CONTACT.address}
-        phone={CONTACT.phone}
-        hours={hours}
+      {/* ------------------------------------- contacto, mapa y horarios */}
+      <Contact
+        lang={lang}
+        heading={<SignHeading eyebrow={t.location.eyebrow} title={t.location.title} intro={t.location.intro} />}
       />
-      <div className="demo-container chope-catering">
-        <span>{t.location.cateringLabel}</span>
-        <a href={`tel:${CONTACT.cateringPhone.replace(/[^\d]/g, '')}`}>{CONTACT.cateringPhone}</a>
-        <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
-        <a href={CONTACT.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
-      </div>
 
       {/* ------------------------------------------------------ CTA final */}
       <section className="demo-section chope-final">

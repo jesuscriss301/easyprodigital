@@ -1,4 +1,4 @@
-import { photo, menuPage, menuPdf } from './assets.js'
+import { galleryPhoto, menuPage, menuPdf } from './assets.js'
 
 /* ------------------------------------------------------------------ */
 /* Menús — el PDF sigue siendo la fuente de verdad                      */
@@ -95,20 +95,20 @@ export const ENGLISH_MENU_PDF = menuPdf('Menu_english.pdf')
 /* ------------------------------------------------------------------ */
 
 export const PHOTOS = [
-  { src: photo('0-78-Assiette_Gros_Verrat%28Ragout_Sanglier%29.jpg', { w: 1000 }), fr: 'Le gros verrat', en: 'The big boar' },
-  { src: photo('0-132-Bar_Angle2.jpg', { w: 1000 }), fr: 'La grande salle', en: 'The great hall' },
-  { src: photo('0-77-Tonneaux.jpg', { w: 1000 }), fr: 'Les tonneaux', en: 'The barrels' },
-  { src: photo('0-45-Capitaine_Fabio_2017.jpg', { w: 1000 }), fr: 'Les ménestrels', en: 'The minstrels' },
-  { src: photo('0-39-festin_royal.jpg', { w: 1000 }), fr: 'Le festin royal', en: 'The royal feast' },
-  { src: photo('0-39-HallEntr%C3%A9e.jpg', { w: 1000 }), fr: 'Le hall d’entrée', en: 'The entrance hall' },
-  { src: photo('0-34-034.JPG', { w: 1000 }), fr: 'Ripailles et bombances', en: 'Feasting and merriment' },
-  { src: photo('0-183-013.JPG', { w: 1000 }), fr: 'La tablée', en: 'The long table' },
-  { src: photo('0-94-CTV_Gros_Verrat_1.JPG', { w: 1000 }), fr: 'À pleines mains', en: 'By the handful' },
-  { src: photo('0-106-Bar_Angle2_petit.jpg', { w: 1000 }), fr: 'Le bar', en: 'The bar' },
-]
+  { f: '689_459_88a609dd7b6f48199397ad1c45482889.jpg', fr: 'La platée du gros verrat', en: 'The big boar platter' },
+  { f: '689_459_29f2bab6a606434e944d652b4614f690.jpg', fr: 'Le hall d’entrée', en: 'The entrance hall' },
+  { f: '689_458_a777273ba4584dcc9ca22521e1484d09.jpg', fr: 'Les tonneaux', en: 'The barrels' },
+  { f: '329_494_b3929f85649043bd970a92e20da8168a.jpg', fr: 'Les ménestrels', en: 'The minstrels' },
+  { f: '658_494_3bcfabf0b83344989a7fcbf0aeaa953b.jpg', fr: 'Une montagne de viande', en: 'A mountain of meat' },
+  { f: '658_494_2eddd1d1a3ec40cbb4b641da6cf14136.jpg', fr: 'Ripailles entre habitués', en: 'Feasting with the regulars' },
+  { f: '689_459_3ec83c66b7e148da8bf3de3cc4f8e484.jpg', fr: 'La grande salle', en: 'The great hall' },
+  { f: '689_459_e8e22fcef5e14631a54edf5a02350764.jpg', fr: 'Le gobelin de la maison', en: 'The house goblin' },
+  { f: '658_494_cf43313cb0794014a73569a89bf59001.jpg', fr: 'La salle des banquets', en: 'The banquet hall' },
+  { f: '658_494_eb9bfe721e3644c486cb992b92785a86.jpg', fr: 'Derrière le bar', en: 'Behind the bar' },
+].map((p) => ({ ...p, src: galleryPhoto(p.f, { w: 1100 }) }))
 
-export const HERO_IMAGE = photo('0-132-Bar_Angle2.jpg', { w: 1600 })
-export const SCROLL_IMAGE = photo('0-34-034.JPG', { w: 1800 })
+export const HERO_IMAGE = galleryPhoto('689_459_3ec83c66b7e148da8bf3de3cc4f8e484.jpg', { w: 1600 })
+export const SCROLL_IMAGE = galleryPhoto('658_494_2eddd1d1a3ec40cbb4b641da6cf14136.jpg', { w: 1500 })
 
 /* ------------------------------------------------------------------ */
 /* Horarios — en texto real, tomados del letrero del sitio actual        */
@@ -129,6 +129,7 @@ export const CONTACT = {
   phone: '418-527-2777',
   cateringPhone: '418-906-0805',
   email: 'info@lachopegobeline.com',
+  bookingEmail: 'lachopegobeline@gmail.com',
   address: '966 Boul. René-Lévesque Ouest, Québec, QC G1S 1T9',
   mapQuery: 'La Chope Gobeline, 966 Boul. René-Lévesque Ouest, Québec',
   facebook: 'https://www.facebook.com/La-chope-gobeline-181828588508827/',

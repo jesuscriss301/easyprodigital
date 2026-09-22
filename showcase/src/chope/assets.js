@@ -16,6 +16,7 @@
 
 const ORIGIN = 'www.lachopegobeline.com'
 const PROXY = 'https://images.weserv.nl/'
+const COLL = 'e0ac7b7b10c2420480aaeab30819949f' // carpeta de la colección del carrusel
 
 /** Foto del sitio original, servida por HTTPS y convertida a WebP. */
 export function photo(file, { w = 1200, h, fit = 'cover' } = {}) {
@@ -43,4 +44,29 @@ export function menuPage(file, page = 0, w = 1400) {
 /** El PDF original, para el botón de descarga. */
 export const menuPdf = (file) => `http://${ORIGIN}/wa_files/${file}`
 
-export const LOGO = photo('0-138-EnseigneHard.png', { w: 420 })
+/**
+ * Foto de la galería real (photos.html). Las del banner que se ven en la
+ * portada son miniaturas de 78–124 px de ancho: sirven para el mosaico del
+ * encabezado y para nada más. Las de verdad viven en la colección del
+ * carrusel, a ~690 px, y son estas.
+ */
+export function galleryPhoto(file, { w = 1200 } = {}) {
+  const p = new URLSearchParams({
+    url: `${ORIGIN}/wafx_res/imgcoll/${COLL}/${file}`,
+    output: 'webp',
+    q: '84',
+    w: String(w),
+  })
+  return `${PROXY}?${p}`
+}
+
+/** Cualquier imagen del sitio por ruta completa (PNG con transparencia). */
+export function asset(path, { w = 400 } = {}) {
+  const p = new URLSearchParams({ url: `${ORIGIN}/${path}`, output: 'png', w: String(w) })
+  return `${PROXY}?${p}`
+}
+
+export const LOGO = photo('0-240-EnseigneHard.png', { w: 420 })
+
+/** El duende de la fourchette, dibujado a mano por la propia Chope. */
+export const GOBLIN_FORK = asset('wafx_res/Images/0-200-Varia%20-%20Gobelin%20fourchette.gif', { w: 420 })
