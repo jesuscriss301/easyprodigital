@@ -288,9 +288,28 @@ export default function ChopePage({ styleSlug = 'nuit' }) {
         <span className="dot" /> <span className="demo-badge-label">{t.badge}</span>
       </a>
 
+      {/* SwarmCursor (React Bits): las gotas se fusionan entre sí y con su
+          propia estela, así que lo que sigue al cursor es una cinta viva de
+          oro fundido, no una nube de puntos. Parámetros del demo oficial,
+          con los colores de la paleta activa. */}
       {swarm && (
         <Suspense fallback={null}>
-          <LazySwarmCursor color={style.theme.accent} hotColor="#fff3cf" />
+          <LazySwarmCursor
+            className="chope-swarm"
+            color={style.theme.swarm.color}
+            accentColor={style.theme.swarm.accent}
+            count={8}
+            size={5}
+            merge={0.77}
+            glow={0.75}
+            opacity={1}
+            spread={100}
+            separation={0.15}
+            speed={2.5}
+            wander={0.25}
+            trail={0.75}
+            scatterOnClick
+          />
         </Suspense>
       )}
     </div>
