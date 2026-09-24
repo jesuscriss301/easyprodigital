@@ -54,10 +54,34 @@
   pointer-events: none;
 }
 .bgr-hero .demo-container { position: relative; z-index: 2; }
-.bgr-hero-copy { max-width: 46rem; }
+/* La tinta anima brillos casi blancos que se comen cualquier texto claro
+   encima (contraste luz-sobre-luz). Un velo direccional no basta porque el
+   remolino se mueve; en vez de perseguirlo, el texto vive en un panel de
+   vidrio esmerilado — opaco de sobra para leerse a primera vista pase lo
+   que pase detrás, y sigue dejando ver la tinta animada alrededor. */
+.bgr-hero-copy {
+  max-width: 46rem;
+  position: relative;
+  padding: 2.1rem 2.4rem;
+  border-radius: 22px;
+  background: linear-gradient(155deg, color-mix(in srgb, var(--demo-bg) 82%, black) 0%, color-mix(in srgb, var(--demo-bg) 68%, black) 100%);
+  backdrop-filter: blur(14px) saturate(1.15);
+  -webkit-backdrop-filter: blur(14px) saturate(1.15);
+  border: 1px solid color-mix(in srgb, #fff 10%, transparent);
+  box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.65);
+}
 .bgr-hero-copy .demo-eyebrow { color: #b9f5d0; }
 .bgr-hero-copy h1 { text-shadow: 0 2px 20px rgba(0,0,0,0.55); }
 .bgr-hero-copy p { text-shadow: 0 1px 12px rgba(0,0,0,0.5); }
+@media (max-width: 640px) {
+  .bgr-hero-copy { padding: 1.6rem 1.5rem; border-radius: 18px; }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  /* sin backdrop-filter, sube la opacidad del panel para no depender del blur */
+  .bgr-hero-copy {
+    background: linear-gradient(155deg, color-mix(in srgb, var(--demo-bg) 94%, black) 0%, color-mix(in srgb, var(--demo-bg) 86%, black) 100%);
+  }
+}
 .bgr-hero-copy h1 {
   font-family: var(--demo-font-heading);
   font-size: clamp(2.1rem, 5.4vw, 3.9rem);

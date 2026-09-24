@@ -23,7 +23,7 @@ export function png(file, { w = 400 } = {}) {
   return `${PROXY}?${p}`
 }
 
-export const LOGO = png('img/icon.png', { w: 240 })
+export const LOGO = png('img/logo.png', { w: 240 })
 export const STORE = img('img/bgr_store.png', { w: 1200 })
 // Solo la mitad derecha de cada banner: la fotografía real del producto,
 // dejando fuera el texto y el botón "Plus d'info" del sitio antiguo.
