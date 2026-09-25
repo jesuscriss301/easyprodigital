@@ -194,7 +194,7 @@ export const COPY = {
     hero: {
       eyebrow: 'BAR DE PING PONG · MONTRÉAL · ST-LAURENT × BERNARD',
       title: 'Cocktails, bières en fût et une table qui vous attend',
-      text: 'Le Ping Pong Club, c’est un bar de jeu au cœur du Plateau : cocktails maison, bières en fût, 5 à 8 tous les jours d’ouverture, et des tables prêtes pour votre bande.',
+      text: 'Le Ping Pong Club, c’est un bar au cœur du Plateau : cocktails maison, bières en fût, et un 5 à 8 tous les jours d’ouverture.',
       primary: { label: 'Voir le menu', href: '#menu' },
       secondary: { label: 'Réserver un groupe', href: '#groupe' },
       trust: [
@@ -261,7 +261,7 @@ export const COPY = {
     hero: {
       eyebrow: 'PING PONG BAR · MONTRÉAL · ST-LAURENT × BERNARD',
       title: 'Cocktails, draft beer, and a table waiting for you',
-      text: 'Ping Pong Club is a games bar in the heart of the Plateau: house cocktails, draft beer, happy hour every night we’re open, and tables ready for your crew.',
+      text: 'Ping Pong Club is a bar in the heart of the Plateau: house cocktails, draft beer, and happy hour every night we’re open.',
       primary: { label: 'See the menu', href: '#menu' },
       secondary: { label: 'Book a group', href: '#groupe' },
       trust: [

@@ -46,11 +46,11 @@ export default function PingPongPage() {
     <div className="demo-root ppc-root" style={themeVars(THEME)}>
       <Seo
         title={lang === 'fr'
-          ? 'Ping Pong Club — maquette de site pour bar de jeu | Easy Pro Digital'
-          : 'Ping Pong Club — games bar website mockup | Easy Pro Digital'}
+          ? 'Ping Pong Club — maquette de site pour bar | Easy Pro Digital'
+          : 'Ping Pong Club — bar website mockup | Easy Pro Digital'}
         description={lang === 'fr'
-          ? 'Proposition de refonte du site du Ping Pong Club, bar de jeu à Montréal : menu complet, réservations de groupe et corporatif, contact. Maquette Easy Pro Digital.'
-          : 'A proposed redesign for Ping Pong Club, a games bar in Montréal: full menu, group and corporate bookings, contact. Mockup by Easy Pro Digital.'}
+          ? 'Proposition de refonte du site du Ping Pong Club, bar à Montréal : menu complet, réservations de groupe et corporatif, contact. Maquette Easy Pro Digital.'
+          : 'A proposed redesign for Ping Pong Club, a bar in Montréal: full menu, group and corporate bookings, contact. Mockup by Easy Pro Digital.'}
         path="/ping-pong-club/"
         robots="noindex, nofollow"
       />
