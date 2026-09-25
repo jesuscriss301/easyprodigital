@@ -449,6 +449,31 @@ export function Copy(props) {
     </svg>
   )
 }
+export function Instagram(props) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+export function Calendar(props) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="3" y="5" width="18" height="16" rx="2" />
+      <path d="M3 10h18M8 3v4M16 3v4" />
+    </svg>
+  )
+}
+export function Download(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 3v12M7 10l5 5 5-5" />
+      <path d="M4 19h16" />
+    </svg>
+  )
+}
 
 export const ICONS = {
   scissors: Scissors,
@@ -497,6 +522,9 @@ export const ICONS = {
   ruler: Ruler,
   frame: Frame,
   copy: Copy,
+  instagram: Instagram,
+  calendar: Calendar,
+  download: Download,
 }
 
 export function Icon({ name, ...props }) {

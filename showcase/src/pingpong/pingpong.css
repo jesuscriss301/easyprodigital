@@ -1,0 +1,202 @@
+/* ==================================================================
+   Ping Pong Club — bar de juegos, Montréal. Estilos propios (fuera de
+   styles.css) para no contaminar el resto del showcase. Reutiliza las
+   clases base .demo-* y añade lo del bar: naranja real, textura de mesa,
+   pelotas rebotando, cursor con paleta.
+   ================================================================== */
+
+.ppc-root {
+  background: var(--demo-bg);
+  color: var(--demo-ink);
+  position: relative;
+  overflow-x: clip;
+  font-family: var(--demo-font-body);
+  cursor: none; /* reemplazado por la paleta cuando hay mouse fino */
+}
+@media (hover: none), (pointer: coarse) {
+  .ppc-root { cursor: auto; }
+}
+
+.ppc-nav { background: color-mix(in srgb, var(--demo-bg) 92%, #000); border-bottom: 1px solid var(--demo-line); }
+.ppc-brand { display: inline-flex; align-items: center; }
+.ppc-brand img { height: 48px; width: auto; object-fit: contain; }
+
+/* ------------------------------------------------------------ cursor */
+.ppc-paddle-cursor {
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 80;
+  pointer-events: none;
+  transition: transform 0.05s linear;
+  will-change: transform;
+}
+.ppc-paddle-cursor svg { display: block; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4)); }
+.ppc-paddle-cursor.is-swinging { animation: ppc-swing 0.22s ease; }
+@keyframes ppc-swing {
+  0% { rotate: -35deg; }
+  40% { rotate: 10deg; }
+  100% { rotate: -35deg; }
+}
+
+/* ------------------------------------------------------------- hero */
+.ppc-hero { position: relative; overflow: hidden; min-height: 82vh; display: flex; align-items: center; }
+.ppc-hero-bg { position: absolute; inset: 0; z-index: 0; }
+.ppc-balls-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ppc-hero-bg-static {
+  position: absolute; inset: 0;
+  background: radial-gradient(80% 70% at 50% 0%, color-mix(in srgb, var(--demo-primary) 22%, transparent), transparent 70%);
+}
+.ppc-hero::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 1;
+  background: radial-gradient(120% 90% at 50% 100%, transparent 0%, var(--demo-bg) 78%);
+  pointer-events: none;
+}
+/* Especificidad extra a propósito: styles.css trae `.demo-hero > .demo-container
+   { z-index: 1 }` con la misma especificidad que un simple `.ppc-hero
+   .demo-container`, y según el orden de import esa regla global puede ganar
+   el empate — empatando con el z-index del ::after de arriba. En un empate,
+   el contenido generado (::after) pinta después de los hijos reales y tapa
+   el texto del hero. Este selector de tres clases gana siempre, sin depender
+   del orden de las hojas de estilo. */
+.ppc-root .ppc-hero .demo-container { position: relative; z-index: 3; }
+.ppc-hero-copy { max-width: 44rem; margin: 0 auto; text-align: center; }
+.ppc-hero-copy .demo-eyebrow { color: var(--demo-accent); letter-spacing: 0.14em; }
+.ppc-hero-copy h1 {
+  font-family: var(--demo-font-heading);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5.6vw, 4rem);
+  line-height: 1.05; letter-spacing: -0.01em;
+  margin: 0.7rem 0 1.1rem; text-wrap: balance;
+}
+.ppc-hero-copy p { font-size: clamp(1rem, 1.5vw, 1.15rem); color: var(--demo-muted); max-width: 46ch; margin: 0 auto 2rem; }
+.ppc-hero-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 2.4rem; }
+.ppc-hero-trust { display: flex; gap: clamp(1.4rem, 4vw, 3rem); flex-wrap: wrap; justify-content: center; font-size: 14px; color: var(--demo-muted); }
+.ppc-hero-trust strong { color: var(--demo-ink); font-family: var(--demo-font-heading); font-size: 22px; display: block; }
+
+/* --------------------------------------------------- textura de mesa */
+/* Líneas de mesa reglamentaria (borde + línea central), muy tenues, como
+   decoración de fondo detrás de secciones — no reclama ser una foto real. */
+.ppc-table-texture {
+  position: relative;
+}
+.ppc-table-texture::before {
+  content: '';
+  position: absolute; inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image:
+    linear-gradient(var(--demo-accent) 2px, transparent 2px),
+    linear-gradient(90deg, var(--demo-accent) 2px, transparent 2px);
+  background-size: 100% 50%, 12.5% 100%;
+  background-position: center;
+}
+.ppc-table-texture > * { position: relative; z-index: 1; }
+
+/* -------------------------------------------------------------- menu */
+.ppc-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1rem, 2vw, 1.6rem);
+}
+.ppc-menu-card {
+  background: var(--demo-surface);
+  border: 1px solid var(--demo-line);
+  border-radius: 14px;
+  padding: 1.4rem 1.5rem;
+}
+.ppc-menu-card h3 {
+  font-family: var(--demo-font-heading);
+  color: var(--demo-primary);
+  font-size: 1.1rem;
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--demo-line);
+}
+.ppc-menu-item { display: flex; justify-content: space-between; gap: 1rem; padding: 0.45rem 0; }
+.ppc-menu-item + .ppc-menu-item { border-top: 1px dashed color-mix(in srgb, var(--demo-line) 80%, transparent); }
+.ppc-menu-item-name { font-weight: 600; }
+.ppc-menu-item-note { display: block; font-size: 0.8rem; color: var(--demo-muted); font-weight: 400; margin-top: 2px; }
+.ppc-menu-item-price { color: var(--demo-accent); font-weight: 700; white-space: nowrap; font-size: 0.85rem; text-align: right; }
+.ppc-menu-pdf {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  margin-top: 1.6rem;
+  color: var(--demo-ink);
+  border: 1px solid var(--demo-line);
+  border-radius: 999px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.ppc-menu-pdf:hover { border-color: var(--demo-primary); color: var(--demo-primary); }
+
+/* ---------------------------------------------------------- groupe */
+.ppc-groupe { }
+.ppc-groupe-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(1.6rem, 4vw, 3rem); align-items: start; }
+.ppc-groupe-features { list-style: none; margin: 1.4rem 0; padding: 0; display: grid; gap: 0.6rem; }
+.ppc-groupe-features li { display: flex; align-items: center; gap: 0.6rem; color: var(--demo-ink); }
+.ppc-groupe-features li svg { color: var(--demo-accent); flex-shrink: 0; }
+.ppc-groupe-card {
+  background: var(--demo-surface);
+  border: 1px solid var(--demo-line);
+  border-radius: 16px;
+  padding: 1.8rem;
+  text-align: center;
+}
+.ppc-groupe-card .ppc-capacity { font-family: var(--demo-font-heading); font-size: 2.4rem; color: var(--demo-primary); }
+.ppc-groupe-card .ppc-capacity-label { color: var(--demo-muted); margin-bottom: 1.2rem; }
+@media (max-width: 900px) {
+  .ppc-groupe-grid { grid-template-columns: 1fr; }
+}
+
+/* --------------------------------------------------------- contact */
+.ppc-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+}
+.ppc-contact-card {
+  background: var(--demo-surface);
+  border: 1px solid var(--demo-line);
+  border-radius: 14px;
+  padding: 1.3rem 1.4rem;
+  display: flex; gap: 0.9rem; align-items: flex-start;
+}
+.ppc-contact-card svg { color: var(--demo-primary); flex-shrink: 0; margin-top: 2px; }
+/* min-width: 0 en el hijo flex: sin esto un valor largo sin espacios (el
+   handle de Facebook en mayúsculas) no se envuelve y se sale de la tarjeta. */
+.ppc-contact-card > div { min-width: 0; }
+.ppc-contact-card .ppc-contact-label { font-size: 0.8rem; color: var(--demo-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.ppc-contact-card .ppc-contact-value { font-weight: 600; color: var(--demo-ink); display: inline-block; max-width: 100%; overflow-wrap: anywhere; }
+.ppc-contact-card a.ppc-contact-value:hover { color: var(--demo-primary); }
+.ppc-open-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--demo-line) 60%, transparent);
+  color: var(--demo-ink);
+}
+.ppc-open-badge .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.ppc-map { border-radius: 14px; overflow: hidden; border: 1px solid var(--demo-line); margin-top: 1.4rem; }
+.ppc-map iframe { width: 100%; height: 280px; border: 0; display: block; filter: grayscale(0.3) invert(0.92) contrast(0.9); }
+
+/* ------------------------------------------------------- final cta */
+.ppc-final-cta {
+  text-align: center;
+  background: linear-gradient(155deg, var(--demo-primary) 0%, var(--demo-primary-dark) 100%);
+  border-radius: 24px;
+  padding: clamp(2.4rem, 6vw, 4rem) clamp(1.4rem, 5vw, 3rem);
+  color: #1a0f09;
+}
+.ppc-final-cta h2 { font-family: var(--demo-font-heading); font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 0.8rem; }
+.ppc-final-cta p { max-width: 46ch; margin: 0 auto 1.6rem; opacity: 0.85; }
+.ppc-final-cta .demo-btn-light { background: #1a0f09; color: var(--demo-ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ppc-root { cursor: auto; }
+  .ppc-paddle-cursor { display: none; }
+}

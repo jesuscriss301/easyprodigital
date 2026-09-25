@@ -4,6 +4,7 @@ import DemoPage from './pages/DemoPage.jsx'
 import NotFound from './pages/NotFound.jsx'
 import ChopePage from './pages/ChopePage.jsx'
 import CopieBgrPage from './pages/CopieBgrPage.jsx'
+import PingPongPage from './pages/PingPongPage.jsx'
 import { getDemoBySlug } from './demos/index.js'
 import { LanguageProvider, useLanguage } from './i18n.jsx'
 import { getLocalizedDemo } from './demos/i18n/es/index.js'
@@ -43,6 +44,9 @@ export default function App() {
           {/* Maquette de prospecto (imprenta Copie BGR): página propia, bilingüe
               FR/EN, fuera del registro de demos y sin indexar. */}
           <Route path="copie-bgr" element={<CopieBgrPage />} />
+          {/* Maquette de prospecto (bar Ping Pong Club, Montréal): página propia,
+              bilingüe FR/EN, fuera del registro de demos y sin indexar. */}
+          <Route path="ping-pong-club" element={<PingPongPage />} />
           <Route path=":slug" element={<DemoRoute />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
