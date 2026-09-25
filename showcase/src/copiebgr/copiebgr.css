@@ -215,7 +215,6 @@ a.bgr-way:hover { border-color: var(--demo-primary); transform: translateX(3px);
 /* --------------------------------------------------------- responsive */
 @media (max-width: 900px) {
   .bgr-showcase, .bgr-about-inner, .bgr-contact-grid { grid-template-columns: 1fr; }
-  /*.bgr-hero::after { background: linear-gradient(180deg, color-mix(in srgb, var(--demo-bg) 78%, transparent) 0%, color-mix(in srgb, var(--demo-bg) 90%, transparent) 100%); }*/
 }
 @media (max-width: 560px) {
   .bgr-produit-list { grid-template-columns: 1fr; }
