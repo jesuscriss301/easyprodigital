@@ -328,6 +328,238 @@ export function Services() {
   )
 }
 
+/* ============ Pricing ============ */
+function formatPrice(n) {
+  // 1.500 → "1,500" (comma-thousand for USD readability)
+  return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
+
+function PriceRange({ from, to, currency = 'USD' }) {
+  if (from == null && to == null) return null
+  const symbol = currency === 'USD' ? '$' : ''
+  const suffix = currency === 'USD' ? ' USD' : ` ${currency}`
+  if (from != null && to != null && from !== to) {
+    return (
+      <span className="pricing-amount">
+        {symbol}{formatPrice(from)}<span className="pricing-sep">–</span>{symbol}{formatPrice(to)}
+        <span className="pricing-currency">{suffix}</span>
+      </span>
+    )
+  }
+  const single = from ?? to
+  return (
+    <span className="pricing-amount">
+      {symbol}{formatPrice(single)}<span className="pricing-currency">{suffix}</span>
+    </span>
+  )
+}
+
+function CategoryIcon({ name }) {
+  const common = { width: 22, height: 22, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.75, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true }
+  if (name === 'store') {
+    return (
+      <svg {...common}>
+        <path d="M3 9l1.5-4h15L21 9" />
+        <path d="M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9" />
+        <path d="M9 20v-6h6v6" />
+        <path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0" />
+      </svg>
+    )
+  }
+  if (name === 'gear') {
+    return (
+      <svg {...common}>
+        <circle cx="12" cy="12" r="3" />
+        <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9c.36.16.68.4.92.71" />
+      </svg>
+    )
+  }
+  return (
+    <svg {...common}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+    </svg>
+  )
+}
+
+function PricingCard({ item, labels, href }) {
+  const isRecurring = item.setupFrom != null || item.monthlyFrom != null
+  return (
+    <div className={`pricing-card${item.featured ? ' pricing-card--featured' : ''}`}>
+      {item.featured && (
+        <span className="pricing-badge">{labels.popular}</span>
+      )}
+      <div className="pricing-card-head">
+        <h3 className="pricing-card-name">{item.name}</h3>
+        <p className="pricing-card-tagline">{item.tagline}</p>
+      </div>
+
+      <div className="pricing-price-block">
+        {isRecurring ? (
+          <>
+            {item.setupFrom != null && (
+              <div className="pricing-price-row">
+                <span className="pricing-price-label">{labels.setup}</span>
+                <PriceRange from={item.setupFrom} to={item.setupTo} currency={item.currency} />
+              </div>
+            )}
+            {item.monthlyFrom != null && (
+              <div className="pricing-price-row">
+                <span className="pricing-price-label">{labels.from}</span>
+                <span className="pricing-monthly">
+                  <PriceRange from={item.monthlyFrom} to={item.monthlyTo} currency={item.currency} />
+                  <span className="pricing-per">{labels.monthly}</span>
+                </span>
+              </div>
+            )}
+          </>
+        ) : (
+          <div className="pricing-price-row">
+            <span className="pricing-price-label">{labels.from}</span>
+            <PriceRange from={item.priceFrom} to={item.priceTo} currency={item.currency} />
+          </div>
+        )}
+      </div>
+
+      {item.delivery && (
+        <p className="pricing-delivery">
+          <span className="pricing-delivery-label">{labels.delivery}:</span> {item.delivery}
+        </p>
+      )}
+
+      <p className="pricing-includes-label">{labels.includes}</p>
+      <ul className="pricing-features">
+        {item.features.map((f) => (
+          <li key={f}>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            <span>{f}</span>
+          </li>
+        ))}
+      </ul>
+
+      <Link
+        className={`btn ${item.featured ? 'btn-primary' : 'btn-ghost'} pricing-cta`}
+        to={`${href('/contact/')}?service=${encodeURIComponent(item.id)}`}
+      >
+        {labels.quote}
+      </Link>
+    </div>
+  )
+}
+
+function RecurringPlanTable({ block, labels, t }) {
+  const title = block.titleKey ? labels[block.titleKey] : block.title
+  return (
+    <div className="pricing-recurring">
+      <h3 className="pricing-recurring-title">{title}</h3>
+      <div className="pricing-recurring-grid">
+        {block.plans.map((plan) => (
+          <div key={plan.name} className="pricing-plan">
+            <p className="pricing-plan-name">{plan.name}</p>
+            <p className="pricing-plan-price">
+              <PriceRange from={plan.price} currency={plan.currency} />
+              <span className="pricing-per">{labels.monthly}</span>
+            </p>
+            <ul className="pricing-plan-features">
+              {plan.features.map((f) => (
+                <li key={f}>{f}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export function Pricing() {
+  const { href, data, t } = useLanguage()
+  const { pricing, site, profile, services } = data
+  const { labels } = pricing
+
+  return (
+    <>
+      <Seo
+        title={t.pricingMeta.seoTitle}
+        description={t.pricingMeta.seoDescription}
+        path="/pricing/"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'PriceSpecification',
+          name: pricing.title,
+          url: site.domain + '/pricing/',
+          priceCurrency: 'USD',
+          provider: { '@type': 'Person', name: profile.name },
+        }}
+      />
+      <div className="page-head container">
+        <p className="eyebrow">{pricing.eyebrow}</p>
+        <h1 className="section-title">{pricing.title}</h1>
+        <p className="page-intro">{pricing.intro}</p>
+        <nav className="pricing-nav" aria-label={pricing.eyebrow}>
+          {pricing.categories.map((c) => (
+            <a key={c.id} className="pricing-nav-pill" href={`#${c.id}`}>
+              <CategoryIcon name={c.icon} />
+              <span>{c.label}</span>
+            </a>
+          ))}
+        </nav>
+        <p className="pricing-currency-note">{pricing.currencyNote}</p>
+      </div>
+
+      {pricing.categories.map((category, i) => (
+        <section key={category.id} id={category.id} className={i === 0 ? 'first-section pricing-section' : 'pricing-section'}>
+          <div className="container">
+            <div className="pricing-category-head">
+              <span className="pricing-category-icon" aria-hidden="true">
+                <CategoryIcon name={category.icon} />
+              </span>
+              <div>
+                <p className="eyebrow">{pricing.tabs[category.tab]}</p>
+                <h2 className="section-title pricing-category-title">{category.label}</h2>
+                {category.note && <p className="pricing-category-note">{category.note}</p>}
+              </div>
+            </div>
+
+            <Reveal as="div" className="pricing-grid">
+              {category.items.map((item) => (
+                <PricingCard key={item.id} item={item} labels={labels} href={href} />
+              ))}
+            </Reveal>
+
+            {category.recurring && (
+              <RecurringPlanTable block={category.recurring} labels={labels} t={t} />
+            )}
+          </div>
+        </section>
+      ))}
+
+      <section className="home-cta">
+        <div className="home-cta-bg">
+          <LetterGlitch
+            glitchColors={['#12406b', '#117ead', '#3ab1e8', '#c6f135']}
+            glitchSpeed={110}
+            centerVignette
+            outerVignette
+            smooth={false}
+            fontSize={26}
+            charWidth={20}
+            charHeight={34}
+          />
+        </div>
+        <div className="container home-cta-content">
+          <p className="eyebrow">{labels.quoteCustom}</p>
+          <h2 className="section-title">{pricing.ctaTitle}</h2>
+          <p className="pricing-cta-copy">{pricing.ctaCopy}</p>
+          <Link className="btn btn-primary" to={href('/contact/')}>{labels.quoteCustomCta}</Link>
+        </div>
+      </section>
+    </>
+  )
+}
+
 /* ============ Portfolio ============ */
 export function Portfolio() {
   const { data, t } = useLanguage()

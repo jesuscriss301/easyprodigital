@@ -7,6 +7,7 @@
 export const en = {
   nav: {
     services: 'Services',
+    pricing: 'Pricing',
     portfolio: 'Portfolio',
     demos: 'Demos',
     faq: 'FAQ',
@@ -15,6 +16,7 @@ export const en = {
   },
   footer: {
     services: 'Services',
+    pricing: 'Pricing',
     portfolio: 'Portfolio',
     demos: 'Demos',
     faq: 'FAQ',
@@ -24,6 +26,11 @@ export const en = {
     privacy: 'Privacy',
     terms: 'Terms',
     cookies: 'Cookies',
+  },
+  pricingMeta: {
+    seoTitle: 'Pricing — Web, Store, Chatbots, SEO & AI | Easy Pro Digital',
+    seoDescription:
+      'Public price ranges for websites, Bagisto online stores, WhatsApp AI chatbots, booking systems, SEO content and custom AI integrations. Fixed scope, fixed price.',
   },
   statusbar: {
     available: 'Available for projects',
@@ -312,6 +319,7 @@ export const en = {
 export const es = {
   nav: {
     services: 'Servicios',
+    pricing: 'Precios',
     portfolio: 'Portafolio',
     demos: 'Demos',
     faq: 'Preguntas',
@@ -320,6 +328,7 @@ export const es = {
   },
   footer: {
     services: 'Servicios',
+    pricing: 'Precios',
     portfolio: 'Portafolio',
     demos: 'Demos',
     faq: 'Preguntas',
@@ -329,6 +338,11 @@ export const es = {
     privacy: 'Privacidad',
     terms: 'Términos',
     cookies: 'Cookies',
+  },
+  pricingMeta: {
+    seoTitle: 'Precios — Web, Tienda, Chatbots, SEO e IA | Easy Pro Digital',
+    seoDescription:
+      'Rangos de precio públicos para sitios web, tiendas Bagisto, chatbots WhatsApp con IA, sistemas de reservas, contenido SEO e integraciones de IA a medida. Alcance y precio cerrados.',
   },
   statusbar: {
     available: 'Disponible para proyectos',

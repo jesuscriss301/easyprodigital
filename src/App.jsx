@@ -4,6 +4,7 @@ import { Header, Footer, StatusBar, ScrollToTop, WhatsAppFloat } from './compone
 import {
   Home,
   Services,
+  Pricing,
   Portfolio,
   About,
   Contact,
@@ -40,6 +41,7 @@ function RouteChildren() {
     <>
       <Route index element={<Home />} />
       <Route path="services" element={<Services />} />
+      <Route path="pricing" element={<Pricing />} />
       <Route path="portfolio" element={<Portfolio />} />
       <Route path="blog" element={<Blog />} />
       <Route path="about" element={<About />} />
