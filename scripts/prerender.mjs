@@ -27,6 +27,7 @@ const distDir = join(root, 'dist')
 const ROUTE_PATHS = [
   '',
   'services',
+  'pricing',
   'portfolio',
   'blog',
   'about',

@@ -124,6 +124,7 @@ export function Header() {
         <div className="header-right">
           <nav className={`nav${open ? ' open' : ''}`} aria-label="Main">
             <NavLink to={href('/services/')}>{t.nav.services}</NavLink>
+            <NavLink to={href('/pricing/')}>{t.nav.pricing}</NavLink>
             <NavLink to={href('/portfolio/')}>{t.nav.portfolio}</NavLink>
             <a href="https://demos.easyprodigital.com" target="_blank" rel="noopener noreferrer">
               {t.nav.demos}
@@ -261,6 +262,7 @@ export function Footer() {
         </div>
         <nav className="footer-nav" aria-label="Footer">
           <Link to={href('/services/')}>{t.footer.services}</Link>
+          <Link to={href('/pricing/')}>{t.footer.pricing}</Link>
           <Link to={href('/portfolio/')}>{t.footer.portfolio}</Link>
           <a href="https://demos.easyprodigital.com" target="_blank" rel="noopener noreferrer">
             {t.footer.demos}
