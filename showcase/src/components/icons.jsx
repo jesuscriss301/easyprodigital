@@ -475,8 +475,75 @@ export function Download(props) {
   )
 }
 
+export function Tooth(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 3c-2.4 0-3.6 1.3-5 1.3C4.8 4.3 3 6 3 9c0 2.6 1.1 4.2 1.5 6.7.4 2.4.9 5 2.2 5 1.5 0 1.6-3.3 2.4-5.2.4-1 .9-1.4 1.4-1.4h2.9c.5 0 1 .4 1.4 1.4.8 1.9.9 5.2 2.4 5.2 1.3 0 1.8-2.6 2.2-5 .4-2.5 1.5-4.1 1.5-6.7 0-3-1.8-4.7-4-4.7-1.4 0-2.6-1.3-5-1.3Z" />
+    </svg>
+  )
+}
+export function Smile(props) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="12" r="9.3" />
+      <path d="M8 13.5c1 1.6 2.4 2.5 4 2.5s3-.9 4-2.5" />
+      <line x1="8.5" y1="9.3" x2="8.5" y2="9.3" />
+      <line x1="15.5" y1="9.3" x2="15.5" y2="9.3" />
+      <circle cx="8.5" cy="9.3" r="0.9" fill="currentColor" stroke="none" />
+      <circle cx="15.5" cy="9.3" r="0.9" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+export function Scale(props) {
+  return (
+    <svg {...base} {...props}>
+      <line x1="12" y1="3" x2="12" y2="21" />
+      <line x1="5" y1="7" x2="19" y2="7" />
+      <path d="M5 7l-3 6a3.2 3.2 0 0 0 6 0z" />
+      <path d="M19 7l-3 6a3.2 3.2 0 0 0 6 0z" />
+      <path d="M8.5 21h7" />
+    </svg>
+  )
+}
+export function Gavel(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M13.5 3.5l6 6M11 6l6 6M7.3 9.7l1.8-1.8 6 6-1.8 1.8z" />
+      <line x1="10.2" y1="13.4" x2="3" y2="20.6" />
+      <line x1="2" y1="21.5" x2="5" y2="21.5" />
+    </svg>
+  )
+}
+export function Briefcase(props) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="3" y="7.5" width="18" height="12" rx="2" />
+      <path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5" />
+      <line x1="3" y1="12.5" x2="21" y2="12.5" />
+      <rect x="10.3" y="11.2" width="3.4" height="2.6" rx="0.6" />
+    </svg>
+  )
+}
+export function FileText(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M7 3h7l4 4v14H7z" />
+      <path d="M14 3v4h4" />
+      <line x1="9.5" y1="12" x2="15.5" y2="12" />
+      <line x1="9.5" y1="15.5" x2="15.5" y2="15.5" />
+      <line x1="9.5" y1="19" x2="13" y2="19" />
+    </svg>
+  )
+}
+
 export const ICONS = {
   scissors: Scissors,
+  tooth: Tooth,
+  smile: Smile,
+  scale: Scale,
+  gavel: Gavel,
+  briefcase: Briefcase,
+  fileText: FileText,
   droplet: Droplet,
   sparkle: Sparkle,
   leaf: Leaf,
