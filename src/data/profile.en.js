@@ -297,11 +297,131 @@ export const projects = [
 // own site could look like.
 export const nicheDemos = [
   {
+    slug: 'realestate',
+    niche: 'Real estate agents & brokers',
+    brand: 'Finca Raíz Showcase',
+    summary:
+      'Listings that load fast on a phone, valuation and viewing requests, and lead capture that reaches your inbox.',
+    url: 'https://demos.easyprodigital.com/realestate',
+  },
+  {
+    slug: 'plumbers',
+    niche: 'Plumbing & home services',
+    brand: 'Emergency Plumbing Showcase',
+    summary:
+      'Built for the 2 AM emergency call: phone number everywhere, service areas, and a quote form that works on mobile.',
+    url: 'https://demos.easyprodigital.com/plumbers',
+  },
+  {
     slug: 'salon-belleza',
     niche: 'Beauty salon & aesthetics',
     brand: 'Bella Aura Studio',
     summary:
       'Booking, priced services, testimonials and a warm aesthetic built for beauty businesses.',
     url: 'https://demos.easyprodigital.com/salon-belleza',
+  },
+  {
+    slug: 'car-wash',
+    niche: 'Car wash & auto detailing',
+    brand: 'Shine Spot Car Wash',
+    summary:
+      'Service menu with prices, booking by slot and a gallery that sells the before and after.',
+    url: 'https://demos.easyprodigital.com/car-wash',
+  },
+  {
+    slug: 'cleaners',
+    niche: 'Residential & office cleaning',
+    brand: 'Bright Home Cleaners',
+    summary:
+      'Recurring plans, coverage areas and an instant quote form built for mobile.',
+    url: 'https://demos.easyprodigital.com/cleaners',
+  },
+  {
+    slug: 'carpenters',
+    niche: 'Custom carpentry & woodworking',
+    brand: 'Oakline Carpentry',
+    summary:
+      'A gallery-first layout: the work is the sales pitch, with commission requests under every piece.',
+    url: 'https://demos.easyprodigital.com/carpenters',
+  },
+  {
+    slug: 'gardeners',
+    niche: 'Landscaping & garden care',
+    brand: 'Evergreen Yard Co.',
+    summary:
+      'Seasonal maintenance plans, a scroll-driven project feature and per-neighbourhood coverage.',
+    url: 'https://demos.easyprodigital.com/gardeners',
+  },
+  {
+    slug: 'masons',
+    niche: 'Masonry & bricklaying',
+    brand: 'Stonecraft Masonry',
+    summary:
+      'Finished projects up front, licensing and insurance in plain sight, quote request on every page.',
+    url: 'https://demos.easyprodigital.com/masons',
+  },
+  {
+    slug: 'construction',
+    niche: 'General contracting & construction',
+    brand: 'Ironclad Builders',
+    summary:
+      'Project stages, credentials and certifications, and a lead form that qualifies budget.',
+    url: 'https://demos.easyprodigital.com/construction',
+  },
+  {
+    slug: 'automechanics',
+    niche: 'Auto mechanics & repair shops',
+    brand: 'Redline Auto Repair',
+    summary:
+      'Priced services, booking, and the trust signals a driver looks for before leaving a car.',
+    url: 'https://demos.easyprodigital.com/automechanics',
+  },
+  {
+    slug: 'electricians',
+    niche: 'Electricians & electrical contractors',
+    brand: 'BrightVolt Electric',
+    summary:
+      'Licence and insurance front and centre, emergency call-out, and service areas.',
+    url: 'https://demos.easyprodigital.com/electricians',
+  },
+  {
+    slug: 'private-chef',
+    niche: 'Private chefs & catering',
+    brand: 'Chef Mateo Serrano',
+    summary:
+      'Menus, event types and an enquiry form built around dates and guest count.',
+    url: 'https://demos.easyprodigital.com/private-chef',
+  },
+  {
+    slug: 'youtuber',
+    niche: 'YouTubers & content creators',
+    brand: 'Nova Vega',
+    summary:
+      'A creator hub: latest videos, sponsorship kit and every platform in one link.',
+    url: 'https://demos.easyprodigital.com/youtuber',
+  },
+  {
+    slug: 'church',
+    niche: 'Churches & faith communities',
+    brand: 'Grace Point Church',
+    summary:
+      'Service times, ministries, events and giving, readable on a phone on Sunday morning.',
+    url: 'https://demos.easyprodigital.com/church',
+  },
+  {
+    slug: 'foundation',
+    niche: 'Foundations & nonprofits',
+    brand: 'Raíces Foundation',
+    summary:
+      'Programmes, impact figures, transparency and a donation path that does not get in the way.',
+    url: 'https://demos.easyprodigital.com/foundation',
+  },
+  {
+    slug: 'adult-creator',
+    niche: 'Adult content creators (18+)',
+    brand: 'Scarlett Vale',
+    summary:
+      'A bio-link hub for creators: subscription tiers, platform links and age gate.',
+    url: 'https://demos.easyprodigital.com/adult-creator',
   },
 ]
