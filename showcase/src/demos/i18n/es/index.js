@@ -20,6 +20,8 @@ import adultCreator from './adultCreator.js'
 import youtuber from './youtuber.js'
 import church from './church.js'
 import foundation from './foundation.js'
+import dentists from './dentists.js'
+import lawyers from './lawyers.js'
 import { mergeLang } from '../../../i18n.jsx'
 
 const esContentByKey = {
@@ -39,6 +41,8 @@ const esContentByKey = {
   youtuber,
   church,
   foundation,
+  dentists,
+  lawyers,
 }
 
 // Devuelve el paquete de contenido en español para un demo dado (usando
