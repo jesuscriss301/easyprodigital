@@ -475,10 +475,27 @@ h1, h2, h3, h4 {
   padding: 64px 40px;
   text-align: center;
 }
-/* Fondo Letter Glitch (React Bits) con los colores del theme de la demo,
-   superpuesto sobre el degradado — opacidad baja para que siga siendo
-   legible y no compita con el texto. */
-.demo-cta-bg { position: absolute; inset: 0; opacity: 0.4; }
+/* Resplandor estático con los colores del theme de la demo, superpuesto
+   sobre el degradado — sin animación. Antes había un efecto Letter Glitch
+   (caracteres revueltos tipo "matrix") pero se veía igual en todas las
+   demos y no encajaba con rubros profesionales/serios. */
+.demo-cta-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 58% 48% at 88% 6%, var(--demo-accent) 0%, transparent 62%),
+    radial-gradient(ellipse 50% 42% at 6% 96%, rgba(255, 255, 255, 0.4) 0%, transparent 58%);
+  opacity: 0.35;
+}
+.demo-cta-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 180px 180px;
+}
 .demo-cta-content { position: relative; z-index: 1; }
 .demo-cta h2 { font-size: clamp(26px, 4vw, 36px); margin-bottom: 14px; }
 .demo-cta p { color: rgba(255,255,255,0.85); max-width: 50ch; margin: 0 auto 30px; }
