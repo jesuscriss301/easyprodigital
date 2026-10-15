@@ -536,9 +536,34 @@ export function FileText(props) {
   )
 }
 
+export function Syringe(props) {
+  return (
+    <svg {...base} {...props}>
+      <line x1="19" y1="5" x2="22" y2="2" />
+      <line x1="2" y1="22" x2="9.5" y2="14.5" />
+      <path d="M17 7l-9.5 9.5-3-3L14 4l3 3z" />
+      <line x1="12.5" y1="6.5" x2="15.5" y2="9.5" />
+      <line x1="10" y1="9" x2="13" y2="12" />
+      <line x1="15" y1="4" x2="17" y2="6" />
+    </svg>
+  )
+}
+
+export function Needle(props) {
+  return (
+    <svg {...base} {...props}>
+      <line x1="4" y1="20" x2="20" y2="4" />
+      <line x1="14" y1="4" x2="20" y2="10" />
+      <circle cx="6" cy="18" r="1.4" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
 export const ICONS = {
   scissors: Scissors,
   tooth: Tooth,
+  syringe: Syringe,
+  needle: Needle,
   smile: Smile,
   scale: Scale,
   gavel: Gavel,
