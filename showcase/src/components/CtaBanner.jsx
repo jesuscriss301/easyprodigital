@@ -1,6 +1,5 @@
 import Reveal from './Reveal.jsx'
 import SplitText from './SplitText.jsx'
-import LetterGlitch from './LetterGlitch.jsx'
 import { prefersReducedMotion } from './motionUtils.js'
 
 // ClickSpark (React Bits, adaptación DOM/CSS sin deps — sin canvas): al
@@ -28,28 +27,16 @@ function spawnSparks(e) {
 }
 
 /** effect: 'spark' (chispas al click en el CTA primario) | 'star' (marco de
- *  puntos rotando lento alrededor del banner) — opt-in por nicho. */
-export default function CtaBanner({ id = 'book', heading, text, actions = [], theme, effect }) {
-  const glitchColors = [theme?.accent, theme?.primary, theme?.primaryDark].filter(Boolean)
-
+ *  puntos rotando lento alrededor del banner) — opt-in por nicho.
+ *  El fondo es un degradado + resplandor estático (sin animación): se quitó
+ *  el efecto Letter Glitch (caracteres revueltos) porque se veía igual en
+ *  todas las demos y leía como plantilla genérica en rubros serios. */
+export default function CtaBanner({ id = 'book', heading, text, actions = [], effect }) {
   return (
     <section id={id} className="demo-section">
       <div className="demo-container">
         <Reveal as="div" className={`demo-cta${effect === 'star' ? ' demo-cta--star' : ''}`}>
-          {glitchColors.length > 0 && (
-            <div className="demo-cta-bg" aria-hidden="true">
-              <LetterGlitch
-                glitchColors={glitchColors}
-                glitchSpeed={110}
-                centerVignette
-                outerVignette
-                smooth={false}
-                fontSize={26}
-                charWidth={20}
-                charHeight={34}
-              />
-            </div>
-          )}
+          <div className="demo-cta-bg" aria-hidden="true" />
           <div className="demo-cta-content">
             <SplitText tag="h2" text={heading} textAlign="center" splitType="chars" delay={30} duration={0.8} />
             {text && <p>{text}</p>}
