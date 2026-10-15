@@ -22,6 +22,7 @@ import church from './church.js'
 import foundation from './foundation.js'
 import dentists from './dentists.js'
 import lawyers from './lawyers.js'
+import aesthetics from './aesthetics.js'
 import { mergeLang } from '../../../i18n.jsx'
 
 const esContentByKey = {
@@ -43,6 +44,7 @@ const esContentByKey = {
   foundation,
   dentists,
   lawyers,
+  aesthetics,
 }
 
 // Devuelve el paquete de contenido en español para un demo dado (usando
