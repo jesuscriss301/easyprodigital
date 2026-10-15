@@ -61,12 +61,20 @@ import foundation from './foundation.js'
 import foundationSky from './foundationSky.js'
 import foundationSunrise from './foundationSunrise.js'
 import foundationNight from './foundationNight.js'
+import dentists from './dentists.js'
+import dentistsCoral from './dentistsCoral.js'
+import dentistsSky from './dentistsSky.js'
+import dentistsNight from './dentistsNight.js'
+import lawyers from './lawyers.js'
+import lawyersIvory from './lawyersIvory.js'
+import lawyersSlate from './lawyersSlate.js'
+import lawyersNight from './lawyersNight.js'
 
 // Registro central de demos QUE SE LISTAN en la página de inicio del
 // showcase — una tarjeta por rubro/nicho distinto. Cada entrada se convierte
 // en una ruta /<slug>. Ver src/demos/README.md para la guía de cómo agregar
 // una nueva.
-const demos = [salonBelleza, carWash, cleaners, carpenters, gardeners, plumbers, realestate, masons, construction, automechanics, electricians, chef, adultCreator, youtuber, church, foundation]
+const demos = [salonBelleza, carWash, cleaners, carpenters, gardeners, plumbers, realestate, masons, construction, automechanics, electricians, chef, adultCreator, youtuber, church, foundation, dentists, lawyers]
 
 // Variantes de estilo (mismo contenido/rubro, distinta paleta + tipografía)
 // — deliberadamente fuera de `demos` para no duplicar la tarjeta del mismo
@@ -120,6 +128,12 @@ const styleOnlyVariants = [
   foundationSky,
   foundationSunrise,
   foundationNight,
+  dentistsCoral,
+  dentistsSky,
+  dentistsNight,
+  lawyersIvory,
+  lawyersSlate,
+  lawyersNight,
 ]
 
 const allDemos = [...demos, ...styleOnlyVariants]
