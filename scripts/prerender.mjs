@@ -17,6 +17,7 @@ import { preview } from 'vite'
 import { mkdirSync, writeFileSync, existsSync } from 'fs'
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
+import { articles } from '../src/data/articles.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = join(__dirname, '..')
@@ -37,6 +38,9 @@ const ROUTE_PATHS = [
   'privacy',
   'terms',
   'cookies',
+  // Un artículo = una ruta. Se derivan de src/data/articles.js para que
+  // agregar un artículo allí baste: no hay que tocar esta lista.
+  ...articles.map((a) => `blog/${a.slug}`),
 ]
 
 const ROUTES = [

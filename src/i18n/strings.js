@@ -225,6 +225,23 @@ export const en = {
     empty: 'No articles published yet. Check back soon.',
     readArticle: 'Read article →',
   },
+  aside: {
+    heading: 'From the blog',
+    tagline: 'Short reads on why a site brings work — or does not.',
+    more: 'More articles',
+    readTag: 'Read',
+  },
+  article: {
+    backToBlog: 'All articles',
+    related: 'Keep reading',
+    publishedOn: 'Published',
+    ctaTitle: 'Want this fixed on your own site?',
+    ctaText:
+      'I build the site, you get the leads. Hosting and domain included, delivered in days, not months.',
+    ctaButton: 'Get a quote',
+    notFoundTitle: 'Article not found',
+    notFoundText: 'That article does not exist or was moved. Here is the full list.',
+  },
   notFound: {
     seoTitle: '404 — Page not found | Easy Pro Digital',
     seoDescription: 'The page you are looking for could not be found.',
@@ -588,6 +605,23 @@ export const es = {
     loading: 'Cargando artículos…',
     empty: 'Aún no hay artículos publicados. Vuelve pronto.',
     readArticle: 'Leer artículo →',
+  },
+  aside: {
+    heading: 'Del blog',
+    tagline: 'Lecturas cortas sobre por qué una web trae clientes — o no.',
+    more: 'Más artículos',
+    readTag: 'Leer',
+  },
+  article: {
+    backToBlog: 'Todos los artículos',
+    related: 'Sigue leyendo',
+    publishedOn: 'Publicado',
+    ctaTitle: '¿Quieres esto resuelto en tu propia web?',
+    ctaText:
+      'Yo construyo el sitio, tú recibes los clientes. Hosting y dominio incluidos, entregado en días, no en meses.',
+    ctaButton: 'Pedir cotización',
+    notFoundTitle: 'Artículo no encontrado',
+    notFoundText: 'Ese artículo no existe o cambió de dirección. Aquí está la lista completa.',
   },
   notFound: {
     seoTitle: '404 — Página no encontrada | Easy Pro Digital',
