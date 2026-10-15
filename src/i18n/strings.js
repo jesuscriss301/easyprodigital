@@ -5,6 +5,58 @@
 // ============================================================
 
 export const en = {
+  nicheRealEstate: {
+    seoTitle: 'Website Design for Real Estate Agents | Easy Pro Digital',
+    seoDescription:
+      'Real estate websites built to capture leads, not just look good: fast on mobile, listings front and centre, and a working demo you can click before you hire.',
+    eyebrow: 'For real estate agents and brokers',
+    title: 'Website Design for Real Estate Agents',
+    intro:
+      'Most agent websites are a digital business card. This one is built to capture a lead while you are out showing a property.',
+    problemTitle: 'Why most real estate websites never bring a lead',
+    problems: [
+      'They load slowly on a phone, and a phone is where almost every buyer finds you.',
+      'There is no obvious next step. A visitor reads your bio, finds nothing to do, and leaves.',
+      'Listings sit three clicks deep, or live on a portal that keeps the lead instead of sending it to you.',
+      'The template looks like every other agent in the city, so nothing about you is memorable.',
+      'Nothing captures the visitor who is not ready to call yet: no valuation request, no saved search, no follow up.',
+    ],
+    includesTitle: 'What you get',
+    includes: [
+      'A home page built around one action: getting you contacted.',
+      'Listing pages that load fast and read well on a phone.',
+      'Lead capture that works: valuation request, viewing request and contact, all landing in your inbox and your WhatsApp.',
+      'Domain, hosting and SSL set up and handed over in your name.',
+      'Local SEO groundwork: titles, descriptions, structured data and Google Business Profile connection.',
+      'Analytics, so you can see where the leads actually come from.',
+    ],
+    demoTitle: 'Open a real one before you decide',
+    demoCopy:
+      'This is not a picture in a slide deck. It is a working real estate site. Open it, scroll it on your phone, try the forms. Yours is built the same way, with your brand and your listings.',
+    demoCta: 'Open the live demo',
+    demoUrl: 'https://demos.easyprodigital.com/realestate',
+    processTitle: 'How it works',
+    process: [
+      { step: '01', title: 'We talk', text: 'Thirty minutes. Your market, your listings, how you get clients today.' },
+      { step: '02', title: 'You see it first', text: 'A working preview carrying your brand, before anything is final.' },
+      { step: '03', title: 'We refine', text: 'Two rounds of changes, on the real site, not on a picture of it.' },
+      { step: '04', title: 'It goes live', text: 'Domain, hosting, analytics and Google set up. You own all of it.' },
+    ],
+    pricingNote:
+      'Website packages start at 400 USD, all inclusive. Hosting and domain for the first year are part of the price.',
+    pricingCta: 'See full pricing',
+    faqTitle: 'What agents actually ask',
+    faq: [
+      { q: 'How long does it take?', a: 'Days, not weeks. A standard agent site goes live in one to two weeks from the moment I have your content.' },
+      { q: 'Can you connect my MLS or IDX feed?', a: 'Yes, wherever your board provides a feed or an API. Tell me which one you belong to and I confirm it before we start.' },
+      { q: 'Do I own the site?', a: 'Yes. Domain, hosting account and code are all in your name. No lock in, and no monthly fee just to keep it online.' },
+      { q: 'What if I already have a website?', a: 'I can rebuild it keeping your current addresses, so you do not lose the search positions you already earned.' },
+      { q: 'Do you work with agents outside Colombia?', a: 'Yes. Most of my clients are in the United States and Canada. Everything is remote, in English, with a fixed price agreed before we start.' },
+    ],
+    ctaTitle: 'Want one like this for your listings?',
+    ctaCopy: 'Tell me your market and I send you a fixed price and a timeline. No call required.',
+    ctaButton: 'Start a project',
+  },
   nav: {
     services: 'Services',
     pricing: 'Pricing',
@@ -317,6 +369,58 @@ export const en = {
 }
 
 export const es = {
+  nicheRealEstate: {
+    seoTitle: 'Diseño de Páginas Web para Inmobiliarias y Agentes | Easy Pro Digital',
+    seoDescription:
+      'Páginas web para inmobiliarias y agentes de finca raíz en Medellín y Colombia: rápidas en celular, con captación real de clientes y una demo que puedes abrir antes de contratar.',
+    eyebrow: 'Para agentes y agencias de finca raíz',
+    title: 'Páginas Web para Inmobiliarias',
+    intro:
+      'La mayoría de páginas de agentes inmobiliarios son una tarjeta de presentación digital. Esta está hecha para captar un cliente mientras tú estás mostrando un inmueble.',
+    problemTitle: 'Por qué la mayoría de páginas inmobiliarias no traen clientes',
+    problems: [
+      'Cargan lento en celular, y en celular es donde te busca casi todo el mundo.',
+      'No hay un siguiente paso claro: el visitante lee tu perfil, no encuentra qué hacer y se va.',
+      'Los inmuebles quedan escondidos a tres clics, o viven en un portal que se queda con el contacto.',
+      'La plantilla se ve igual a la de todos los agentes de la ciudad, así que nada te hace memorable.',
+      'Nada captura al que todavía no está listo para llamar: ni avalúo, ni búsqueda guardada, ni seguimiento.',
+    ],
+    includesTitle: 'Qué incluye',
+    includes: [
+      'Una página de inicio construida alrededor de una sola acción: que te contacten.',
+      'Fichas de inmuebles que cargan rápido y se leen bien en celular.',
+      'Captación que sí funciona: solicitud de avalúo, agendar visita y contacto, directo a tu correo y a tu WhatsApp.',
+      'Dominio, hosting y certificado de seguridad configurados y entregados a tu nombre.',
+      'Base de SEO local: títulos, descripciones, datos estructurados y conexión con tu perfil de Google.',
+      'Analítica, para que veas de dónde llegan de verdad los clientes.',
+    ],
+    demoTitle: 'Ábrela antes de decidir',
+    demoCopy:
+      'No es una imagen en una presentación. Es una web inmobiliaria funcionando. Ábrela, míralas en el celular, prueba los formularios. La tuya se construye igual, con tu marca y tus inmuebles.',
+    demoCta: 'Abrir la demo',
+    demoUrl: 'https://demos.easyprodigital.com/realestate',
+    processTitle: 'Cómo funciona',
+    process: [
+      { step: '01', title: 'Hablamos', text: 'Treinta minutos. Tu zona, tus inmuebles, cómo consigues clientes hoy.' },
+      { step: '02', title: 'La ves primero', text: 'Una versión funcionando con tu marca, antes de cerrar nada.' },
+      { step: '03', title: 'Ajustamos', text: 'Dos rondas de cambios, sobre la web real, no sobre una imagen.' },
+      { step: '04', title: 'Sale al aire', text: 'Dominio, hosting, analítica y Google configurados. Todo queda a tu nombre.' },
+    ],
+    pricingNote:
+      'Los paquetes de sitio web arrancan en 400 USD, todo incluido. El hosting y el dominio del primer año van dentro del precio.',
+    pricingCta: 'Ver precios completos',
+    faqTitle: 'Lo que preguntan los agentes',
+    faq: [
+      { q: '¿Cuánto se demora?', a: 'Días, no semanas. Una web de agente sale al aire en una o dos semanas desde que tengo tu contenido.' },
+      { q: '¿Se puede conectar con un portal de inmuebles?', a: 'Sí, siempre que el portal entregue un feed o una API. Dime con cuál trabajas y te lo confirmo antes de empezar.' },
+      { q: '¿La página queda a mi nombre?', a: 'Sí. Dominio, hosting y código quedan a tu nombre. Sin amarres y sin mensualidad solo por mantenerla en línea.' },
+      { q: '¿Y si ya tengo página?', a: 'La puedo rehacer conservando tus direcciones actuales, para que no pierdas el posicionamiento que ya lograste.' },
+      { q: '¿Trabajas en toda Colombia?', a: 'Sí. Estoy en Medellín y trabajo con agentes de todo el país y del exterior, siempre con precio cerrado antes de empezar.' },
+    ],
+    ctaTitle: '¿Quieres una así para tus inmuebles?',
+    ctaCopy: 'Cuéntame tu zona y te mando precio cerrado y plazo. Sin necesidad de una llamada.',
+    ctaButton: 'Empezar un proyecto',
+  },
   nav: {
     services: 'Servicios',
     pricing: 'Precios',

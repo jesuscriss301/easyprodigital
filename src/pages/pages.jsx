@@ -321,6 +321,9 @@ export function Services() {
       <section>
         <div className="container">
           <h2 className="section-title">{t.services.ctaTitle}</h2>
+          <p className="niche-pricing-note">
+            <Link to={href('/services/real-estate-website-design/')}>{t.nicheRealEstate.title} →</Link>
+          </p>
           <Link className="btn btn-primary" to={href('/contact/')}>{t.services.ctaButton}</Link>
         </div>
       </section>
@@ -804,6 +807,132 @@ export function Faq() {
             </details>
           ))}
         </Reveal>
+      </section>
+    </>
+  )
+}
+
+/* ============ Niche landing: real estate ============ */
+export function RealEstateWebsites() {
+  const { href, data, t } = useLanguage()
+  const { site, profile } = data
+  const c = t.nicheRealEstate
+
+  return (
+    <>
+      <Seo
+        title={c.seoTitle}
+        description={c.seoDescription}
+        path="/services/real-estate-website-design/"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'Service',
+              name: c.title,
+              serviceType: 'Real estate website design',
+              description: c.seoDescription,
+              url: site.domain + '/services/real-estate-website-design/',
+              provider: { '@type': 'Person', name: profile.name, url: site.domain },
+              audience: { '@type': 'Audience', audienceType: 'Real estate agents and brokers' },
+            },
+            {
+              '@type': 'FAQPage',
+              mainEntity: c.faq.map((item) => ({
+                '@type': 'Question',
+                name: item.q,
+                acceptedAnswer: { '@type': 'Answer', text: item.a },
+              })),
+            },
+          ],
+        }}
+      />
+
+      <div className="page-head container">
+        <p className="eyebrow">{c.eyebrow}</p>
+        <h1 className="section-title">{c.title}</h1>
+        <p className="page-intro">{c.intro}</p>
+      </div>
+
+      <section className="first-section">
+        <Reveal as="div" className="container service-detail">
+          <div>
+            <h2 className="service-title">{c.problemTitle}</h2>
+          </div>
+          <ul className="service-bullets">
+            {c.problems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </Reveal>
+      </section>
+
+      <section>
+        <Reveal as="div" className="container service-detail">
+          <div>
+            <h2 className="service-title">{c.includesTitle}</h2>
+          </div>
+          <ul className="service-bullets">
+            {c.includes.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </Reveal>
+      </section>
+
+      <section>
+        <Reveal as="div" className="container niche-demo">
+          <h2 className="service-title">{c.demoTitle}</h2>
+          <p className="service-text">{c.demoCopy}</p>
+          <a
+            className="btn btn-primary"
+            href={c.demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {c.demoCta}
+          </a>
+        </Reveal>
+      </section>
+
+      <section>
+        <div className="container">
+          <h2 className="section-title">{c.processTitle}</h2>
+          <Reveal as="ol" className="niche-steps">
+            {c.process.map((s) => (
+              <li className="niche-step" key={s.step}>
+                <span className="niche-step-num">{s.step}</span>
+                <h3 className="niche-step-title">{s.title}</h3>
+                <p className="niche-step-text">{s.text}</p>
+              </li>
+            ))}
+          </Reveal>
+          <p className="niche-pricing-note">
+            {c.pricingNote} <Link to={href('/pricing/')}>{c.pricingCta}</Link>
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div className="container">
+          <h2 className="section-title">{c.faqTitle}</h2>
+          <Reveal as="div" className="faq-list">
+            {c.faq.map((item) => (
+              <details className="faq-item" key={item.q}>
+                <summary>{item.q}</summary>
+                <p>{item.a}</p>
+              </details>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
+      <section>
+        <div className="container">
+          <h2 className="section-title">{c.ctaTitle}</h2>
+          <p className="page-intro">{c.ctaCopy}</p>
+          <Link className="btn btn-primary" to={href('/contact/')}>{c.ctaButton}</Link>
+        </div>
       </section>
     </>
   )
