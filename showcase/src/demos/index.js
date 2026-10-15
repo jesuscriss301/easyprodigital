@@ -69,12 +69,16 @@ import lawyers from './lawyers.js'
 import lawyersIvory from './lawyersIvory.js'
 import lawyersSlate from './lawyersSlate.js'
 import lawyersNight from './lawyersNight.js'
+import aesthetics from './aesthetics.js'
+import aestheticsTerracotta from './aestheticsTerracotta.js'
+import aestheticsChampagne from './aestheticsChampagne.js'
+import aestheticsNight from './aestheticsNight.js'
 
 // Registro central de demos QUE SE LISTAN en la página de inicio del
 // showcase — una tarjeta por rubro/nicho distinto. Cada entrada se convierte
 // en una ruta /<slug>. Ver src/demos/README.md para la guía de cómo agregar
 // una nueva.
-const demos = [salonBelleza, carWash, cleaners, carpenters, gardeners, plumbers, realestate, masons, construction, automechanics, electricians, chef, adultCreator, youtuber, church, foundation, dentists, lawyers]
+const demos = [salonBelleza, carWash, cleaners, carpenters, gardeners, plumbers, realestate, masons, construction, automechanics, electricians, chef, adultCreator, youtuber, church, foundation, dentists, lawyers, aesthetics]
 
 // Variantes de estilo (mismo contenido/rubro, distinta paleta + tipografía)
 // — deliberadamente fuera de `demos` para no duplicar la tarjeta del mismo
@@ -134,6 +138,9 @@ const styleOnlyVariants = [
   lawyersIvory,
   lawyersSlate,
   lawyersNight,
+  aestheticsTerracotta,
+  aestheticsChampagne,
+  aestheticsNight,
 ]
 
 const allDemos = [...demos, ...styleOnlyVariants]
