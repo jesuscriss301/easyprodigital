@@ -13,8 +13,10 @@ import {
   Legal,
   NotFound,
 } from './pages/pages.jsx'
+import ArticlesAside from './components/ArticlesAside.jsx'
 import RagForm from './pages/RagForm.jsx'
 import Blog from './pages/Blog.jsx'
+import Article from './pages/Article.jsx'
 
 /**
  * Envoltorio de una rama de idioma completa (inglés en "/", español en "/es/*").
@@ -26,9 +28,14 @@ function LangLayout({ lang }) {
     <LanguageProvider lang={lang}>
       <ScrollToTop />
       <Header />
-      <main>
-        <Outlet />
-      </main>
+      {/* Shell de dos columnas: el aside de artículos va a la izquierda en
+          pantallas anchas y pasa debajo del contenido en móvil (ver styles.css). */}
+      <div className="shell">
+        <ArticlesAside />
+        <main className="shell-main">
+          <Outlet />
+        </main>
+      </div>
       <WhatsAppFloat />
       <Footer />
       <StatusBar />
@@ -46,6 +53,7 @@ function RouteChildren() {
       <Route path="services/real-estate-website-design" element={<RealEstateWebsites />} />
       <Route path="portfolio" element={<Portfolio />} />
       <Route path="blog" element={<Blog />} />
+      <Route path="blog/:slug" element={<Article />} />
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
       <Route path="faq" element={<Faq />} />

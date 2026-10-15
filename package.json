@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "dev:all": "node scripts/run-dev.mjs",
-    "build": "vite build && node -e \"import { copyFileSync } from 'fs'; copyFileSync('dist/index.html', 'dist/404.html')\" && node scripts/prerender.mjs",
+    "sitemap:articles": "node scripts/sitemap-articles.mjs",
+    "build": "node scripts/sitemap-articles.mjs && vite build && node -e \"import { copyFileSync } from 'fs'; copyFileSync('dist/index.html', 'dist/404.html')\" && node scripts/prerender.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
