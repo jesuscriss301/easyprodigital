@@ -27,6 +27,7 @@ const distDir = join(root, 'dist')
 const ROUTE_PATHS = [
   '',
   'services',
+  'services/real-estate-website-design',
   'pricing',
   'portfolio',
   'blog',

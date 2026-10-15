@@ -1717,3 +1717,31 @@ a, button { touch-action: manipulation; }
   .pricing-card:active { transform: scale(0.99); }
   .pricing-nav-pill:active { transform: scale(0.96); }
 }
+
+/* ---------- landing por nicho ---------- */
+.niche-demo { text-align: center; max-width: 720px; }
+.niche-demo .service-text { margin: 12px 0 24px; }
+.niche-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+}
+.niche-step { border-top: 2px solid var(--line); padding-top: 14px; }
+.niche-step-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--slate);
+}
+.niche-step-title { font-size: 18px; margin: 6px 0 4px; }
+.niche-step-text { color: var(--slate); font-size: 15px; }
+.niche-pricing-note { margin-top: 28px; color: var(--slate); }
+@media (max-width: 860px) {
+  .niche-steps { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 520px) {
+  .niche-steps { grid-template-columns: 1fr; }
+}

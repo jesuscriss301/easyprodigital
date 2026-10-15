@@ -5,6 +5,7 @@ import {
   Home,
   Services,
   Pricing,
+  RealEstateWebsites,
   Portfolio,
   About,
   Contact,
@@ -42,6 +43,7 @@ function RouteChildren() {
       <Route index element={<Home />} />
       <Route path="services" element={<Services />} />
       <Route path="pricing" element={<Pricing />} />
+      <Route path="services/real-estate-website-design" element={<RealEstateWebsites />} />
       <Route path="portfolio" element={<Portfolio />} />
       <Route path="blog" element={<Blog />} />
       <Route path="about" element={<About />} />
