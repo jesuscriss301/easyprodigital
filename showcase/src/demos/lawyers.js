@@ -69,13 +69,10 @@ export default {
       { end: 22, label: 'years of practice' },
     ],
     visualIcon: 'scale',
-    // StreakFrame (hero.visualFrame: 'streak') — a clean diagonal streak of
-    // light crosses the hero photo, like a page turning under a desk lamp.
-    // Paired with services.hover 'magnet' and gallery.hover 'peel' below:
-    // this three-field combination has not been used together by any other
-    // demo (see src/demos/README.md effects table before reusing a single
-    // value in a new combo).
-    visualFrame: 'streak',
+    // Sin visualFrame a propósito: una franja animada en bucle sobre la foto
+    // del hero leía como "efecto de catálogo" en un bufete serio. La
+    // elegancia aquí viene de la restricción (foto limpia, tipografía,
+    // espacio), no de una animación constante encima.
     image: '/images/lawyers/hero.jpg',
     imageAlt: 'Attorney in a suit shaking hands with a client across a desk',
   },
@@ -112,10 +109,10 @@ export default {
   },
 
   gallery: {
-    // PeelReveal (React Bits, adaptación CSS sin deps nuevas): la foto se
-    // despega como una hoja de papel al pasar el cursor — el gesto de pasar
-    // una página de un expediente.
-    hover: 'peel',
+    // Editorial (ver styles.css): foto protagonista + dos de apoyo, marco
+    // fino en el acento y leyenda en etiqueta flotante — en vez de un grid
+    // parejo de tarjetas, que leía como plantilla genérica.
+    hover: 'editorial',
     eyebrow: 'Our Office',
     title: 'A firm built for candid conversations',
     intro: 'On your real website, this is where photos of your own office would go.',

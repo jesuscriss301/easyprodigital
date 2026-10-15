@@ -70,13 +70,10 @@ export default {
       { end: 16, label: 'years in practice' },
     ],
     visualIcon: 'tooth',
-    // ShineHover (hero.visualFrame: 'shine') — a soft diagonal sheen that
-    // sweeps across the hero photo, like light off polished enamel. Paired
-    // with services.hover 'spotlight' and gallery.hover 'float' below: this
-    // three-field combination has not been used together by any other demo
-    // (see src/demos/README.md effects table before reusing a single value
-    // in a new combo).
-    visualFrame: 'shine',
+    // Sin visualFrame a propósito: un barrido de brillo en bucle sobre la
+    // foto del hero leía como "efecto de catálogo" en un rubro serio. Para
+    // dentistas/abogados la elegancia viene de la restricción (foto limpia,
+    // tipografía, espacio), no de una animación constante encima.
     image: '/images/dentists/hero.jpg',
     imageAlt: 'Dentist and patient smiling during a checkup in a bright dental office',
   },
@@ -112,9 +109,10 @@ export default {
   },
 
   gallery: {
-    // FloatCard (React Bits, adaptación CSS sin deps nuevas): la foto se
-    // eleva y flota ligeramente al pasar el cursor — calma de sala de espera.
-    hover: 'float',
+    // Editorial (ver styles.css): foto protagonista + dos de apoyo, marco
+    // fino en el acento y leyenda en etiqueta flotante — en vez de un grid
+    // parejo de tarjetas, que leía como plantilla genérica.
+    hover: 'editorial',
     eyebrow: 'Our Office',
     title: 'A clinic designed to feel calm, not clinical',
     intro: 'On your real website, this is where photos of your own office would go.',
