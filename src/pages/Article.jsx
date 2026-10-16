@@ -2,7 +2,23 @@ import { Link, useParams } from 'react-router-dom'
 import Seo from '../components/Seo.jsx'
 import Reveal from '../components/Reveal.jsx'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
-import { articles, pickArticles } from '../data/articles.js'
+import { articles, pickRelated } from '../data/articles.js'
+
+const DEMO_BASE = 'https://demos.easyprodigital.com'
+
+// Rótulos y copy del bloque de demo embebida. En español y en inglés.
+const DEMO_CARD = {
+  en: {
+    eyebrow: 'See it live',
+    body: 'I built a navigable example of a site in this niche that actually converts. Open it in a new tab and look at the hero and the call to action.',
+    cta: 'Open the live example →',
+  },
+  es: {
+    eyebrow: 'Mira cómo se ve en vivo',
+    body: 'Armé un ejemplo navegable de una web de este nicho que sí convierte. Ábrelo en otra pestaña y fíjate en el titular y el llamado a la acción.',
+    cta: 'Abrir el ejemplo en vivo →',
+  },
+}
 
 /**
  * Página de un artículo. El contenido viene de src/data/articles.js (no de una
@@ -33,9 +49,24 @@ export default function Article() {
   const content = article[lang] || article.en
   const tag = article.tag[lang] || article.tag.en
   const path = `/blog/${article.slug}/`
-  const related = pickArticles(`related:${article.slug}`, 4)
-    .filter((a) => a.slug !== article.slug)
-    .slice(0, 3)
+
+  // "Sigue leyendo": prioriza por tag (mismo nicho); si faltan, completa con
+  // los listados en `related`; y si todavía faltan, con artículos cualesquiera.
+  const related = pickRelated(article, 3)
+
+  // Destino del CTA final: página de servicio si existe → demo si existe →
+  // contacto como fallback. Siempre va a quedar en una página comercial.
+  const ctaHref = article.relatedService
+    ? href(`/services/${article.relatedService}/`)
+    : article.relatedDemo
+    ? `${DEMO_BASE}/${article.relatedDemo}/`
+    : href('/contact/')
+  const ctaExternal = !article.relatedService && !!article.relatedDemo
+
+  // Punto de inserción de la tarjeta de demo: después del tercer bloque. Si el
+  // artículo tiene menos de 4 bloques, va al final del cuerpo.
+  const demoInsertAt = article.relatedDemo ? Math.min(3, content.body.length) : -1
+  const demoCard = article.relatedDemo ? DEMO_CARD[lang] || DEMO_CARD.en : null
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -77,17 +108,23 @@ export default function Article() {
         <section className="first-section">
           <div className="container">
             <Reveal as="div" className="article-body">
-              {content.body.map((block, i) =>
-                block.h ? <h2 key={i}>{block.h}</h2> : <p key={i}>{block.p}</p>
-              )}
+              {content.body.map((block, i) => (
+                <RenderBlock key={i} block={block} index={i} insertAt={demoInsertAt} demoCard={demoCard} demoSlug={article.relatedDemo} />
+              ))}
             </Reveal>
 
             <div className="article-cta">
               <h2>{t.article.ctaTitle}</h2>
               <p>{t.article.ctaText}</p>
-              <Link className="btn btn-primary" to={href('/contact/')}>
-                {t.article.ctaButton}
-              </Link>
+              {ctaExternal ? (
+                <a className="btn btn-primary" href={ctaHref} target="_blank" rel="noopener">
+                  {t.article.ctaButton}
+                </a>
+              ) : (
+                <Link className="btn btn-primary" to={ctaHref}>
+                  {t.article.ctaButton}
+                </Link>
+              )}
             </div>
 
             {related.length > 0 && (
@@ -112,6 +149,26 @@ export default function Article() {
           </div>
         </section>
       </article>
+    </>
+  )
+}
+
+// Renderiza un bloque y, si corresponde, inyecta la tarjeta de demo justo
+// después de ese bloque. Mantiene la tarjeta en el HTML prerenderizado.
+function RenderBlock({ block, index, insertAt, demoCard, demoSlug }) {
+  const el = block.h ? <h2>{block.h}</h2> : <p>{block.p}</p>
+  const inject = demoCard && index + 1 === insertAt
+  if (!inject) return el
+  return (
+    <>
+      {el}
+      <aside className="article-demo-card" aria-label={demoCard.eyebrow}>
+        <p className="article-demo-eyebrow">{demoCard.eyebrow}</p>
+        <p className="article-demo-body">{demoCard.body}</p>
+        <a className="article-demo-cta" href={`${DEMO_BASE}/${demoSlug}/`} target="_blank" rel="noopener">
+          {demoCard.cta}
+        </a>
+      </aside>
     </>
   )
 }
