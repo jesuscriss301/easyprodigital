@@ -3,7 +3,7 @@ import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { pickArticles } from '../data/articles.js'
 
 /**
- * Columna lateral izquierda con tres artículos del blog, presente en todas las
+ * Columna lateral derecha con tres artículos del blog, presente en todas las
  * páginas. La selección es DETERMINISTA por ruta (ver pickArticles): cada
  * página muestra un trío distinto, pero siempre el mismo para esa página, así
  * el HTML prerenderizado y lo que ve el visitante coinciden — condición para
@@ -35,6 +35,16 @@ export default function ArticlesAside() {
           {picks.map((a) => (
             <li key={a.slug}>
               <Link className="side-article" to={href(`/blog/${a.slug}/`)}>
+                {a.image && (
+                  <img
+                    className="side-article-img"
+                    src={a.image}
+                    alt={a.imageAlt?.[lang] || a.imageAlt?.en || ''}
+                    loading="lazy"
+                    width="400"
+                    height="267"
+                  />
+                )}
                 <span className="side-article-tag">{a.tag[lang] || a.tag.en}</span>
                 <span className="side-article-title">{a[lang].title}</span>
                 <span className="side-article-summary">{a[lang].summary}</span>
