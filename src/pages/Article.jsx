@@ -82,17 +82,30 @@ export default function Article() {
     },
     author: { '@type': 'Person', name: data.profile.name },
     publisher: { '@type': 'Organization', name: data.site.brand, url: data.site.domain },
+    ...(article.image ? { image: article.image } : {}),
   }
 
   return (
     <>
-      <Seo title={`${content.title} | ${data.site.brand}`} description={content.summary} path={path} jsonLd={jsonLd} />
+      <Seo title={`${content.title} | ${data.site.brand}`} description={content.summary} path={path} jsonLd={jsonLd}
+        {...(article.image ? { image: article.image, imageAlt: article.imageAlt?.[lang] || article.imageAlt?.en } : {})} />
 
       <article className="article">
         <div className="page-head container">
           <p className="eyebrow">{tag}</p>
           <h1>{content.title}</h1>
-          <p className="page-intro">{content.summary}</p>
+          <p className="article-lede">{content.summary}</p>
+
+          {article.image && (
+            <img
+              className="article-hero-img"
+              src={article.image}
+              alt={article.imageAlt?.[lang] || article.imageAlt?.en || ''}
+              width="640"
+              height="427"
+            />
+          )}
+
           <p className="article-meta">
             {t.article.publishedOn}{' '}
             <time dateTime={article.date}>

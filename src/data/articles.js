@@ -21,6 +21,8 @@ export const articles = [
     related: ['five-second-test-agent-website', 'inmobiliaria-web-ia-sin-leads', 'inmobiliaria-competencia-aparece-primero-google'],
     tag: { en: 'Real estate', es: 'Inmobiliaria' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2021/10/07/15/23/real-estate-6688945_640.jpg',
+    imageAlt: { en: 'Real estate for-sale sign in front of a house', es: 'Cartel de venta inmobiliaria frente a una casa' },
     en: {
       title: 'Your Real Estate Website Looks Fine. So Why No Leads?',
       summary:
@@ -65,6 +67,8 @@ export const articles = [
     related: ['real-estate-website-no-leads', 'inmobiliaria-web-ia-sin-leads', 'invisible-on-google-where-to-start'],
     tag: { en: 'Real estate', es: 'Inmobiliaria' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_640.jpg',
+    imageAlt: { en: 'Modern house with garage and landscaped driveway', es: 'Casa moderna con garaje y entrada ajardinada' },
     en: {
       title: 'The Five-Second Test Almost Every Agent Website Fails',
       summary:
@@ -105,6 +109,8 @@ export const articles = [
     related: ['emergency-page-converts-2am', 'fontaneria-web-lovable-no-google', 'fontanero-vecino-mas-llamadas-web-fea'],
     tag: { en: 'Plumbing', es: 'Plomería' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2017/09/26/11/11/plumber-2788334_640.jpg',
+    imageAlt: { en: 'Plumber repairing a kitchen faucet', es: 'Fontanero reparando un grifo de cocina' },
     en: {
       title: 'Your Plumbing Website Is Not Getting Calls. Here Is Why',
       summary:
@@ -145,6 +151,8 @@ export const articles = [
     related: ['plumbing-website-no-calls', 'fontaneria-web-lovable-no-google', 'google-business-profile-local-trades'],
     tag: { en: 'Home services', es: 'Servicios a domicilio' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2019/10/24/08/07/fire-department-4573674_640.jpg',
+    imageAlt: { en: 'Emergency services responding at night', es: 'Servicios de emergencia respondiendo de noche' },
     en: {
       title: 'What an Emergency Page Needs to Convert at 2 AM',
       summary:
@@ -185,6 +193,8 @@ export const articles = [
     related: ['invisible-on-google-where-to-start', 'web-con-ia-30-segundos-no-aparece-google', 'web-dos-anos-sin-mantenimiento-google-olvida'],
     tag: { en: 'Pricing', es: 'Precios' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2014/09/24/14/29/macbook-459196_640.jpg',
+    imageAlt: { en: 'Laptop displaying a website on a clean desk', es: 'Portatil mostrando una web sobre un escritorio limpio' },
     en: {
       title: 'How Much Should a Small Business Website Actually Cost?',
       summary:
@@ -225,6 +235,8 @@ export const articles = [
     related: ['google-business-profile-local-trades', 'web-competencia-peor-rankea-mas-alto', 'web-con-ia-30-segundos-no-aparece-google'],
     tag: { en: 'SEO', es: 'SEO' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2015/05/08/14/47/seo-758264_640.jpg',
+    imageAlt: { en: 'SEO and web marketing concept with colored pencils', es: 'Concepto de SEO y marketing web con lapices de colores' },
     en: {
       title: 'Invisible on Google? Start Here, Not With Keywords',
       summary:
@@ -265,6 +277,8 @@ export const articles = [
     related: ['invisible-on-google-where-to-start', 'google-business-profile-local-trades', 'web-competencia-peor-rankea-mas-alto'],
     tag: { en: 'Electricians', es: 'Electricistas' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2015/12/07/10/49/electrician-1080554_640.jpg',
+    imageAlt: { en: 'Electrician working on wiring in a panel', es: 'Electricista trabajando en el cableado de un panel' },
     en: {
       title: 'Homeowners Check Your Licence Before They Call. Does Your Site Show It?',
       summary:
@@ -305,6 +319,8 @@ export const articles = [
     related: ['salon-online-booking-empty-chair', 'invisible-on-google-where-to-start', 'google-business-profile-local-trades'],
     tag: { en: 'Auto repair', es: 'Mecánica' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2016/08/05/17/20/car-1572686_640.jpg',
+    imageAlt: { en: 'Car engine in an auto repair shop', es: 'Motor de auto en un taller mecanico' },
     en: {
       title: 'Your Shop Is Full and Your Phone Still Rings All Day. Fix It With One Page',
       summary:
@@ -345,6 +361,8 @@ export const articles = [
     related: ['landscaper-website-no-contracts', 'invisible-on-google-where-to-start', 'google-business-profile-local-trades'],
     tag: { en: 'Cleaning', es: 'Limpieza' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2025/06/16/12/52/cleaning-services-9663247_640.jpg',
+    imageAlt: { en: 'Professional cleaning supplies for house cleaning', es: 'Articulos profesionales de limpieza organizados' },
     en: {
       title: 'One-Off Cleans Pay the Week. Recurring Clients Pay the Year',
       summary:
@@ -385,6 +403,8 @@ export const articles = [
     related: ['salon-web-wix-ai-sin-clientes', 'auto-shop-website-books-appointments', 'invisible-on-google-where-to-start'],
     tag: { en: 'Salons', es: 'Belleza' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2019/12/09/07/47/hairdresser-4682912_640.jpg',
+    imageAlt: { en: 'Hairdresser styling a client in a modern salon', es: 'Peluquera atendiendo a una clienta en un salon moderno' },
     en: {
       title: 'The Empty Chair at 3pm Is a Website Problem',
       summary:
@@ -425,6 +445,8 @@ export const articles = [
     related: ['invisible-on-google-where-to-start', 'web-competencia-peor-rankea-mas-alto', 'fontanero-vecino-mas-llamadas-web-fea'],
     tag: { en: 'Local SEO', es: 'SEO local' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2016/11/22/21/34/treasure-map-1850653_640.jpg',
+    imageAlt: { en: 'Navigation map symbolizing local business search', es: 'Mapa de navegacion simbolizando busqueda local' },
     en: {
       title: 'Your Google Business Profile Beats Your Homepage. Treat It That Way',
       summary:
@@ -465,6 +487,8 @@ export const articles = [
     related: ['invisible-on-google-where-to-start', 'how-much-should-a-website-cost', 'web-con-ia-30-segundos-no-aparece-google'],
     tag: { en: 'Online store', es: 'Tienda online' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2018/03/23/17/10/company-3254289_640.jpg',
+    imageAlt: { en: 'Hand holding smartphone with a business app', es: 'Mano sosteniendo un telefono con app empresarial' },
     en: {
       title: 'Selling Only Through WhatsApp Caps Your Business at How Fast You Type',
       summary:
@@ -505,6 +529,8 @@ export const articles = [
     related: ['inmobiliaria-web-ia-sin-leads', 'fontaneria-web-lovable-no-google', 'salon-web-wix-ai-sin-clientes'],
     tag: { en: 'AI websites', es: 'Webs con IA' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2018/09/27/09/22/artificial-intelligence-3706562_640.jpg',
+    imageAlt: { en: 'Artificial intelligence concept with digital brain', es: 'Concepto de inteligencia artificial con cerebro digital' },
     en: {
       title: 'I Built My Website With AI in 30 Seconds and Nobody Finds It',
       summary:
@@ -549,6 +575,8 @@ export const articles = [
     related: ['fontanero-vecino-mas-llamadas-web-fea', 'inmobiliaria-competencia-aparece-primero-google', 'google-business-profile-local-trades'],
     tag: { en: 'Local SEO', es: 'SEO local' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2016/06/03/13/57/digital-marketing-1433427_640.jpg',
+    imageAlt: { en: 'Digital marketing analytics on a laptop screen', es: 'Analitica de marketing digital en pantalla' },
     en: {
       title: "Your Competitor's Website Is Worse Than Yours But Ranks Higher. Here Is Why",
       summary:
@@ -593,6 +621,8 @@ export const articles = [
     related: ['real-estate-website-no-leads', 'web-con-ia-30-segundos-no-aparece-google', 'inmobiliaria-competencia-aparece-primero-google'],
     tag: { en: 'Real estate', es: 'Inmobiliaria' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_640.jpg',
+    imageAlt: { en: 'Suburban house with a well-kept front lawn', es: 'Casa suburbana con jardin frontal bien cuidado' },
     en: {
       title: 'You Built Your Real Estate Website With AI and No Leads Are Coming: What No One Explained',
       summary:
@@ -637,6 +667,8 @@ export const articles = [
     related: ['plumbing-website-no-calls', 'web-con-ia-30-segundos-no-aparece-google', 'fontanero-vecino-mas-llamadas-web-fea'],
     tag: { en: 'Plumbing', es: 'Plomería' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2015/07/11/14/53/plumbing-840835_640.jpg',
+    imageAlt: { en: 'Plumbing tools and pipe wrenches on a workbench', es: 'Herramientas de fontaneria y llaves sobre un banco' },
     en: {
       title: 'Your Plumbing Website Built With Lovable Does Not Appear in Google: The Real Reason',
       summary:
@@ -681,6 +713,8 @@ export const articles = [
     related: ['plumbing-website-no-calls', 'google-business-profile-local-trades', 'web-competencia-peor-rankea-mas-alto'],
     tag: { en: 'Plumbing', es: 'Plomería' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2017/09/26/11/11/plumber-2788334_640.jpg',
+    imageAlt: { en: 'Plumber repairing a kitchen faucet', es: 'Fontanero reparando un grifo de cocina' },
     en: {
       title: 'The Plumber Next Door Gets More Calls Than You and His Website Is Uglier: Why',
       summary:
@@ -725,6 +759,8 @@ export const articles = [
     related: ['cleaning-company-recurring-clients', 'pool-service-website-summer-season', 'invisible-on-google-where-to-start'],
     tag: { en: 'Landscaping', es: 'Jardinería' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2015/08/04/09/05/deck-874459_640.jpg',
+    imageAlt: { en: 'Wooden deck in a landscaped garden', es: 'Terraza de madera en un jardin paisajistico' },
     en: {
       title: 'Your Landscaping Website Gets Visits But Nobody Signs a Maintenance Contract',
       summary:
@@ -769,6 +805,8 @@ export const articles = [
     related: ['landscaper-website-no-contracts', 'invisible-on-google-where-to-start', 'google-business-profile-local-trades'],
     tag: { en: 'Pool service', es: 'Mantenimiento de piscinas' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2014/04/23/10/09/pool-cleaning-330399_640.jpg',
+    imageAlt: { en: 'Pool cleaning equipment in a swimming pool', es: 'Equipo de limpieza en una piscina' },
     en: {
       title: 'Your Pool Service Website Needs to Be Ready in May or You Lose the Season',
       summary:
@@ -813,6 +851,8 @@ export const articles = [
     related: ['invisible-on-google-where-to-start', 'how-much-should-a-website-cost', 'web-competencia-peor-rankea-mas-alto'],
     tag: { en: 'Website maintenance', es: 'Mantenimiento web' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2015/01/08/18/27/startup-593341_640.jpg',
+    imageAlt: { en: 'Laptop on a startup desk with notes and coffee', es: 'Portatil en un escritorio con notas y cafe' },
     en: {
       title: 'What Happens to a Website After Two Years Without Maintenance (and Why Google Forgets It)',
       summary:
@@ -857,6 +897,8 @@ export const articles = [
     related: ['salon-online-booking-empty-chair', 'web-con-ia-30-segundos-no-aparece-google', 'invisible-on-google-where-to-start'],
     tag: { en: 'Salon', es: 'Salón de belleza' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2016/03/27/21/52/woman-1284411_640.jpg',
+    imageAlt: { en: 'Woman getting a hair treatment in a salon', es: 'Mujer recibiendo un tratamiento capilar en un salon' },
     en: {
       title: 'Your Salon Website Built With Wix AI Is Not Bringing in Clients: Why',
       summary:
@@ -901,6 +943,8 @@ export const articles = [
     related: ['real-estate-website-no-leads', 'inmobiliaria-web-ia-sin-leads', 'web-competencia-peor-rankea-mas-alto'],
     tag: { en: 'Real estate', es: 'Inmobiliaria' },
     date: '2026-10-16',
+    image: 'https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_640.jpg',
+    imageAlt: { en: 'Modern house with garage viewed from the street', es: 'Casa moderna con garaje vista desde la calle' },
     en: {
       title: 'Why Your Competing Real Estate Agency Appears Before You in Google',
       summary:

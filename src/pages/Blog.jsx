@@ -31,6 +31,16 @@ export default function Blog() {
             <Reveal as="div" className="blog-grid">
               {sorted.map((a) => (
                 <Link className="blog-card" key={a.slug} to={href(`/blog/${a.slug}/`)}>
+                  {a.image && (
+                    <img
+                      className="blog-card-img"
+                      src={a.image}
+                      alt={a.imageAlt?.[lang] || a.imageAlt?.en || ''}
+                      loading="lazy"
+                      width="400"
+                      height="267"
+                    />
+                  )}
                   <div className="blog-card-body">
                     <span className="blog-card-tag">{a.tag[lang] || a.tag.en}</span>
                     <h2>{a[lang].title}</h2>

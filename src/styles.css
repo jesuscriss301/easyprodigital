@@ -1804,6 +1804,15 @@ a, button { touch-action: manipulation; }
   box-shadow: 0 12px 26px rgba(7, 31, 66, 0.1);
 }
 
+/* Imagen en la card del aside. */
+.side-article-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
 .side-article-tag {
   align-self: flex-start;
   font-family: var(--font-mono);
@@ -1851,25 +1860,26 @@ a, button { touch-action: manipulation; }
 }
 .side-articles-all:hover, .side-articles-all:focus-visible { border-bottom-color: var(--accent); }
 
-/* Dos columnas reales: 288px de aside + el resto para el contenido. */
+/* Dos columnas reales: contenido + 288px de aside a la derecha. */
 @media (min-width: 1180px) {
   .shell {
     display: grid;
-    grid-template-columns: 288px minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) 288px;
     align-items: start;
     max-width: 1456px;
     margin: 0 auto;
   }
+  /* El HTML pone el aside primero, pero visualmente va a la derecha. */
+  .shell-main { grid-column: 1; grid-row: 1; }
   .side-articles {
+    grid-column: 2;
+    grid-row: 1;
     border-top: 0;
-    border-right: 1px solid var(--line);
+    border-left: 1px solid var(--line);
     margin-top: 0;
-    padding: 40px 22px 40px max(24px, env(safe-area-inset-left, 0px));
+    padding: 40px max(24px, env(safe-area-inset-right, 0px)) 40px 22px;
     position: sticky;
     top: 80px;
-    max-height: calc(100vh - 104px);
-    overflow-y: auto;
-    overscroll-behavior: contain;
   }
   .side-articles-inner { max-width: none; }
   .side-articles-list { grid-template-columns: 1fr; }
@@ -1879,6 +1889,26 @@ a, button { touch-action: manipulation; }
 /* ============================================================
    Página de artículo
    ============================================================ */
+/* La intro del artículo no usa la clase .page-intro compartida (margin-top: -24px)
+   porque los títulos largos causan solapamiento. */
+.article-lede {
+  max-width: 56ch;
+  color: var(--slate);
+  font-size: 18px;
+  line-height: 1.6;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+.article-hero-img {
+  width: 100%;
+  max-width: 68ch;
+  height: auto;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
 .article-meta {
   font-family: var(--font-mono);
   font-size: 12px;

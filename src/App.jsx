@@ -28,8 +28,10 @@ function LangLayout({ lang }) {
     <LanguageProvider lang={lang}>
       <ScrollToTop />
       <Header />
-      {/* Shell de dos columnas: el aside de artículos va a la izquierda en
-          pantallas anchas y pasa debajo del contenido en móvil (ver styles.css). */}
+      {/* Shell de dos columnas: el aside de artículos va a la DERECHA en
+          pantallas anchas (ver grid-column en .side-articles de styles.css)
+          y pasa debajo del contenido en móvil. El orden en el HTML lo deja
+          primero para que lectores de pantalla lo encuentren sin bajar. */}
       <div className="shell">
         <ArticlesAside />
         <main className="shell-main">
