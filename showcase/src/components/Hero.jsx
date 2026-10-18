@@ -9,6 +9,9 @@ import {
   LazyPixelSwap,
   LazyGradualBlur,
   LazySparkModel,
+  LazyCardSwap,
+  LazyScrambledText,
+  LazyBlurText,
 } from './reactbits/registry.js'
 
 /** variant: 'split' (visual al lado) | 'centered' (fondo a todo lo ancho)
@@ -31,6 +34,7 @@ export default function Hero({
   visualFrame,
   background,
   heroEffect,
+  textEffect,
   theme,
   image,
   imageAlt = '',
@@ -68,6 +72,13 @@ export default function Hero({
         </Suspense>
       )
     }
+    if (heroEffect?.type === 'cardSwap' && !reduced) {
+      return (
+        <Suspense fallback={image ? <img src={image} alt={imageAlt} /> : <Icon name={visualIcon} />}>
+          <LazyCardSwap {...heroEffect.props} />
+        </Suspense>
+      )
+    }
     if (video) return <video src={video} poster={videoPoster} autoPlay muted loop playsInline aria-label={imageAlt} />
     if (image) return <img src={image} alt={imageAlt} loading="eager" />
     return <Icon name={visualIcon} />
@@ -76,9 +87,21 @@ export default function Hero({
 
   const copy = (
     <Reveal className="demo-hero-copy">
-      {eyebrow && <span className="demo-eyebrow">{eyebrow}</span>}
+      {eyebrow && (
+        textEffect === 'languageSchool' && !reduced ? (
+          <Suspense fallback={<span className="demo-eyebrow">{eyebrow}</span>}>
+            <LazyScrambledText text={eyebrow} as="span" className="demo-eyebrow" duration={1.0} />
+          </Suspense>
+        ) : <span className="demo-eyebrow">{eyebrow}</span>
+      )}
       <h1>{title}</h1>
-      {text && <p>{text}</p>}
+      {text && (
+        textEffect === 'languageSchool' && !reduced ? (
+          <Suspense fallback={<p>{text}</p>}>
+            <LazyBlurText text={text} as="p" />
+          </Suspense>
+        ) : <p>{text}</p>
+      )}
       <div className="demo-hero-actions">
         {primaryCta && (
           <a href={primaryCta.href} className="demo-btn demo-btn-primary">{primaryCta.label}</a>

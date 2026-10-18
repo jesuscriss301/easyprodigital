@@ -10,6 +10,7 @@ import {
   LazyPixelSnow,
   LazyBeams,
   LazyGridScan,
+  LazyDotField,
 } from './reactbits/registry.js'
 
 /**
@@ -149,6 +150,11 @@ export default function EffectHeroBackground({ variant, theme, centered = false 
       break
     case 'sideRays':
       node = <LazySideRays rayColor1={c1} rayColor2={c2} intensity={1.6} spread={1.8} opacity={0.85} />
+      break
+    case 'dotField':
+      // DotField (sin deps): grid de puntos sutil que reacciona al cursor.
+      // Fondo tranquilo para Agencia de Idiomas — no compite con CardSwap.
+      node = <LazyDotField color={c1} gap={30} radius={1.3} mouseRadius={120} opacity={0.28} />
       break
     default:
       return null

@@ -43,3 +43,12 @@ export const LazySwarmCursor = lazy(() => import('./SwarmCursor/SwarmCursor.jsx'
 
 // --- Fondo de tinta del hero (motor ogl) — usado por copie-bgr ---
 export const LazyLiquidChrome = lazy(() => import('./LiquidChrome/LiquidChrome.jsx').then((m) => ({ default: m.LiquidChrome })))
+
+// --- Agencia de idiomas (motor motion + gsap) ---
+export const LazyCardSwap = lazy(() => import('./CardSwap/CardSwap.jsx'))
+export const LazyScrambledText = lazy(() => import('./ScrambledText/ScrambledText.jsx'))
+export const LazyBlurText = lazy(() => import('./BlurText/BlurText.jsx'))
+export const LazyDotField = lazy(() => import('./DotField/DotField.jsx'))
+
+// --- Veterinaria (motor gsap) ---
+export const LazyBounceCards = lazy(() => import('./BounceCards/BounceCards.jsx'))

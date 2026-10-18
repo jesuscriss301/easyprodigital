@@ -11,6 +11,7 @@ import ScrollFeatureSection from '../components/ScrollFeatureSection.jsx'
 import Testimonials from '../components/Testimonials.jsx'
 import CtaBanner from '../components/CtaBanner.jsx'
 import MapSection from '../components/MapSection.jsx'
+import PatientsSection from '../components/PatientsSection.jsx'
 import Disclosure from '../components/Disclosure.jsx'
 import Footer from '../components/Footer.jsx'
 import Badge from '../components/Badge.jsx'
@@ -50,6 +51,7 @@ const SECTION_RENDERERS = {
   scrollFeature: (demo) => (demo.scrollFeature ? <ScrollFeatureSection key="scrollFeature" {...demo.scrollFeature} /> : null),
   testimonials: (demo) => (demo.testimonials ? <Testimonials key="testimonials" {...demo.testimonials} vines={!!demo.vines} materials={demo.materials || null} /> : null),
   map: (demo) => (demo.map ? <MapSection key="map" {...demo.map} /> : null),
+  patients: (demo) => (demo.patients ? <PatientsSection key="patients" {...demo.patients} /> : null),
   cta: (demo) => (demo.cta ? <CtaBanner key="cta" {...demo.cta} theme={demo.theme} /> : null),
 }
 

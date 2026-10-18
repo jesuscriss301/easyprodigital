@@ -1,0 +1,46 @@
+.rb-bouncecards{
+  position:relative;
+  margin: 60px auto 80px;
+  max-width: 100%;
+}
+.rb-bouncecards__card{
+  position:absolute;
+  top:50%; left:50%;
+  margin-left:-110px;
+  margin-top:-140px;
+  width:220px;
+  height:280px;
+  border-radius: 20px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow: 0 20px 50px -20px rgba(0,0,0,.35), 0 6px 16px -8px rgba(0,0,0,.2);
+  transition: transform .3s cubic-bezier(.2,.9,.3,1.4);
+  cursor: pointer;
+}
+.rb-bouncecards__card:hover{
+  transform: scale(1.06) !important;
+  z-index: 10;
+}
+.rb-bouncecards__card img{
+  width:100%; height:100%;
+  object-fit:cover;
+  display:block;
+}
+.rb-bouncecards__name{
+  position:absolute;
+  bottom:12px; left:12px; right:12px;
+  padding:8px 12px;
+  background: rgba(255,255,255,.92);
+  border-radius: 10px;
+  font-family: var(--demo-font-heading, system-ui);
+  font-size: .95rem;
+  font-weight:600;
+  color: var(--demo-ink, #222);
+  text-align:center;
+}
+@media (max-width: 700px){
+  .rb-bouncecards{ transform: scale(.72); margin: 20px auto 20px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .rb-bouncecards__card{ transition:none !important; }
+}
