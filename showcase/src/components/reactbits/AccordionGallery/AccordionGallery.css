@@ -1,0 +1,49 @@
+.rb-accordiongallery{
+  display:flex;
+  width:100%;
+  height:380px;
+  border-radius: 18px;
+  overflow:hidden;
+  gap:4px;
+}
+.rb-accordiongallery__panel{
+  position:relative;
+  flex:1 1 0;
+  min-width: 60px;
+  background-size: cover;
+  background-position: center;
+  cursor:pointer;
+  outline:none;
+  transition: background-color .2s;
+}
+.rb-accordiongallery__scrim{
+  position:absolute;
+  inset:0;
+  background: linear-gradient(to top, rgba(0,0,0,.65), rgba(0,0,0,0) 55%);
+}
+.rb-accordiongallery__label{
+  position:absolute;
+  left:14px; bottom:14px; right:14px;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  font-family: var(--demo-font-body, system-ui);
+}
+.rb-accordiongallery__label strong{
+  font-family: var(--demo-font-heading, system-ui);
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+.rb-accordiongallery__label span{
+  font-size: .8rem;
+  opacity:.85;
+  white-space: nowrap;
+}
+@media (max-width: 700px){
+  .rb-accordiongallery{ flex-direction: column; height: auto; }
+  .rb-accordiongallery__panel{ height: 90px; flex: none !important; }
+}
+@media (prefers-reduced-motion: reduce){
+  .rb-accordiongallery__panel{ transition:none !important; }
+}

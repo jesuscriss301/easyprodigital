@@ -1,0 +1,25 @@
+.rb-glasssurface{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+}
+.rb-glasssurface__panel{
+  position:absolute;
+  width:60%;
+  height:140%;
+  top:-20%;
+  left:-10%;
+  background: linear-gradient(120deg, rgba(255,255,255,.18), rgba(255,255,255,0) 55%);
+  transform: rotate(-8deg);
+  filter: blur(2px);
+}
+.rb-glasssurface__panel--alt{
+  left:55%;
+  width:45%;
+  background: linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,0) 60%);
+  transform: rotate(6deg);
+}
+@media (prefers-reduced-motion: reduce){
+  .rb-glasssurface{ opacity:.6; }
+}

@@ -1,9 +1,11 @@
+import { Suspense } from 'react'
 import Reveal from './Reveal.jsx'
 import SplitText from './SplitText.jsx'
 import { Icon } from './icons.jsx'
 import { prefersReducedMotion } from './motionUtils.js'
 import { VineDecor, speciesFor } from './Vines.jsx'
 import { MaterialDecor } from './Materials.jsx'
+import { LazyTiltedCard, LazyGlareHover } from './reactbits/registry.js'
 
 // Hover "spotlight" (adaptado de SpotlightCard de React Bits, reescrito sin
 // dependencias): un halo radial sigue al cursor dentro de la fila/tarjeta.
@@ -38,6 +40,7 @@ export default function Services({ id = 'services', eyebrow, title, intro, varia
   const spotlight = hover === 'spotlight'
   const magnet = hover === 'magnet'
   const glass = hover === 'glass'
+  const tilted = hover === 'tilted' && !prefersReducedMotion()
   const spotProps = spotlight
     ? { onMouseMove: spotlightMove }
     : magnet
@@ -68,16 +71,26 @@ export default function Services({ id = 'services', eyebrow, title, intro, varia
           </Reveal>
         ) : (
           <Reveal as="div" className="demo-services demo-services--grid">
-            {items.map((s, i) => (
-              <div className={`demo-service-card${itemModifier}${vines || materials ? ' has-vines' : ''}`} key={s.title} {...spotProps}>
-                {vines && <VineDecor species={speciesFor('services', i)} seed={i + 1} side="right" />}
-                {materials && <MaterialDecor set={materials} section="services" index={i} side="right" />}
-                <div className="demo-service-icon"><Icon name={s.icon} /></div>
-                <h3>{s.title}</h3>
-                <p>{s.text}</p>
-                {s.price && <span className="demo-service-price">{s.price}</span>}
-              </div>
-            ))}
+            {items.map((s, i) => {
+              const card = (
+                <div className={`demo-service-card${itemModifier}${vines || materials ? ' has-vines' : ''}`} {...spotProps}>
+                  {vines && <VineDecor species={speciesFor('services', i)} seed={i + 1} side="right" />}
+                  {materials && <MaterialDecor set={materials} section="services" index={i} side="right" />}
+                  <div className="demo-service-icon"><Icon name={s.icon} /></div>
+                  <h3>{s.title}</h3>
+                  <p>{s.text}</p>
+                  {s.price && <span className="demo-service-price">{s.price}</span>}
+                </div>
+              )
+              if (!tilted) return <div key={s.title}>{card}</div>
+              return (
+                <Suspense key={s.title} fallback={card}>
+                  <LazyTiltedCard maxTilt={8} scaleOnHover={1.02}>
+                    <LazyGlareHover>{card}</LazyGlareHover>
+                  </LazyTiltedCard>
+                </Suspense>
+              )
+            })}
           </Reveal>
         )}
       </div>

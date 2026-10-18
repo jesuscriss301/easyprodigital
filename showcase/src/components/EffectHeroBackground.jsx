@@ -11,6 +11,8 @@ import {
   LazyBeams,
   LazyGridScan,
   LazyDotField,
+  LazyGlassSurface,
+  LazyLiquidChrome,
 } from './reactbits/registry.js'
 
 /**
@@ -156,6 +158,25 @@ export default function EffectHeroBackground({ variant, theme, centered = false 
       // Fondo tranquilo para Agencia de Idiomas — no compite con CardSwap.
       node = <LazyDotField color={c1} gap={30} radius={1.3} mouseRadius={120} opacity={0.28} />
       break
+    case 'glassSurface':
+      // GlassSurface (sin deps): paneles de vidrio esmerilado — "aquí no
+      // hay nada que esconder". Fondo del hero de Self Storage.
+      node = <LazyGlassSurface tint={centered ? '#ffffff' : theme.primary} opacity={0.14} blur={20} />
+      break
+    case 'liquidChrome':
+      // LiquidChrome (ogl, ya usado por copie-bgr): metal líquido en tonos
+      // grises — fondo del hero de Renta de Coches ("metal premium").
+      node = (
+        <LazyLiquidChrome
+          baseColor={[0.55, 0.56, 0.6]}
+          speed={0.18}
+          amplitude={0.28}
+          frequencyX={2.6}
+          frequencyY={2.6}
+          interactive={false}
+        />
+      )
+      break
     default:
       return null
   }
@@ -163,7 +184,7 @@ export default function EffectHeroBackground({ variant, theme, centered = false 
   // Beams, GridScan y PlasmaWave dibujan formas opacas y muy definidas (no
   // un lavado translúcido que se desvanece solo, como Aurora/PixelSnow) —
   // sin atenuar quedan demasiado dominantes sobre el texto del hero.
-  const dimOpacity = { beams: 0.4, gridScan: 0.4, plasmaWave: 0.32 }[variant]
+  const dimOpacity = { beams: 0.4, gridScan: 0.4, plasmaWave: 0.32, liquidChrome: 0.5 }[variant]
 
   return (
     <div className="demo-hero-bg" style={dimOpacity ? { opacity: dimOpacity } : undefined} aria-hidden="true">

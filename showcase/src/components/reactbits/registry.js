@@ -52,3 +52,11 @@ export const LazyDotField = lazy(() => import('./DotField/DotField.jsx'))
 
 // --- Veterinaria (motor gsap) ---
 export const LazyBounceCards = lazy(() => import('./BounceCards/BounceCards.jsx'))
+
+// --- Self Storage (sin deps + gsap) ---
+export const LazyGlassSurface = lazy(() => import('./GlassSurface/GlassSurface.jsx'))
+export const LazyAccordionGallery = lazy(() => import('./AccordionGallery/AccordionGallery.jsx'))
+
+// --- Renta de coches (motor ogl + motion) ---
+export const LazyTiltedCard = lazy(() => import('./TiltedCard/TiltedCard.jsx'))
+export const LazyGlareHover = lazy(() => import('./GlareHover/GlareHover.jsx'))

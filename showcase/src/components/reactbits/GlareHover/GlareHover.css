@@ -1,0 +1,22 @@
+.rb-glarehover{
+  position:relative;
+  overflow:hidden;
+  border-radius: inherit;
+}
+.rb-glarehover__sheen{
+  position:absolute;
+  top:-50%;
+  left:-60%;
+  width:40%;
+  height:220%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.55) 45%, transparent 60%);
+  transform: rotate(18deg) translateX(0);
+  transition: transform .7s cubic-bezier(.3,.9,.2,1);
+  pointer-events:none;
+}
+.rb-glarehover:hover .rb-glarehover__sheen{
+  transform: rotate(18deg) translateX(320%);
+}
+@media (prefers-reduced-motion: reduce){
+  .rb-glarehover__sheen{ display:none; }
+}
