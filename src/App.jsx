@@ -32,11 +32,13 @@ function LangLayout({ lang }) {
           pantallas anchas (ver grid-column en .side-articles de styles.css)
           y pasa debajo del contenido en móvil. El orden en el HTML lo deja
           primero para que lectores de pantalla lo encuentren sin bajar. */}
+      {/* Shell de dos columnas: en móvil el contenido va primero (HTML order),
+          en desktop el grid mueve el aside a la derecha con grid-column/grid-row. */}
       <div className="shell">
-        <ArticlesAside />
         <main className="shell-main">
           <Outlet />
         </main>
+        <ArticlesAside />
       </div>
       <WhatsAppFloat />
       <Footer />
