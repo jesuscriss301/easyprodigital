@@ -42,11 +42,11 @@ export default function CardSwap({ items = [], interval = 3000 }) {
             }}
             transition={{ type: 'spring', stiffness: 90, damping: 18 }}
           >
-            <img src={item.image} alt={item.alt || `${item.language} — ${item.greeting}`} loading={i === 0 ? 'eager' : 'lazy'} />
             <div className="rb-cardswap__caption">
               <span className="rb-cardswap__greeting">{item.greeting}</span>
               <span className="rb-cardswap__lang">{item.language}</span>
             </div>
+            <img src={item.image} alt={item.alt || `${item.language} — ${item.greeting}`} loading={i === 0 ? 'eager' : 'lazy'} />
           </motion.div>
         )
       })}
