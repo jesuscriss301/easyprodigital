@@ -94,9 +94,13 @@ export default function DemoPage({ demo }) {
       />
       <Nav brand={demo.brand} links={demo.nav.links} ctaLabel={demo.nav.ctaLabel} />
       <StyleSwitcher variants={demo.styleVariants} current={demo.slug} />
-      {sections}
-      <RelatedDemos demo={demo} />
-      <Disclosure {...demo.disclosure} />
+      <div className="demo-shell">
+        <div className="demo-shell-main">
+          {sections}
+          <Disclosure {...demo.disclosure} />
+        </div>
+        <RelatedDemos demo={demo} />
+      </div>
       <Footer brand={demo.brand} />
       <Badge />
       {/* SplashCursor (React Bits) — único efecto de página completa de la

@@ -4,12 +4,14 @@ import { pickRelatedDemos } from '../demos/index.js'
 import { getLocalizedDemo } from '../demos/i18n/es/index.js'
 
 /**
- * Aside con al menos 3 demos "relacionadas", presente al final de toda
- * página de demo (ver DemoPage.jsx, justo antes de Disclosure). Mismo
- * patrón que ArticlesAside.jsx en el sitio principal: selección
- * determinista por slug (pickRelatedDemos, en demos/index.js) para que el
- * HTML prerenderizado y lo que ve el visitante coincidan, con la demo
- * actual (y sus variantes de estilo) siempre excluida.
+ * Columna lateral derecha con al menos 3 demos "relacionadas", presente en
+ * toda página de demo (ver DemoPage.jsx, dentro de .demo-shell junto a
+ * .demo-shell-main). Mismo patrón que ArticlesAside.jsx en el sitio
+ * principal: va a la derecha y sticky en escritorio (>=1180px, ver
+ * .demo-shell en styles.css) y se apila debajo del contenido en
+ * móvil/tablet. Selección determinista por slug (pickRelatedDemos, en
+ * demos/index.js) para que el HTML prerenderizado y lo que ve el visitante
+ * coincidan, con la demo actual (y sus variantes de estilo) excluida.
  */
 export default function RelatedDemos({ demo }) {
   const { lang, t } = useLanguage()
@@ -18,14 +20,12 @@ export default function RelatedDemos({ demo }) {
   if (!picks.length) return null
 
   return (
-    <aside id="more-demos" className="demo-section demo-section--tight demo-related" aria-labelledby="related-demos-heading">
-      <div className="demo-container">
-        <div className="demo-section-head">
-          <span className="demo-eyebrow" id="related-demos-heading">
-            {t.relatedDemos.heading}
-          </span>
-          <p className="demo-related-tagline">{t.relatedDemos.tagline}</p>
-        </div>
+    <aside className="demo-related" aria-labelledby="related-demos-heading">
+      <div className="demo-related-inner">
+        <p className="demo-related-eyebrow" id="related-demos-heading">
+          {t.relatedDemos.heading}
+        </p>
+        <p className="demo-related-tagline">{t.relatedDemos.tagline}</p>
 
         <ul className="demo-related-list">
           {picks.map((d) => (
