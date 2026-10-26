@@ -14,6 +14,7 @@ import MapSection from '../components/MapSection.jsx'
 import PatientsSection from '../components/PatientsSection.jsx'
 import UnitTypesSection from '../components/UnitTypesSection.jsx'
 import Disclosure from '../components/Disclosure.jsx'
+import RelatedDemos from '../components/RelatedDemos.jsx'
 import Footer from '../components/Footer.jsx'
 import Badge from '../components/Badge.jsx'
 import { prefersReducedMotion } from '../components/motionUtils.js'
@@ -94,6 +95,7 @@ export default function DemoPage({ demo }) {
       <Nav brand={demo.brand} links={demo.nav.links} ctaLabel={demo.nav.ctaLabel} />
       <StyleSwitcher variants={demo.styleVariants} current={demo.slug} />
       {sections}
+      <RelatedDemos demo={demo} />
       <Disclosure {...demo.disclosure} />
       <Footer brand={demo.brand} />
       <Badge />

@@ -154,3 +154,58 @@ export default demos
 export function getDemoBySlug(slug) {
   return allDemos.find((d) => d.slug === slug)
 }
+
+// Elige al menos 3 demos "relacionadas" para mostrar en el aside de cada
+// página de demo (RelatedDemos.jsx), con el mismo patrón determinista que
+// usa el sitio principal para sus artículos de blog (ver
+// src/data/articles.js -> pickArticles en el repo raíz): una mezcla
+// sembrada con el slug de la página actual, así la misma página siempre
+// muestra el mismo trío (coincide HTML prerenderizado <-> lo que ve el
+// visitante) pero páginas distintas muestran tríos distintos.
+//
+// Excluye todo el grupo de variantes de estilo del propio negocio (no solo
+// el slug exacto), para no "recomendar" la misma demo con otra paleta.
+export function pickRelatedDemos(demo, count = 3) {
+  if (!demo) return []
+  const exclude = new Set(
+    demo.styleVariants?.length ? demo.styleVariants.map((v) => v.slug) : [demo.slug],
+  )
+  const pool = demos.filter((d) => !exclude.has(d.slug))
+  if (!pool.length) return []
+
+  const rand = mulberry32(hashSlug(demo.slug))
+  for (let i = pool.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(rand() * (i + 1))
+    const tmp = pool[i]
+    pool[i] = pool[j]
+    pool[j] = tmp
+  }
+  return pool.slice(0, Math.min(count, pool.length))
+}
+
+// FNV-1a de 32 bits con mezcla final -- mismo algoritmo que hashPath() en
+// src/data/articles.js del sitio principal.
+function hashSlug(slug) {
+  let h = 0x811c9dc5
+  for (let i = 0; i < slug.length; i += 1) {
+    h ^= slug.charCodeAt(i)
+    h = Math.imul(h, 0x01000193)
+  }
+  h ^= h >>> 15
+  h = Math.imul(h, 0x2545f491)
+  h ^= h >>> 13
+  return h >>> 0
+}
+
+// PRNG de 32 bits sin estado global -- mismo algoritmo que mulberry32() en
+// src/data/articles.js del sitio principal.
+function mulberry32(seed) {
+  let a = seed >>> 0
+  return function next() {
+    a = (a + 0x6d2b79f5) >>> 0
+    let t = a
+    t = Math.imul(t ^ (t >>> 15), t | 1)
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61)
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
+}

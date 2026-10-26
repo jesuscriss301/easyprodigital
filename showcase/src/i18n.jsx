@@ -18,6 +18,12 @@ const STRINGS = {
     },
     footer: { createdBy: 'sample site created by' },
     badge: { label: 'Sample template — Easy Pro Digital' },
+    relatedDemos: {
+      heading: 'More demos',
+      tagline: 'Explore other industries built the same way — real pages, real prices, real booking flows.',
+      readTag: 'View demo',
+      more: 'See all demos',
+    },
     home: {
       title: 'Sample Websites by Industry — Easy Pro Digital',
       eyebrow: 'Easy Pro Digital · Demo Gallery',
@@ -71,6 +77,12 @@ const STRINGS = {
     },
     footer: { createdBy: 'sitio de muestra creado por' },
     badge: { label: 'Plantilla de muestra — Easy Pro Digital' },
+    relatedDemos: {
+      heading: 'Más demos',
+      tagline: 'Explora otros nichos hechos con el mismo cuidado — páginas reales, precios reales, flujo de reserva real.',
+      readTag: 'Ver demo',
+      more: 'Ver todas las demos',
+    },
     home: {
       title: 'Webs de muestra por rubro — Easy Pro Digital',
       eyebrow: 'Easy Pro Digital · Galería de demos',
