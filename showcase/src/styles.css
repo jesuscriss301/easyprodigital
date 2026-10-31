@@ -651,7 +651,12 @@ h1, h2, h3, h4 {
     top: 80px;
     max-height: calc(100vh - 100px);
     overflow-y: auto;
+    /* Scroll funcional pero sin barra visible (sigue siendo desplazable
+       con rueda/trackpad/touch, solo se oculta el indicador). */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge viejo */
   }
+  .demo-related::-webkit-scrollbar { display: none; } /* Chrome/Safari/Edge nuevo */
   .demo-related-inner { max-width: none; }
   .demo-related-list { grid-template-columns: 1fr; }
   .demo-related-tagline { max-width: none; }
