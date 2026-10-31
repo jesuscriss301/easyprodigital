@@ -4,6 +4,11 @@ export default {
   slug: 'gardeners',
   brand: 'Evergreen Yard Co.',
   niche: 'Landscaping & Garden Care',
+  valueProps: [
+    `Sell monthly maintenance plans online`,
+    `Show your coverage map so you only get leads you can serve`,
+    `Seasonal offers that fill slow months`,
+  ],
   kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
   // `primary` here is only for the pill color in the style switcher (so each
@@ -18,7 +23,7 @@ export default {
   ],
 
   seo: {
-    title: 'Website Design for Landscapers & Gardeners (Example) | Easy Pro Digital',
+    title: 'Website Design for Landscapers & Gardeners (Live Example) | Easy Pro Digital',
     description:
       'A real example website for landscaping and garden care businesses, built by Easy Pro Digital. This is how great your business website can look: services, project gallery, service area map and more.',
     robots: 'index, follow',
@@ -29,7 +34,7 @@ export default {
   // 'cta' is valid — DemoPage.jsx renders whatever is listed here, skipping
   // the rest.
   layout: {
-    order: ['hero', 'scrollFeature', 'services', 'gallery', 'features', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'valueProps', 'scrollFeature', 'services', 'gallery', 'features', 'testimonials', 'map', 'cta'],
   },
 
   // Enredaderas decorativas (components/Vines.jsx): una especie distinta en
@@ -168,8 +173,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"Evergreen Yard Co." is not a real business: this page is a web design example for landscaping and garden care businesses, built by Easy Pro Digital. If you run a business like this and want a website like this one (or better, with your brand, your photos and real online booking), let’s talk.',
-  },
 }

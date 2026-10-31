@@ -4,6 +4,11 @@ export default {
   slug: 'masons',
   brand: 'Stonecraft Masonry',
   niche: 'Masonry & Bricklaying',
+  valueProps: [
+    `Before/after projects that justify your price`,
+    `Price per sq ft upfront so you get serious leads`,
+    `Show up for “chimney repair near me”`,
+  ],
   kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
   // `primary` here is only for the pill color in the style switcher (so each
@@ -18,7 +23,7 @@ export default {
   ],
 
   seo: {
-    title: 'Website Design for Masons & Bricklayers (Example) | Easy Pro Digital',
+    title: 'Website Design for Masons & Bricklayers (Live Example) | Easy Pro Digital',
     description:
       'A real example website for masonry and bricklaying businesses, built by Easy Pro Digital. This is how great your business website can look: services, project gallery, service area map and more.',
     robots: 'index, follow',
@@ -29,7 +34,7 @@ export default {
   // 'cta' is valid — DemoPage.jsx renders whatever is listed here, skipping
   // the rest.
   layout: {
-    order: ['hero', 'gallery', 'services', 'features', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'valueProps', 'gallery', 'services', 'features', 'testimonials', 'map', 'cta'],
   },
 
   // Materiales de obra decorativos (components/Materials.jsx): uno distinto
@@ -158,8 +163,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"Stonecraft Masonry" is not a real business: this page is a web design example for masonry and bricklaying businesses, built by Easy Pro Digital. If you run a business like this and want a website like this one (or better, with your brand, your photos and real online booking), let’s talk.',
-  },
 }

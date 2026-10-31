@@ -97,8 +97,4 @@ export default {
     actions: [{ label: 'Agendar Consulta' }, { label: 'Ver Tratamientos' }],
   },
 
-  disclosure: {
-    heading: 'Este es un sitio web de muestra',
-    text: '"Lumora Aesthetic Clinic" no es un negocio real: esta página es un ejemplo de diseño web para clínicas de estética médica y medspas, hecho por Easy Pro Digital. Si tienes una clínica así y quieres un sitio como este (o mejor, con tu marca, tus fotos y solicitudes de cita reales), hablemos.',
-  },
 }

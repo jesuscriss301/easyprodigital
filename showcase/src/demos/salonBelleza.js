@@ -4,6 +4,11 @@ export default {
   slug: 'salon-belleza',
   brand: 'Bella Aura Studio',
   niche: 'Beauty Salon & Spa',
+  valueProps: [
+    `Bookings 24/7 without answering DMs`,
+    `Fewer no-shows with automatic reminders`,
+    `Your Instagram followers land on a page that sells, not just a grid`,
+  ],
   kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
   // Same content, different look — lets a visitor compare palettes/fonts on
@@ -21,7 +26,7 @@ export default {
   ],
 
   seo: {
-    title: 'Website Design for Beauty Salons & Spas (Example) | Easy Pro Digital',
+    title: 'Website Design for Beauty Salons & Spas (Live Example) | Easy Pro Digital',
     description:
       'A real example website for beauty salons and spas, built by Easy Pro Digital. This is how great your business website can look: services, bookings, testimonials and more.',
     robots: 'index, follow',
@@ -31,7 +36,7 @@ export default {
   // 'hero' | 'services' | 'features' | 'gallery' | 'testimonials' | 'cta' is
   // valid — DemoPage.jsx renders whatever is listed here, skipping the rest.
   layout: {
-    order: ['hero', 'gallery', 'services', 'features', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'valueProps', 'gallery', 'services', 'features', 'testimonials', 'map', 'cta'],
   },
 
   theme: {
@@ -161,8 +166,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"Bella Aura Studio" is not a real business: this page is a web design example for beauty salons and spas, built by Easy Pro Digital. If you run a business like this and want a website like this one (or better, with your brand, your photos and a real booking system), let’s talk.',
-  },
 }

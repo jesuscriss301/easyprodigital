@@ -4,6 +4,11 @@ export default {
   slug: 'automechanics',
   brand: 'Redline Auto Repair',
   niche: 'Auto Mechanics & Repair Shops',
+  valueProps: [
+    `Online booking fills slow days`,
+    `Upfront prices kill the “will they rip me off?” fear`,
+    `Reviews front and center`,
+  ],
   kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
   // `primary` here is only for the pill color in the style switcher (so each
@@ -18,7 +23,7 @@ export default {
   ],
 
   seo: {
-    title: 'Website Design for Auto Mechanics & Repair Shops (Example) | Easy Pro Digital',
+    title: 'Website Design for Auto Mechanics & Repair Shops (Live Example) | Easy Pro Digital',
     description:
       'A real example website for auto mechanic and repair shop businesses, built by Easy Pro Digital. This is how great your business website can look: services, work gallery, service area map and more.',
     robots: 'index, follow',
@@ -29,7 +34,7 @@ export default {
   // 'cta' is valid — DemoPage.jsx renders whatever is listed here, skipping
   // the rest.
   layout: {
-    order: ['hero', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'valueProps', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
   },
 
   theme: {
@@ -156,8 +161,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"Redline Auto Repair" is not a real business: this page is a web design example for auto mechanics and repair shops, built by Easy Pro Digital. If you run a business like this and want a website like this one (or better, with your brand, your photos and real online booking), let’s talk.',
-  },
 }

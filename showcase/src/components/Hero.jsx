@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 import Reveal from './Reveal.jsx'
+import { useLanguage } from '../i18n.jsx'
 import CountUp from './CountUp.jsx'
 import { Icon } from './icons.jsx'
 import EffectHeroBackground from './EffectHeroBackground.jsx'
@@ -42,6 +43,8 @@ export default function Hero({
   videoPoster,
 }) {
   const reduced = prefersReducedMotion()
+  const { t } = useLanguage()
+  const sampleLabel = t.sample.label
 
   const renderVisualContent = () => {
     if (heroEffect?.type === 'ripple' && !reduced) {
@@ -130,6 +133,10 @@ export default function Hero({
               {t.label}
             </div>
           ))}
+          {/* Las cifras de arriba son de ejemplo (ver doc de estrategias,
+              Parte 1.9) — esta etiqueta deja claro que no son datos reales
+              de un cliente. */}
+          <span className="demo-sample-tag">{sampleLabel}</span>
         </div>
       )}
     </Reveal>

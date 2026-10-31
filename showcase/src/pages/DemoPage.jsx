@@ -15,6 +15,8 @@ import PatientsSection from '../components/PatientsSection.jsx'
 import UnitTypesSection from '../components/UnitTypesSection.jsx'
 import Disclosure from '../components/Disclosure.jsx'
 import RelatedDemos from '../components/RelatedDemos.jsx'
+import ValueProps from '../components/ValueProps.jsx'
+import StickyCta from '../components/StickyCta.jsx'
 import Footer from '../components/Footer.jsx'
 import Badge from '../components/Badge.jsx'
 import { prefersReducedMotion } from '../components/motionUtils.js'
@@ -40,6 +42,7 @@ function useGoogleFont(href) {
  */
 const SECTION_RENDERERS = {
   hero: (demo) => <Hero key="hero" {...demo.hero} theme={demo.theme} />,
+  valueProps: (demo) => <ValueProps key="valueProps" niche={demo.niche} items={demo.valueProps || []} />,
   services: (demo) =>
     !demo.services
       ? null
@@ -58,7 +61,7 @@ const SECTION_RENDERERS = {
   cta: (demo) => (demo.cta ? <CtaBanner key="cta" {...demo.cta} theme={demo.theme} /> : null),
 }
 
-const DEFAULT_ORDER = ['hero', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta']
+const DEFAULT_ORDER = ['hero', 'valueProps', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta']
 
 /** Renderiza cualquier demo a partir de su objeto de configuración (src/demos/*.js). */
 export default function DemoPage({ demo }) {
@@ -97,12 +100,13 @@ export default function DemoPage({ demo }) {
       <div className="demo-shell">
         <div className="demo-shell-main">
           {sections}
-          <Disclosure {...demo.disclosure} />
+          <Disclosure {...demo.disclosure} brand={demo.brand} niche={demo.niche} />
         </div>
         <RelatedDemos demo={demo} />
       </div>
       <Footer brand={demo.brand} />
       <Badge />
+      <StickyCta niche={demo.niche} whatsappMessage={demo.disclosure?.whatsappMessage} />
       {/* SplashCursor (React Bits) — único efecto de página completa de la
           lista, solo Chef Privado lo usa (demo.cursorEffect). Fluid-sim en
           WebGL, caro de por sí, por eso el guard de reduced-motion es

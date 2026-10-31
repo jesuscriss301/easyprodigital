@@ -4,6 +4,11 @@ export default {
   slug: 'carpenters',
   brand: 'Oakline Carpentry',
   niche: 'Custom Carpentry & Woodworking',
+  valueProps: [
+    `Your portfolio sells for you, piece by piece`,
+    `Each project has its own “Request one like this” button`,
+    `Starting prices filter out tire-kickers`,
+  ],
   kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
   // `primary` here is only for the pill color in the style switcher (so each
@@ -18,7 +23,7 @@ export default {
   ],
 
   seo: {
-    title: 'Website Design for Carpenters & Woodworkers (Example) | Easy Pro Digital',
+    title: 'Website Design for Carpenters & Woodworkers (Live Example) | Easy Pro Digital',
     description:
       'A real example website for custom carpentry and woodworking businesses, built by Easy Pro Digital. This is how great your business website can look: services, project gallery, service area map and more.',
     robots: 'index, follow',
@@ -29,7 +34,7 @@ export default {
   // 'cta' is valid — DemoPage.jsx renders whatever is listed here, skipping
   // the rest.
   layout: {
-    order: ['hero', 'gallery', 'services', 'features', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'valueProps', 'gallery', 'services', 'features', 'testimonials', 'map', 'cta'],
   },
 
   // Materiales de obra decorativos (components/Materials.jsx): uno distinto
@@ -158,8 +163,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"Oakline Carpentry" is not a real business: this page is a web design example for carpentry and woodworking businesses, built by Easy Pro Digital. If you run a business like this and want a website like this one (or better, with your brand, your photos and real online booking), let’s talk.',
-  },
 }

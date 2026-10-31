@@ -4,6 +4,11 @@ export default {
   slug: 'cleaners',
   brand: 'Bright Home Cleaners',
   niche: 'Residential & Office Cleaning',
+  valueProps: [
+    `Instant quote form so you stop pricing by phone`,
+    `Recurring plans that bring the same client every 2 weeks`,
+    `Trust badges (bonded, insured, background-checked) where people decide`,
+  ],
   kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
   // `primary` here is only for the pill color in the style switcher (so each
@@ -18,7 +23,7 @@ export default {
   ],
 
   seo: {
-    title: 'Website Design for Cleaning Companies (Example) | Easy Pro Digital',
+    title: 'Website Design for Cleaning Companies (Live Example) | Easy Pro Digital',
     description:
       'A real example website for residential and office cleaning companies, built by Easy Pro Digital. This is how great your business website can look: services, booking, service area map and more.',
     robots: 'index, follow',
@@ -29,7 +34,7 @@ export default {
   // 'cta' is valid — DemoPage.jsx renders whatever is listed here, skipping
   // the rest.
   layout: {
-    order: ['hero', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'valueProps', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
   },
 
   theme: {
@@ -154,8 +159,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"Bright Home Cleaners" is not a real business: this page is a web design example for cleaning companies, built by Easy Pro Digital. If you run a business like this and want a website like this one (or better, with your brand, your photos and real online booking), let’s talk.',
-  },
 }

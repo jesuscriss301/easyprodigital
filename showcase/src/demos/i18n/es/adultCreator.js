@@ -62,8 +62,4 @@ export default {
     actions: [{ label: 'Suscribirse' }, { label: 'Enviar Pedido Personalizado' }],
   },
 
-  disclosure: {
-    heading: 'Este es un sitio web de muestra',
-    text: '"Scarlett Vale" no es una creadora real: esta página es un ejemplo de diseño web apto para todo público de una página link-in-bio para creadores de contenido adulto (18+), hecho por Easy Pro Digital. Todas las casillas de vista previa son placeholders censurados intencionalmente — no se muestra contenido real. Si eres creador/a y quieres una página como esta (con tus enlaces, tu marca y vistas previas con verificación de edad), hablemos.',
-  },
 }

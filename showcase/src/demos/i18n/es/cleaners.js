@@ -97,8 +97,4 @@ export default {
     actions: [{ label: 'Cotizar Gratis' }, { label: 'Ver Servicios' }],
   },
 
-  disclosure: {
-    heading: 'Este es un sitio web de muestra',
-    text: '"Bright Home Cleaners" no es un negocio real: esta página es un ejemplo de diseño web para empresas de limpieza, hecho por Easy Pro Digital. Si tienes un negocio así y quieres un sitio como este (o mejor, con tu marca, tus fotos y reservas en línea reales), hablemos.',
-  },
 }

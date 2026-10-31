@@ -99,8 +99,4 @@ export default {
     actions: [{ label: 'Planea tu Visita' }, { label: 'Ver un Servicio en Línea' }],
   },
 
-  disclosure: {
-    heading: 'Este es un sitio web de muestra',
-    text: '"Grace Point Church" no es una congregación real: esta página es un ejemplo de diseño web para iglesias y comunidades de fe, hecho por Easy Pro Digital. Si lideras una iglesia y quieres un sitio como este (o mejor, con tus fotos, tus horarios de servicio y donaciones en línea), hablemos.',
-  },
 }

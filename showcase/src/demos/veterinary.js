@@ -4,10 +4,15 @@ export default {
   slug: 'veterinary',
   brand: 'Patitas Felices Vet',
   niche: 'Veterinary Clinic',
+  valueProps: [
+    `Citas online sin contestar WhatsApp todo el día`,
+    `Recordatorios automáticos de vacunas (clientes que vuelven solos)`,
+    `Botón de urgencias visible`,
+  ],
   kind: 'nicho',
 
   seo: {
-    title: 'Website Design for Veterinary Clinics (Example) | Easy Pro Digital',
+    title: 'Website Design for Veterinary Clinics (Live Example) | Easy Pro Digital',
     description:
       'A real example website for veterinary clinics and pet hospitals, built by Easy Pro Digital. Hero that expands on scroll, "our patients" gallery with bouncing cards, services and bookings.',
     robots: 'index, follow',
@@ -16,7 +21,7 @@ export default {
   layout: {
     // scrollFeature (ScrollExpand) justo después del hero, luego patients
     // (BounceCards), luego el resto.
-    order: ['hero', 'scrollFeature', 'patients', 'services', 'features', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'valueProps', 'scrollFeature', 'patients', 'services', 'features', 'testimonials', 'map', 'cta'],
   },
 
   theme: {
@@ -147,8 +152,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"Patitas Felices Vet" is not a real business: this page is a web design example for veterinary clinics, built by Easy Pro Digital. If you run a vet clinic and want a website like this one (with your brand, your team and real booking), let\'s talk.',
-  },
 }

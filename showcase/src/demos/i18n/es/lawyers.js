@@ -97,8 +97,4 @@ export default {
     actions: [{ label: 'Consulta Gratis' }, { label: 'Ver Áreas de Práctica' }],
   },
 
-  disclosure: {
-    heading: 'Este es un sitio web de muestra',
-    text: '"Sterling & Vance Law Group" no es un negocio real: esta página es un ejemplo de diseño web para bufetes de abogados, hecho por Easy Pro Digital. Si tienes un bufete así y quieres un sitio como este (o mejor, con tu marca, tus fotos y solicitudes de consulta reales), hablemos.',
-  },
 }

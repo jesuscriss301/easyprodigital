@@ -4,6 +4,11 @@ export default {
   slug: 'plumbers',
   brand: 'Reliable Flow Plumbing',
   niche: 'Residential & Commercial Plumbing',
+  valueProps: [
+    `Phone number one tap away on every screen (emergencies come from phones)`,
+    `Your own leads, not shared with 4 competitors on lead sites`,
+    `Upfront prices build trust before the call`,
+  ],
   kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
   // `primary` here is only for the pill color in the style switcher (so each
@@ -18,7 +23,7 @@ export default {
   ],
 
   seo: {
-    title: 'Website Design for Plumbers (Example) | Easy Pro Digital',
+    title: 'Website Design for Plumbers (Live Example) | Easy Pro Digital',
     description:
       'A real example website for residential and commercial plumbing businesses, built by Easy Pro Digital. This is how great your business website can look: services, project gallery, service area map and more.',
     robots: 'index, follow',
@@ -29,7 +34,7 @@ export default {
   // 'cta' is valid — DemoPage.jsx renders whatever is listed here, skipping
   // the rest.
   layout: {
-    order: ['hero', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'valueProps', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
   },
 
   // Materiales de obra decorativos (components/Materials.jsx): uno distinto
@@ -160,8 +165,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"Reliable Flow Plumbing" is not a real business: this page is a web design example for plumbing businesses, built by Easy Pro Digital. If you run a business like this and want a website like this one (or better, with your brand, your photos and real online booking), let’s talk.',
-  },
 }

@@ -98,8 +98,4 @@ export default {
     actions: [{ label: 'Reservar Evento' }, { label: 'Ver Menús' }],
   },
 
-  disclosure: {
-    heading: 'Este es un sitio web de muestra',
-    text: '"Chef Mateo Serrano" no es un negocio real: esta página es un ejemplo de diseño web para chefs privados y negocios de catering, hecho por Easy Pro Digital. Si tienes un negocio así y quieres un sitio como este (o mejor, con tu marca, tus fotos y reservas de eventos reales), hablemos.',
-  },
 }

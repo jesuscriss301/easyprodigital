@@ -4,17 +4,22 @@ export default {
   slug: 'car-rental',
   brand: 'Veloz Car Rental',
   niche: 'Car Rental',
+  valueProps: [
+    `Reservas directas sin pagar comisión a plataformas`,
+    `Web bilingüe para turistas`,
+    `Entrega en aeropuerto o hotel como diferencial`,
+  ],
   kind: 'nicho',
 
   seo: {
-    title: 'Website Design for Car Rental Companies (Example) | Easy Pro Digital',
+    title: 'Website Design for Car Rental Companies (Live Example) | Easy Pro Digital',
     description:
       'A real example website for car rental agencies, built by Easy Pro Digital. Fleet showcase with premium hover effects, pricing, and instant booking.',
     robots: 'index, follow',
   },
 
   layout: {
-    order: ['hero', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'valueProps', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
   },
 
   theme: {
@@ -142,8 +147,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"Veloz Car Rental" is not a real business: this page is a web design example for car rental companies, built by Easy Pro Digital. If you run a car rental business and want a website like this one (with your brand, your fleet and real booking), let\'s talk.',
-  },
 }

@@ -4,6 +4,11 @@ export default {
   slug: 'lawyers',
   brand: 'Sterling & Vance Law Group',
   niche: 'Law Firm & Legal Services',
+  valueProps: [
+    `Free consultation form that pre-qualifies the case`,
+    `Practice-area pages that rank (each one is a landing page)`,
+    `Trust: bar certification, results, clear fees`,
+  ],
   kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
   // `primary` here is only for the pill color in the style switcher (so each
@@ -18,7 +23,7 @@ export default {
   ],
 
   seo: {
-    title: 'Website Design for Law Firms & Attorneys (Example) | Easy Pro Digital',
+    title: 'Website Design for Law Firms & Attorneys (Live Example) | Easy Pro Digital',
     description:
       'A real example website for law firms and attorneys, built by Easy Pro Digital. This is how great your business website can look: practice areas, credentials, client reviews and more.',
     robots: 'index, follow',
@@ -27,7 +32,7 @@ export default {
   // Trust-driven profile: features lean on bar licensing/credentials, hero
   // carries a case-count/experience stat, map matters (office visits).
   layout: {
-    order: ['hero', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'valueProps', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
   },
 
   theme: {
@@ -157,8 +162,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"Sterling & Vance Law Group" is not a real business: this page is a web design example for law firms and attorneys, built by Easy Pro Digital. If you run a firm like this and want a website like this one (or better, with your brand, your photos and real consultation requests), let’s talk.',
-  },
 }

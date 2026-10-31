@@ -99,8 +99,4 @@ export default {
     actions: [{ label: 'Donar Ahora' }, { label: 'Ser Voluntario' }],
   },
 
-  disclosure: {
-    heading: 'Este es un sitio web de muestra',
-    text: '"Raíces Foundation" no es una organización real: esta página es un ejemplo de diseño web para fundaciones y organizaciones sin ánimo de lucro, hecho por Easy Pro Digital. Si diriges una ONG y quieres un sitio como este (o mejor, con tus programas, tus cifras de impacto y donaciones en línea reales), hablemos.',
-  },
 }

@@ -12,10 +12,21 @@ const STRINGS = {
     nav: { openMenu: 'Open menu', closeMenu: 'Close menu' },
     switcher: { label: 'Same website, another style:' },
     disclosure: {
-      chatWhatsapp: 'Chat on WhatsApp',
-      viewMore: 'View more projects',
-      whatsappMessage: "Hi, I saw one of Easy Pro Digital's demos and I'd like a website like this for my business",
+      offerHeading: 'This could be your website in 7 days',
+      offerText: (brand, niche) =>
+        `"${brand}" is a sample business — but the design, speed and booking flow are real. Send me your logo and 3 photos and I'll put your ${niche} business on this exact page, free, so you can see it before paying anything. Websites like this start at $450. One developer, direct WhatsApp, no agency markup.`,
+      defaultWhatsapp: (niche) => `Hi Jesús! I saw the ${niche} demo and I'd like one for my business.`,
+      ctaPrimary: 'Put my business on this demo',
+      ctaPricing: 'See pricing',
     },
+    valueProps: {
+      heading: (niche) => `Why this layout works for ${niche}`,
+    },
+    stickyCta: {
+      label: 'Want this for your business?',
+      sub: 'WhatsApp',
+    },
+    sample: { label: 'Sample' },
     footer: { createdBy: 'sample site created by' },
     badge: { label: 'Sample template — Easy Pro Digital' },
     relatedDemos: {
@@ -71,10 +82,21 @@ const STRINGS = {
     nav: { openMenu: 'Abrir menú', closeMenu: 'Cerrar menú' },
     switcher: { label: 'Mismo sitio, otro estilo:' },
     disclosure: {
-      chatWhatsapp: 'Chatear por WhatsApp',
-      viewMore: 'Ver más proyectos',
-      whatsappMessage: 'Hola, vi una de las demos de Easy Pro Digital y me gustaría un sitio web así para mi negocio',
+      offerHeading: 'Esta puede ser tu web en 7 días',
+      offerText: (brand, niche) =>
+        `"${brand}" es un negocio de ejemplo, pero el diseño, la velocidad y las reservas son reales. Mándame tu logo y 3 fotos y pongo tu negocio de ${niche} en esta misma página, gratis, para que la veas antes de pagar. Webs como esta desde USD 450. Un solo desarrollador, WhatsApp directo, sin sobrecostos de agencia.`,
+      defaultWhatsapp: (niche) => `Hola Jesús, vi la demo de ${niche} y quiero una para mi negocio.`,
+      ctaPrimary: 'Quiero ver mi negocio aquí',
+      ctaPricing: 'Ver precios',
     },
+    valueProps: {
+      heading: (niche) => `Por qué este diseño funciona para ${niche}`,
+    },
+    stickyCta: {
+      label: '¿Quieres esto para tu negocio?',
+      sub: 'WhatsApp',
+    },
+    sample: { label: 'Ejemplo' },
     footer: { createdBy: 'sitio de muestra creado por' },
     badge: { label: 'Plantilla de muestra — Easy Pro Digital' },
     relatedDemos: {

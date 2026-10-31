@@ -97,8 +97,4 @@ export default {
     actions: [{ label: 'Agendar Consulta' }, { label: 'Ver Servicios' }],
   },
 
-  disclosure: {
-    heading: 'Este es un sitio web de muestra',
-    text: '"Harborview Realty Group" no es un negocio real: esta página es un ejemplo de diseño web para agentes y agencias de bienes raíces, hecho por Easy Pro Digital. Si tienes un negocio así y quieres un sitio como este (o mejor, con tu marca, tus propiedades e integración IDX real), hablemos.',
-  },
 }

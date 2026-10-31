@@ -97,8 +97,4 @@ export default {
     actions: [{ label: 'Agendar Servicio' }, { label: 'Ver Servicios' }],
   },
 
-  disclosure: {
-    heading: 'Este es un sitio web de muestra',
-    text: '"Reliable Flow Plumbing" no es un negocio real: esta página es un ejemplo de diseño web para negocios de plomería, hecho por Easy Pro Digital. Si tienes un negocio así y quieres un sitio como este (o mejor, con tu marca, tus fotos y reservas en línea reales), hablemos.',
-  },
 }

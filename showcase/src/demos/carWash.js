@@ -4,6 +4,11 @@ export default {
   slug: 'car-wash',
   brand: 'Shine Spot Car Wash',
   niche: 'Car Wash & Auto Detailing',
+  valueProps: [
+    `Sell monthly memberships online (recurring revenue)`,
+    `Show up on Google Maps when people search “car wash near me”`,
+    `Before/after gallery that sells detailing upgrades`,
+  ],
   kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
   // `primary` here is only for the pill color in the style switcher (so each
@@ -18,7 +23,7 @@ export default {
   ],
 
   seo: {
-    title: 'Website Design for Car Washes & Auto Detailing (Example) | Easy Pro Digital',
+    title: 'Website Design for Car Washes & Auto Detailing (Live Example) | Easy Pro Digital',
     description:
       'A real example website for car washes and auto detailing shops, built by Easy Pro Digital. This is how great your business website can look: packages, service area map, gallery and more.',
     robots: 'index, follow',
@@ -29,7 +34,7 @@ export default {
   // 'cta' is valid — DemoPage.jsx renders whatever is listed here, skipping
   // the rest.
   layout: {
-    order: ['hero', 'services', 'gallery', 'features', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'valueProps', 'services', 'gallery', 'features', 'testimonials', 'map', 'cta'],
   },
 
   theme: {
@@ -159,8 +164,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"Shine Spot Car Wash" is not a real business: this page is a web design example for car washes and auto detailing shops, built by Easy Pro Digital. If you run a business like this and want a website like this one (or better, with your brand, your photos and real booking/membership signup), let’s talk.',
-  },
 }

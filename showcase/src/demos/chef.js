@@ -4,6 +4,11 @@ export default {
   slug: 'private-chef',
   brand: 'Chef Mateo Serrano',
   niche: 'Private Chefs & Catering',
+  valueProps: [
+    `Look premium so you can charge premium`,
+    `Event inquiry form with date, guests and budget`,
+    `Menus that make people hungry`,
+  ],
   kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
   // SplashCursor (React Bits, WebGL fluid-sim, lazy): un rastro de fluido de
@@ -24,7 +29,7 @@ export default {
   ],
 
   seo: {
-    title: 'Website Design for Private Chefs & Catering (Example) | Easy Pro Digital',
+    title: 'Website Design for Private Chefs & Catering (Live Example) | Easy Pro Digital',
     description:
       'A real example website for private chefs and catering businesses, built by Easy Pro Digital. This is how great your business website can look: menus, event packages, food gallery and more.',
     robots: 'index, follow',
@@ -33,7 +38,7 @@ export default {
   // Food is bought with the eyes — gallery goes straight after the hero.
   // Local-service business (events at the client's home/venue) → map stays.
   layout: {
-    order: ['hero', 'gallery', 'services', 'features', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'valueProps', 'gallery', 'services', 'features', 'testimonials', 'map', 'cta'],
   },
 
   theme: {
@@ -153,8 +158,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"Chef Mateo Serrano" is not a real business: this page is a web design example for private chefs and catering businesses, built by Easy Pro Digital. If you run a business like this and want a website like this one (or better, with your brand, your photos and real event booking), let’s talk.',
-  },
 }

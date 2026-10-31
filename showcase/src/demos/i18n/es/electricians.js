@@ -99,8 +99,4 @@ export default {
     actions: [{ label: 'Cotizar Gratis' }, { label: 'Ver Servicios' }],
   },
 
-  disclosure: {
-    heading: 'Este es un sitio web de muestra',
-    text: '"BrightVolt Electric" no es un negocio real: esta página es un ejemplo de diseño web para electricistas y contratistas eléctricos, hecho por Easy Pro Digital. Si tienes un negocio así y quieres un sitio como este (o mejor, con tu marca, tus fotos y solicitudes de cotización reales), hablemos.',
-  },
 }

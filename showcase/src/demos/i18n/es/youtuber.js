@@ -85,8 +85,4 @@ export default {
     actions: [{ label: 'Suscribirse' }, { label: 'Obtener el Media Kit' }],
   },
 
-  disclosure: {
-    heading: 'Este es un sitio web de muestra',
-    text: '"Nova Vega" no es una creadora real: esta página es un ejemplo de diseño web para YouTubers y creadores de contenido, hecho por Easy Pro Digital. Si eres creador/a y quieres un sitio como este (o mejor, con tu marca, tus estadísticas y un media kit real), hablemos.',
-  },
 }

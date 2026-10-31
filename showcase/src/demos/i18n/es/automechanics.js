@@ -97,8 +97,4 @@ export default {
     actions: [{ label: 'Agendar Servicio' }, { label: 'Ver Nuestro Taller' }],
   },
 
-  disclosure: {
-    heading: 'Este es un sitio web de muestra',
-    text: '"Redline Auto Repair" no es un negocio real: esta página es un ejemplo de diseño web para talleres mecánicos y de reparación automotriz, hecho por Easy Pro Digital. Si tienes un negocio así y quieres un sitio como este (o mejor, con tu marca, tus fotos y reservas en línea reales), hablemos.',
-  },
 }

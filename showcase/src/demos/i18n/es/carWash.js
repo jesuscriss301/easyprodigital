@@ -98,8 +98,4 @@ export default {
     actions: [{ label: 'Reservar Lavado' }, { label: 'Ver Paquetes' }],
   },
 
-  disclosure: {
-    heading: 'Este es un sitio web de muestra',
-    text: '"Shine Spot Car Wash" no es un negocio real: esta página es un ejemplo de diseño web para lavaderos y centros de detallado automotriz, hecho por Easy Pro Digital. Si tienes un negocio así y quieres un sitio como este (o mejor, con tu marca, tus fotos y reservas/membresías reales), hablemos.',
-  },
 }

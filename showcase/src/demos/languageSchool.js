@@ -4,17 +4,22 @@ export default {
   slug: 'language-school',
   brand: 'Políglota Academy',
   niche: 'Language School',
+  valueProps: [
+    `Clase de prueba gratis que se agenda sola`,
+    `Prueba de nivel online que capta datos`,
+    `Grupos llenos con lista de espera`,
+  ],
   kind: 'nicho',
 
   seo: {
-    title: 'Website Design for Language Schools (Example) | Easy Pro Digital',
+    title: 'Website Design for Language Schools (Live Example) | Easy Pro Digital',
     description:
       'A real example website for language schools and academies, built by Easy Pro Digital. Clean hero with rotating greetings, courses, teachers and testimonials — ready for your brand.',
     robots: 'index, follow',
   },
 
   layout: {
-    order: ['hero', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'valueProps', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
   },
 
   theme: {
@@ -153,8 +158,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"Políglota Academy" is not a real business: this page is a web design example for language schools, built by Easy Pro Digital. If you run a language academy and want a website like this (with your brand, your teachers and real booking), let\'s talk.',
-  },
 }

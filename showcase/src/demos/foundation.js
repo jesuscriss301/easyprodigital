@@ -4,6 +4,11 @@ export default {
   slug: 'foundation',
   brand: 'Raíces Foundation',
   niche: 'Foundations & Nonprofits',
+  valueProps: [
+    `Monthly donors instead of one-time gifts`,
+    `Transparency that builds trust (“87¢ of every $1”)`,
+    `Volunteer sign-up that works`,
+  ],
   kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
   // `primary` here is only for the pill color in the style switcher (so each
@@ -18,7 +23,7 @@ export default {
   ],
 
   seo: {
-    title: 'Website Design for Foundations & Nonprofits (Example) | Easy Pro Digital',
+    title: 'Website Design for Foundations & Nonprofits (Live Example) | Easy Pro Digital',
     description:
       'A real example website for foundations and nonprofits, built by Easy Pro Digital. This is how great your organization’s website can look: programs, impact numbers, donations and more.',
     robots: 'index, follow',
@@ -28,7 +33,7 @@ export default {
   // programs, then faces and places (gallery), then how to help. Local HQ →
   // map near the end.
   layout: {
-    order: ['hero', 'features', 'services', 'gallery', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'valueProps', 'features', 'services', 'gallery', 'testimonials', 'map', 'cta'],
   },
 
   theme: {
@@ -155,8 +160,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"Raíces Foundation" is not a real organization: this page is a web design example for foundations and nonprofits, built by Easy Pro Digital. If you run a nonprofit and want a website like this one (or better, with your programs, your impact numbers and real online donations), let’s talk.',
-  },
 }

@@ -11,6 +11,11 @@ export default {
   slug: 'adult-creator',
   brand: 'Scarlett Vale',
   niche: 'Adult Content Creators (18+) — Bio Link',
+  valueProps: [
+    `Your own link page that platforms can't delete`,
+    `All subscriptions in one place (diversify income)`,
+    `Age gate and censored previews to stay within the rules`,
+  ],
   kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
   // `primary` here is only for the pill color in the style switcher (so each
@@ -24,7 +29,7 @@ export default {
   ],
 
   seo: {
-    title: 'Bio-Link Page Design for Adult Content Creators 18+ (Example) | Easy Pro Digital',
+    title: 'Bio-Link Page Design for Adult Content Creators 18+ (Live Example) | Easy Pro Digital',
     description:
       'A safe-for-work example of a link-in-bio page for adult content creators (18+), built by Easy Pro Digital: link hub, censored preview tiles, subscription tiers. No explicit content — this is a web design sample.',
     robots: 'index, follow',
@@ -33,7 +38,7 @@ export default {
   // Compact, bio-link style page: no features/testimonials/map — hero with
   // the alias, the link hub (services as 'list'), censored previews, CTA.
   layout: {
-    order: ['hero', 'services', 'gallery', 'cta'],
+    order: ['hero', 'valueProps', 'services', 'gallery', 'cta'],
   },
 
   theme: {
@@ -118,8 +123,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"Scarlett Vale" is not a real creator: this page is a safe-for-work web design example of a link-in-bio page for adult content creators (18+), built by Easy Pro Digital. All preview tiles are intentionally censored placeholders — no real content is shown. If you’re a creator and want a page like this one (with your links, your branding and age-gated previews), let’s talk.',
-  },
 }

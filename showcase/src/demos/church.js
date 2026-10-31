@@ -4,6 +4,11 @@ export default {
   slug: 'church',
   brand: 'Grace Point Church',
   niche: 'Churches & Faith Communities',
+  valueProps: [
+    `New visitors know what to expect before they come`,
+    `Online giving that works on phones`,
+    `Events and ministries always up to date`,
+  ],
   kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
   // `primary` here is only for the pill color in the style switcher (so each
@@ -18,7 +23,7 @@ export default {
   ],
 
   seo: {
-    title: 'Website Design for Churches & Ministries (Example) | Easy Pro Digital',
+    title: 'Website Design for Churches & Ministries (Live Example) | Easy Pro Digital',
     description:
       'A real example website for churches and faith communities, built by Easy Pro Digital. This is how great your church website can look: service times, ministries, location map and more.',
     robots: 'index, follow',
@@ -27,7 +32,7 @@ export default {
   // A church website's #1 job: when is the service and where are you.
   // Ministries (services) and community photos follow; map is essential.
   layout: {
-    order: ['hero', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'valueProps', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
   },
 
   theme: {
@@ -154,8 +159,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"Grace Point Church" is not a real congregation: this page is a web design example for churches and faith communities, built by Easy Pro Digital. If you lead a church and want a website like this one (or better, with your photos, your service times and online giving), let’s talk.',
-  },
 }

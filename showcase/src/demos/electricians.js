@@ -4,6 +4,11 @@ export default {
   slug: 'electricians',
   brand: 'BrightVolt Electric',
   niche: 'Electricians & Electrical Contractors',
+  valueProps: [
+    `Get the profitable jobs: EV chargers and panel upgrades`,
+    `24/7 emergency calls from mobile`,
+    `License and insurance shown upfront`,
+  ],
   kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
   // `primary` here is only for the pill color in the style switcher (so each
@@ -18,7 +23,7 @@ export default {
   ],
 
   seo: {
-    title: 'Website Design for Electricians (Example) | Easy Pro Digital',
+    title: 'Website Design for Electricians (Live Example) | Easy Pro Digital',
     description:
       'A real example website for electricians and electrical contractors, built by Easy Pro Digital. This is how great your business website can look: services, licensing, service area map and more.',
     robots: 'index, follow',
@@ -27,7 +32,7 @@ export default {
   // Trust-driven local trade: features (licensing/insurance) stay high,
   // gallery supports rather than leads, map matters a lot.
   layout: {
-    order: ['hero', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'valueProps', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
   },
 
   theme: {
@@ -162,8 +167,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"BrightVolt Electric" is not a real business: this page is a web design example for electricians and electrical contractors, built by Easy Pro Digital. If you run a business like this and want a website like this one (or better, with your brand, your photos and real quote requests), let’s talk.',
-  },
 }

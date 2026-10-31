@@ -105,8 +105,4 @@ export default {
     actions: [{ label: 'Reservar' }, { label: 'Ver Más Servicios' }],
   },
 
-  disclosure: {
-    heading: 'Este es un sitio web de muestra',
-    text: '"Bella Aura Studio" no es un negocio real: esta página es un ejemplo de diseño web para salones de belleza y spas, hecho por Easy Pro Digital. Si tienes un negocio así y quieres un sitio como este (o mejor, con tu marca, tus fotos y un sistema de reservas real), hablemos.',
-  },
 }

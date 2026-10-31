@@ -4,17 +4,22 @@ export default {
   slug: 'self-storage',
   brand: 'SafeBox Storage',
   niche: 'Self Storage',
+  valueProps: [
+    `Reserva y pago online, sin visita para cotizar`,
+    `¿Qué tamaño necesito? resuelto en la web`,
+    `Disponibilidad en tiempo real`,
+  ],
   kind: 'nicho',
 
   seo: {
-    title: 'Website Design for Self Storage Facilities (Example) | Easy Pro Digital',
+    title: 'Website Design for Self Storage Facilities (Live Example) | Easy Pro Digital',
     description:
       'A real example website for self-storage and warehouse rental businesses, built by Easy Pro Digital. Unit sizes, pricing, security features and online booking.',
     robots: 'index, follow',
   },
 
   layout: {
-    order: ['hero', 'unitTypes', 'services', 'features', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'valueProps', 'unitTypes', 'services', 'features', 'testimonials', 'map', 'cta'],
   },
 
   theme: {
@@ -141,8 +146,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"SafeBox Storage" is not a real business: this page is a web design example for self-storage facilities, built by Easy Pro Digital. If you run a storage business and want a website like this one (with your brand, your units and real booking), let\'s talk.',
-  },
 }

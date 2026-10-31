@@ -1,9 +1,11 @@
 import Reveal from './Reveal.jsx'
 import SplitText from './SplitText.jsx'
+import { useLanguage } from '../i18n.jsx'
 import { VineDecor, speciesFor } from './Vines.jsx'
 import { MaterialDecor } from './Materials.jsx'
 
 export default function Testimonials({ id = 'testimonials', eyebrow, title, intro, items = [], vines = false, materials = null }) {
+  const { t } = useLanguage()
   return (
     <section id={id} className="demo-section demo-section--alt">
       <div className="demo-container">
@@ -11,6 +13,9 @@ export default function Testimonials({ id = 'testimonials', eyebrow, title, intr
           {eyebrow && <span className="demo-eyebrow">{eyebrow}</span>}
           <SplitText tag="h2" text={title} textAlign="center" splitType="chars" delay={30} duration={0.8} />
           {intro && <p>{intro}</p>}
+          {/* Reseñas de ejemplo, no de un cliente real (doc de estrategias,
+              Parte 1.9). */}
+          <span className="demo-sample-tag">{t.sample.label}</span>
         </Reveal>
         <Reveal as="div" className="demo-testimonials">
           {items.map((t, i) => (

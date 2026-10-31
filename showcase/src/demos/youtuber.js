@@ -4,6 +4,11 @@ export default {
   slug: 'youtuber',
   brand: 'Nova Vega',
   niche: 'YouTubers & Content Creators',
+  valueProps: [
+    `A media kit that gets you better sponsorship deals`,
+    `Your own email list (the algorithm can't take it away)`,
+    `All your channels and merch in one place`,
+  ],
   kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
   // `primary` here is only for the pill color in the style switcher (so each
@@ -18,7 +23,7 @@ export default {
   ],
 
   seo: {
-    title: 'Website Design for YouTubers & Content Creators (Example) | Easy Pro Digital',
+    title: 'Website Design for YouTubers & Content Creators (Live Example) | Easy Pro Digital',
     description:
       'A real example website for YouTubers and content creators, built by Easy Pro Digital. This is how great your creator site can look: channel stats, content, sponsorship packages and more.',
     robots: 'index, follow',
@@ -27,7 +32,7 @@ export default {
   // Online-only business: no map. Centered hero (big, brandy), then what the
   // channel is about, the studio gallery, sponsor packages, social proof.
   layout: {
-    order: ['hero', 'features', 'gallery', 'services', 'testimonials', 'cta'],
+    order: ['hero', 'valueProps', 'features', 'gallery', 'services', 'testimonials', 'cta'],
   },
 
   theme: {
@@ -136,8 +141,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"Nova Vega" is not a real creator: this page is a web design example for YouTubers and content creators, built by Easy Pro Digital. If you’re a creator and want a website like this one (or better, with your brand, your stats and a real media kit), let’s talk.',
-  },
 }

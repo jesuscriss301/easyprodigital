@@ -4,6 +4,11 @@ export default {
   slug: 'realestate',
   brand: 'Harborview Realty Group',
   niche: 'Residential Real Estate',
+  valueProps: [
+    `Capture sellers with a free home valuation form`,
+    `Your personal brand, not your brokerage's`,
+    `Listings that load fast on mobile`,
+  ],
   kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
   // `primary` here is only for the pill color in the style switcher (so each
@@ -18,7 +23,7 @@ export default {
   ],
 
   seo: {
-    title: 'Website Design for Real Estate Agents (Example) | Easy Pro Digital',
+    title: 'Website Design for Real Estate Agents (Live Example) | Easy Pro Digital',
     description:
       'A real example website for residential real estate agents and brokerages, built by Easy Pro Digital. This is how great your business website can look: services, property gallery, service area map and more.',
     robots: 'index, follow',
@@ -29,7 +34,7 @@ export default {
   // 'cta' is valid — DemoPage.jsx renders whatever is listed here, skipping
   // the rest.
   layout: {
-    order: ['hero', 'gallery', 'services', 'features', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'valueProps', 'gallery', 'services', 'features', 'testimonials', 'map', 'cta'],
   },
 
   theme: {
@@ -157,8 +162,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"Harborview Realty Group" is not a real business: this page is a web design example for real estate agents and brokerages, built by Easy Pro Digital. If you run a business like this and want a website like this one (or better, with your brand, your listings and real IDX integration), let’s talk.',
-  },
 }

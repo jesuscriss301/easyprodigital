@@ -4,6 +4,11 @@ export default {
   slug: 'aesthetics',
   brand: 'Lumora Aesthetic Clinic',
   niche: 'Medical Aesthetics & Cosmetic Treatments',
+  valueProps: [
+    `Free consultation booking that converts browsers`,
+    `Treatment pages with FAQs that answer fears`,
+    `Memberships and packages for recurring revenue`,
+  ],
   kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
   // `primary` here is only for the pill color in the style switcher (so each
@@ -18,7 +23,7 @@ export default {
   ],
 
   seo: {
-    title: 'Website Design for Medical Aesthetics & Medspas (Example) | Easy Pro Digital',
+    title: 'Website Design for Medical Aesthetics & Medspas (Live Example) | Easy Pro Digital',
     description:
       'A real example website for medical aesthetics clinics and medspas, built by Easy Pro Digital. This is how great your business website can look: treatments, credentials, patient gallery and more.',
     robots: 'index, follow',
@@ -29,7 +34,7 @@ export default {
   // photo + two supporting photos — instead of a uniform grid, and the
   // service cards keep a single quiet hover accent rather than a loud one.
   layout: {
-    order: ['hero', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'valueProps', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
   },
 
   theme: {
@@ -159,8 +164,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"Lumora Aesthetic Clinic" is not a real business: this page is a web design example for medical aesthetics clinics and medspas, built by Easy Pro Digital. If you run a clinic like this and want a website like this one (or better, with your brand, your photos and real booking requests), let’s talk.',
-  },
 }

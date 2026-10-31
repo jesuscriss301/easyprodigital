@@ -4,6 +4,11 @@ export default {
   slug: 'dentists',
   brand: 'Willowbrook Dental Studio',
   niche: 'Dental Care & Cosmetic Dentistry',
+  valueProps: [
+    `Online booking 24/7, with reminders that cut no-shows`,
+    `Pages for high-value treatments (Invisalign, implants)`,
+    `A gentle tone that calms nervous patients`,
+  ],
   kind: 'nicho', // 'nicho' (niche) | 'prospecto' (prospect)
 
   // `primary` here is only for the pill color in the style switcher (so each
@@ -18,7 +23,7 @@ export default {
   ],
 
   seo: {
-    title: 'Website Design for Dental Clinics & Dentists (Example) | Easy Pro Digital',
+    title: 'Website Design for Dental Clinics & Dentists (Live Example) | Easy Pro Digital',
     description:
       'A real example website for dental clinics and cosmetic dentistry practices, built by Easy Pro Digital. This is how great your business website can look: services, credentials, patient gallery and more.',
     robots: 'index, follow',
@@ -28,7 +33,7 @@ export default {
   // carries a patient-count/experience stat, map matters (walk-in/office
   // visits).
   layout: {
-    order: ['hero', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'valueProps', 'services', 'features', 'gallery', 'testimonials', 'map', 'cta'],
   },
 
   theme: {
@@ -158,8 +163,4 @@ export default {
     ],
   },
 
-  disclosure: {
-    heading: 'This is a sample website',
-    text: '"Willowbrook Dental Studio" is not a real business: this page is a web design example for dental clinics and cosmetic dentistry practices, built by Easy Pro Digital. If you run a practice like this and want a website like this one (or better, with your brand, your photos and real online booking), let’s talk.',
-  },
 }
