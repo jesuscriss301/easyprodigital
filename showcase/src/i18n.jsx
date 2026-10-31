@@ -18,14 +18,16 @@ const STRINGS = {
       defaultWhatsapp: (niche) => `Hi Jesús! I saw the ${niche} demo and I'd like one for my business.`,
       ctaPrimary: 'Put my business on this demo',
       ctaPricing: 'See pricing',
-      ribbonText: (niche) => `LIVE SAMPLE SITE   WANT THIS FOR YOUR ${niche.toUpperCase()} BUSINESS   ASK FOR YOUR BRANDED VERSION`,
     },
     valueProps: {
       heading: (niche) => `Why this layout works for ${niche}`,
     },
-    stickyCta: {
-      label: 'Want this for your business?',
-      sub: 'WhatsApp',
+    noticeCard: {
+      heading: 'Want this for your business?',
+      text: (niche) => `This ${niche} site is a live sample — I can put your business here in 7 days.`,
+      contact: 'Contact me',
+      review: 'Got it',
+      dismiss: 'Close',
     },
     sample: { label: 'Sample' },
     footer: { createdBy: 'sample site created by' },
@@ -89,14 +91,16 @@ const STRINGS = {
       defaultWhatsapp: (niche) => `Hola Jesús, vi la demo de ${niche} y quiero una para mi negocio.`,
       ctaPrimary: 'Quiero ver mi negocio aquí',
       ctaPricing: 'Ver precios',
-      ribbonText: (niche) => `SITIO DE MUESTRA   ¿QUIERES ESTO PARA TU NEGOCIO DE ${niche.toUpperCase()}?   PIDE TU VERSION CON TU MARCA`,
     },
     valueProps: {
       heading: (niche) => `Por qué este diseño funciona para ${niche}`,
     },
-    stickyCta: {
-      label: '¿Quieres esto para tu negocio?',
-      sub: 'WhatsApp',
+    noticeCard: {
+      heading: '¿Quieres esto para tu negocio?',
+      text: (niche) => `Esta web de ${niche} es una demo real — puedo poner tu negocio aquí en 7 días.`,
+      contact: 'Contactar',
+      review: 'Entendido',
+      dismiss: 'Cerrar',
     },
     sample: { label: 'Ejemplo' },
     footer: { createdBy: 'sitio de muestra creado por' },

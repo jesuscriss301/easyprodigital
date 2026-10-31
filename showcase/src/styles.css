@@ -511,24 +511,6 @@ h1, h2, h3, h4 {
 }
 .demo-disclosure h3 { font-size: 20px; margin-bottom: 10px; }
 .demo-disclosure p { color: var(--demo-muted); font-size: 15px; max-width: 52ch; margin: 0 auto 22px; }
-/* ---------- cinta "Text Loop" encima del aviso (ReactBits) ---------- */
-.demo-disclosure-section { padding-top: 0; }
-.demo-ribbon-wrap {
-  width: 100%;
-  height: 108px;
-  overflow: hidden;
-  margin-bottom: 36px;
-}
-.demo-ribbon-wrap > div { height: 100%; }
-.demo-ribbon-wrap svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-@media (max-width: 640px) {
-  .demo-ribbon-wrap { height: 72px; margin-bottom: 24px; }
-}
 
 
 /* ============================================================
@@ -777,28 +759,36 @@ h1, h2, h3, h4 {
   flex-shrink: 0;
 }
 
-/* ---------- pastilla flotante "Want this for your business?" (solo móvil) ---------- */
-.demo-sticky-cta {
-  display: none;
+/* ---------- card de notificacion flotante (contactar / cerrar) ---------- */
+.demo-notice-card {
   position: fixed;
-  right: 14px;
-  bottom: 14px;
+  right: 16px;
+  bottom: 16px;
   z-index: 49;
-  align-items: center;
-  gap: 8px;
-  background: var(--demo-primary);
-  color: #fff;
-  font-size: 12.5px;
-  font-weight: 600;
-  padding: 11px 16px;
-  border-radius: 999px;
-  text-decoration: none;
-  box-shadow: 0 10px 24px -10px rgba(0,0,0,0.45);
+  width: 280px;
+  max-width: calc(100vw - 32px);
+  background: var(--demo-bg);
+  color: var(--demo-ink);
+  border: 1px solid var(--demo-line);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 20px 40px -16px rgba(0,0,0,0.35);
+  opacity: 0;
+  transform: translateY(16px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 0.35s var(--demo-ease), transform 0.35s var(--demo-ease);
 }
-.demo-sticky-cta strong { font-weight: 800; }
-.demo-sticky-cta-icon { font-size: 15px; line-height: 1; }
-@media (max-width: 760px) {
-  .demo-sticky-cta { display: flex; }
+.demo-notice-card.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.demo-notice-heading { font-size: 14.5px; font-weight: 800; margin-bottom: 4px; }
+.demo-notice-text { font-size: 13px; color: var(--demo-muted); margin-bottom: 14px; line-height: 1.4; }
+.demo-notice-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.demo-btn-sm { padding: 9px 16px; font-size: 13px; }
+@media (max-width: 420px) {
+  .demo-notice-card { right: 12px; bottom: 12px; left: 12px; width: auto; }
 }
 
 /* ============================================================

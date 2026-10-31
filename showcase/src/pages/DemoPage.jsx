@@ -16,7 +16,7 @@ import UnitTypesSection from '../components/UnitTypesSection.jsx'
 import Disclosure from '../components/Disclosure.jsx'
 import RelatedDemos from '../components/RelatedDemos.jsx'
 import ValueProps from '../components/ValueProps.jsx'
-import StickyCta from '../components/StickyCta.jsx'
+import NoticeCard from '../components/NoticeCard.jsx'
 import Footer from '../components/Footer.jsx'
 import Badge from '../components/Badge.jsx'
 import { prefersReducedMotion } from '../components/motionUtils.js'
@@ -106,7 +106,7 @@ export default function DemoPage({ demo }) {
       </div>
       <Footer brand={demo.brand} />
       <Badge />
-      <StickyCta niche={demo.niche} whatsappMessage={demo.disclosure?.whatsappMessage} />
+      <NoticeCard niche={demo.niche} whatsappMessage={demo.disclosure?.whatsappMessage} />
       {/* SplashCursor (React Bits) — único efecto de página completa de la
           lista, solo Chef Privado lo usa (demo.cursorEffect). Fluid-sim en
           WebGL, caro de por sí, por eso el guard de reduced-motion es

@@ -1,22 +1,19 @@
-import { Suspense } from 'react'
 import Reveal from './Reveal.jsx'
 import { useLanguage } from '../i18n.jsx'
-import { LazyTextLoop } from './reactbits/registry.js'
 
 const DEFAULT_WHATSAPP = 'https://wa.me/573238816434'
 
 /**
- * Antes era solo un aviso ("this is a sample website"). Ahora también
- * vende: oferta (7 dias, USD 450, sin costo para verlo con tu marca) + un
+ * Aviso + oferta (7 dias, USD 450, sin costo para verlo con tu marca) +
  * mensaje de WhatsApp prellenado unico por nicho (demo.niche), para poder
  * distinguir de que demo llega cada conversacion (ver doc de estrategias,
  * Parte 1.1 y 1.3). heading/text/whatsappMessage siguen pudiendose pisar
  * por demo si alguna necesita un texto distinto al generico.
  *
- * El aviso ahora se presenta como una cinta animada (ReactBits "Text Loop",
- * curviness=0 / tilt=-8 / ribbonWidth=90 -> una franja diagonal recta, no
- * una curva) que corre encima de la oferta, para que destaque como un
- * "sticker" sobre la pagina en vez de pasar desapercibido como texto plano.
+ * Sigue siendo una seccion normal dentro del flujo de la pagina (id
+ * "want-this") porque TODOS los botones de CTA de cada demo (hero, nav,
+ * cta final) y el Badge flotante hacen scroll hasta aca via #want-this.
+ * El aviso "flotante que se cierra" vive aparte, en NoticeCard.jsx.
  */
 export default function Disclosure({
   id = 'want-this',
@@ -33,27 +30,9 @@ export default function Disclosure({
   const finalText = text || d.offerText(brand, niche)
   const finalWhatsapp = whatsappMessage || d.defaultWhatsapp(niche)
   const whatsappHref = `${DEFAULT_WHATSAPP}?text=${encodeURIComponent(finalWhatsapp)}`
-  const ribbonText = d.ribbonText(niche)
 
   return (
-    <section id={id} className="demo-section demo-section--tight demo-section--alt demo-disclosure-section">
-      <div className="demo-ribbon-wrap" aria-hidden="true">
-        <Suspense fallback={null}>
-          <LazyTextLoop
-            text={ribbonText}
-            shape="wave"
-            curviness={0}
-            tilt={-8}
-            ribbonWidth={90}
-            ribbonColor="var(--demo-primary)"
-            fontSize={22}
-            fontWeight={800}
-            letterSpacing={1.5}
-            speed={38}
-            separator="✦"
-          />
-        </Suspense>
-      </div>
+    <section id={id} className="demo-section demo-section--tight demo-section--alt">
       <div className="demo-container">
         <Reveal as="div" className="demo-disclosure">
           <h3>{finalHeading}</h3>
