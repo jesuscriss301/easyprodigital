@@ -18,6 +18,7 @@ const STRINGS = {
       defaultWhatsapp: (niche) => `Hi Jesús! I saw the ${niche} demo and I'd like one for my business.`,
       ctaPrimary: 'Put my business on this demo',
       ctaPricing: 'See pricing',
+      ribbonText: (niche) => `LIVE SAMPLE SITE   WANT THIS FOR YOUR ${niche.toUpperCase()} BUSINESS   ASK FOR YOUR BRANDED VERSION`,
     },
     valueProps: {
       heading: (niche) => `Why this layout works for ${niche}`,
@@ -88,6 +89,7 @@ const STRINGS = {
       defaultWhatsapp: (niche) => `Hola Jesús, vi la demo de ${niche} y quiero una para mi negocio.`,
       ctaPrimary: 'Quiero ver mi negocio aquí',
       ctaPricing: 'Ver precios',
+      ribbonText: (niche) => `SITIO DE MUESTRA   ¿QUIERES ESTO PARA TU NEGOCIO DE ${niche.toUpperCase()}?   PIDE TU VERSION CON TU MARCA`,
     },
     valueProps: {
       heading: (niche) => `Por qué este diseño funciona para ${niche}`,

@@ -60,3 +60,6 @@ export const LazyAccordionGallery = lazy(() => import('./AccordionGallery/Accord
 // --- Renta de coches (motor ogl + motion) ---
 export const LazyTiltedCard = lazy(() => import('./TiltedCard/TiltedCard.jsx'))
 export const LazyGlareHover = lazy(() => import('./GlareHover/GlareHover.jsx'))
+
+// --- Cinta de aviso 'demo de muestra' (motor gsap) ---
+export const LazyTextLoop = lazy(() => import('./TextLoop/TextLoop.jsx'))
