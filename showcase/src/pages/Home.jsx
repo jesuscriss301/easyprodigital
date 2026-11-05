@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useMemo, useState, useRef } from 'react'
 import demos from '../demos/index.js'
 import { Icon } from '../components/icons.jsx'
 import { useLanguage } from '../i18n.jsx'
@@ -9,6 +9,24 @@ import { getLocalizedDemo } from '../demos/i18n/es/index.js'
    página propia. Se listan a mano.                                          */
 /* -------------------------------------------------------------------------- */
 const PROSPECT_DEMOS_EN = [
+  {
+    slug: 'kano-publicidad',
+    brand: 'Kano Publicidad',
+    tag: 'Live client site · Neon & signage · Bucaramanga, Colombia',
+    summary:
+      "Neon and acrylic signage shop — live site with an Instagram-fed gallery, a WhatsApp quote flow and a real roster of local clients.",
+    url: 'https://kanopublicidad.com',
+    variants: [],
+  },
+  {
+    slug: 'power-provider-services',
+    brand: 'Power Provider Services',
+    tag: 'Live client site · Licensed electrician · Orlando, FL',
+    summary:
+      'Licensed electrical contractor (EC13010990) — live bilingual site with a resource blog, instant-quote CTAs and BBB/Yelp ratings on display.',
+    url: 'https://www.powerproviderservices.com',
+    variants: [],
+  },
   {
     slug: 'chope-gobeline',
     brand: 'La Chope Gobeline',
@@ -168,6 +186,24 @@ const LIVE_PROJECTS_ES = [
 
 const PROSPECT_DEMOS_ES = [
   {
+    slug: 'kano-publicidad',
+    brand: 'Kano Publicidad',
+    tag: 'Sitio de cliente en vivo · Avisos luminosos · Bucaramanga, Colombia',
+    summary:
+      'Taller de avisos luminosos y acrílico — sitio en vivo con galería conectada a Instagram, cotización por WhatsApp y clientes reales de Santander.',
+    url: 'https://kanopublicidad.com',
+    variants: [],
+  },
+  {
+    slug: 'power-provider-services',
+    brand: 'Power Provider Services',
+    tag: 'Sitio de cliente en vivo · Electricista con licencia · Orlando, FL',
+    summary:
+      'Contratista eléctrico con licencia (EC13010990) — sitio bilingüe en vivo con blog de recursos, CTAs de cotización instantánea y calificaciones BBB/Yelp.',
+    url: 'https://www.powerproviderservices.com',
+    variants: [],
+  },
+  {
     slug: 'chope-gobeline',
     brand: 'La Chope Gobeline',
     tag: 'Taberna medieval · Bilingüe FR/EN',
@@ -289,7 +325,7 @@ function DemoCard({ demo, t, extraTag }) {
 
 function ProspectCard({ p, t }) {
   return (
-    <a href={`/${p.slug}`} target="_blank" rel="noopener noreferrer" className="ep-card ep-card--prospect">
+    <a href={p.url || `/${p.slug}`} target="_blank" rel="noopener noreferrer" className="ep-card ep-card--prospect">
       <PreviewCarousel slug={p.slug} brand={p.brand} />
       <div className="ep-card-body">
         <div className="ep-card-tag">{p.tag}</div>
@@ -359,6 +395,54 @@ function ProjectCard({ proj, t }) {
   )
 }
 
+/* -------------------------------------------------------------------------- */
+/* Carrusel continuo de demos por nicho — 3 filas independientes, cada una en
+   auto-scroll infinito (CSS puro, sin dependencias), alternando dirección y
+   velocidad para que no se sientan sincronizadas. El orden que llega en
+   `demos` (de más a menos visitada, ver demos/index.js) se reparte en
+   round-robin entre las 3 filas para que cada una mezcle populares y menos
+   populares en vez de "fila 1 = solo las top". Se pausa al pasar el mouse
+   y respeta prefers-reduced-motion (ver .ep-marquee-track en styles.css).  */
+function DemoMarquee({ demos, lang, t }) {
+  const rows = useMemo(() => {
+    const r = [[], [], []]
+    demos.forEach((raw, i) => r[i % 3].push(raw))
+    return r
+  }, [demos])
+  const speeds = [46, 58, 40]
+
+  return (
+    <div className="ep-marquee">
+      {rows.map((row, i) => {
+        const cards = row.map((raw) => {
+          const d = getLocalizedDemo(raw, lang)
+          return <DemoCard key={d.slug} demo={d} t={t} />
+        })
+        return (
+          <div className="ep-marquee-row" key={i}>
+            <div
+              className={`ep-marquee-track ${i % 2 === 0 ? 'ep-marquee-track--left' : 'ep-marquee-track--right'}`}
+              style={{ '--ep-marquee-duration': `${speeds[i % speeds.length]}s` }}
+            >
+              {/* Set real (el único que cuenta para accesibilidad) + una
+                  copia aria-hidden al lado para que el loop de -50% sea
+                  continuo. Con prefers-reduced-motion la copia se oculta
+                  por CSS y el set real pasa a envolver en una fila normal. */}
+              <div className="ep-marquee-set">{cards}</div>
+              <div className="ep-marquee-set ep-marquee-set--dup" aria-hidden="true">
+                {row.map((raw) => {
+                  const d = getLocalizedDemo(raw, lang)
+                  return <DemoCard key={`${d.slug}-dup`} demo={d} t={t} />
+                })}
+              </div>
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 export default function Home() {
   const { t, lang, toggleLang } = useLanguage()
   const projects = lang === 'es' ? LIVE_PROJECTS_ES : LIVE_PROJECTS_EN
@@ -377,8 +461,8 @@ export default function Home() {
           <span className="ep-brand-name">Easy Pro Digital</span>
         </a>
         <nav className="ep-nav-links" aria-label="Sections">
-          <a href="#niches">{t.home.navNiches}</a>
           <a href="#prospects">{t.home.navProspects}</a>
+          <a href="#niches">{t.home.navNiches}</a>
           <a href="#projects">{t.home.navProjects}</a>
         </nav>
         <div className="ep-nav-actions">
@@ -439,22 +523,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================== SECCIÓN 1 · DEMOS POR NICHO ================== */}
-      <section id="niches" className="ep-section">
-        <div className="ep-section-head">
-          <span className="ep-eyebrow">{t.home.sectionNichesEyebrow}</span>
-          <h2>{t.home.sectionNichesTitle}</h2>
-          <p>{t.home.sectionNichesLead}</p>
-        </div>
-        <div className="ep-grid">
-          {demos.map((raw) => {
-            const d = getLocalizedDemo(raw, lang)
-            return <DemoCard key={d.slug} demo={d} t={t.home} />
-          })}
-        </div>
-      </section>
-
-      {/* ================== SECCIÓN 2 · PROSPECTOS ================== */}
+      {/* ================== SECCIÓN 1 · PROSPECTOS / REDISEÑOS ================== */}
       <section id="prospects" className="ep-section ep-section--dim">
         <div className="ep-section-head">
           <span className="ep-eyebrow">{t.home.sectionProspectsEyebrow}</span>
@@ -466,6 +535,16 @@ export default function Home() {
             <ProspectCard key={p.slug} p={p} t={t.home} />
           ))}
         </div>
+      </section>
+
+      {/* ================== SECCIÓN 2 · DEMOS POR NICHO ================== */}
+      <section id="niches" className="ep-section">
+        <div className="ep-section-head">
+          <span className="ep-eyebrow">{t.home.sectionNichesEyebrow}</span>
+          <h2>{t.home.sectionNichesTitle}</h2>
+          <p>{t.home.sectionNichesLead}</p>
+        </div>
+        <DemoMarquee demos={demos} lang={lang} t={t.home} />
       </section>
 
       {/* ================== SECCIÓN 3 · PROYECTOS REALES ================== */}

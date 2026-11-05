@@ -1480,6 +1480,66 @@ h1, h2, h3, h4 {
 }
 
 /* ------------------ GRID + CARDS ------------------ */
+
+/* ------------------ MARQUEE DE NICHOS (3 filas continuas) ------------------ */
+.ep-marquee {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.ep-marquee-row {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+.ep-marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation-duration: var(--ep-marquee-duration, 48s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.ep-marquee-track--left { animation-name: ep-marquee-left; }
+.ep-marquee-track--right { animation-name: ep-marquee-right; }
+.ep-marquee-row:hover .ep-marquee-track,
+.ep-marquee-row:focus-within .ep-marquee-track {
+  animation-play-state: paused;
+}
+.ep-marquee-set {
+  display: flex;
+  gap: 22px;
+  padding-right: 22px;
+}
+.ep-marquee-track .ep-card {
+  width: 300px;
+  flex: 0 0 auto;
+}
+@keyframes ep-marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes ep-marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+@media (max-width: 640px) {
+  .ep-marquee-track .ep-card { width: 240px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ep-marquee-track {
+    animation: none !important;
+    width: 100%;
+  }
+  .ep-marquee-set {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .ep-marquee-set--dup { display: none; }
+  .ep-marquee-row { overflow: visible; mask-image: none; -webkit-mask-image: none; }
+}
+
 .ep-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

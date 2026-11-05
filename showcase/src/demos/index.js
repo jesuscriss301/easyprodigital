@@ -82,7 +82,12 @@ import carRental from './carRental.js'
 // showcase — una tarjeta por rubro/nicho distinto. Cada entrada se convierte
 // en una ruta /<slug>. Ver src/demos/README.md para la guía de cómo agregar
 // una nueva.
-const demos = [salonBelleza, carWash, cleaners, carpenters, gardeners, plumbers, realestate, masons, construction, automechanics, electricians, chef, adultCreator, youtuber, church, foundation, dentists, lawyers, aesthetics, languageSchool, veterinary, selfStorage, carRental]
+// Orden = de más a menos visitada, según impresiones por página en Google
+// Search Console (últimos 3 meses, exportado nov-2026). No hay Analytics
+// conectado todavía, así que esto es la mejor aproximación real que
+// tenemos a "qué demo mira más gente" — conviene re-exportar el reporte y
+// reordenar cada cierto tiempo en vez de dejarlo fijo para siempre.
+const demos = [realestate, aesthetics, lawyers, plumbers, masons, veterinary, dentists, selfStorage, chef, carWash, automechanics, carRental, carpenters, salonBelleza, church, youtuber, adultCreator, cleaners, construction, electricians, foundation, gardeners, languageSchool]
 
 // Variantes de estilo (mismo contenido/rubro, distinta paleta + tipografía)
 // — deliberadamente fuera de `demos` para no duplicar la tarjeta del mismo
