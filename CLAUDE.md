@@ -8,7 +8,7 @@ Web personal de desarrollador freelance (**easyprodigital.com**) de Jesús Manue
 
 1. **Raíz** — SPA en React 18 + Vite + React Router 7, desplegada en GitHub Pages.
 2. **`server/`** — API Express (MySQL + Nodemailer + Swagger) para el formulario de descubrimiento (`/rag-form`). Corre aparte, NO se despliega en Pages.
-3. **`blog/`** — "SEO Article Forge": generador CLI de artículos HTML estáticos con IA. Su salida se copia a `public/blog/` y la SPA la lee como contenido estático.
+3. **`blog/`** — "SEO Article Forge": generador CLI de artículos HTML estáticos con IA. Es una herramienta aparte: los artículos publicados viven en `src/data/articles.js` (`public/blog/` se eliminó).
 4. **`showcase/`** — webs de muestra por nicho/prospecto (React + Vite + React Router), pensadas para enseñarle a un visitante cómo luciría la web de su negocio. Se despliega **aparte, en Dokploy**, bajo `demos.easyprodigital.com` — NO se despliega en Pages ni forma parte del build de la raíz. Cada demo vive en `showcase/src/demos/*.js` (contenido + tema) y se renderiza con `showcase/src/pages/DemoPage.jsx`. La página de Portafolio de la raíz enlaza a estas demos vía `nicheDemos` en `src/data/profile.js` / `profile.en.js`. Ver `showcase/README.md`.
 
 ## Arquitectura
@@ -29,12 +29,12 @@ graph TD
     end
 
     subgraph Blog["blog/ (SEO Article Forge)"]
-        Forge[CLI: generate/batch/demo] --> Output[blog/output/*.html + posts.json]
-        Output -->|copiar manualmente| PublicBlog[public/blog/]
+        Forge[CLI: generate/batch/demo] --> Output[artículos nuevos]
+        Output -->|pegar a mano| Articles[src/data/articles.js]
     end
 
     RagForm -->|fetch POST| API
-    BlogPage -->|"fetch /blog/posts.json"| PublicBlog
+    BlogPage -->|import| Articles
 
     Deploy["push a main → .github/workflows/deploy.yml<br/>vite build → dist/ → GitHub Pages"] -.-> Frontend
 ```
@@ -43,7 +43,7 @@ Puntos clave del diseño:
 
 - **Todo el contenido editable vive en `src/data/profile.js`** (servicios, proyectos, textos, contacto). Para cambiar contenido del sitio, casi siempre se edita ahí, no en los componentes.
 - **`src/pages/pages.jsx` contiene varias páginas en un solo archivo** (Home, Services, Portfolio, About, Contact, Legal, NotFound). Solo `RagForm` y `Blog` tienen archivo propio.
-- **El blog no tiene backend**: `Blog.jsx` lee el manifiesto `/blog/posts.json` y enlaza HTML estático en `public/blog/`. Los artículos se generan con `blog/` y se copian a `public/blog/`.
+- **El blog no tiene backend**: los artículos viven en `src/data/articles.js` (se prerenderizan a HTML estático) y sus títulos SEO en `src/data/articleSeo.js`. Tarjetas sociales por página: `npm run og` (genera `public/og/`).
 - **SEO**: cada página usa el componente `Seo` (title/description/canonical/OG únicos + JSON-LD). Hay redirects de URLs del sitio anterior (`/plan`, `/sign_in`, `/log_in`) en `App.jsx` para conservar enlaces indexados. `sitemap.xml` y `robots.txt` en `public/`.
 - **SPA en GitHub Pages**: el build copia `dist/index.html` a `dist/404.html` para que las rutas profundas no rompan al recargar en el navegador. Pero eso solo evita que el usuario vea un error — GitHub Pages sigue respondiendo con status HTTP 404 real para cualquier ruta sin archivo físico, y Google no indexa una página que responde 404 aunque el contenido se vea bien. Por eso `scripts/prerender.mjs` corre al final de `npm run build`: levanta el `dist/` ya compilado con `vite preview`, visita cada ruta real de `App.jsx` con Playwright/Chromium y guarda el HTML ya renderizado como `dist/<ruta>/index.html` (p. ej. `dist/services/index.html`, `dist/es/about/index.html`). Así cada URL del sitemap es un archivo estático real que GitHub Pages sirve con 200, con el `<title>`/canonical/meta description correctos, y el bundle de JS se sigue hidratando igual para la interactividad. **Si agregas una ruta nueva en `RouteChildren` (`src/App.jsx`), agrégala también a `ROUTE_PATHS` en `scripts/prerender.mjs`** o no se generará su versión estática. `public/CNAME` mantiene el dominio propio (`base: '/'` en `vite.config.js`).
 
