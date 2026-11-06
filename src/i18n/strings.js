@@ -58,9 +58,9 @@ export const en = {
     ctaButton: 'Start a project',
   },
   nicheGoogleBusiness: {
-    seoTitle: 'Google Business Profile Setup and Optimization | Easy Pro Digital',
+    seoTitle: 'Google Business Profile Setup & SEO | Easy Pro Digital',
     seoDescription:
-      'Claim, verify and optimize your Google Business Profile so your business shows up in Google Maps and local searches: complete info, photos, services, a review system and a connected website.',
+      'Claim, verify and optimize your Google Business Profile to show up in Google Maps and local searches: photos, services, reviews and a connected website.',
     eyebrow: 'For local businesses',
     title: 'Google Business Profile Setup and Optimization',
     intro:
@@ -130,9 +130,9 @@ export const en = {
     cookies: 'Cookies',
   },
   pricingMeta: {
-    seoTitle: 'Pricing — Web, Store, Chatbots, SEO & AI | Easy Pro Digital',
+    seoTitle: 'Pricing: Web, Stores, Chatbots, SEO & AI | Easy Pro Digital',
     seoDescription:
-      'Public price ranges for websites, Bagisto online stores, WhatsApp AI chatbots, booking systems, SEO content and custom AI integrations. Fixed scope, fixed price.',
+      'Public price ranges for websites, online stores, WhatsApp AI chatbots, booking systems, SEO content and custom AI. Fixed scope, fixed price.',
   },
   statusbar: {
     available: 'Available for projects',
@@ -149,9 +149,9 @@ export const en = {
     demoPassword: 'Password',
   },
   home: {
-    seoTitle: 'Jesús Manuel Cristancho — Freelance Full-Stack Developer | Easy Pro Digital',
+    seoTitle: 'Freelance Full-Stack Developer | Easy Pro Digital',
     seoDescription:
-      'Freelance full-stack developer building web, mobile and SaaS applications for businesses across the US and Canada. Based in Colombia, direct communication, end-to-end delivery.',
+      'Freelance full-stack developer in Colombia building websites, mobile apps and SaaS for businesses in the US and Canada. Technical SEO and AI included.',
     heroGreeting: 'Hi, I’m',
     heroRest: '. I build web, mobile and SaaS products end to end.',
     ctaViewWork: 'See my work',
@@ -167,9 +167,9 @@ export const en = {
     contactTitle: 'Have a project in mind?',
   },
   services: {
-    seoTitle: 'Services — Web, Mobile Apps, SaaS, SEO & AI | Jesús Manuel Cristancho',
+    seoTitle: 'Web, App, SaaS, SEO & AI Services | Easy Pro Digital',
     seoDescription:
-      'Freelance development services: web development, mobile apps, SaaS platforms, technical and local SEO, digital marketing and AI integrations for businesses across the US and Canada.',
+      'Web development, mobile apps, SaaS platforms, technical and local SEO, and AI integrations for businesses in the US and Canada. Fixed scope and price.',
     eyebrow: 'Services',
     title: 'Everything your product needs, from a single developer',
     intro:
@@ -178,9 +178,9 @@ export const en = {
     ctaButton: "Let's talk",
   },
   portfolio: {
-    seoTitle: 'Portfolio — Projects by Jesús Manuel Cristancho | Easy Pro Digital',
+    seoTitle: 'Portfolio: Web, Mobile & SaaS Projects | Easy Pro Digital',
     seoDescription:
-      'Selected web, mobile and SaaS projects built end to end by freelance developer Jesús Manuel Cristancho for clients across the US, Canada and Latin America.',
+      'Selected web, mobile and SaaS projects built end to end by freelance developer Jesús Manuel Cristancho for clients in the US, Canada and Latin America.',
     eyebrow: 'Portfolio',
     title: 'Selected work',
     intro:
@@ -200,9 +200,9 @@ export const en = {
     nicheCta: 'View demo ↗',
   },
   about: {
-    seoTitle: 'About — Jesús Manuel Cristancho, Freelance Developer',
+    seoTitle: 'About Jesús Cristancho: Freelance Developer in Colombia',
     seoDescription:
-      'Full-stack developer based in Colombia, working with clients across the US, Canada and Latin America. From agency brand to independent practice: one developer, accountable end to end.',
+      'Full-stack developer based in Medellín, Colombia, working with clients in the US, Canada and Latin America. One accountable developer, end to end.',
     eyebrow: 'About',
     title: 'From agency brand to freelance practice',
     factName: 'Name',
@@ -220,16 +220,16 @@ export const en = {
     educationTitle: 'Education',
   },
   contact: {
-    seoTitle: 'Contact — Hire Jesús Manuel Cristancho | Easy Pro Digital',
+    seoTitle: 'Contact & Hire Jesús Cristancho | Easy Pro Digital',
     seoDescription:
       'Start a project with freelance full-stack developer Jesús Manuel Cristancho. Email, WhatsApp and LinkedIn — direct communication, no middlemen.',
     eyebrow: 'Contact',
     title: 'Have a project in mind?',
   },
   faq: {
-    seoTitle: 'FAQ — Pricing, Process, Tech Stack & AI | Jesús Manuel Cristancho',
+    seoTitle: 'FAQ: Pricing, Process, Tech Stack & AI | Easy Pro Digital',
     seoDescription:
-      'Straight answers about pricing, timelines, remote work with US and Canada clients, tech stack and AI integrations — from freelance full-stack developer Jesús Manuel Cristancho.',
+      'Straight answers about pricing, timelines, remote work with US and Canada clients, tech stack and AI integrations from a freelance full-stack developer.',
     eyebrow: 'FAQ',
     title: 'Questions clients actually ask',
     intro: 'Direct answers, no sales pitch — if something else is unclear, just ask.',
@@ -265,9 +265,9 @@ export const en = {
     ],
   },
   blog: {
-    seoTitle: 'Blog — Easy Pro Digital',
+    seoTitle: 'Blog: Web, SEO & AI for Local Businesses | Easy Pro Digital',
     seoDescription:
-      'Articles on web development, applied AI and SEO: practical guides written from real experience building production software.',
+      'Practical articles on websites, local SEO, Google Business Profile, CRM and automation for local businesses, written from real project experience.',
     eyebrow: 'Blog',
     title: 'Guides & articles',
     tagline: 'Web development, applied AI and SEO — practical content, straight to the point.',
@@ -437,9 +437,9 @@ export const en = {
 
 export const es = {
   nicheRealEstate: {
-    seoTitle: 'Diseño de Páginas Web para Inmobiliarias y Agentes | Easy Pro Digital',
+    seoTitle: 'Páginas Web para Inmobiliarias | Easy Pro Digital',
     seoDescription:
-      'Páginas web para inmobiliarias y agentes de finca raíz en Medellín y Colombia: rápidas en celular, con captación real de clientes y una demo que puedes abrir antes de contratar.',
+      'Páginas web para inmobiliarias y agentes de finca raíz en Colombia: rápidas en celular, con captación real de clientes y una demo que abres antes de contratar.',
     eyebrow: 'Para agentes y agencias de finca raíz',
     title: 'Páginas Web para Inmobiliarias',
     intro:
@@ -489,9 +489,9 @@ export const es = {
     ctaButton: 'Empezar un proyecto',
   },
   nicheGoogleBusiness: {
-    seoTitle: 'Ficha de Google Business: Creación y Optimización | Easy Pro Digital',
+    seoTitle: 'Ficha de Google Business y SEO Local | Easy Pro Digital',
     seoDescription:
-      'Reclama, verifica y optimiza tu ficha de Google (Google Business Profile) para aparecer en Google Maps y en las búsquedas locales: datos completos, fotos, servicios, sistema de reseñas y web conectada.',
+      'Reclama, verifica y optimiza tu ficha de Google para aparecer en Google Maps y búsquedas locales: fotos, servicios, reseñas y web conectada.',
     eyebrow: 'Para negocios locales',
     title: 'Ficha de Google Business: Creación y Optimización',
     intro:
@@ -561,9 +561,9 @@ export const es = {
     cookies: 'Cookies',
   },
   pricingMeta: {
-    seoTitle: 'Precios — Web, Tienda, Chatbots, SEO e IA | Easy Pro Digital',
+    seoTitle: 'Precios: Web, Tienda, Chatbots, SEO e IA | Easy Pro Digital',
     seoDescription:
-      'Rangos de precio públicos para sitios web, tiendas Bagisto, chatbots WhatsApp con IA, sistemas de reservas, contenido SEO e integraciones de IA a medida. Alcance y precio cerrados.',
+      'Rangos de precio públicos para webs, tiendas online, chatbots de WhatsApp con IA, sistemas de reservas, contenido SEO e IA a medida. Precio cerrado.',
   },
   statusbar: {
     available: 'Disponible para proyectos',
@@ -580,9 +580,9 @@ export const es = {
     demoPassword: 'Contraseña',
   },
   home: {
-    seoTitle: 'Jesús Manuel Cristancho — Desarrollador Full-Stack Freelance | Easy Pro Digital',
+    seoTitle: 'Desarrollador Full-Stack Freelance | Easy Pro Digital',
     seoDescription:
-      'Desarrollador full-stack freelance creando aplicaciones web, móviles y SaaS para negocios en Colombia y LATAM. Con base en Medellín, comunicación directa y entrega completa.',
+      'Desarrollador full-stack freelance en Medellín: páginas web, apps móviles y SaaS para negocios en Colombia y LATAM, con SEO técnico e IA incluidos.',
     heroGreeting: 'Hola, soy',
     heroRest: '. Construyo productos web, móviles y SaaS de principio a fin.',
     ctaViewWork: 'Ver mi trabajo',
@@ -598,9 +598,9 @@ export const es = {
     contactTitle: '¿Tienes un proyecto en mente?',
   },
   services: {
-    seoTitle: 'Servicios — Web, Apps Móviles, SaaS, SEO e IA | Jesús Manuel Cristancho',
+    seoTitle: 'Servicios de Web, Apps, SaaS, SEO e IA | Easy Pro Digital',
     seoDescription:
-      'Servicios de desarrollo freelance: desarrollo web, apps móviles, plataformas SaaS, SEO técnico y local, marketing digital e integraciones de IA para negocios en Colombia y LATAM.',
+      'Desarrollo web, apps móviles, plataformas SaaS, SEO técnico y local e integraciones de IA para negocios en Colombia y LATAM. Alcance y precio cerrados.',
     eyebrow: 'Servicios',
     title: 'Todo lo que tu producto necesita, desde un solo desarrollador',
     intro:
@@ -609,9 +609,9 @@ export const es = {
     ctaButton: 'Hablemos',
   },
   portfolio: {
-    seoTitle: 'Portafolio — Proyectos de Jesús Manuel Cristancho | Easy Pro Digital',
+    seoTitle: 'Portafolio: Proyectos Web, Móvil y SaaS | Easy Pro Digital',
     seoDescription:
-      'Proyectos seleccionados de web, apps móviles y SaaS construidos de principio a fin por el desarrollador freelance Jesús Manuel Cristancho para clientes en Colombia y LATAM.',
+      'Proyectos web, de apps móviles y SaaS construidos de principio a fin por el desarrollador freelance Jesús Manuel Cristancho para clientes en Colombia y LATAM.',
     eyebrow: 'Portafolio',
     title: 'Trabajo seleccionado',
     intro:
@@ -631,9 +631,9 @@ export const es = {
     nicheCta: 'Ver demo ↗',
   },
   about: {
-    seoTitle: 'Sobre mí — Jesús Manuel Cristancho, Desarrollador Freelance',
+    seoTitle: 'Sobre Jesús Cristancho: Desarrollador Freelance',
     seoDescription:
-      'Desarrollador full-stack en Medellín, Colombia trabajando con clientes en Colombia y LATAM. De marca de agencia a práctica independiente: un desarrollador responsable de principio a fin.',
+      'Desarrollador full-stack en Medellín, Colombia, trabajando con clientes en Colombia y LATAM. Un solo responsable de principio a fin.',
     eyebrow: 'Sobre mí',
     title: 'De marca de agencia a práctica freelance',
     factName: 'Nombre',
@@ -651,16 +651,16 @@ export const es = {
     educationTitle: 'Educación',
   },
   contact: {
-    seoTitle: 'Contacto — Contrata a Jesús Manuel Cristancho | Easy Pro Digital',
+    seoTitle: 'Contacto: Contrata a Jesús Cristancho | Easy Pro Digital',
     seoDescription:
       'Inicia un proyecto con el desarrollador full-stack freelance Jesús Manuel Cristancho. Email, WhatsApp y LinkedIn — comunicación directa, sin intermediarios.',
     eyebrow: 'Contacto',
     title: '¿Tienes un proyecto en mente?',
   },
   faq: {
-    seoTitle: 'Preguntas frecuentes — Precios, proceso, stack e IA | Jesús Manuel Cristancho',
+    seoTitle: 'Preguntas Frecuentes: Precios y Proceso | Easy Pro Digital',
     seoDescription:
-      'Respuestas directas sobre precios, plazos, trabajo remoto con clientes internacionales, stack tecnológico e integraciones de IA — del desarrollador full-stack freelance Jesús Manuel Cristancho.',
+      'Respuestas directas sobre precios, plazos, trabajo remoto, stack tecnológico e integraciones de IA, de un desarrollador full-stack freelance.',
     eyebrow: 'Preguntas frecuentes',
     title: 'Lo que los clientes suelen preguntar',
     intro: 'Respuestas directas, sin discurso de venta — si algo más no queda claro, pregunta.',
@@ -696,9 +696,9 @@ export const es = {
     ],
   },
   blog: {
-    seoTitle: 'Blog — Easy Pro Digital',
+    seoTitle: 'Blog: Web, SEO e IA para Negocios Locales | Easy Pro Digital',
     seoDescription:
-      'Artículos sobre desarrollo web, IA aplicada y SEO: guías prácticas escritas desde la experiencia construyendo software productivo.',
+      'Artículos prácticos sobre páginas web, SEO local, ficha de Google, CRM y automatización para negocios locales, escritos desde proyectos reales.',
     eyebrow: 'Blog',
     title: 'Guías y artículos',
     tagline: 'Desarrollo web, IA aplicada y SEO — contenido práctico, directo al grano.',

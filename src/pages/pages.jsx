@@ -1019,6 +1019,7 @@ export function NotFound() {
         title={t.notFound.seoTitle}
         description={t.notFound.seoDescription}
         path="/404"
+        noindex
       />
       <section className="first-section notfound">
         <div className="container">
