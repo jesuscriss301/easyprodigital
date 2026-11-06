@@ -6,6 +6,7 @@ import {
   Services,
   Pricing,
   RealEstateWebsites,
+  GoogleBusinessProfileService,
   Portfolio,
   About,
   Contact,
@@ -55,6 +56,7 @@ function RouteChildren() {
       <Route path="services" element={<Services />} />
       <Route path="pricing" element={<Pricing />} />
       <Route path="services/real-estate-website-design" element={<RealEstateWebsites />} />
+      <Route path="services/google-business-profile-setup" element={<GoogleBusinessProfileService />} />
       <Route path="portfolio" element={<Portfolio />} />
       <Route path="blog" element={<Blog />} />
       <Route path="blog/:slug" element={<Article />} />

@@ -324,6 +324,9 @@ export function Services() {
           <p className="niche-pricing-note">
             <Link to={href('/services/real-estate-website-design/')}>{t.nicheRealEstate.title} →</Link>
           </p>
+          <p className="niche-pricing-note">
+            <Link to={href('/services/google-business-profile-setup/')}>{t.nicheGoogleBusiness.title} →</Link>
+          </p>
           <Link className="btn btn-primary" to={href('/contact/')}>{t.services.ctaButton}</Link>
         </div>
       </section>
@@ -812,29 +815,28 @@ export function Faq() {
   )
 }
 
-/* ============ Niche landing: real estate ============ */
-export function RealEstateWebsites() {
-  const { href, data, t } = useLanguage()
+/* ============ Niche / service landing (shared layout) ============ */
+function NicheLanding({ c, path, serviceType, audienceType }) {
+  const { href, data } = useLanguage()
   const { site, profile } = data
-  const c = t.nicheRealEstate
 
   return (
     <>
       <Seo
         title={c.seoTitle}
         description={c.seoDescription}
-        path="/services/real-estate-website-design/"
+        path={path}
         jsonLd={{
           '@context': 'https://schema.org',
           '@graph': [
             {
               '@type': 'Service',
               name: c.title,
-              serviceType: 'Real estate website design',
+              serviceType,
               description: c.seoDescription,
-              url: site.domain + '/services/real-estate-website-design/',
+              url: site.domain + path,
               provider: { '@type': 'Person', name: profile.name, url: site.domain },
-              audience: { '@type': 'Audience', audienceType: 'Real estate agents and brokers' },
+              audience: { '@type': 'Audience', audienceType },
             },
             {
               '@type': 'FAQPage',
@@ -880,20 +882,22 @@ export function RealEstateWebsites() {
         </Reveal>
       </section>
 
-      <section>
-        <Reveal as="div" className="container niche-demo">
-          <h2 className="service-title">{c.demoTitle}</h2>
-          <p className="service-text">{c.demoCopy}</p>
-          <a
-            className="btn btn-primary"
-            href={c.demoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {c.demoCta}
-          </a>
-        </Reveal>
-      </section>
+      {c.demoUrl && (
+        <section>
+          <Reveal as="div" className="container niche-demo">
+            <h2 className="service-title">{c.demoTitle}</h2>
+            <p className="service-text">{c.demoCopy}</p>
+            <a
+              className="btn btn-primary"
+              href={c.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {c.demoCta}
+            </a>
+          </Reveal>
+        </section>
+      )}
 
       <section>
         <div className="container">
@@ -935,6 +939,31 @@ export function RealEstateWebsites() {
         </div>
       </section>
     </>
+  )
+}
+
+export function RealEstateWebsites() {
+  const { t } = useLanguage()
+  return (
+    <NicheLanding
+      c={t.nicheRealEstate}
+      path="/services/real-estate-website-design/"
+      serviceType="Real estate website design"
+      audienceType="Real estate agents and brokers"
+    />
+  )
+}
+
+/* ============ Service landing: Google Business Profile ============ */
+export function GoogleBusinessProfileService() {
+  const { t } = useLanguage()
+  return (
+    <NicheLanding
+      c={t.nicheGoogleBusiness}
+      path="/services/google-business-profile-setup/"
+      serviceType="Google Business Profile setup and optimization"
+      audienceType="Local businesses"
+    />
   )
 }
 
@@ -990,6 +1019,7 @@ export function NotFound() {
         title={t.notFound.seoTitle}
         description={t.notFound.seoDescription}
         path="/404"
+        noindex
       />
       <section className="first-section notfound">
         <div className="container">

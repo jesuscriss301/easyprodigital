@@ -189,6 +189,7 @@ export default function RagForm() {
         title="AI Sales Discovery Form | Easy Pro Digital"
         description="A discovery form for businesses that want to stop losing customers to missed messages and automate their sales conversations."
         path="/rag-form/"
+        noindex
       />
       <div className="rag-form-page">
         <header className="rag-form-header">

@@ -32,7 +32,19 @@ function upsertLink(rel, hreflang, href) {
   el.setAttribute('href', href)
 }
 
-export default function Seo({ title, description, path = '/', jsonLd = null, image = null, imageAlt = null }) {
+// Páginas que no deben aparecer en Google (formulario interno, 404).
+// `type` es el og:type: 'website' por defecto, 'article' para el blog.
+export default function Seo({
+  title,
+  description,
+  path = '/',
+  jsonLd = null,
+  image = null,
+  imageAlt = null,
+  noindex = false,
+  type = 'website',
+  publishedTime = null,
+}) {
   const { lang, data } = useLanguage()
   const { site } = data
 
@@ -43,7 +55,13 @@ export default function Seo({ title, description, path = '/', jsonLd = null, ima
 
     // Falls back to the site-wide 1200x630 social preview (site.ogImage) so
     // every page shares a link with a real thumbnail instead of none at all.
-    const imagePath = image || site.ogImage
+    // Cada página tiene su propia tarjeta 1200x630 en /og/<idioma>/<clave>.jpg
+    // (se generan con `npm run og`). La portada y las páginas noindex usan la
+    // imagen global.
+    const key = path.replace(/^\/+|\/+$/g, '').replace(/\//g, '-')
+    const cardPath = key && !noindex ? `/og/${lang}/${key}.jpg` : null
+    const imagePath = image || cardPath || site.ogImage
+    const isDefaultSize = !image
     const imageUrl = imagePath ? site.domain + imagePath : null
     const altText = imageAlt || title
 
@@ -61,15 +79,25 @@ export default function Seo({ title, description, path = '/', jsonLd = null, ima
     upsertMeta('property', 'og:title', title)
     upsertMeta('property', 'og:description', description)
     upsertMeta('property', 'og:url', url)
-    upsertMeta('property', 'og:type', 'website')
+    upsertMeta('property', 'og:type', type)
+    upsertMeta('property', 'og:site_name', site.brand)
+    upsertMeta(
+      'name',
+      'robots',
+      noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1',
+    )
+    if (publishedTime) upsertMeta('property', 'article:published_time', publishedTime)
     upsertMeta('property', 'og:locale', lang === 'es' ? 'es_CO' : 'en_US')
     upsertMeta('name', 'twitter:title', title)
     upsertMeta('name', 'twitter:description', description)
     if (imageUrl) {
       upsertMeta('property', 'og:image', imageUrl)
-      upsertMeta('property', 'og:image:width', '1200')
-      upsertMeta('property', 'og:image:height', '630')
+      if (isDefaultSize) {
+        upsertMeta('property', 'og:image:width', '1200')
+        upsertMeta('property', 'og:image:height', '630')
+      }
       upsertMeta('property', 'og:image:alt', altText)
+      upsertMeta('name', 'twitter:image:alt', altText)
       upsertMeta('name', 'twitter:card', 'summary_large_image')
       upsertMeta('name', 'twitter:image', imageUrl)
     } else {
@@ -86,7 +114,7 @@ export default function Seo({ title, description, path = '/', jsonLd = null, ima
       script.textContent = JSON.stringify({ inLanguage: lang, ...jsonLd })
       document.head.appendChild(script)
     }
-  }, [title, description, path, jsonLd, image, imageAlt, lang, site.domain, site.ogImage])
+  }, [title, description, path, jsonLd, image, imageAlt, noindex, type, publishedTime, lang, site.domain, site.brand, site.ogImage])
 
   return null
 }

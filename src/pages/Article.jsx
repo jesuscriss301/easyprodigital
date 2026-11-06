@@ -3,6 +3,7 @@ import Seo from '../components/Seo.jsx'
 import Reveal from '../components/Reveal.jsx'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { articles, pickRelated } from '../data/articles.js'
+import { articleSeoTitles, metaDescription } from '../data/articleSeo.js'
 
 const DEMO_BASE = 'https://demos.easyprodigital.com'
 
@@ -34,7 +35,7 @@ export default function Article() {
   if (!article) {
     return (
       <>
-        <Seo title={t.article.notFoundTitle} description={t.article.notFoundText} path="/blog/" />
+        <Seo title={t.article.notFoundTitle} description={t.article.notFoundText} path="/blog/" noindex />
         <div className="page-head container">
           <h1>{t.article.notFoundTitle}</h1>
           <p className="page-intro">{t.article.notFoundText}</p>
@@ -68,6 +69,10 @@ export default function Article() {
   const demoInsertAt = article.relatedDemo ? Math.min(3, content.body.length) : -1
   const demoCard = article.relatedDemo ? DEMO_CARD[lang] || DEMO_CARD.en : null
 
+  // <title> corto (≤ 60) desde articleSeo.js; la marca se agrega solo si cabe.
+  const baseTitle = articleSeoTitles[article.slug]?.[lang] || content.title
+  const seoTitle = baseTitle.length + data.site.brand.length + 3 <= 62 ? `${baseTitle} | ${data.site.brand}` : baseTitle
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -87,8 +92,15 @@ export default function Article() {
 
   return (
     <>
-      <Seo title={`${content.title} | ${data.site.brand}`} description={content.summary} path={path} jsonLd={jsonLd}
-        {...(article.image ? { image: article.image, imageAlt: article.imageAlt?.[lang] || article.imageAlt?.en } : {})} />
+      <Seo
+        title={seoTitle}
+        description={metaDescription(content.summary)}
+        path={path}
+        jsonLd={jsonLd}
+        type="article"
+        publishedTime={article.date}
+        imageAlt={seoTitle}
+      />
 
       <article className="article">
         <div className="page-head container">
