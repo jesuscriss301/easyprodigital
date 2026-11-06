@@ -29,6 +29,7 @@ const ROUTE_PATHS = [
   '',
   'services',
   'services/real-estate-website-design',
+  'services/google-business-profile-setup',
   'pricing',
   'portfolio',
   'blog',

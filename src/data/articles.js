@@ -441,7 +441,7 @@ export const articles = [
   {
     slug: 'google-business-profile-local-trades',
     relatedDemo: null,
-    relatedService: null,
+    relatedService: 'google-business-profile-setup',
     related: ['invisible-on-google-where-to-start', 'web-competencia-peor-rankea-mas-alto', 'fontanero-vecino-mas-llamadas-web-fea'],
     tag: { en: 'Local SEO', es: 'SEO local' },
     date: '2026-10-16',
