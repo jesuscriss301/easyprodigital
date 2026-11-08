@@ -24,7 +24,11 @@ const block = articles
         `    <lastmod>${a.date}</lastmod>`,
         '    <priority>0.7</priority>',
         `    <xhtml:link rel="alternate" hreflang="en" href="${DOMAIN}/blog/${a.slug}/" />`,
+        `    <xhtml:link rel="alternate" hreflang="en-US" href="${DOMAIN}/blog/${a.slug}/" />`,
+        `    <xhtml:link rel="alternate" hreflang="en-CA" href="${DOMAIN}/blog/${a.slug}/" />`,
         `    <xhtml:link rel="alternate" hreflang="es" href="${DOMAIN}/es/blog/${a.slug}/" />`,
+        `    <xhtml:link rel="alternate" hreflang="es-CO" href="${DOMAIN}/es/blog/${a.slug}/" />`,
+        `    <xhtml:link rel="alternate" hreflang="es-US" href="${DOMAIN}/es/blog/${a.slug}/" />`,
         `    <xhtml:link rel="alternate" hreflang="x-default" href="${DOMAIN}/blog/${a.slug}/" />`,
         '  </url>',
       ].join('\n')

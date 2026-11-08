@@ -71,8 +71,15 @@ export default function Seo({
 
     // canonical (current language) + hreflang alternates (both languages)
     upsertLink('canonical', null, url)
+    // Inglés para EE. UU. y Canadá, español para Colombia (y el público
+    // hispano de EE. UU.). Solo hay dos URLs por página: varios códigos de
+    // región pueden apuntar a la misma.
     upsertLink('alternate', 'en', enUrl)
+    upsertLink('alternate', 'en-US', enUrl)
+    upsertLink('alternate', 'en-CA', enUrl)
     upsertLink('alternate', 'es', esUrl)
+    upsertLink('alternate', 'es-CO', esUrl)
+    upsertLink('alternate', 'es-US', esUrl)
     upsertLink('alternate', 'x-default', enUrl)
 
     // Open Graph / Twitter
@@ -88,6 +95,7 @@ export default function Seo({
     )
     if (publishedTime) upsertMeta('property', 'article:published_time', publishedTime)
     upsertMeta('property', 'og:locale', lang === 'es' ? 'es_CO' : 'en_US')
+    upsertMeta('property', 'og:locale:alternate', lang === 'es' ? 'en_US' : 'es_CO')
     upsertMeta('name', 'twitter:title', title)
     upsertMeta('name', 'twitter:description', description)
     if (imageUrl) {

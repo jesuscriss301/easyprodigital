@@ -2031,3 +2031,17 @@ a, button { touch-action: manipulation; }
   border-radius: 999px;
   padding: 2px 9px;
 }
+
+/* ---- Reforma de enfoque: soluciones para negocios ---- */
+.hero-proof { margin-top: 20px; font-size: 15px; color: var(--slate); }
+.cap-kicker {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.service-title a { color: inherit; text-decoration: none; }
+.service-title a:hover { text-decoration: underline; }
+.btn, .cap-link { min-height: 44px; }

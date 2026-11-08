@@ -7,6 +7,7 @@ import {
   Pricing,
   RealEstateWebsites,
   GoogleBusinessProfileService,
+  ServiceLanding,
   Portfolio,
   About,
   Contact,
@@ -57,6 +58,15 @@ function RouteChildren() {
       <Route path="pricing" element={<Pricing />} />
       <Route path="services/real-estate-website-design" element={<RealEstateWebsites />} />
       <Route path="services/google-business-profile-setup" element={<GoogleBusinessProfileService />} />
+      <Route path="services/get-found-online" element={<ServiceLanding slug="get-found-online" />} />
+      <Route path="services/instant-replies" element={<ServiceLanding slug="instant-replies" />} />
+      <Route path="services/customer-retention" element={<ServiceLanding slug="customer-retention" />} />
+      <Route path="services/web-development" element={<ServiceLanding slug="web-development" />} />
+      <Route path="services/mobile-development" element={<ServiceLanding slug="mobile-development" />} />
+      <Route path="services/saas-development" element={<ServiceLanding slug="saas-development" />} />
+      <Route path="services/seo-services" element={<ServiceLanding slug="seo-services" />} />
+      <Route path="services/digital-marketing" element={<ServiceLanding slug="digital-marketing" />} />
+      <Route path="services/ai-integrations" element={<ServiceLanding slug="ai-integrations" />} />
       <Route path="portfolio" element={<Portfolio />} />
       <Route path="blog" element={<Blog />} />
       <Route path="blog/:slug" element={<Article />} />
