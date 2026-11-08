@@ -18,6 +18,19 @@ import {
   SiGithub,
 } from 'react-icons/si'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
+import { getServicePage, SOLUTION_SLUGS } from '../data/servicePages.js'
+
+// Enlace de WhatsApp con el mensaje ya escrito (el visitante solo pulsa enviar).
+function waLink(base, text) {
+  return `${base}?text=${encodeURIComponent(text)}`
+}
+
+// Mercados a los que sirve el negocio (EE. UU., Canadá y Colombia).
+const AREA_SERVED = [
+  { '@type': 'Country', name: 'United States' },
+  { '@type': 'Country', name: 'Canada' },
+  { '@type': 'Country', name: 'Colombia' },
+]
 
 /* Core stack shown in the About page's Logo Loop — mirrors the real stack
    listed across services/experience in profile data. Brand-accurate colors;
@@ -180,8 +193,9 @@ function buildPersonJsonLd({ profile, site, education }) {
 
 /* ============ Home ============ */
 export function Home() {
-  const { href, data, t } = useLanguage()
+  const { lang, href, data, t } = useLanguage()
   const { profile, services, projects } = data
+  const steps = getServicePage(lang, SOLUTION_SLUGS[0]).process
 
   return (
     <>
@@ -192,16 +206,73 @@ export function Home() {
         jsonLd={buildPersonJsonLd(data)}
       />
       <Reveal as="div" className="hero container" immediate>
-        <p className="eyebrow">{profile.role}</p>
-        <h1>
-          {t.home.heroGreeting} <em>{profile.firstName}</em>{t.home.heroRest}
-        </h1>
-        <p className="hero-tagline">{profile.tagline}</p>
+        <p className="eyebrow">{t.home.heroEyebrow}</p>
+        <h1>{t.home.heroTitle}</h1>
+        <p className="hero-tagline">{t.home.heroTagline}</p>
         <div className="hero-actions">
-          <Link className="btn btn-primary" to={href('/portfolio/')}>{t.home.ctaViewWork}</Link>
-          <Link className="btn btn-ghost" to={href('/contact/')}>{t.home.ctaStartProject}</Link>
+          <Link className="btn btn-primary" to={href('/contact/')}>{t.home.ctaAudit}</Link>
+          <a
+            className="btn btn-ghost"
+            href={waLink(profile.whatsapp, t.home.whatsappText)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t.home.ctaWhatsapp}
+          </a>
         </div>
+        <p className="hero-proof">{t.home.heroProof}</p>
       </Reveal>
+
+      <section>
+        <div className="container">
+          <p className="eyebrow">{t.home.problemsEyebrow}</p>
+          <h2 className="section-title">{t.home.problemsTitle}</h2>
+          <Reveal as="div" className="cap-grid">
+            {t.home.problems.map((p) => (
+              <div className="cap" key={p.title}>
+                <h3>{p.title}</h3>
+                <p>{p.text}</p>
+              </div>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
+      <section id="solutions">
+        <div className="container">
+          <p className="eyebrow">{t.home.solutionsEyebrow}</p>
+          <h2 className="section-title">{t.home.solutionsTitle}</h2>
+          <Reveal as="div" className="cap-grid">
+            {SOLUTION_SLUGS.map((slug) => {
+              const c = getServicePage(lang, slug)
+              return (
+                <Link className="cap cap-link" key={slug} to={href(`/services/${slug}/`)}>
+                  <p className="cap-kicker">{c.eyebrow}</p>
+                  <h3>{c.title}</h3>
+                  <p>{c.intro}</p>
+                  <span className="cap-more">{t.common.readMore}</span>
+                </Link>
+              )
+            })}
+          </Reveal>
+        </div>
+      </section>
+
+      <section>
+        <div className="container">
+          <p className="eyebrow">{t.home.stepsEyebrow}</p>
+          <h2 className="section-title">{t.home.stepsTitle}</h2>
+          <Reveal as="ol" className="niche-steps">
+            {steps.map((st) => (
+              <li className="niche-step" key={st.step}>
+                <span className="niche-step-num">{st.step}</span>
+                <h3 className="niche-step-title">{st.title}</h3>
+                <p className="niche-step-text">{st.text}</p>
+              </li>
+            ))}
+          </Reveal>
+        </div>
+      </section>
 
       <section>
         <div className="container">
@@ -217,7 +288,7 @@ export function Home() {
           />
           <Reveal as="div" className="cap-grid">
             {services.map((s) => (
-              <Link className="cap cap-link" key={s.id} to={href(`/services/#${s.id}`)}>
+              <Link className="cap cap-link" key={s.id} to={href(`/services/${s.id}/`)}>
                 <h3>{s.title}</h3>
                 <p>{s.short}</p>
                 <span className="cap-more">{t.common.readMore}</span>
@@ -257,6 +328,18 @@ export function Home() {
         <div className="container home-cta-content">
           <p className="eyebrow">{t.home.contactEyebrow}</p>
           <h2 className="section-title">{t.home.contactTitle}</h2>
+          <p className="page-intro">{t.home.contactCopy}</p>
+          <div className="hero-actions">
+            <Link className="btn btn-primary" to={href('/contact/')}>{t.home.ctaAudit}</Link>
+            <a
+              className="btn btn-ghost"
+              href={waLink(profile.whatsapp, t.home.whatsappText)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t.home.ctaWhatsapp}
+            </a>
+          </div>
           <a className="contact-email" href={`mailto:${profile.email}`}>
             {profile.email}
           </a>
@@ -270,9 +353,7 @@ export function Home() {
 export function Services() {
   const { lang, href, data, t } = useLanguage()
   const { profile, services, site } = data
-  const areaServed = lang === 'es'
-    ? ['CO', 'MX', 'AR', 'CL', 'PE', 'EC']
-    : ['US', 'CA', 'CO', 'MX', 'AR', 'CL', 'PE', 'EC']
+  const areaServed = AREA_SERVED
 
   return (
     <>
@@ -298,17 +379,61 @@ export function Services() {
         <h1 className="section-title">{t.services.title}</h1>
         <p className="page-intro">{t.services.intro}</p>
       </div>
-      {services.map((s, i) => (
-        <section key={s.id} id={s.id} className={i === 0 ? 'first-section' : ''}>
+      <section className="first-section">
+        <div className="container">
+          <h2 className="section-title">{t.services.solutionsTitle}</h2>
+          <Reveal as="div" className="cap-grid">
+            {SOLUTION_SLUGS.map((slug) => {
+              const c = getServicePage(lang, slug)
+              return (
+                <Link className="cap cap-link" key={slug} to={href(`/services/${slug}/`)}>
+                  <p className="cap-kicker">{c.eyebrow}</p>
+                  <h3>{c.title}</h3>
+                  <p>{c.intro}</p>
+                  <span className="cap-more">{t.services.learnMore}</span>
+                </Link>
+              )
+            })}
+          </Reveal>
+        </div>
+      </section>
+      <section>
+        <div className="container">
+          <h2 className="section-title">{t.services.nicheTitle}</h2>
+          <Reveal as="div" className="cap-grid">
+            <Link className="cap cap-link" to={href('/services/google-business-profile-setup/')}>
+              <h3>{t.nicheGoogleBusiness.title}</h3>
+              <p>{t.nicheGoogleBusiness.intro}</p>
+              <span className="cap-more">{t.services.learnMore}</span>
+            </Link>
+            <Link className="cap cap-link" to={href('/services/real-estate-website-design/')}>
+              <h3>{t.nicheRealEstate.title}</h3>
+              <p>{t.nicheRealEstate.intro}</p>
+              <span className="cap-more">{t.services.learnMore}</span>
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+      <div className="container">
+        <p className="eyebrow">{t.services.techEyebrow}</p>
+        <h2 className="section-title">{t.services.techTitle}</h2>
+      </div>
+      {services.map((s) => (
+        <section key={s.id} id={s.id}>
           <Reveal as="div" className="container service-detail">
             <div>
-              <h2 className="service-title">{s.title}</h2>
+              <h2 className="service-title">
+                <Link to={href(`/services/${s.id}/`)}>{s.title}</Link>
+              </h2>
               <p className="service-text">{s.detail}</p>
               <div className="cap-stack">
                 {s.stack.map((techName) => (
                   <span className="tag" key={techName}>{techName}</span>
                 ))}
               </div>
+              <p className="niche-pricing-note">
+                <Link to={href(`/services/${s.id}/`)}>{t.services.learnMore}</Link>
+              </p>
             </div>
             <ul className="service-bullets">
               {s.bullets.map((b) => (
@@ -321,12 +446,6 @@ export function Services() {
       <section>
         <div className="container">
           <h2 className="section-title">{t.services.ctaTitle}</h2>
-          <p className="niche-pricing-note">
-            <Link to={href('/services/real-estate-website-design/')}>{t.nicheRealEstate.title} →</Link>
-          </p>
-          <p className="niche-pricing-note">
-            <Link to={href('/services/google-business-profile-setup/')}>{t.nicheGoogleBusiness.title} →</Link>
-          </p>
           <Link className="btn btn-primary" to={href('/contact/')}>{t.services.ctaButton}</Link>
         </div>
       </section>
@@ -632,7 +751,7 @@ export function Portfolio() {
 
 /* ============ About ============ */
 export function About() {
-  const { data, t } = useLanguage()
+  const { href, data, t } = useLanguage()
   const { profile, experience, education } = data
 
   return (
@@ -670,6 +789,29 @@ export function About() {
             {profile.about.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="container">
+          <p className="eyebrow">{t.about.businessEyebrow}</p>
+          <h2 className="section-title">{t.about.businessTitle}</h2>
+          <div className="about-copy">
+            {t.about.businessCopy.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
+          <div className="hero-actions">
+            <Link className="btn btn-primary" to={href('/contact/')}>{t.about.businessCta}</Link>
+            <a
+              className="btn btn-ghost"
+              href={waLink(profile.whatsapp, t.home.whatsappText)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t.about.businessWhatsapp}
+            </a>
           </div>
         </div>
       </section>
@@ -836,6 +978,7 @@ function NicheLanding({ c, path, serviceType, audienceType }) {
               description: c.seoDescription,
               url: site.domain + path,
               provider: { '@type': 'Person', name: profile.name, url: site.domain },
+              areaServed: AREA_SERVED,
               audience: { '@type': 'Audience', audienceType },
             },
             {
@@ -854,6 +997,19 @@ function NicheLanding({ c, path, serviceType, audienceType }) {
         <p className="eyebrow">{c.eyebrow}</p>
         <h1 className="section-title">{c.title}</h1>
         <p className="page-intro">{c.intro}</p>
+        <div className="hero-actions">
+          <Link className="btn btn-primary" to={href('/contact/')}>{c.ctaButton}</Link>
+          {c.ctaWhatsappLabel && (
+            <a
+              className="btn btn-ghost"
+              href={waLink(profile.whatsapp, c.ctaWhatsappText)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {c.ctaWhatsappLabel}
+            </a>
+          )}
+        </div>
       </div>
 
       <section className="first-section">
@@ -939,6 +1095,21 @@ function NicheLanding({ c, path, serviceType, audienceType }) {
         </div>
       </section>
     </>
+  )
+}
+
+/* ============ Una página por servicio (datos en src/data/servicePages.js) ============ */
+export function ServiceLanding({ slug }) {
+  const { lang } = useLanguage()
+  const c = getServicePage(lang, slug)
+  if (!c) return <NotFound />
+  return (
+    <NicheLanding
+      c={c}
+      path={`/services/${slug}/`}
+      serviceType={c.serviceType}
+      audienceType={c.audienceType}
+    />
   )
 }
 

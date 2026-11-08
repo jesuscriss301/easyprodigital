@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { pickArticles } from '../data/articles.js'
+import { getServiceArticles } from '../data/servicePages.js'
 
 /**
  * Columna lateral derecha con tres artículos del blog, presente en todas las
@@ -17,7 +18,9 @@ export default function ArticlesAside() {
 
   // En la página de un artículo, ese artículo no se enlaza a sí mismo.
   const current = pathname.match(/\/blog\/([^/]+)\/?$/)?.[1] || null
-  const picks = pickArticles(pathname, current ? 4 : 3)
+  // Las páginas de servicio muestran SUS artículos relacionados (ver
+  // SERVICE_ARTICLES en servicePages.js); el resto, la mezcla determinista.
+  const picks = (getServiceArticles(pathname) || pickArticles(pathname, current ? 4 : 3))
     .filter((a) => a.slug !== current)
     .slice(0, 3)
 

@@ -19,7 +19,7 @@ export const profile = {
   tagline:
     'Production software for healthcare, mining, hospitality and e-commerce — Java and PHP backends, React/TypeScript frontends, with applied AI and SEO built in from day one.',
 
-  location: 'Medellín, Colombia — remote, serving clients across the US & Canada',
+  location: 'Medellín, Colombia — remote, serving businesses in the US, Canada & Colombia',
   timezoneLabel: 'GMT-5',
   available: true,
 
