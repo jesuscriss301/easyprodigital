@@ -39,6 +39,13 @@ const demoSlugs = new Set([
   'masons',
   'youtuber',
   'adultCreator',
+  'dentists',
+  'lawyers',
+  'carRental',
+  'selfStorage',
+  'veterinary',
+  'languageSchool',
+  'aesthetics',
 ])
 
 // Si existe el worktree desplegado, también se honra como fuente para
