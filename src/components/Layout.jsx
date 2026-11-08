@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
+import { PROMO_COPY, isPromoActive } from '../data/promo.js'
 
 /* ---------------- ScrollToTop on route change ---------------- */
 export function ScrollToTop() {
@@ -288,7 +289,7 @@ export function Footer() {
 /* ---------------- Status bar (signature) ---------------- */
 export function StatusBar() {
   const [time, setTime] = useState('')
-  const { href, data, t } = useLanguage()
+  const { lang, href, data, t } = useLanguage()
   const { profile } = data
 
   useEffect(() => {
@@ -318,6 +319,11 @@ export function StatusBar() {
           {time} {profile.timezoneLabel}
         </span>
         <span className="grow" />
+        {isPromoActive() && (
+          <Link className="statusbar-promo" to={href('/pricing/')}>
+            {(PROMO_COPY[lang] ?? PROMO_COPY.en).short}
+          </Link>
+        )}
         <Link to={href('/contact/')}>{t.statusbar.contact}</Link>
       </div>
     </div>

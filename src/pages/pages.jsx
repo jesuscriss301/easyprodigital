@@ -19,6 +19,10 @@ import {
 } from 'react-icons/si'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { getServicePage, SOLUTION_SLUGS } from '../data/servicePages.js'
+import { PromoBanner } from '../components/Promo.jsx'
+import { ListingCompare, FlowDiagram } from '../components/Visuals.jsx'
+import { getListingCopy, getServiceVisuals } from '../data/serviceVisuals.js'
+import { PROMO, PROMO_COPY, isPromoActive, discounted } from '../data/promo.js'
 
 // Enlace de WhatsApp con el mensaje ya escrito (el visitante solo pulsa enviar).
 function waLink(base, text) {
@@ -221,6 +225,7 @@ export function Home() {
           </a>
         </div>
         <p className="hero-proof">{t.home.heroProof}</p>
+        <PromoBanner className="promo-banner--hero" />
       </Reveal>
 
       <section>
@@ -255,6 +260,13 @@ export function Home() {
               )
             })}
           </Reveal>
+        </div>
+      </section>
+
+      <section>
+        <div className="container">
+          <h2 className="section-title">{getListingCopy(lang).title}</h2>
+          <ListingCompare copy={getListingCopy(lang)} />
         </div>
       </section>
 
@@ -378,6 +390,7 @@ export function Services() {
         <p className="eyebrow">{t.services.eyebrow}</p>
         <h1 className="section-title">{t.services.title}</h1>
         <p className="page-intro">{t.services.intro}</p>
+        <PromoBanner />
       </div>
       <section className="first-section">
         <div className="container">
@@ -459,22 +472,41 @@ function formatPrice(n) {
   return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 
+function Amount({ from, to, symbol }) {
+  if (from != null && to != null && from !== to) {
+    return (
+      <>
+        {symbol}{formatPrice(from)}<span className="pricing-sep">–</span>{symbol}{formatPrice(to)}
+      </>
+    )
+  }
+  return <>{symbol}{formatPrice(from ?? to)}</>
+}
+
 function PriceRange({ from, to, currency = 'USD' }) {
+  const { lang } = useLanguage()
   if (from == null && to == null) return null
   const symbol = currency === 'USD' ? '$' : ''
   const suffix = currency === 'USD' ? ' USD' : ` ${currency}`
-  if (from != null && to != null && from !== to) {
-    return (
-      <span className="pricing-amount">
-        {symbol}{formatPrice(from)}<span className="pricing-sep">–</span>{symbol}{formatPrice(to)}
-        <span className="pricing-currency">{suffix}</span>
-      </span>
-    )
-  }
-  const single = from ?? to
+  const promo = isPromoActive()
+  const copy = PROMO_COPY[lang] ?? PROMO_COPY.en
   return (
     <span className="pricing-amount">
-      {symbol}{formatPrice(single)}<span className="pricing-currency">{suffix}</span>
+      {promo && (
+        <>
+          <s className="pricing-was">
+            <span className="sr-only">{copy.was}: </span>
+            <Amount from={from} to={to} symbol={symbol} />
+          </s>
+          <span className="sr-only">{copy.now}: </span>
+        </>
+      )}
+      <Amount
+        from={promo ? discounted(from) : from}
+        to={promo ? discounted(to) : to}
+        symbol={symbol}
+      />
+      <span className="pricing-currency">{suffix}</span>
     </span>
   )
 }
@@ -520,6 +552,7 @@ function PricingCard({ item, labels, href }) {
       </div>
 
       <div className="pricing-price-block">
+        {isPromoActive() && <span className="pricing-promo-tag">-{PROMO.percent}%</span>}
         {isRecurring ? (
           <>
             {item.setupFrom != null && (
@@ -631,6 +664,7 @@ export function Pricing() {
             </a>
           ))}
         </nav>
+        <PromoBanner full />
         <p className="pricing-currency-note">{pricing.currencyNote}</p>
       </div>
 
@@ -958,8 +992,9 @@ export function Faq() {
 }
 
 /* ============ Niche / service landing (shared layout) ============ */
-function NicheLanding({ c, path, serviceType, audienceType }) {
-  const { href, data } = useLanguage()
+function NicheLanding({ c, path, serviceType, audienceType, slug }) {
+  const { lang, href, data } = useLanguage()
+  const visuals = slug ? getServiceVisuals(lang, slug) : null
   const { site, profile } = data
 
   return (
@@ -1010,6 +1045,7 @@ function NicheLanding({ c, path, serviceType, audienceType }) {
             </a>
           )}
         </div>
+        <PromoBanner />
       </div>
 
       <section className="first-section">
@@ -1037,6 +1073,24 @@ function NicheLanding({ c, path, serviceType, audienceType }) {
           </ul>
         </Reveal>
       </section>
+
+      {visuals?.flow && (
+        <section>
+          <div className="container">
+            <h2 className="section-title">{visuals.flow.title}</h2>
+            <FlowDiagram steps={visuals.flow.steps} caption={visuals.flow.caption} />
+          </div>
+        </section>
+      )}
+
+      {visuals?.listing && (
+        <section>
+          <div className="container">
+            <h2 className="section-title">{visuals.listing.title}</h2>
+            <ListingCompare copy={visuals.listing} />
+          </div>
+        </section>
+      )}
 
       {c.demoUrl && (
         <section>
@@ -1067,6 +1121,7 @@ function NicheLanding({ c, path, serviceType, audienceType }) {
               </li>
             ))}
           </Reveal>
+          <PromoBanner />
           <p className="niche-pricing-note">
             {c.pricingNote} <Link to={href('/pricing/')}>{c.pricingCta}</Link>
           </p>
@@ -1109,6 +1164,7 @@ export function ServiceLanding({ slug }) {
       path={`/services/${slug}/`}
       serviceType={c.serviceType}
       audienceType={c.audienceType}
+      slug={slug}
     />
   )
 }
@@ -1134,6 +1190,7 @@ export function GoogleBusinessProfileService() {
       path="/services/google-business-profile-setup/"
       serviceType="Google Business Profile setup and optimization"
       audienceType="Local businesses"
+      slug="google-business-profile-setup"
     />
   )
 }
