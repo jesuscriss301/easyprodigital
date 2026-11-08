@@ -2045,3 +2045,126 @@ a, button { touch-action: manipulation; }
 .service-title a { color: inherit; text-decoration: none; }
 .service-title a:hover { text-decoration: underline; }
 .btn, .cap-link { min-height: 44px; }
+
+
+/* ============ Promo de fin de año ============ */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+.promo-banner {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 12px 14px;
+  margin: 24px 0 0; padding: 14px 18px; max-width: 760px;
+  background: var(--paper); border: 1px solid var(--accent); border-radius: 14px;
+  color: var(--ink);
+}
+.promo-banner--hero { margin-top: 28px; }
+.promo-pct {
+  flex: 0 0 auto; background: var(--lime); color: #071f42;
+  font: 800 1.05rem/1 var(--font-display); letter-spacing: -0.01em;
+  padding: 8px 12px; border-radius: 10px;
+}
+.promo-body { display: flex; flex-direction: column; gap: 2px; flex: 1 1 220px; min-width: 0; }
+.promo-body strong { font-weight: 700; line-height: 1.35; }
+.promo-body small { color: var(--slate); font-size: 0.85rem; line-height: 1.4; }
+.promo-link {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px;
+  font-weight: 600; color: var(--accent-dark); text-decoration: underline;
+}
+.statusbar .statusbar-promo {
+  color: #071f42; background: var(--lime); font-weight: 700;
+  padding: 2px 10px; border-radius: 999px; white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .statusbar .container { gap: 12px; }
+}
+
+/* precios con descuento */
+.pricing-was {
+  display: block; font-size: 0.8em; font-weight: 500; color: var(--slate);
+  text-decoration: line-through; text-decoration-thickness: 1px;
+}
+.pricing-promo-tag {
+  display: inline-block; align-self: flex-start; margin-bottom: 8px;
+  background: var(--lime); color: #071f42;
+  font: 800 0.8rem/1 var(--font-display); padding: 6px 10px; border-radius: 8px;
+}
+
+/* ============ Ficha de Google: antes / después ============ */
+.gl-compare { margin: 28px 0 0; }
+.gl-cols { display: flex; flex-wrap: wrap; gap: 20px; }
+.gl-col { flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.gl-label { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.gl-label--before { color: #b45309; }
+.gl-label--after { color: #15803d; }
+.gl-card {
+  /* imita una ficha de Google: se mantiene clara en ambos temas */
+  background: #ffffff; color: #0a2a52; border: 1px solid #c9d6e6;
+  border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;
+  box-shadow: 0 1px 2px rgba(7, 31, 66, 0.06);
+}
+.gl-photo { height: 112px; }
+.gl-photo--empty {
+  display: flex; align-items: center; justify-content: center;
+  background: #eef1f5; color: #51617a; font-size: 0.9rem;
+  border-bottom: 1px dashed #9fb2c9;
+}
+.gl-photo--mosaic {
+  display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; gap: 4px;
+}
+.gl-tile { background: #b9dff2; }
+.gl-tile--a { grid-row: 1 / span 2; background: linear-gradient(135deg, #b9dff2, #8cc6e3); }
+.gl-tile--b { background: #9fcbe0; }
+.gl-tile--c { background: #cfe7f3; }
+.gl-body { padding: 14px; display: flex; flex-direction: column; gap: 6px; }
+.gl-name { font-size: 1.1rem; font-weight: 700; }
+.gl-muted { font-size: 0.9rem; color: #51617a; }
+.gl-rating { display: flex; align-items: center; gap: 4px; font-size: 0.9rem; }
+.gl-rating b { margin-right: 2px; }
+.gl-open { font-size: 0.9rem; color: #15803d; font-weight: 600; }
+.gl-missing {
+  align-self: flex-start; font-size: 0.85rem; color: #51617a;
+  border: 1px dashed #9fb2c9; padding: 3px 8px; border-radius: 6px;
+}
+.gl-actions { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 6px; }
+.gl-pill {
+  font-size: 0.8rem; font-weight: 600; padding: 7px 12px; border-radius: 999px;
+  background: #e6f4fb; border: 1px solid #0c5f84; color: #0a2a52;
+}
+.gl-pill--off { background: #eef1f5; border: 1px dashed #9fb2c9; color: #51617a; }
+.visual-caption { margin-top: 12px; font-size: 0.85rem; color: var(--slate); }
+
+/* ============ Diagramas de pasos ============ */
+.flow-wrap { margin: 24px 0 0; }
+.flow {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 28px 30px;
+}
+.flow-step {
+  position: relative; flex: 1 1 150px; min-width: 0;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+  padding: 16px; display: flex; flex-direction: column; gap: 6px;
+}
+.flow-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--ink); color: var(--paper);
+  display: flex; align-items: center; justify-content: center;
+  font: 700 0.85rem/1 var(--font-display);
+}
+.flow-title { font-weight: 700; line-height: 1.3; }
+.flow-text { font-size: 0.9rem; line-height: 1.4; color: var(--slate); }
+/* flecha entre pasos */
+.flow-step:not(:last-child)::after {
+  content: ''; position: absolute; top: 50%; right: -22px;
+  width: 10px; height: 10px; margin-top: -5px;
+  border-top: 2.5px solid var(--accent); border-right: 2.5px solid var(--accent);
+  transform: rotate(45deg);
+}
+@media (max-width: 900px) {
+  .flow { flex-direction: column; flex-wrap: nowrap; gap: 28px; }
+  .flow-step { flex: 0 0 auto; }
+  .flow-step:not(:last-child)::after {
+    top: auto; bottom: -21px; right: auto; left: 50%; margin: 0 0 0 -5px;
+    transform: rotate(135deg);
+  }
+}
