@@ -9,7 +9,7 @@ export const articleSeoTitles = {
   'five-second-test-agent-website': { en: 'The Five-Second Test Almost Every Agent Website Fails', es: 'La Prueba de 5 Segundos Que Casi Toda Web de Agente Falla' },
   'plumbing-website-no-calls': { en: 'Your Plumbing Website Is Not Getting Calls. Here Is Why', es: 'Tu Página de Plomería No Recibe Llamadas. Esta Es la Razón' },
   'emergency-page-converts-2am': { en: 'What an Emergency Page Needs to Convert at 2 AM', es: 'Página de Urgencias: Qué Necesita Para Convertir a las 2 AM' },
-  'how-much-should-a-website-cost': { en: 'How Much Should a Small Business Website Actually Cost?', es: '¿Cuánto Debería Costar la Página Web de un Negocio Pequeño?' },
+  'how-much-should-a-website-cost': { en: 'How Much Should a Small Business Website Actually Cost?', es: '¿Cuánto Cuesta una Página Web para un Negocio? Precios 2026' },
   'invisible-on-google-where-to-start': { en: 'Invisible on Google? Start Here, Not With Keywords', es: '¿Invisible en Google? Empieza Aquí, No por Palabras Clave' },
   'electrician-website-licence-trust': { en: 'Electrician Website: Show Your Licence Before They Call', es: 'Web de Electricista: Muestra Tu Matrícula Antes de Llamar' },
   'auto-shop-website-books-appointments': { en: 'Auto Shop Website That Books Appointments, Not Calls', es: 'Web de Taller Mecánico Que Agenda Citas en Vez de Llamadas' },

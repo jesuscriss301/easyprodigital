@@ -34,7 +34,7 @@ export const en = {
     demoCopy:
       'This is not a picture in a slide deck. It is a working real estate site. Open it, scroll it on your phone, try the forms. Yours is built the same way, with your brand and your listings.',
     demoCta: 'Open the live demo',
-    demoUrl: 'https://demos.easyprodigital.com/realestate',
+    demoUrl: 'https://demos.easyprodigital.com/realestate/',
     processTitle: 'How it works',
     process: [
       { step: '01', title: 'We talk', text: 'Thirty minutes. Your market, your listings, how you get clients today.' },
@@ -203,9 +203,9 @@ export const en = {
     ctaButton: "Let's talk",
   },
   portfolio: {
-    seoTitle: 'Portfolio: Web, Mobile & SaaS Projects | Easy Pro Digital',
+    seoTitle: 'Website Examples by Industry: 15+ Live Demos | Easy Pro Digital',
     seoDescription:
-      'Selected web, mobile and SaaS projects built end to end by freelance developer Jesús Manuel Cristancho for clients in the US, Canada and Colombia.',
+      'Live website examples for plumbers, law firms, real estate agents, dentists, med spas and more, plus web, mobile and SaaS projects built end to end for clients in the US, Canada and Colombia.',
     eyebrow: 'Portfolio',
     title: 'Selected work',
     intro:
@@ -498,7 +498,7 @@ export const es = {
     demoCopy:
       'No es una imagen en una presentación. Es una web inmobiliaria funcionando. Ábrela, míralas en el celular, prueba los formularios. La tuya se construye igual, con tu marca y tus inmuebles.',
     demoCta: 'Abrir la demo',
-    demoUrl: 'https://demos.easyprodigital.com/realestate',
+    demoUrl: 'https://demos.easyprodigital.com/realestate/',
     processTitle: 'Cómo funciona',
     process: [
       { step: '01', title: 'Hablamos', text: 'Treinta minutos. Tu zona, tus inmuebles, cómo consigues clientes hoy.' },
@@ -667,9 +667,9 @@ export const es = {
     ctaButton: 'Hablemos',
   },
   portfolio: {
-    seoTitle: 'Portafolio: Proyectos Web, Móvil y SaaS | Easy Pro Digital',
+    seoTitle: 'Ejemplos de Páginas Web por Sector: 15+ Demos | Easy Pro Digital',
     seoDescription:
-      'Proyectos web, de apps móviles y SaaS construidos de principio a fin por el desarrollador freelance Jesús Manuel Cristancho para clientes en Colombia, EE. UU. y Canadá.',
+      'Ejemplos reales de páginas web para plomeros, abogados, inmobiliarias, odontólogos, clínicas estéticas y más, junto con proyectos web, móviles y SaaS para clientes en Colombia, EE. UU. y Canadá.',
     eyebrow: 'Portafolio',
     title: 'Trabajo seleccionado',
     intro:

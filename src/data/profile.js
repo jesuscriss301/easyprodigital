@@ -301,7 +301,7 @@ export const nicheDemos = [
     brand: 'Finca Raíz Showcase',
     summary:
       'Inmuebles que cargan rápido en celular, solicitud de avalúo y de visita, y captación que llega directo a tu correo.',
-    url: 'https://demos.easyprodigital.com/realestate',
+    url: 'https://demos.easyprodigital.com/realestate/',
   },
   {
     slug: 'plumbers',
@@ -309,7 +309,7 @@ export const nicheDemos = [
     brand: 'Emergency Plumbing Showcase',
     summary:
       'Pensada para la urgencia de las 2 de la mañana: teléfono visible siempre, zonas de cobertura y cotización desde el celular.',
-    url: 'https://demos.easyprodigital.com/plumbers',
+    url: 'https://demos.easyprodigital.com/plumbers/',
   },
   {
     slug: 'salon-belleza',
@@ -317,7 +317,7 @@ export const nicheDemos = [
     brand: 'Bella Aura Studio',
     summary:
       'Reservas, servicios con precios, testimonios y una estética cálida pensada para negocios de belleza.',
-    url: 'https://demos.easyprodigital.com/salon-belleza',
+    url: 'https://demos.easyprodigital.com/salon-belleza/',
   },
   {
     slug: 'car-wash',
@@ -325,7 +325,7 @@ export const nicheDemos = [
     brand: 'Shine Spot Car Wash',
     summary:
       'Menú de servicios con precios, reserva por horario y galería que vende el antes y el después.',
-    url: 'https://demos.easyprodigital.com/car-wash',
+    url: 'https://demos.easyprodigital.com/car-wash/',
   },
   {
     slug: 'cleaners',
@@ -333,7 +333,7 @@ export const nicheDemos = [
     brand: 'Bright Home Cleaners',
     summary:
       'Planes recurrentes, zonas de cobertura y cotización instantánea pensada para el celular.',
-    url: 'https://demos.easyprodigital.com/cleaners',
+    url: 'https://demos.easyprodigital.com/cleaners/',
   },
   {
     slug: 'carpenters',
@@ -341,7 +341,7 @@ export const nicheDemos = [
     brand: 'Oakline Carpentry',
     summary:
       'La galería manda: el trabajo es el argumento de venta, con solicitud de encargo bajo cada pieza.',
-    url: 'https://demos.easyprodigital.com/carpenters',
+    url: 'https://demos.easyprodigital.com/carpenters/',
   },
   {
     slug: 'gardeners',
@@ -349,7 +349,7 @@ export const nicheDemos = [
     brand: 'Evergreen Yard Co.',
     summary:
       'Planes de mantenimiento por temporada, proyecto destacado al hacer scroll y cobertura por barrio.',
-    url: 'https://demos.easyprodigital.com/gardeners',
+    url: 'https://demos.easyprodigital.com/gardeners/',
   },
   {
     slug: 'masons',
@@ -357,7 +357,7 @@ export const nicheDemos = [
     brand: 'Stonecraft Masonry',
     summary:
       'Obras terminadas de primero, licencias y seguros a la vista, y cotización en cada página.',
-    url: 'https://demos.easyprodigital.com/masons',
+    url: 'https://demos.easyprodigital.com/masons/',
   },
   {
     slug: 'construction',
@@ -365,7 +365,7 @@ export const nicheDemos = [
     brand: 'Ironclad Builders',
     summary:
       'Etapas de obra, credenciales y certificaciones, y un formulario que califica presupuesto.',
-    url: 'https://demos.easyprodigital.com/construction',
+    url: 'https://demos.easyprodigital.com/construction/',
   },
   {
     slug: 'automechanics',
@@ -373,7 +373,7 @@ export const nicheDemos = [
     brand: 'Redline Auto Repair',
     summary:
       'Servicios con precio, agendamiento y las señales de confianza que busca quien deja su carro.',
-    url: 'https://demos.easyprodigital.com/automechanics',
+    url: 'https://demos.easyprodigital.com/automechanics/',
   },
   {
     slug: 'electricians',
@@ -381,7 +381,7 @@ export const nicheDemos = [
     brand: 'BrightVolt Electric',
     summary:
       'Licencia y seguro bien visibles, atención de urgencias y zonas de cobertura.',
-    url: 'https://demos.easyprodigital.com/electricians',
+    url: 'https://demos.easyprodigital.com/electricians/',
   },
   {
     slug: 'private-chef',
@@ -389,7 +389,7 @@ export const nicheDemos = [
     brand: 'Chef Mateo Serrano',
     summary:
       'Menús, tipos de evento y un formulario armado alrededor de la fecha y el número de invitados.',
-    url: 'https://demos.easyprodigital.com/private-chef',
+    url: 'https://demos.easyprodigital.com/private-chef/',
   },
   {
     slug: 'youtuber',
@@ -397,7 +397,7 @@ export const nicheDemos = [
     brand: 'Nova Vega',
     summary:
       'Centro para creadores: últimos videos, kit para marcas y todas las plataformas en un enlace.',
-    url: 'https://demos.easyprodigital.com/youtuber',
+    url: 'https://demos.easyprodigital.com/youtuber/',
   },
   {
     slug: 'church',
@@ -405,7 +405,7 @@ export const nicheDemos = [
     brand: 'Grace Point Church',
     summary:
       'Horarios de servicio, ministerios, eventos y donaciones, legible en el celular un domingo.',
-    url: 'https://demos.easyprodigital.com/church',
+    url: 'https://demos.easyprodigital.com/church/',
   },
   {
     slug: 'foundation',
@@ -413,7 +413,7 @@ export const nicheDemos = [
     brand: 'Raíces Foundation',
     summary:
       'Programas, cifras de impacto, transparencia y un camino de donación que no estorba.',
-    url: 'https://demos.easyprodigital.com/foundation',
+    url: 'https://demos.easyprodigital.com/foundation/',
   },
   {
     slug: 'adult-creator',
@@ -421,6 +421,6 @@ export const nicheDemos = [
     brand: 'Scarlett Vale',
     summary:
       'Centro de enlaces para creadores: niveles de suscripción, plataformas y verificación de edad.',
-    url: 'https://demos.easyprodigital.com/adult-creator',
+    url: 'https://demos.easyprodigital.com/adult-creator/',
   },
 ]
