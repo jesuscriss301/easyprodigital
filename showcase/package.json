@@ -6,7 +6,7 @@
   "description": "Webs de muestra por nicho/prospecto — desplegado por separado en Dokploy (demos.easyprodigital.com), independiente del sitio principal en GitHub Pages.",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/static-pages.mjs",
     "preview": "vite preview --host --port 4173"
   },
   "dependencies": {

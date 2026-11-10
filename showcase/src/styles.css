@@ -1997,3 +1997,33 @@ h1, h2, h3, h4 {
   .mat-glow { animation: none; stroke-dasharray: none; }
   .mat-float, .mat-drip, .mat-needle, .mat-shower path { animation: none; }
 }
+
+/* ============================================================
+   OwnerPitch — bloque para el dueño del negocio (diseño web por nicho)
+   ============================================================ */
+.demo-owner-pitch-card {
+  background: var(--demo-surface);
+  border: 1px solid var(--demo-line);
+  border-radius: var(--demo-radius);
+  padding: clamp(24px, 4vw, 44px);
+  max-width: 820px;
+  margin: 0 auto;
+}
+.demo-owner-pitch-card h2 { font-size: clamp(24px, 3.4vw, 34px); margin: 8px 0 12px; }
+.demo-owner-pitch-card h3 { font-size: 17px; margin: 22px 0 10px; }
+.demo-owner-pitch-intro { color: var(--demo-muted); font-size: 16px; line-height: 1.6; }
+.demo-owner-pitch-card ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.demo-owner-pitch-card li { position: relative; padding-left: 26px; line-height: 1.5; }
+.demo-owner-pitch-card li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--demo-primary);
+  font-weight: 700;
+}
+.demo-owner-pitch-price { margin: 22px 0 18px; font-weight: 600; }
+
+/* NicheSystem — reutiliza la tarjeta de OwnerPitch, con borde de acento */
+.demo-niche-system { padding-top: 0; }
+.demo-niche-system-card { border-color: var(--demo-primary); border-width: 2px; }
+.demo-niche-system-lead { display: block; font-size: 0.55em; font-weight: 600; color: var(--demo-muted); margin-bottom: 6px; }

@@ -14,6 +14,8 @@ import MapSection from '../components/MapSection.jsx'
 import PatientsSection from '../components/PatientsSection.jsx'
 import UnitTypesSection from '../components/UnitTypesSection.jsx'
 import Disclosure from '../components/Disclosure.jsx'
+import OwnerPitch from '../components/OwnerPitch.jsx'
+import NicheSystem from '../components/NicheSystem.jsx'
 import RelatedDemos from '../components/RelatedDemos.jsx'
 import ValueProps from '../components/ValueProps.jsx'
 import NoticeCard from '../components/NoticeCard.jsx'
@@ -100,6 +102,8 @@ export default function DemoPage({ demo }) {
       <div className="demo-shell">
         <div className="demo-shell-main">
           {sections}
+          <OwnerPitch demo={demo} />
+          <NicheSystem demo={demo} />
           <Disclosure {...demo.disclosure} brand={demo.brand} niche={demo.niche} />
         </div>
         <RelatedDemos demo={demo} />

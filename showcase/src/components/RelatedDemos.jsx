@@ -30,7 +30,7 @@ export default function RelatedDemos({ demo }) {
         <ul className="demo-related-list">
           {picks.map((d) => (
             <li key={d.slug}>
-              <Link className="demo-related-card" to={`/${d.slug}`}>
+              <Link className="demo-related-card" to={`/${d.slug}/`}>
                 {d.hero?.image && (
                   <img
                     className="demo-related-img"

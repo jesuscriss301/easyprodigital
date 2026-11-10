@@ -5,9 +5,9 @@ export default {
   brand: 'Patitas Felices Vet',
   niche: 'Veterinary Clinic',
   valueProps: [
-    `Citas online sin contestar WhatsApp todo el día`,
-    `Recordatorios automáticos de vacunas (clientes que vuelven solos)`,
-    `Botón de urgencias visible`,
+    `Book appointments online instead of answering WhatsApp all day`,
+    `Automatic vaccine reminders that bring clients back`,
+    `A visible emergency button`,
   ],
   kind: 'nicho',
 
@@ -54,14 +54,14 @@ export default {
   hero: {
     variant: 'split',
     eyebrow: 'Veterinary Clinic · Medellín',
-    title: 'Cuidamos a los que más quieres.',
-    text: 'Medicina preventiva, cirugía, baño y estética para perros y gatos. Un equipo que entiende que tu mascota es parte de la familia.',
-    primaryCta: { label: 'Agenda tu cita', href: '#book' },
-    secondaryCta: { label: 'Ver servicios', href: '#services' },
+    title: 'Caring for the ones you love most.',
+    text: 'Preventive medicine, surgery, grooming and spa care for dogs and cats. A team that understands your pet is part of the family.',
+    primaryCta: { label: 'Book Your Visit', href: '#book' },
+    secondaryCta: { label: 'See Services', href: '#services' },
     trust: [
-      { end: 2000, suffix: '+', label: 'pacientes felices' },
-      { value: '4.9 ★', label: 'promedio de reseñas' },
-      { end: 10, label: 'años cuidando mascotas' },
+      { end: 2000, suffix: '+', label: 'happy patients' },
+      { value: '4.9 ★', label: 'average review score' },
+      { end: 10, label: 'years caring for pets' },
     ],
     visualIcon: 'leaf',
     image: '/images/veterinary/hero.jpg',
@@ -79,8 +79,8 @@ export default {
 
   patients: {
     eyebrow: 'Our Patients',
-    title: 'Algunos de nuestros pacientes consentidos',
-    intro: 'Sample gallery — en tu sitio real, aquí irían fotos de las mascotas que atiendes (con autorización de sus dueños, claro).',
+    title: 'A few of our most spoiled patients',
+    intro: 'Sample gallery — on your real website, this is where photos of the pets you care for would go (with their owners’ permission, of course).',
     items: [
       { name: 'Luna',   image: '/images/veterinary/pet-1.jpg', alt: 'Golden retriever smiling at the camera' },
       { name: 'Mochi',  image: '/images/veterinary/pet-2.jpg', alt: 'Grey cat with green eyes' },
@@ -92,63 +92,63 @@ export default {
 
   services: {
     eyebrow: 'What We Do',
-    title: 'Servicios veterinarios integrales',
+    title: 'Comprehensive veterinary services',
     intro: 'Sample pricing — this is how the services and rates section would look on your own website.',
     variant: 'grid',
     items: [
-      { icon: 'leaf',       title: 'Consulta general',        text: 'Revisión completa, vacunas y plan de medicina preventiva.',                    price: 'Desde $40 USD' },
-      { icon: 'shieldCheck', title: 'Cirugía',                text: 'Esterilizaciones y cirugías de tejidos blandos con quirófano propio.',          price: 'Desde $120 USD' },
-      { icon: 'droplet',    title: 'Baño y estética',         text: 'Baño medicado, corte de pelo y cuidado de uñas en ambiente sin estrés.',       price: 'Desde $28 USD' },
-      { icon: 'sparkle',    title: 'Odontología',             text: 'Profilaxis dental con ultrasonido y extracciones bajo anestesia.',              price: 'Desde $90 USD' },
-      { icon: 'users',      title: 'Hospitalización',         text: 'Monitoreo 24/7 cuando tu mascota necesita quedarse con nosotros.',              price: 'Desde $55 USD/día' },
-      { icon: 'phone',      title: 'Urgencias',               text: 'Línea directa en horario extendido para emergencias.',                           price: 'Según servicio' },
+      { icon: 'leaf',       title: 'General Checkup',        text: 'Complete exam, vaccines and a preventive medicine plan.',                       price: 'From $40' },
+      { icon: 'shieldCheck', title: 'Surgery',                text: 'Spays, neuters and soft-tissue surgeries in our own operating room.',           price: 'From $120' },
+      { icon: 'droplet',    title: 'Grooming & Spa',          text: 'Medicated baths, haircuts and nail care in a stress-free setting.',             price: 'From $28' },
+      { icon: 'sparkle',    title: 'Dentistry',               text: 'Ultrasonic dental cleanings and extractions under anesthesia.',                 price: 'From $90' },
+      { icon: 'users',      title: 'Hospitalization',         text: '24/7 monitoring when your pet needs to stay with us.',                          price: 'From $55/day' },
+      { icon: 'phone',      title: 'Emergencies',             text: 'A direct line during extended hours for emergencies.',                          price: 'Varies by service' },
     ],
   },
 
   features: {
     eyebrow: 'Why Choose Us',
-    title: 'Un lugar donde las mascotas no tiemblan',
-    intro: 'Cuatro razones por las que las familias nos recomiendan.',
+    title: 'A place where pets don’t tremble',
+    intro: 'Four reasons families recommend us.',
     items: [
-      { icon: 'award',      title: 'Equipo certificado',      text: 'Médicos veterinarios con especialización y educación continua anual.' },
-      { icon: 'waves',      title: 'Ambiente libre de estrés', text: 'Salas separadas para perros y gatos, feromonas y manejo con refuerzo positivo.' },
-      { icon: 'shieldCheck', title: 'Quirófano propio',        text: 'No tercerizamos — operamos en nuestras instalaciones con monitoreo completo.' },
-      { icon: 'phone',       title: 'Seguimiento post-visita', text: 'Te escribimos al día siguiente para saber cómo sigue tu peludo.' },
+      { icon: 'award',      title: 'Certified Team',          text: 'Veterinarians with specialties and annual continuing education.' },
+      { icon: 'waves',      title: 'Stress-Free Environment', text: 'Separate dog and cat rooms, pheromones and positive-reinforcement handling.' },
+      { icon: 'shieldCheck', title: 'Our Own Operating Room',  text: 'We don’t outsource — we operate in our own facility with full monitoring.' },
+      { icon: 'phone',       title: 'Post-Visit Follow-Up',   text: 'We text you the next day to see how your furry friend is doing.' },
     ],
   },
 
   testimonials: {
     eyebrow: 'Happy Families',
-    title: 'Lo que dicen las familias',
+    title: 'What families say',
     intro: 'Sample testimonials — your website would feature real reviews from your clients.',
     items: [
-      { name: 'Andrea M.', role: 'Mamá de Luna',  quote: 'Luna nunca había estado tan tranquila en una veterinaria. El equipo la trata como si fuera suya.' },
-      { name: 'Camilo H.', role: 'Papá de Rocky', quote: 'Operaron a mi bulldog y me mandaron fotos y actualizaciones todo el día. Nunca sentí ansiedad.' },
-      { name: 'Laura P.',  role: 'Mamá de Mochi', quote: 'Mi gato odia salir de casa, pero aquí se deja revisar sin pelear. Eso ya es magia.' },
+      { name: 'Andrea M.', role: 'Luna’s mom',  quote: 'Luna had never been so calm at a vet’s office. The team treats her like she’s theirs.' },
+      { name: 'Camilo H.', role: 'Rocky’s dad', quote: 'They operated on my bulldog and sent me photos and updates all day. I never felt anxious.' },
+      { name: 'Laura P.',  role: 'Mochi’s mom', quote: 'My cat hates leaving home, but here she lets them examine her without a fight. That’s magic.' },
     ],
   },
 
   map: {
     eyebrow: 'Find Us',
-    title: 'Visítanos',
-    intro: 'Parqueadero gratuito y sala de espera separada para gatos.',
+    title: 'Visit Us',
+    intro: 'Free parking and a separate waiting room for cats.',
     id: 'location',
     query: 'Laureles, Medellín, Colombia',
     address: 'Cra. 76 #37-20, Laureles, Medellín',
     phone: '+57 322 309 2267',
     hours: [
-      { days: 'Lun – Vie', time: '8:00 AM – 7:00 PM' },
-      { days: 'Sábado',    time: '9:00 AM – 4:00 PM' },
-      { days: 'Domingo',   time: '10:00 AM – 1:00 PM (urgencias)' },
+      { days: 'Mon – Fri', time: '8:00 AM – 7:00 PM' },
+      { days: 'Saturday',    time: '9:00 AM – 4:00 PM' },
+      { days: 'Sunday',   time: '10:00 AM – 1:00 PM (emergencies)' },
     ],
   },
 
   cta: {
-    heading: '¿Tu peludo necesita una visita?',
-    text: 'Agenda en 1 minuto. Primera consulta con 20% de descuento para pacientes nuevos.',
+    heading: 'Does your furry friend need a visit?',
+    text: 'Book in under a minute. First visit 20% off for new patients.',
     actions: [
-      { label: 'Agendar ahora', href: '#want-this' },
-      { label: 'Llamar al vet', href: '#want-this', variant: 'outline' },
+      { label: 'Book Now', href: '#want-this' },
+      { label: 'Call the Vet', href: '#want-this', variant: 'outline' },
     ],
   },
 

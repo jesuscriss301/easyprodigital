@@ -23,7 +23,33 @@ import foundation from './foundation.js'
 import dentists from './dentists.js'
 import lawyers from './lawyers.js'
 import aesthetics from './aesthetics.js'
-import { mergeLang } from '../../../i18n.jsx'
+import veterinary from './veterinary.js'
+import selfStorage from './selfStorage.js'
+import carRental from './carRental.js'
+import languageSchool from './languageSchool.js'
+
+// Copia local de mergeLang() (ver src/i18n.jsx): el registro de packs ES se
+// importa también con Node puro para verificar contenido, y Node no puede
+// cargar la extensión .jsx del módulo original.
+function isPlainObject(v) {
+  return typeof v === 'object' && v !== null && !Array.isArray(v)
+}
+
+function mergeLang(base, override) {
+  if (override === undefined || override === null) return base
+  if (Array.isArray(base)) {
+    if (!Array.isArray(override)) return base
+    return base.map((item, i) => (i < override.length ? mergeLang(item, override[i]) : item))
+  }
+  if (isPlainObject(base) && isPlainObject(override)) {
+    const result = { ...base }
+    for (const key of Object.keys(override)) {
+      result[key] = mergeLang(base[key], override[key])
+    }
+    return result
+  }
+  return override
+}
 
 const esContentByKey = {
   'salon-belleza': salonBelleza,
@@ -45,13 +71,17 @@ const esContentByKey = {
   dentists,
   lawyers,
   aesthetics,
+  veterinary,
+  'self-storage': selfStorage,
+  'car-rental': carRental,
+  'language-school': languageSchool,
 }
 
 // Devuelve el paquete de contenido en español para un demo dado (usando
 // `styleVariants[0].slug` como llave), o `undefined` si no existe (no
 // debería pasar para ningún demo listado en src/demos/index.js).
 export function esContentFor(demo) {
-  const key = demo?.styleVariants?.[0]?.slug
+  const key = demo.styleVariants?.[0]?.slug ?? demo.slug
   return key ? esContentByKey[key] : undefined
 }
 

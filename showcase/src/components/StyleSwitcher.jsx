@@ -29,7 +29,7 @@ export default function StyleSwitcher({ variants = [], current }) {
             return (
               <a
                 key={v.slug}
-                href={`/${v.slug}`}
+                href={`/${v.slug}/`}
                 className={`demo-style-pill${isActive ? ' is-active' : ''}`}
                 style={style}
                 aria-current={isActive ? 'page' : undefined}

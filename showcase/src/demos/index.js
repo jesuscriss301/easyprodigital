@@ -156,6 +156,10 @@ const allDemos = [...demos, ...styleOnlyVariants]
 
 export default demos
 
+// Lista completa (base + variantes de estilo). La usa scripts/static-pages.mjs
+// para generar un index.html con título/meta propios por demo.
+export { allDemos }
+
 export function getDemoBySlug(slug) {
   return allDemos.find((d) => d.slug === slug)
 }

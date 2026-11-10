@@ -5,9 +5,9 @@ export default {
   brand: 'Políglota Academy',
   niche: 'Language School',
   valueProps: [
-    `Clase de prueba gratis que se agenda sola`,
-    `Prueba de nivel online que capta datos`,
-    `Grupos llenos con lista de espera`,
+    `Free trial class that books itself`,
+    `Online level test that captures leads`,
+    `Full classes with a waiting list`,
   ],
   kind: 'nicho',
 
@@ -51,15 +51,15 @@ export default {
 
   hero: {
     variant: 'split',
-    eyebrow: 'Language School · 5 Idiomas',
-    title: 'Habla el idioma, vive el país.',
-    text: 'Clases en grupos pequeños, profesores nativos y una metodología que te hace hablar desde la primera semana. Inglés, español, francés, chino mandarín y japonés.',
-    primaryCta: { label: 'Reserva tu clase gratis', href: '#book' },
-    secondaryCta: { label: 'Ver cursos', href: '#services' },
+    eyebrow: 'Language School · 5 Languages',
+    title: 'Speak the language, live the country.',
+    text: 'Small-group classes, native teachers and a method that gets you speaking from the first week. English, Spanish, French, Mandarin Chinese and Japanese.',
+    primaryCta: { label: 'Book Your Free Class', href: '#book' },
+    secondaryCta: { label: 'See Courses', href: '#services' },
     trust: [
-      { end: 1200, suffix: '+', label: 'estudiantes activos' },
-      { value: '5 idiomas', label: 'enseñados por nativos' },
-      { end: 12, label: 'años en Medellín' },
+      { end: 1200, suffix: '+', label: 'active students' },
+      { value: '5 languages', label: 'taught by natives' },
+      { end: 12, label: 'years in Medellín' },
     ],
     visualIcon: 'sparkle',
     // DotField (React Bits, sin deps): puntos sutiles que reaccionan al
@@ -86,35 +86,35 @@ export default {
 
   services: {
     eyebrow: 'Our Courses',
-    title: 'Un idioma por cada motivación',
+    title: 'A language for every motivation',
     intro: 'Sample pricing — this is how the courses and rates section would look on your own website.',
     variant: 'grid',
     items: [
-      { icon: 'sparkle', title: 'Inglés General',       text: 'A1 a C1 — niveles alineados con el Marco Común Europeo. Clases 2x por semana.',             price: 'Desde $120 USD/mes' },
-      { icon: 'brush',   title: 'Español para Extranjeros', text: 'DELE y uso diario. Grupos reducidos de hasta 6 estudiantes.',                        price: 'Desde $140 USD/mes' },
-      { icon: 'leaf',    title: 'Francés',               text: 'DELF/DALF, con énfasis en conversación y comprensión auditiva.',                        price: 'Desde $130 USD/mes' },
-      { icon: 'sun',     title: 'Chino Mandarín',        text: 'HSK 1-4 con profesor nativo. Incluye introducción a caracteres y pinyin.',               price: 'Desde $160 USD/mes' },
-      { icon: 'flower',  title: 'Japonés',               text: 'JLPT N5-N3, cultura japonesa integrada en cada clase.',                                   price: 'Desde $160 USD/mes' },
-      { icon: 'droplet', title: 'Business English',      text: 'Para profesionales que necesitan presentar, negociar y escribir en inglés.',             price: 'Desde $180 USD/mes' },
+      { icon: 'sparkle', title: 'General English',       text: 'A1 to C1 — levels aligned with the Common European Framework. Classes twice a week.',             price: 'From $120/mo' },
+      { icon: 'brush',   title: 'Spanish for Foreigners', text: 'DELE prep and everyday use. Small groups of up to 6 students.',                        price: 'From $140/mo' },
+      { icon: 'leaf',    title: 'French',               text: 'DELF/DALF, with an emphasis on conversation and listening comprehension.',                        price: 'From $130/mo' },
+      { icon: 'sun',     title: 'Mandarin Chinese',        text: 'HSK 1-4 with a native teacher. Includes an introduction to characters and pinyin.',               price: 'From $160/mo' },
+      { icon: 'flower',  title: 'Japanese',               text: 'JLPT N5-N3, with Japanese culture integrated into every class.',                                   price: 'From $160/mo' },
+      { icon: 'droplet', title: 'Business English',      text: 'For professionals who need to present, negotiate and write in English.',             price: 'From $180/mo' },
     ],
   },
 
   features: {
     eyebrow: 'Why Choose Us',
-    title: 'Una academia pensada para que hables, no solo estudies',
-    intro: 'Cuatro razones por las que nuestros estudiantes se quedan curso tras curso.',
+    title: 'An academy built for you to speak, not just study',
+    intro: 'Four reasons our students stay course after course.',
     items: [
-      { icon: 'users',   title: 'Grupos pequeños',          text: 'Máximo 6 estudiantes por clase. Hablas más, el profesor te corrige más.' },
-      { icon: 'award',   title: 'Profesores nativos',       text: 'Todos nuestros docentes son nativos del idioma y certificados en enseñanza.' },
-      { icon: 'waves',   title: 'Metodología conversacional', text: 'Desde la primera clase hablas. Nada de meses de gramática antes de abrir la boca.' },
-      { icon: 'clock',   title: 'Horarios flexibles',       text: 'Clases en la mañana, tarde, noche y sábados. Virtual o presencial.' },
+      { icon: 'users',   title: 'Small Groups',          text: 'A maximum of 6 students per class. You speak more, the teacher corrects you more.' },
+      { icon: 'award',   title: 'Native Teachers',       text: 'All our teachers are native speakers of the language and certified to teach.' },
+      { icon: 'waves',   title: 'Conversational Method', text: 'You speak from the first class. No months of grammar before you open your mouth.' },
+      { icon: 'clock',   title: 'Flexible Schedules',       text: 'Classes in the morning, afternoon, evening and on Saturdays. Online or in person.' },
     ],
   },
 
   gallery: {
     eyebrow: 'Our Classroom',
-    title: 'Un espacio para aprender hablando',
-    intro: 'En tu sitio real, aquí irían las fotos de tus salones, eventos culturales y estudiantes.',
+    title: 'A space to learn by speaking',
+    intro: 'On your real website, this is where photos of your classrooms, cultural events and students would go.',
     items: [
       { label: 'Classroom', image: '/images/language-school/classroom.jpg', alt: 'Small language class with students practicing conversation' },
       { label: 'Teachers',  image: '/images/language-school/teachers.jpg',  alt: 'Language teacher explaining on a whiteboard' },
@@ -125,36 +125,36 @@ export default {
 
   testimonials: {
     eyebrow: 'Happy Students',
-    title: 'Lo que dicen nuestros estudiantes',
+    title: 'What our students say',
     intro: 'Sample testimonials — your website would feature real reviews from your students.',
     items: [
-      { name: 'Daniel R.', role: 'Business English, nivel B2', quote: 'En 6 meses pasé de bloquearme en reuniones a liderarlas en inglés. Las clases en grupos pequeños fueron la clave.' },
-      { name: 'María S.',  role: 'Francés, nivel A2',          quote: 'Me preparé para irme a Montreal y llegué hablando. La metodología conversacional funciona de verdad.' },
-      { name: 'Camila P.', role: 'Japonés, JLPT N5',           quote: 'Pensé que el japonés iba a ser imposible, y a los 4 meses ya pedía sushi en Tokio como local.' },
+      { name: 'Daniel R.', role: 'Business English, B2 level', quote: 'In 6 months I went from freezing up in meetings to leading them in English. The small-group classes were the key.' },
+      { name: 'María S.',  role: 'French, A2 level',          quote: 'I prepared to move to Montreal and arrived speaking. The conversational method really works.' },
+      { name: 'Camila P.', role: 'Japanese, JLPT N5',           quote: 'I thought Japanese would be impossible, and 4 months later I was ordering sushi in Tokyo like a local.' },
     ],
   },
 
   map: {
     eyebrow: 'Find Us',
-    title: 'Visítanos en Medellín',
-    intro: 'Pasa por nuestra sede o toma la clase de muestra online — tú eliges.',
+    title: 'Visit Us in Medellín',
+    intro: 'Stop by our campus or take the sample class online — you choose.',
     id: 'location',
     query: 'El Poblado, Medellín, Colombia',
     address: 'Cl. 10 #43B-15, El Poblado, Medellín',
     phone: '+57 322 309 2267',
     hours: [
-      { days: 'Lun – Vie', time: '7:00 AM – 9:00 PM' },
-      { days: 'Sábado',    time: '8:00 AM – 2:00 PM' },
-      { days: 'Domingo',   time: 'Cerrado' },
+      { days: 'Mon – Fri', time: '7:00 AM – 9:00 PM' },
+      { days: 'Saturday',    time: '8:00 AM – 2:00 PM' },
+      { days: 'Sunday',   time: 'Closed' },
     ],
   },
 
   cta: {
-    heading: '¿Listo para hablar un nuevo idioma?',
-    text: 'Agenda tu clase gratuita de 45 minutos. Sin tarjeta, sin compromiso.',
+    heading: 'Ready to speak a new language?',
+    text: 'Book your free 45-minute class. No card, no commitment.',
     actions: [
-      { label: 'Reservar clase gratis', href: '#want-this' },
-      { label: 'Ver todos los cursos', href: '#want-this', variant: 'outline' },
+      { label: 'Book a Free Class', href: '#want-this' },
+      { label: 'See All Courses', href: '#want-this', variant: 'outline' },
     ],
   },
 

@@ -5,9 +5,9 @@ export default {
   brand: 'Veloz Car Rental',
   niche: 'Car Rental',
   valueProps: [
-    `Reservas directas sin pagar comisión a plataformas`,
-    `Web bilingüe para turistas`,
-    `Entrega en aeropuerto o hotel como diferencial`,
+    `Book direct without paying platform commissions`,
+    `Bilingual website for tourists`,
+    `Airport or hotel delivery as a differentiator`,
   ],
   kind: 'nicho',
 
@@ -52,14 +52,14 @@ export default {
   hero: {
     variant: 'split',
     eyebrow: 'Car Rental · Medellín',
-    title: 'Conduce lo que quieras, cuando quieras.',
-    text: 'Flota renovada cada año, entrega en el aeropuerto o tu hotel, y reserva 100% en línea. Desde sedanes económicos hasta SUVs premium.',
-    primaryCta: { label: 'Reservar mi carro', href: '#book' },
-    secondaryCta: { label: 'Ver flota', href: '#services' },
+    title: 'Drive what you want, when you want.',
+    text: 'A fleet renewed every year, delivery at the airport or your hotel, and 100% online booking. From budget sedans to premium SUVs.',
+    primaryCta: { label: 'Book My Car', href: '#book' },
+    secondaryCta: { label: 'See the Fleet', href: '#services' },
     trust: [
-      { end: 180, suffix: '+', label: 'vehículos en flota' },
-      { value: '4.8 ★', label: 'calificación promedio' },
-      { end: 7, label: 'años rentando' },
+      { end: 180, suffix: '+', label: 'vehicles in the fleet' },
+      { value: '4.8 ★', label: 'average rating' },
+      { end: 7, label: 'years renting cars' },
     ],
     visualIcon: 'car',
     // LiquidChrome (React Bits, motor ogl): metal líquido en grises —
@@ -72,7 +72,7 @@ export default {
 
   services: {
     eyebrow: 'Our Fleet',
-    title: 'Un carro para cada plan',
+    title: 'A car for every plan',
     intro: 'Sample pricing — this is how the fleet and rates section would look on your own website.',
     variant: 'grid',
     // TiltedCard (motion) + GlareHover (sin deps): cada tarjeta se inclina
@@ -80,70 +80,70 @@ export default {
     // real sobre metal.
     hover: 'tilted',
     items: [
-      { icon: 'car',   title: 'Económico',       text: 'Chevrolet Spark o similar. Ideal para ciudad, bajo consumo.',              price: 'Desde $28 USD/día' },
-      { icon: 'car',   title: 'Sedán Ejecutivo', text: 'Toyota Corolla o similar. Espacioso, cómodo para viajes largos.',           price: 'Desde $42 USD/día' },
-      { icon: 'car',   title: 'SUV Compacta',    text: 'Chevrolet Tracker o similar. Para carretera y terrenos mixtos.',            price: 'Desde $55 USD/día' },
-      { icon: 'car',   title: 'SUV Premium',     text: 'Toyota Fortuner o similar. Lujo y potencia para la familia completa.',      price: 'Desde $78 USD/día' },
-      { icon: 'car',   title: 'Camioneta 4x4',   text: 'Toyota Hilux o similar. Para rutas exigentes fuera de la ciudad.',          price: 'Desde $85 USD/día' },
-      { icon: 'car',   title: 'Van de Pasajeros', text: 'Hasta 12 personas. Perfecta para grupos y eventos corporativos.',         price: 'Desde $95 USD/día' },
+      { icon: 'car',   title: 'Economy',       text: 'Chevrolet Spark or similar. Ideal for the city, low fuel consumption.',              price: 'From $28/day' },
+      { icon: 'car',   title: 'Executive Sedan', text: 'Toyota Corolla or similar. Roomy and comfortable for long trips.',           price: 'From $42/day' },
+      { icon: 'car',   title: 'Compact SUV',    text: 'Chevrolet Tracker or similar. For highways and mixed terrain.',            price: 'From $55/day' },
+      { icon: 'car',   title: 'Premium SUV',     text: 'Toyota Fortuner or similar. Luxury and power for the whole family.',      price: 'From $78/day' },
+      { icon: 'car',   title: '4x4 Pickup',   text: 'Toyota Hilux or similar. For demanding routes outside the city.',          price: 'From $85/day' },
+      { icon: 'car',   title: 'Passenger Van', text: 'Up to 12 people. Perfect for groups and corporate events.',         price: 'From $95/day' },
     ],
   },
 
   features: {
     eyebrow: 'Why Choose Us',
-    title: 'Reservar un carro no debería ser complicado',
-    intro: 'Cuatro razones por las que la gente nos elige una y otra vez.',
+    title: 'Renting a car shouldn’t be complicated',
+    intro: 'Four reasons people choose us again and again.',
     items: [
-      { icon: 'clock',       title: 'Entrega donde estés', text: 'Aeropuerto, hotel o tu casa — llevamos el carro hasta ti sin costo extra en el área metro.' },
-      { icon: 'shieldCheck', title: 'Seguro todo riesgo',   text: 'Todos nuestros vehículos incluyen cobertura completa sin deducibles sorpresa.' },
-      { icon: 'award',       title: 'Flota renovada',       text: 'Vehículos de máximo 2 años, revisados y desinfectados antes de cada entrega.' },
-      { icon: 'phone',       title: 'Soporte en ruta',      text: 'Línea de asistencia 24/7 si algo pasa durante tu renta.' },
+      { icon: 'clock',       title: 'Delivery Where You Are', text: 'Airport, hotel or your home — we bring the car to you at no extra cost in the metro area.' },
+      { icon: 'shieldCheck', title: 'Full Coverage Insurance',   text: 'All our vehicles include comprehensive coverage with no surprise deductibles.' },
+      { icon: 'award',       title: 'Renewed Fleet',       text: 'Vehicles no more than 2 years old, inspected and sanitized before every delivery.' },
+      { icon: 'phone',       title: 'Roadside Support',      text: 'A 24/7 assistance line if anything happens during your rental.' },
     ],
   },
 
   gallery: {
     eyebrow: 'Our Cars',
-    title: 'Conoce la flota',
-    intro: 'En tu sitio real, aquí irían fotos reales de tus propios vehículos.',
+    title: 'Meet the fleet',
+    intro: 'On your real website, this is where real photos of your own vehicles would go.',
     items: [
-      { label: 'Sedán',    image: '/images/car-rental/sedan.jpg',    alt: 'Silver sedan parked in a modern garage' },
+      { label: 'Sedan',    image: '/images/car-rental/sedan.jpg',    alt: 'Silver sedan parked in a modern garage' },
       { label: 'SUV',      image: '/images/car-rental/suv.jpg',      alt: 'Black SUV on a mountain road' },
       { label: 'Pickup',   image: '/images/car-rental/pickup.jpg',   alt: 'White pickup truck off-road' },
-      { label: 'Económico', image: '/images/car-rental/economy.jpg', alt: 'Compact hatchback in the city' },
+      { label: 'Economy', image: '/images/car-rental/economy.jpg', alt: 'Compact hatchback in the city' },
     ],
   },
 
   testimonials: {
     eyebrow: 'Happy Drivers',
-    title: 'Lo que dicen nuestros clientes',
+    title: 'What our customers say',
     intro: 'Sample testimonials — your website would feature real reviews from your customers.',
     items: [
-      { name: 'Esteban G.', role: 'Viaje de negocios', quote: 'Reservé desde el aeropuerto y el carro ya me estaba esperando. Todo el proceso tomó 5 minutos.' },
-      { name: 'Paula C.',  role: 'Viaje familiar',     quote: 'Rentamos la SUV premium para un viaje a la costa y llegó impecable, con tanque lleno y todo revisado.' },
-      { name: 'Ricardo T.', role: 'Renta mensual',     quote: 'Rento mensual para mi trabajo hace más de un año. El precio y el servicio son consistentes siempre.' },
+      { name: 'Esteban G.', role: 'Business trip', quote: 'I booked from the airport and the car was already waiting for me. The whole process took 5 minutes.' },
+      { name: 'Paula C.',  role: 'Family trip',     quote: 'We rented the premium SUV for a trip to the coast and it arrived spotless, with a full tank and everything checked.' },
+      { name: 'Ricardo T.', role: 'Monthly rental',     quote: 'I’ve been renting monthly for work for over a year. The price and service are always consistent.' },
     ],
   },
 
   map: {
     eyebrow: 'Find Us',
-    title: 'Oficina y entrega',
-    intro: 'Entregamos en el aeropuerto José María Córdova sin costo adicional.',
+    title: 'Office & Delivery',
+    intro: 'We deliver to José María Córdova Airport at no extra cost.',
     id: 'location',
     query: 'Aeropuerto José María Córdova, Rionegro, Colombia',
     address: 'Cra. 48 #26-50, Rionegro, Antioquia',
     phone: '+57 322 309 2267',
     hours: [
-      { days: 'Lun – Dom', time: '6:00 AM – 10:00 PM' },
-      { days: 'Entrega aeropuerto', time: '24/7, bajo reserva' },
+      { days: 'Mon – Sun', time: '6:00 AM – 10:00 PM' },
+      { days: 'Airport Delivery', time: '24/7, by reservation' },
     ],
   },
 
   cta: {
-    heading: '¿Listo para tu próximo viaje?',
-    text: 'Reserva en línea en menos de 3 minutos. Cancelación gratuita hasta 24h antes.',
+    heading: 'Ready for your next trip?',
+    text: 'Book online in less than 3 minutes. Free cancellation up to 24 hours before.',
     actions: [
-      { label: 'Reservar ahora', href: '#want-this' },
-      { label: 'Ver toda la flota', href: '#want-this', variant: 'outline' },
+      { label: 'Book Now', href: '#want-this' },
+      { label: 'See the Full Fleet', href: '#want-this', variant: 'outline' },
     ],
   },
 

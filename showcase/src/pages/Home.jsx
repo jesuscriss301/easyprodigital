@@ -294,7 +294,7 @@ function DemoCard({ demo, t, extraTag }) {
   const variants = demo.styleVariants || []
   return (
     <a
-      href={`/${demo.slug}`}
+      href={`/${demo.slug}/`}
       target="_blank"
       rel="noopener noreferrer"
       className="ep-card"
@@ -337,7 +337,7 @@ function ProspectCard({ p, t }) {
               {p.variants.map((v) => (
                 <a
                   key={v.slug}
-                  href={`/${v.slug}`}
+                  href={`/${v.slug}/`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="ep-swatch"
