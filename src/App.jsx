@@ -8,6 +8,7 @@ import {
   RealEstateWebsites,
   GoogleBusinessProfileService,
   ServiceLanding,
+  NichePage,
   Portfolio,
   About,
   Contact,
@@ -30,10 +31,6 @@ function LangLayout({ lang }) {
     <LanguageProvider lang={lang}>
       <ScrollToTop />
       <Header />
-      {/* Shell de dos columnas: el aside de artículos va a la DERECHA en
-          pantallas anchas (ver grid-column en .side-articles de styles.css)
-          y pasa debajo del contenido en móvil. El orden en el HTML lo deja
-          primero para que lectores de pantalla lo encuentren sin bajar. */}
       {/* Shell de dos columnas: en móvil el contenido va primero (HTML order),
           en desktop el grid mueve el aside a la derecha con grid-column/grid-row. */}
       <div className="shell">
@@ -57,6 +54,10 @@ function RouteChildren() {
       <Route path="services" element={<Services />} />
       <Route path="pricing" element={<Pricing />} />
       <Route path="services/real-estate-website-design" element={<RealEstateWebsites />} />
+      <Route path="services/plumber-website-design" element={<NichePage slug="plumber-website-design" />} />
+      <Route path="services/lawyer-website-design" element={<NichePage slug="lawyer-website-design" />} />
+      <Route path="services/med-spa-website-design" element={<NichePage slug="med-spa-website-design" />} />
+      <Route path="services/dental-website-design" element={<NichePage slug="dental-website-design" />} />
       <Route path="services/google-business-profile-setup" element={<GoogleBusinessProfileService />} />
       <Route path="services/get-found-online" element={<ServiceLanding slug="get-found-online" />} />
       <Route path="services/instant-replies" element={<ServiceLanding slug="instant-replies" />} />

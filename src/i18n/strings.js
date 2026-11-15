@@ -594,9 +594,9 @@ export const es = {
     cookies: 'Cookies',
   },
   pricingMeta: {
-    seoTitle: 'Precios: Web, Tienda, Chatbots, SEO e IA | Easy Pro Digital',
+    seoTitle: 'Precios y Cotización de Página Web 2026 | Easy Pro Digital',
     seoDescription:
-      'Rangos de precio públicos para webs, tiendas online, chatbots de WhatsApp con IA, sistemas de reservas, contenido SEO e IA a medida. Precio cerrado.',
+      'Cuánto cuesta una página web: desde 450 USD una landing y desde 900 USD una web de empresa. Pide tu cotización por WhatsApp con precio cerrado.',
   },
   statusbar: {
     available: 'Disponible para proyectos',

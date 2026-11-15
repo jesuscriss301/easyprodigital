@@ -33,6 +33,10 @@ export const SERVICE_ARTICLES = {
   'digital-marketing': ['whatsapp-only-business-losing-sales', 'inmobiliaria-crm-seguimiento-leads', 'landscaper-website-no-contracts'],
   'ai-integrations': ['fontanero-cotizacion-automatica-whatsapp', 'web-con-ia-30-segundos-no-aparece-google', 'dentista-crm-recordatorios-inasistencias'],
   'google-business-profile-setup': ['google-business-profile-local-trades', 'invisible-on-google-where-to-start', 'web-competencia-peor-rankea-mas-alto'],
+  'plumber-website-design': ['plumbing-website-no-calls', 'emergency-page-converts-2am', 'fontanero-vecino-mas-llamadas-web-fea'],
+  'lawyer-website-design': ['law-firm-website-client-trust', 'abogado-web-credibilidad-clientes', 'invisible-on-google-where-to-start'],
+  'med-spa-website-design': ['aesthetics-clinic-website-consultations', 'salon-online-booking-empty-chair', 'google-business-profile-local-trades'],
+  'dental-website-design': ['dental-website-new-patients', 'dentista-crm-recordatorios-inasistencias', 'invisible-on-google-where-to-start'],
   'real-estate-website-design': ['real-estate-website-no-leads', 'five-second-test-agent-website', 'inmobiliaria-crm-seguimiento-leads'],
 }
 
