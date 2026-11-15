@@ -31,7 +31,7 @@ const pitches = {
     },
   },
   aesthetics: {
-    service: '/pricing/',
+    service: '/services/med-spa-website-design/',
     en: {
       keyword: 'Website design for med spas and aesthetic clinics',
       intro:
@@ -56,7 +56,7 @@ const pitches = {
     },
   },
   lawyers: {
-    service: '/pricing/',
+    service: '/services/lawyer-website-design/',
     en: {
       keyword: 'Website design for law firms and attorneys',
       intro:
@@ -81,7 +81,7 @@ const pitches = {
     },
   },
   plumbers: {
-    service: '/pricing/',
+    service: '/services/plumber-website-design/',
     en: {
       keyword: 'Website design for plumbers',
       intro:
@@ -156,7 +156,7 @@ const pitches = {
     },
   },
   dentists: {
-    service: '/pricing/',
+    service: '/services/dental-website-design/',
     en: {
       keyword: 'Website design for dentists and dental clinics',
       intro:

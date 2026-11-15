@@ -9,17 +9,17 @@ const COPY = {
   en: {
     eyebrow: 'For business owners',
     included: 'What your website includes',
-    price: 'From USD 450 · ready in 7 days · one developer, direct WhatsApp, no agency markup.',
+    price: 'From USD 450 · live in one to two weeks · one developer, direct WhatsApp, no agency markup.',
     primary: 'Get this website for my business',
-    secondary: 'See prices and plans',
+    secondary: 'See details and pricing',
     message: (k) => `Hi Jesús! I saw your demo (${k.toLowerCase()}) and I’d like one for my business.`,
   },
   es: {
     eyebrow: 'Para dueños de negocio',
     included: 'Qué incluye tu página web',
-    price: 'Desde USD 450 · lista en 7 días · un solo desarrollador, WhatsApp directo, sin sobrecostos de agencia.',
+    price: 'Desde USD 450 · lista en una a dos semanas · un solo desarrollador, WhatsApp directo, sin sobrecostos de agencia.',
     primary: 'Quiero esta web para mi negocio',
-    secondary: 'Ver precios y planes',
+    secondary: 'Ver detalles y precios',
     message: (k) => `Hola Jesús, vi tu demo (${k.toLowerCase()}) y quiero una para mi negocio.`,
   },
 }
