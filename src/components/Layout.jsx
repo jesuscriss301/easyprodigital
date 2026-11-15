@@ -158,11 +158,19 @@ export function Header() {
 
 /* ---------------- Footer ---------------- */
 export function WhatsAppFloat() {
-  const { data } = useLanguage()
+  const { lang, data } = useLanguage()
+  const { pathname } = useLocation()
+  // El mensaje lleva la página de origen: así se sabe qué página trajo cada
+  // conversación aunque el visitante no lo diga.
+  const page = pathname.replace(/^\/es(?=\/|$)/, '') || '/'
+  const text =
+    lang === 'es'
+      ? `Hola Jesús, vengo de tu web (${page}) y quiero información.`
+      : `Hi Jesús, I found your website (${page}) and I would like more information.`
   return (
     <a
       className="whatsapp-float"
-      href={data.profile.whatsapp}
+      href={`${data.profile.whatsapp}?text=${encodeURIComponent(text)}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contact via WhatsApp"

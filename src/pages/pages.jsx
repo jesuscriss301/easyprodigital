@@ -19,6 +19,7 @@ import {
 } from 'react-icons/si'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { getServicePage, SOLUTION_SLUGS } from '../data/servicePages.js'
+import { getNichePage, NICHE_SLUGS } from '../data/nichePages.js'
 import { PromoBanner } from '../components/Promo.jsx'
 import { ListingCompare, FlowDiagram } from '../components/Visuals.jsx'
 import { getListingCopy, getServiceVisuals } from '../data/serviceVisuals.js'
@@ -424,6 +425,17 @@ export function Services() {
               <p>{t.nicheRealEstate.intro}</p>
               <span className="cap-more">{t.services.learnMore}</span>
             </Link>
+            {NICHE_SLUGS.map((slug) => {
+              const n = getNichePage(lang, slug)
+              if (!n) return null
+              return (
+                <Link className="cap cap-link" key={slug} to={href(`/services/${slug}/`)}>
+                  <h3>{n.title}</h3>
+                  <p>{n.intro}</p>
+                  <span className="cap-more">{t.services.learnMore}</span>
+                </Link>
+              )
+            })}
           </Reveal>
         </div>
       </section>
@@ -633,7 +645,7 @@ function RecurringPlanTable({ block, labels, t }) {
 }
 
 export function Pricing() {
-  const { href, data, t } = useLanguage()
+  const { lang, href, data, t } = useLanguage()
   const { pricing, site, profile, services } = data
   const { labels } = pricing
 
@@ -712,7 +724,22 @@ export function Pricing() {
           <p className="eyebrow">{labels.quoteCustom}</p>
           <h2 className="section-title">{pricing.ctaTitle}</h2>
           <p className="pricing-cta-copy">{pricing.ctaCopy}</p>
-          <Link className="btn btn-primary" to={href('/contact/')}>{labels.quoteCustomCta}</Link>
+          <div className="hero-actions">
+            <a
+              className="btn btn-primary"
+              href={waLink(
+                data.profile.whatsapp,
+                lang === 'es'
+                  ? 'Hola Jesús, quiero una cotización de página web para mi negocio.'
+                  : 'Hi Jesús, I would like a website quote for my business.'
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {lang === 'es' ? 'Pedir cotización por WhatsApp' : 'Get a quote on WhatsApp'}
+            </a>
+            <Link className="btn btn-ghost" to={href('/contact/')}>{labels.quoteCustomCta}</Link>
+          </div>
         </div>
       </section>
     </>
@@ -1109,6 +1136,23 @@ function NicheLanding({ c, path, serviceType, audienceType, slug }) {
         </section>
       )}
 
+      {c.areas?.length > 0 && (
+        <section>
+          <Reveal as="div" className="container niche-areas">
+            <h2 className="service-title">{c.areasTitle}</h2>
+            {c.areasIntro && <p className="service-text">{c.areasIntro}</p>}
+            <dl className="niche-areas-list">
+              {c.areas.map((a) => (
+                <div className="niche-areas-row" key={a.region}>
+                  <dt>{a.region}</dt>
+                  <dd>{a.places.join(' · ')}</dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
+        </section>
+      )}
+
       <section>
         <div className="container">
           <h2 className="section-title">{c.processTitle}</h2>
@@ -1165,6 +1209,21 @@ export function ServiceLanding({ slug }) {
       serviceType={c.serviceType}
       audienceType={c.audienceType}
       slug={slug}
+    />
+  )
+}
+
+/* ============ Páginas por nicho (datos en src/data/nichePages.js) ============ */
+export function NichePage({ slug }) {
+  const { lang } = useLanguage()
+  const c = getNichePage(lang, slug)
+  if (!c) return <NotFound />
+  return (
+    <NicheLanding
+      c={c}
+      path={`/services/${slug}/`}
+      serviceType={c.serviceType}
+      audienceType={c.audienceType}
     />
   )
 }

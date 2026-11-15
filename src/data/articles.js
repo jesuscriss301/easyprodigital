@@ -105,7 +105,7 @@ export const articles = [
   {
     slug: 'plumbing-website-no-calls',
     relatedDemo: 'plumbers',
-    relatedService: null,
+    relatedService: 'plumber-website-design',
     related: ['emergency-page-converts-2am', 'fontaneria-web-lovable-no-google', 'fontanero-vecino-mas-llamadas-web-fea'],
     tag: { en: 'Plumbing', es: 'Plomería' },
     date: '2026-10-16',
@@ -147,7 +147,7 @@ export const articles = [
   {
     slug: 'emergency-page-converts-2am',
     relatedDemo: 'plumbers',
-    relatedService: null,
+    relatedService: 'plumber-website-design',
     related: ['plumbing-website-no-calls', 'fontaneria-web-lovable-no-google', 'google-business-profile-local-trades'],
     tag: { en: 'Home services', es: 'Servicios a domicilio' },
     date: '2026-10-16',
@@ -198,8 +198,15 @@ export const articles = [
     en: {
       title: 'How Much Should a Small Business Website Actually Cost?',
       summary:
-        'Quotes range from 200 to 20,000 for what looks like the same thing. Here is what actually moves the number.',
+        'A small business website costs between 450 and 3,500 USD depending on its size. Here is what each range includes and what to ask before you pay.',
       body: [
+        { p: 'Short answer: a small business website costs between 450 and 3,500 USD. A one-page site runs 450 to 650, a 5 to 7 page site 900 to 1,500, and a fully custom design with animation 2,200 to 3,500. Below is what each range includes and why quotes vary so much.' },
+        { h: 'Reference prices in 2026' },
+        { p: 'One-page site (landing page): 450 to 650 USD, live in 5 to 7 business days. Good for one service or one campaign: custom mobile-first design, a form that reaches your email and WhatsApp, domain and SSL.' },
+        { p: 'Business website with 5 to 7 pages: 900 to 1,500 USD, in 10 to 15 business days. What most clinics, restaurants and small companies need: home, services, about, blog and contact, with Search Console and analytics connected.' },
+        { p: 'Custom premium website: 2,200 to 3,500 USD, in 3 to 5 weeks. A one-off design with animation and interaction, tuned to load fast.' },
+        { p: 'Online store: 900 to 2,800 USD depending on the number of products and the payment and shipping integrations.' },
+        { h: 'Why quotes vary so much' },
         { p: 'Ask five people to build you a website and you will get five prices with no obvious relationship to each other. The spread is real, and it comes down to a few things.' },
         { h: 'How much of it already exists' },
         { p: 'A template that gets your text and your photos dropped in is cheap because most of the work is done. A layout designed around your business costs more because someone has to think.' },
@@ -209,13 +216,21 @@ export const articles = [
         { p: 'A low monthly fee often means you are renting. Stop paying and the site disappears. A one-off price where the domain, hosting and code end up in your name is a different product, and worth comparing carefully.' },
         { h: 'What is not included' },
         { p: 'Ask specifically: is hosting included, for how long? The domain? Who writes the text? How many rounds of changes? Most quotes that look cheap get expensive right here.' },
+        { p: 'Want a number for your case? Tell me in two lines what you need and I send a written quote with a fixed scope and price before anything starts. If a smaller plan fits, I will say so.' },
       ],
     },
     es: {
       title: '¿Cuánto Debería Costar Realmente la Página Web de un Negocio Pequeño?',
       summary:
-        'Las cotizaciones van de 200 a 20.000 por lo que parece lo mismo. Esto es lo que de verdad mueve el precio.',
+        'Una página web para un negocio cuesta entre 450 y 3.500 USD según su tamaño. Te muestro qué incluye cada rango y qué preguntar antes de pagar.',
       body: [
+        { p: 'Respuesta corta: una página web para un negocio pequeño cuesta entre 450 y 3.500 USD. Una sola página sale entre 450 y 650, una web de 5 a 7 páginas entre 900 y 1.500, y un diseño a la medida con animaciones entre 2.200 y 3.500. Abajo explico qué incluye cada rango y por qué las cotizaciones varían tanto.' },
+        { h: 'Precios de referencia en 2026' },
+        { p: 'Página de una sola sección (landing): de 450 a 650 USD, lista en 5 a 7 días hábiles. Sirve para un servicio o una campaña: diseño propio pensado para celular, formulario que llega a tu correo y a WhatsApp, dominio y certificado de seguridad.' },
+        { p: 'Web de empresa de 5 a 7 páginas: de 900 a 1.500 USD, en 10 a 15 días hábiles. Es lo que necesitan la mayoría de clínicas, restaurantes y pymes: inicio, servicios, nosotros, blog y contacto, con Search Console y analítica conectadas.' },
+        { p: 'Web premium a la medida: de 2.200 a 3.500 USD, en 3 a 5 semanas. Diseño único, animaciones e interacción, optimizada para que cargue rápido.' },
+        { p: 'Tienda en línea: de 900 a 2.800 USD según el número de productos y las integraciones de pago y envío. En Colombia puedes pagar en pesos al cambio del día.' },
+        { h: 'Por qué las cotizaciones varían tanto' },
         { p: 'Pídele a cinco personas que te hagan una web y vas a recibir cinco precios sin relación aparente entre ellos. La diferencia es real y se explica por unas pocas cosas.' },
         { h: 'Cuánto de eso ya existe' },
         { p: 'Una plantilla donde meten tu texto y tus fotos sale barata porque el trabajo ya está hecho. Un diseño pensado alrededor de tu negocio cuesta más porque alguien tiene que pensarlo.' },
@@ -225,6 +240,7 @@ export const articles = [
         { p: 'Una mensualidad baja muchas veces significa que estás alquilando. Dejas de pagar y la web desaparece. Un pago único donde el dominio, el hosting y el código quedan a tu nombre es otro producto, y vale la pena compararlo con calma.' },
         { h: 'Qué no está incluido' },
         { p: 'Pregunta específicamente: ¿el hosting va incluido, por cuánto tiempo? ¿El dominio? ¿Quién escribe los textos? ¿Cuántas rondas de cambios? La mayoría de cotizaciones que se ven baratas se encarecen justo aquí.' },
+        { p: '¿Quieres un número para tu caso? Cuéntame en dos líneas qué necesitas y te envío una cotización por escrito con alcance y precio cerrados antes de empezar. Si un plan más pequeño te sirve, te lo digo.' },
       ],
     },
   },
@@ -663,7 +679,7 @@ export const articles = [
   {
     slug: 'fontaneria-web-lovable-no-google',
     relatedDemo: 'plumbers',
-    relatedService: null,
+    relatedService: 'plumber-website-design',
     related: ['plumbing-website-no-calls', 'web-con-ia-30-segundos-no-aparece-google', 'fontanero-vecino-mas-llamadas-web-fea'],
     tag: { en: 'Plumbing', es: 'Plomería' },
     date: '2026-10-16',
@@ -709,7 +725,7 @@ export const articles = [
   {
     slug: 'fontanero-vecino-mas-llamadas-web-fea',
     relatedDemo: 'plumbers',
-    relatedService: null,
+    relatedService: 'plumber-website-design',
     related: ['plumbing-website-no-calls', 'google-business-profile-local-trades', 'web-competencia-peor-rankea-mas-alto'],
     tag: { en: 'Plumbing', es: 'Plomería' },
     date: '2026-10-16',
@@ -986,7 +1002,7 @@ export const articles = [
   {
     slug: 'dental-website-new-patients',
     relatedDemo: 'dentists',
-    relatedService: null,
+    relatedService: 'dental-website-design',
     related: ['dentista-crm-recordatorios-inasistencias', 'how-much-should-a-website-cost', 'invisible-on-google-where-to-start'],
     tag: { en: 'Dentistry', es: 'Odontología' },
     date: '2026-10-18',
@@ -1030,7 +1046,7 @@ export const articles = [
   {
     slug: 'law-firm-website-client-trust',
     relatedDemo: 'lawyers',
-    relatedService: null,
+    relatedService: 'lawyer-website-design',
     related: ['abogado-web-credibilidad-clientes', 'how-much-should-a-website-cost', 'invisible-on-google-where-to-start'],
     tag: { en: 'Legal', es: 'Legal' },
     date: '2026-10-18',
@@ -1294,7 +1310,7 @@ export const articles = [
   {
     slug: 'aesthetics-clinic-website-consultations',
     relatedDemo: 'aesthetics',
-    relatedService: null,
+    relatedService: 'med-spa-website-design',
     related: ['salon-online-booking-empty-chair', 'how-much-should-a-website-cost', 'invisible-on-google-where-to-start'],
     tag: { en: 'Aesthetics', es: 'Estética médica' },
     date: '2026-10-18',
@@ -1458,7 +1474,7 @@ export const articles = [
   {
     slug: 'dentista-crm-recordatorios-inasistencias',
     relatedDemo: 'dentists',
-    relatedService: null,
+    relatedService: 'dental-website-design',
     related: ['dental-website-new-patients', 'how-much-should-a-website-cost', 'invisible-on-google-where-to-start'],
     tag: { en: 'Dentistry', es: 'Odontología' },
     date: '2026-10-18',
@@ -1498,7 +1514,7 @@ export const articles = [
   {
     slug: 'fontanero-cotizacion-automatica-whatsapp',
     relatedDemo: 'plumbers',
-    relatedService: null,
+    relatedService: 'plumber-website-design',
     related: ['plumbing-website-no-calls', 'emergency-page-converts-2am', 'fontaneria-web-lovable-no-google'],
     tag: { en: 'Plumbing', es: 'Fontanería' },
     date: '2026-10-18',
@@ -1578,7 +1594,7 @@ export const articles = [
   {
     slug: 'abogado-web-credibilidad-clientes',
     relatedDemo: 'lawyers',
-    relatedService: null,
+    relatedService: 'lawyer-website-design',
     related: ['law-firm-website-client-trust', 'how-much-should-a-website-cost', 'invisible-on-google-where-to-start'],
     tag: { en: 'Legal', es: 'Legal' },
     date: '2026-10-18',
