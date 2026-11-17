@@ -2393,3 +2393,9 @@ section { border-top: none; }
 @media (max-width: 560px) {
   .niche-areas-row { grid-template-columns: 1fr; gap: 4px; }
 }
+
+/* enlace de producto nuevo en el menú (asistente de WhatsApp) */
+.nav a.nav-new::after {
+  content: ''; display: inline-block; width: 7px; height: 7px; margin-left: 6px;
+  border-radius: 50%; background: #1b8a71; vertical-align: 2px;
+}

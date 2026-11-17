@@ -110,6 +110,7 @@ export const en = {
   nav: {
     services: 'Services',
     pricing: 'Pricing',
+    product: 'WhatsApp Assistant',
     portfolio: 'Portfolio',
     demos: 'Demos',
     faq: 'FAQ',
@@ -574,6 +575,7 @@ export const es = {
   nav: {
     services: 'Servicios',
     pricing: 'Precios',
+    product: 'Asistente WhatsApp',
     portfolio: 'Portafolio',
     demos: 'Demos',
     faq: 'Preguntas',
