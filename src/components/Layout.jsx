@@ -109,7 +109,7 @@ function LanguageSwitcher() {
 export function Header() {
   const [open, setOpen] = useState(false)
   const { pathname } = useLocation()
-  const { href, t } = useLanguage()
+  const { href, t, lang } = useLanguage()
 
   useEffect(() => setOpen(false), [pathname])
 
@@ -126,6 +126,7 @@ export function Header() {
           <nav className={`nav${open ? ' open' : ''}`} aria-label="Main">
             <NavLink to={href('/services/')}>{t.nav.services}</NavLink>
             <NavLink to={href('/pricing/')}>{t.nav.pricing}</NavLink>
+            <a href={lang === 'es' ? 'https://uchuva.easyprodigital.com/' : 'https://uchuva.easyprodigital.com/en/'} className="nav-new">{t.nav.product}</a>
             <NavLink to={href('/portfolio/')}>{t.nav.portfolio}</NavLink>
             <a href="https://demos.easyprodigital.com" target="_blank" rel="noopener noreferrer">
               {t.nav.demos}
