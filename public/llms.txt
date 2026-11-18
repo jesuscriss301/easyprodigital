@@ -1,0 +1,33 @@
+# Uchuva
+
+> Uchuva es un asistente de WhatsApp para negocios que venden productos con precio fijo (restaurantes, comidas rápidas, panaderías, tiendas, floristerías, papelerías). Responde a los clientes las 24 horas con la información que el dueño le enseña, arma pedidos que el dueño aprueba desde el celular y le pasa el chat a una persona cuando hace falta. Lo desarrolla EasyPro Digital en Medellín, Colombia. Está en beta abierta y ya atiende clientes reales.
+
+Uchuva is a WhatsApp assistant for businesses that sell fixed-price products (restaurants, fast food, bakeries, shops, florists, stationers). It answers customers 24/7 using the information the owner teaches it, builds orders the owner approves from their phone, and hands the chat to a person when needed. Built by EasyPro Digital in Medellín, Colombia. Open beta, already serving real customers.
+
+## Páginas (español)
+
+- [Inicio](https://uchuva.easyprodigital.com/): qué es Uchuva, qué gana el negocio y para quién es.
+- [Cómo funciona](https://uchuva.easyprodigital.com/como-funciona/): lo que hace el asistente en cada conversación, los 7 pasos de instalación y cómo se protege el negocio.
+- [Panel](https://uchuva.easyprodigital.com/panel/): pedidos, chats, catálogo, tiquetes de 58 u 80 mm y alertas, desde el celular o el computador.
+- [Precio y fundadores](https://uchuva.easyprodigital.com/precio/): precio de lanzamiento, cupos de fundador, funciones que vienen y preguntas frecuentes.
+
+## Pages (English)
+
+- [Home](https://uchuva.easyprodigital.com/en/)
+- [How it works](https://uchuva.easyprodigital.com/en/how-it-works/)
+- [Panel](https://uchuva.easyprodigital.com/en/panel/)
+- [Pricing and founders](https://uchuva.easyprodigital.com/en/pricing/)
+
+## Datos clave / Key facts
+
+- Se conecta al mismo número de WhatsApp del negocio por la vía oficial de Meta. / Connects to the business's own WhatsApp number through the official Meta route.
+- El dueño aprueba cada pedido y puede pausar el asistente o tomar cualquier chat. / The owner approves every order and can pause the assistant or take over any chat.
+- Solo responde con la información cargada en el catálogo; si no sabe algo, lo pasa a una persona. / It answers only from the loaded catalog; if it does not know something, it hands off to a person.
+- No responde a ningún cliente hasta que el dueño lo prueba y lo activa. / It answers no customer until the owner tests and turns it on.
+- Precio en pesos colombianos (COP). Programa de fundadores con cupos limitados: consultar el estado actual en la página de precio. / Priced in Colombian pesos (COP). Founders program with limited spots: see the pricing page for current availability.
+
+## Contacto / Contact
+
+- WhatsApp: https://wa.me/573238816434
+- Correo / Email: info@easyprodigital.com
+- Empresa / Company: https://easyprodigital.com

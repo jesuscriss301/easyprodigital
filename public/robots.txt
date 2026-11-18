@@ -1,0 +1,31 @@
+# Uchuva — uchuva.easyprodigital.com
+# Se permite el rastreo normal y también el de los asistentes de IA, para que
+# puedan leer y citar la información del producto con exactitud.
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://uchuva.easyprodigital.com/sitemap.xml
