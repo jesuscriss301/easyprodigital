@@ -4,12 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Qué es este proyecto
 
-Web personal de desarrollador freelance (**easyprodigital.com**) de Jesús Manuel Cristancho. Es un monorepo con cuatro partes independientes, cada una con su propio `package.json` y `node_modules`:
+Web personal de desarrollador freelance (**easyprodigital.com**) de Jesús Manuel Cristancho. Es un monorepo con cinco partes independientes, cada una con su propio `package.json` y `node_modules`:
 
 1. **Raíz** — SPA en React 18 + Vite + React Router 7, desplegada en GitHub Pages.
 2. **`server/`** — API Express (MySQL + Nodemailer + Swagger) para el formulario de descubrimiento (`/rag-form`). Corre aparte, NO se despliega en Pages.
 3. **`blog/`** — "SEO Article Forge": generador CLI de artículos HTML estáticos con IA. Es una herramienta aparte: los artículos publicados viven en `src/data/articles.js` (`public/blog/` se eliminó).
 4. **`showcase/`** — webs de muestra por nicho/prospecto (React + Vite + React Router), pensadas para enseñarle a un visitante cómo luciría la web de su negocio. Se despliega **aparte, en Dokploy**, bajo `demos.easyprodigital.com` — NO se despliega en Pages ni forma parte del build de la raíz. Cada demo vive en `showcase/src/demos/*.js` (contenido + tema) y se renderiza con `showcase/src/pages/DemoPage.jsx`. La página de Portafolio de la raíz enlaza a estas demos vía `nicheDemos` en `src/data/profile.js` / `profile.en.js`. Ver `showcase/README.md`.
+5. **Rama `uchuva`** — sitio de producto del asistente de WhatsApp **Uchuva** (`uchuva.easyprodigital.com`): React + Vite con prerender propio, 4 páginas en español e inglés (Inicio, Cómo funciona, Panel, Precio y fundadores), SEO/GEO/AEO y `llms.txt`. Vive en su **propia rama** (no está en `react` ni en `main`; sus archivos están en la raíz de esa rama) y se despliega aparte en Dokploy (Dockerfile + nginx, autodeploy al hacer push a `uchuva`). Worktree local: `.wt-uchuva/`. La raíz solo enlaza a él desde el menú (`Layout.jsx`). Ver el `README.md` de esa rama.
 
 ## Arquitectura
 
