@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://uchuva.easyprodigital.com/sitemap.xml
