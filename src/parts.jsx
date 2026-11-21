@@ -230,3 +230,29 @@ export function FlowSteps({ items, label }) {
     </ol>
   )
 }
+
+
+/* ---------- Impresora térmica (propia, sin librerías) ----------
+   El tiquete real sale de la impresora, se queda a la vista y se "arranca"
+   en bucle mientras el bloque está en pantalla. Con prefers-reduced-motion
+   el tiquete queda impreso y quieto. */
+export function TicketPrinter({ children, delay = 0, label }) {
+  const ref = useRef(null)
+  const [on, setOn] = useState(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el || typeof IntersectionObserver === 'undefined') return
+    const io = new IntersectionObserver(([e]) => setOn(e.isIntersecting), { threshold: 0.3 })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+  return (
+    <div ref={ref} className={`wa-printer${on ? ' is-on' : ''}`} style={{ '--pd': `${delay}s` }} role="group" aria-label={label}>
+      <div className="wa-printer-paper"><div className="wa-printer-sheet">{children}</div></div>
+      <div className="wa-printer-body" aria-hidden="true">
+        <span className="wa-printer-slot" />
+        <span className="wa-printer-led" />
+      </div>
+    </div>
+  )
+}

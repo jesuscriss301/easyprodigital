@@ -1,6 +1,6 @@
 import Reveal from './Reveal.jsx'
 import { PRODUCT, CONTACT, pagePath } from './content.js'
-import { Icon, WaGlyph, ChatDemo, FlowSteps, PanelTabs, formatCOP, track } from './parts.jsx'
+import { Icon, WaGlyph, ChatDemo, FlowSteps, TicketPrinter, PanelTabs, formatCOP, track } from './parts.jsx'
 
 /* Secciones reutilizables: cada página las compone en el orden que necesita.
    Props comunes: c (texto del idioma), lang, wa (enlace de WhatsApp). */
@@ -146,8 +146,12 @@ export function Tickets({ c, lang, wa }) {
             </ul>
           </Reveal>
           <Reveal className="wa-tickets">
-            <img src={PRODUCT.img('tiquete-58mm')} alt={c.tickets.alt58} width="438" height="1384" loading="lazy" decoding="async" />
-            <img src={PRODUCT.img('tiquete-80mm')} alt={c.tickets.alt80} width="604" height="1200" loading="lazy" decoding="async" />
+            <TicketPrinter label={c.tickets.alt58}>
+              <img src={PRODUCT.img('tiquete-58mm')} alt={c.tickets.alt58} width="438" height="1384" loading="lazy" decoding="async" />
+            </TicketPrinter>
+            <TicketPrinter label={c.tickets.alt80} delay={1.4}>
+              <img src={PRODUCT.img('tiquete-80mm')} alt={c.tickets.alt80} width="604" height="1200" loading="lazy" decoding="async" />
+            </TicketPrinter>
           </Reveal>
         </div>
       </section>

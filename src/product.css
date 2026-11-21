@@ -240,13 +240,36 @@
 .wa-checks { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 12px; }
 .wa-checks li { display: flex; gap: 10px; align-items: flex-start; color: var(--ink); line-height: 1.5; }
 .wa-checks svg { color: var(--wa); flex: none; margin-top: 3px; }
-.wa-tickets { display: flex; gap: 20px; justify-content: center; align-items: flex-end; }
-.wa-tickets img {
-  width: 42%; height: auto; border-radius: 6px; background: #fff;
-  box-shadow: 0 24px 40px -24px rgba(0, 0, 0, 0.45); border: 1px solid var(--line);
+.wa-tickets { display: flex; gap: 24px; justify-content: center; align-items: flex-end; }
+.wa-printer { --pd: 0s; width: 44%; position: relative; }
+.wa-printer:first-child { width: 36%; }
+.wa-printer-paper { overflow: hidden; padding: 0 9%; margin-bottom: -6px; position: relative; z-index: 1; }
+.wa-printer-sheet { transform-origin: 50% 100%; }
+.wa-printer-sheet img {
+  display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--line);
+  border-bottom: 0; box-shadow: 0 10px 24px -16px rgba(0, 0, 0, 0.4);
 }
-.wa-tickets img:first-child { transform: rotate(-3deg); width: 34%; }
-.wa-tickets img:last-child { transform: rotate(2deg); }
+.wa-printer-body {
+  position: relative; z-index: 2; height: 54px; border-radius: 14px;
+  background: linear-gradient(180deg, #2b3a4f, #17222f); box-shadow: 0 18px 28px -18px rgba(0, 0, 0, 0.6);
+}
+.wa-printer-slot { position: absolute; left: 7%; right: 7%; top: 10px; height: 7px; border-radius: 4px; background: #05090f; }
+.wa-printer-led { position: absolute; right: 12%; bottom: 12px; width: 8px; height: 8px; border-radius: 50%; background: #4fc3a1; box-shadow: 0 0 8px #4fc3a1; }
+@media (prefers-reduced-motion: no-preference) {
+  .wa-printer-sheet { transform: translateY(101%); animation: wa-print 9s linear infinite; animation-delay: var(--pd); animation-play-state: paused; }
+  .wa-printer.is-on .wa-printer-sheet { animation-play-state: running; }
+  .wa-printer.is-on .wa-printer-led { animation: wa-led 1.2s ease-in-out infinite; }
+}
+/* sale a tirones como un motor paso a paso, se queda a la vista y se arranca */
+@keyframes wa-print {
+  0% { transform: translateY(101%); opacity: 1; animation-timing-function: steps(22, end); }
+  38% { transform: translateY(0); }
+  76% { transform: translateY(0) rotate(0); opacity: 1; animation-timing-function: ease-in; }
+  82% { transform: translateY(-14px) rotate(-5deg); opacity: 1; }
+  90% { transform: translateY(-70px) rotate(-9deg); opacity: 0; }
+  90.1%, 100% { transform: translateY(101%) rotate(0); opacity: 0; }
+}
+@keyframes wa-led { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
 .wa-list { margin: 20px 0 0; display: grid; gap: 18px; }
 .wa-list dt { display: flex; gap: 8px; align-items: center; font-weight: 700; color: var(--ink); }
 .wa-list dt svg { color: var(--wa); }
