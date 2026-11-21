@@ -1,6 +1,6 @@
 import Reveal from './Reveal.jsx'
 import { PRODUCT, CONTACT, pagePath } from './content.js'
-import { Icon, WaGlyph, ChatDemo, PanelTabs, formatCOP, track } from './parts.jsx'
+import { Icon, WaGlyph, ChatDemo, FlowSteps, PanelTabs, formatCOP, track } from './parts.jsx'
 
 /* Secciones reutilizables: cada página las compone en el orden que necesita.
    Props comunes: c (texto del idioma), lang, wa (enlace de WhatsApp). */
@@ -230,13 +230,8 @@ export function Steps({ c, lang, wa }) {
             <p className="wa-sub">{c.steps.lead}</p>
           </Reveal>
           <div className="wa-steps-grid">
-            <Reveal as="ol" className="wa-steps">
-              {c.steps.items.map((s, i) => (
-                <li key={s.t}>
-                  <span className="wa-step-n">{i + 1}</span>
-                  <div><h3>{s.t}</h3><p>{s.d}</p></div>
-                </li>
-              ))}
+            <Reveal className="wa-flow-wrap">
+              <FlowSteps items={c.steps.items} label={c.steps.title} />
             </Reveal>
             <Reveal as="aside" className="wa-card wa-needs">
               <h3>{c.steps.needsTitle}</h3>

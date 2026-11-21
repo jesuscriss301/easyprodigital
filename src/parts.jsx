@@ -176,3 +176,57 @@ export const track = (label) => () => {
     window.gtag('event', 'generate_lead', { method: 'whatsapp', item: 'uchuva', label })
   }
 }
+
+
+/* ---------- Flujo por pasos (pipeline propio, sin librerías) ----------
+   Lista ordenada real (<ol>) que se anima: el paso activo avanza solo mientras
+   el bloque está a la vista, hace loop, y al pasar el mouse o tocar un paso se
+   pausa y se resalta. Con prefers-reduced-motion queda estático. */
+export function FlowSteps({ items, label }) {
+  const ref = useRef(null)
+  const [active, setActive] = useState(0)
+  const [inView, setInView] = useState(false)
+  const [paused, setPaused] = useState(false)
+  const [still, setStill] = useState(true)
+
+  useEffect(() => {
+    setStill(prefersReducedMotion())
+    const el = ref.current
+    if (!el || typeof IntersectionObserver === 'undefined') return
+    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.25 })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (still || !inView || paused) return
+    const id = setTimeout(() => setActive((a) => (a + 1) % items.length), 2200)
+    return () => clearTimeout(id)
+  }, [active, inView, paused, still, items.length])
+
+  const pick = (i) => { setActive(i); setPaused(true) }
+
+  return (
+    <ol
+      ref={ref}
+      className="wa-flow"
+      aria-label={label}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {items.map((s, i) => {
+        const state = i < active ? 'done' : i === active ? 'run' : 'wait'
+        return (
+          <li
+            key={s.t}
+            className={`wa-flow-step is-${state}`}
+            onMouseEnter={() => { setActive(i); setPaused(true) }}
+            onClick={() => pick(i)}
+          >
+            <span className="wa-flow-n" aria-hidden="true">{i + 1}</span>
+            <div className="wa-flow-body"><h3>{s.t}</h3><p>{s.d}</p></div>
+          </li>
+        )
+      })}
+    </ol>
+  )
+}
