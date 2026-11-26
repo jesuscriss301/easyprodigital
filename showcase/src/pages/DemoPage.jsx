@@ -13,6 +13,7 @@ import CtaBanner from '../components/CtaBanner.jsx'
 import MapSection from '../components/MapSection.jsx'
 import PatientsSection from '../components/PatientsSection.jsx'
 import UnitTypesSection from '../components/UnitTypesSection.jsx'
+import ListingsSection from '../components/ListingsSection.jsx'
 import Disclosure from '../components/Disclosure.jsx'
 import OwnerPitch from '../components/OwnerPitch.jsx'
 import NicheSystem from '../components/NicheSystem.jsx'
@@ -59,6 +60,8 @@ const SECTION_RENDERERS = {
   testimonials: (demo) => (demo.testimonials ? <Testimonials key="testimonials" {...demo.testimonials} vines={!!demo.vines} materials={demo.materials || null} /> : null),
   map: (demo) => (demo.map ? <MapSection key="map" {...demo.map} /> : null),
   patients: (demo) => (demo.patients ? <PatientsSection key="patients" {...demo.patients} /> : null),
+  // Portal de inmuebles (buscador + filtros + tarjetas) — solo Bienes Raíces.
+  listings: (demo) => (demo.listings ? <ListingsSection key="listings" {...demo.listings} /> : null),
   unitTypes: (demo) => (demo.unitTypes ? <UnitTypesSection key="unitTypes" {...demo.unitTypes} /> : null),
   cta: (demo) => (demo.cta ? <CtaBanner key="cta" {...demo.cta} theme={demo.theme} /> : null),
 }

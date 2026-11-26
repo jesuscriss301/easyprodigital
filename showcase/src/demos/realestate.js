@@ -34,7 +34,7 @@ export default {
   // 'cta' is valid — DemoPage.jsx renders whatever is listed here, skipping
   // the rest.
   layout: {
-    order: ['hero', 'valueProps', 'gallery', 'services', 'features', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'listings', 'valueProps', 'services', 'features', 'testimonials', 'map', 'cta'],
   },
 
   theme: {
@@ -55,9 +55,9 @@ export default {
   nav: {
     links: [
       { label: 'Home', href: '#home' },
+      { label: 'Properties', href: '#listings' },
       { label: 'Services', href: '#services' },
       { label: 'Why Us', href: '#about' },
-      { label: 'Gallery', href: '#gallery' },
       { label: 'Service Area', href: '#location' },
     ],
     ctaLabel: 'Schedule a Consultation',
@@ -68,8 +68,8 @@ export default {
     eyebrow: 'Residential Real Estate',
     title: 'Find your next home, or get top dollar for your current one',
     text: 'Buying, selling and property management with an agent who knows the local market inside and out — no pressure, just honest guidance.',
-    primaryCta: { label: 'Schedule a Consultation', href: '#book' },
-    secondaryCta: { label: 'View Services', href: '#services' },
+    primaryCta: { label: 'Browse Properties', href: '#listings' },
+    secondaryCta: { label: 'Schedule a Consultation', href: '#book' },
     trust: [
       { end: 450, suffix: '+', label: 'homes sold' },
       { value: '4.9 ★', label: 'average rating' },
@@ -84,6 +84,61 @@ export default {
     background: 'gridScan',
     image: '/images/realestate/hero.jpg',
     imageAlt: 'A two-story stone and brick home with a manicured front lawn at golden hour',
+  },
+
+  // Portal de inmuebles (ListingsSection.jsx): buscador, filtros y tarjetas
+  // tipo Metrocuadrado/Fincaraíz — lo que un comprador o arrendatario espera
+  // encontrar en la web de una inmobiliaria. Fotos de Unsplash (licencia
+  // libre), servidas desde su CDN; ver public/images/realestate/CREDITS.md.
+  listings: {
+    eyebrow: 'Available Properties',
+    title: 'Find your next home',
+    intro: 'Sample listings — on your real website, your own properties would appear here, updated from your system.',
+    city: 'Charleston',
+    mapQuery: 'Charleston, SC',
+    locale: 'en-US',
+    currency: 'USD',
+    labels: {
+      allOps: 'All', ops: { rent: 'for Rent', sale: 'for Sale' }, opsPlural: { rent: 'For Rent', sale: 'For Sale' },
+      types: { apartment: 'Apartment', house: 'House', studio: 'Studio' },
+      allTypes: 'All types', where: 'Where?', wherePlaceholder: 'Neighborhood or area', type: 'Property type', search: 'Search',
+      home: 'Home', properties: 'Properties', resultOne: 'property in', resultMany: 'properties in',
+      viewMap: 'View on map', viewList: 'View list', sortBy: 'Sort by', sortFeatured: 'Featured',
+      sortPriceAsc: 'Lowest price', sortPriceDesc: 'Highest price', sortArea: 'Largest area',
+      price: 'Price', min: 'Min $', max: 'Max $', apply: 'Apply', beds: 'Bedrooms', baths: 'Bathrooms', clear: 'Clear filters',
+      perMonth: '/mo', adminFee: 'HOA fee', bedsShort: 'bd', bathsShort: 'ba', parkingShort: 'pkg',
+      filters: 'Filters', call: 'Call', contact: 'Contact', favorite: 'Save to favorites', prevPhoto: 'Previous photo', nextPhoto: 'Next photo',
+      empty: 'No properties match those filters. Try widening your search.',
+    },
+    items: [
+      { id: 1, op: 'rent', type: 'apartment', price: 2450, area: 72, beds: 2, baths: 2, parking: 1, tag: 'New',
+        neighborhood: 'Mount Pleasant', zone: 'East Cooper', city: 'Charleston',
+        images: ['https://images.unsplash.com/photo-1545324418-cc1a3fa10c00', 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267', 'https://images.unsplash.com/photo-1600489000022-c2086d79f9d4'] },
+      { id: 2, op: 'rent', type: 'apartment', price: 2950, area: 98, beds: 3, baths: 2, parking: 1,
+        neighborhood: 'Downtown', zone: 'Peninsula', city: 'Charleston',
+        images: ['https://images.unsplash.com/photo-1515263487990-61b07816b324', 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2', 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0'] },
+      { id: 3, op: 'sale', type: 'house', price: 1150000, area: 240, beds: 4, baths: 4, parking: 2, tag: 'Featured',
+        neighborhood: 'Daniel Island', zone: 'Berkeley County', city: 'Charleston',
+        images: ['https://images.unsplash.com/photo-1580587771525-78b9dba3b914', 'https://images.unsplash.com/photo-1484154218962-a197022b5858', 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0'] },
+      { id: 4, op: 'rent', type: 'studio', price: 1550, area: 38, beds: 1, baths: 1, parking: 0,
+        neighborhood: 'Wagener Terrace', zone: 'Peninsula', city: 'Charleston',
+        images: ['https://images.unsplash.com/photo-1502672260266-1c1ef2d93688', 'https://images.unsplash.com/photo-1484154218962-a197022b5858'] },
+      { id: 5, op: 'sale', type: 'apartment', price: 689000, area: 115, beds: 3, baths: 3, parking: 2,
+        neighborhood: 'West Ashley', zone: 'Avondale', city: 'Charleston',
+        images: ['https://images.unsplash.com/photo-1479839672679-a46483c0e7c8', 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92', 'https://images.unsplash.com/photo-1600489000022-c2086d79f9d4'] },
+      { id: 6, op: 'sale', type: 'house', price: 1890000, area: 310, beds: 5, baths: 5, parking: 3, tag: 'Featured',
+        neighborhood: 'Kiawah Island', zone: 'Sea Islands', city: 'Charleston',
+        images: ['https://images.unsplash.com/photo-1600596542815-ffad4c1539a9', 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2', 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0'] },
+      { id: 7, op: 'rent', type: 'apartment', price: 1980, area: 64, beds: 2, baths: 1, parking: 1,
+        neighborhood: 'James Island', zone: 'Riverland', city: 'Charleston',
+        images: ['https://images.unsplash.com/photo-1583847268964-b28dc8f51f92', 'https://images.unsplash.com/photo-1484154218962-a197022b5858', 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0'] },
+      { id: 8, op: 'sale', type: 'apartment', price: 525000, area: 86, beds: 2, baths: 2, parking: 1, tag: 'New',
+        neighborhood: 'North Charleston', zone: 'Park Circle', city: 'Charleston',
+        images: ['https://images.unsplash.com/photo-1545324418-cc1a3fa10c00', 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688', 'https://images.unsplash.com/photo-1484154218962-a197022b5858'] },
+      { id: 9, op: 'rent', type: 'house', price: 4200, area: 180, beds: 3, baths: 3, parking: 2,
+        neighborhood: 'Folly Beach', zone: 'Sea Islands', city: 'Charleston',
+        images: ['https://images.unsplash.com/photo-1580587771525-78b9dba3b914', 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267', 'https://images.unsplash.com/photo-1600489000022-c2086d79f9d4'] },
+    ],
   },
 
   services: {
