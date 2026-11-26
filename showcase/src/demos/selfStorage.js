@@ -19,7 +19,7 @@ export default {
   },
 
   layout: {
-    order: ['hero', 'valueProps', 'unitTypes', 'services', 'features', 'testimonials', 'map', 'cta'],
+    order: ['hero', 'units', 'valueProps', 'unitTypes', 'services', 'features', 'testimonials', 'map', 'cta'],
   },
 
   theme: {
@@ -40,6 +40,7 @@ export default {
   nav: {
     links: [
       { label: 'Home', href: '#home' },
+      { label: 'Units', href: '#units' },
       { label: 'Unit Sizes', href: '#unit-types' },
       { label: 'Services', href: '#services' },
       { label: 'Why Us', href: '#features' },
@@ -67,6 +68,52 @@ export default {
     background: 'glassSurface',
     image: '/images/self-storage/hero.jpg',
     imageAlt: 'Rows of modern self-storage units with roll-up doors',
+  },
+
+  // Portal de bodegas (StorageUnitsSection.jsx): buscador, filtros y tarjetas
+  // tipo portal de self storage — lo que un cliente espera encontrar cuando
+  // busca dónde guardar sus cosas. Fotos locales en public/images/self-storage.
+  units: {
+    eyebrow: 'Available Units',
+    title: 'Find the right unit for your space',
+    intro: 'Sample units — on your real website, your own available units would appear here, updated from your system.',
+    city: 'Itagüí',
+    locale: 'en-US',
+    currency: 'USD',
+    labels: {
+      allKinds: 'All',
+      kinds: { indoor: 'Indoor', driveup: 'Drive-up', vehicle: 'Vehicles' },
+      branch: 'Location', allBranches: 'All locations', search: 'Search',
+      resultOne: 'unit available in', resultMany: 'units available in',
+      sortBy: 'Sort by', sortFeatured: 'Featured', sortPriceAsc: 'Lowest price', sortSizeDesc: 'Largest size',
+      filters: 'Filters',
+      size: 'Unit size', sizes: { S: 'Small', M: 'Medium', L: 'Large', XL: 'XL' },
+      extras: 'Features', climate: 'Climate controlled', access24: '24/7 access',
+      clear: 'Clear filters', perMonth: '/mo', available: 'Available',
+      unitTitle: 'Unit', call: 'Call', reserve: 'Reserve',
+      favorite: 'Save to favorites',
+      empty: 'No units match those filters. Try widening your search.',
+    },
+    items: [
+      { id: 1, kind: 'indoor', size: 'S', m2: 1.5, dims: '1.5 × 1 × 2.4 m', branch: 'Itagüí', level: 'Ground floor',
+        climate: true, access24: true, available: 6, price: 35, image: '/images/self-storage/unit-small.jpg', tag: 'Popular' },
+      { id: 2, kind: 'indoor', size: 'S', m2: 2, dims: '1.6 × 1.2 × 2.4 m', branch: 'Envigado', level: 'Level 1',
+        climate: false, access24: false, available: 4, price: 28, image: '/images/self-storage/hero.jpg' },
+      { id: 3, kind: 'driveup', size: 'M', m2: 4.5, dims: '2.4 × 1.9 × 2.4 m', branch: 'Itagüí', level: 'Street level',
+        climate: false, access24: true, available: 3, price: 62, image: '/images/self-storage/unit-medium.jpg', tag: 'Last 2' },
+      { id: 4, kind: 'indoor', size: 'M', m2: 5, dims: '2.6 × 1.9 × 2.4 m', branch: 'Envigado', level: 'Level 2',
+        climate: true, access24: true, available: 5, price: 72, image: '/images/self-storage/unit-medium.jpg' },
+      { id: 5, kind: 'indoor', size: 'L', m2: 9, dims: '3 × 3 × 2.4 m', branch: 'Itagüí', level: 'Level 1',
+        climate: true, access24: true, available: 2, price: 118, image: '/images/self-storage/unit-large.jpg', tag: 'Popular' },
+      { id: 6, kind: 'driveup', size: 'L', m2: 10, dims: '3.5 × 2.9 × 2.4 m', branch: 'Envigado', level: 'Street level',
+        climate: false, access24: true, available: 4, price: 98, image: '/images/self-storage/unit-small.jpg' },
+      { id: 7, kind: 'driveup', size: 'XL', m2: 14, dims: '4 × 3.5 × 2.4 m', branch: 'Itagüí', level: 'Street level',
+        climate: false, access24: true, available: 1, price: 175, image: '/images/self-storage/unit-xl.jpg', tag: 'Last unit' },
+      { id: 8, kind: 'vehicle', size: 'L', m2: 10, dims: '3.5 × 3 × 2.4 m', branch: 'Envigado', level: 'Street level',
+        climate: false, access24: true, available: 3, price: 85, image: '/images/self-storage/unit-vehicle.jpg', tag: 'Popular' },
+      { id: 9, kind: 'vehicle', size: 'XL', m2: 16, dims: '5 × 3.2 × 2.6 m', branch: 'Itagüí', level: 'Street level',
+        climate: false, access24: true, available: 2, price: 105, image: '/images/self-storage/hero.jpg' },
+    ],
   },
 
   // AccordionGallery (React Bits, motor gsap): franjas que se expanden al

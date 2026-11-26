@@ -7,6 +7,19 @@ export default {
       'Un ejemplo real de sitio web para empresas de self storage y alquiler de bodegas, hecho por Easy Pro Digital. Así de bien puede verse la web de tu negocio: tamaños de unidad, precios, seguridad y reservas en línea.',
   },
 
+  nav: {
+    links: [
+      { label: 'Inicio' },
+      { label: 'Bodegas' },
+      { label: 'Tamaños' },
+      { label: 'Servicios' },
+      { label: 'Por Qué Elegirnos' },
+      { label: 'Opiniones' },
+      { label: 'Ubicación' },
+    ],
+    ctaLabel: 'Reservar Bodega',
+  },
+
   valueProps: [
     `Reserva y pago online, sin visita para cotizar`,
     `¿Qué tamaño necesito? resuelto en la web`,
@@ -25,6 +38,42 @@ export default {
     ],
   },
 
+  units: {
+    eyebrow: 'Bodegas disponibles',
+    title: 'Encuentra la bodega ideal para tu espacio',
+    intro: 'Bodegas de ejemplo — en tu sitio real aparecerían aquí tus bodegas disponibles, actualizadas desde tu sistema.',
+    city: 'Itagüí',
+    locale: 'es-CO',
+    currency: 'COP',
+    labels: {
+      allKinds: 'Todas',
+      kinds: { indoor: 'Interior', driveup: 'Exterior (drive-up)', vehicle: 'Vehículos' },
+      branch: 'Sede', allBranches: 'Todas las sedes', search: 'Buscar',
+      resultOne: 'bodega disponible en', resultMany: 'bodegas disponibles en',
+      sortBy: 'Ordenar por', sortFeatured: 'Destacadas', sortPriceAsc: 'Menor precio', sortSizeDesc: 'Mayor tamaño',
+      filters: 'Filtros',
+      size: 'Tamaño', sizes: { S: 'Pequeña', M: 'Mediana', L: 'Grande', XL: 'XL' },
+      extras: 'Extras', climate: 'Climatizada', access24: 'Acceso 24/7',
+      clear: 'Limpiar filtros', perMonth: '/mes', available: 'Disponibles',
+      unitTitle: 'Bodega', call: 'Llamar', reserve: 'Reservar',
+      favorite: 'Guardar en favoritos',
+      empty: 'No hay bodegas con esos filtros. Prueba con una búsqueda más amplia.',
+    },
+    items: [
+      { price: 120000, tag: 'Popular', level: 'Nivel calle' },
+      { price: 95000, level: 'Piso 1' },
+      { price: 240000, tag: 'Últimas 2', level: 'Nivel calle' },
+      { price: 280000, level: 'Piso 2' },
+      { price: 460000, tag: 'Popular', level: 'Piso 1' },
+      { price: 390000, level: 'Nivel calle' },
+      { price: 720000, tag: 'Última unidad', level: 'Nivel calle' },
+      { price: 320000, tag: 'Popular', level: 'Nivel calle' },
+      { price: 420000, level: 'Nivel calle' },
+    ],
+  },
+
+  // AccordionGallery (React Bits, motor gsap): franjas que se expanden al
+  // hover revelando cada tamaño de unidad disponible.
   unitTypes: {
     title: 'Encuentra el tamaño justo',
     intro: 'Pasa el cursor sobre cada tamaño para ver el detalle — así se vería en tu sitio real con fotos de tus propias bodegas.',
