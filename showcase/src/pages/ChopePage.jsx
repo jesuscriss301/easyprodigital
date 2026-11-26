@@ -1,6 +1,7 @@
 import { Suspense, useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Seo from '../components/Seo.jsx'
+import BendingMarquee from '../components/BendingMarquee.jsx'
 import Reveal from '../components/Reveal.jsx'
 import CountUp from '../components/CountUp.jsx'
 import ScrollFeatureSection from '../components/ScrollFeatureSection.jsx'
@@ -121,6 +122,7 @@ export default function ChopePage({ styleSlug = 'nuit' }) {
       <TavernFrame />
 
       <ChopeNav links={t.nav} lang={lang} setLang={setLang} cta={t.cta} openNow={openNow} />
+      <BendingMarquee lang={lang} />
 
       {/* selector de estilo, igual que en las demás demos */}
       <div className="demo-style-switcher">

@@ -1,5 +1,6 @@
 import { Suspense, useEffect, useState } from 'react'
 import Seo from '../components/Seo.jsx'
+import BendingMarquee from '../components/BendingMarquee.jsx'
 import Reveal from '../components/Reveal.jsx'
 import CountUp from '../components/CountUp.jsx'
 import { Icon } from '../components/icons.jsx'
@@ -83,6 +84,7 @@ export default function CopieBgrPage() {
           </button>
         </div>
       </nav>
+      <BendingMarquee lang={lang} />
 
       {/* --------------------------------------------------------- hero */}
       <header id="home" className="demo-hero bgr-hero">

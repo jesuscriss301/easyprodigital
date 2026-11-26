@@ -1,6 +1,7 @@
 import { Suspense, useEffect } from 'react'
 import Seo from '../components/Seo.jsx'
 import Nav from '../components/Nav.jsx'
+import BendingMarquee from '../components/BendingMarquee.jsx'
 import StyleSwitcher from '../components/StyleSwitcher.jsx'
 import Hero from '../components/Hero.jsx'
 import Services from '../components/Services.jsx'
@@ -104,6 +105,8 @@ export default function DemoPage({ demo }) {
         robots={demo.seo.robots}
       />
       <Nav brand={demo.brand} links={demo.nav.links} ctaLabel={demo.nav.ctaLabel} />
+      {/* Cinta "esta es una web demo" — en todas las demos, debajo del nav. */}
+      <BendingMarquee />
       <StyleSwitcher variants={demo.styleVariants} current={demo.slug} />
       <div className="demo-shell">
         <div className="demo-shell-main">
