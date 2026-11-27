@@ -10,6 +10,7 @@ import {
   GoogleBusinessProfileService,
   ServiceLanding,
   NichePage,
+  CityPage,
   Portfolio,
   About,
   Contact,
@@ -74,6 +75,11 @@ function RouteChildren() {
       <Route path="services/seo-services" element={<ServiceLanding slug="seo-services" />} />
       <Route path="services/digital-marketing" element={<ServiceLanding slug="digital-marketing" />} />
       <Route path="services/ai-integrations" element={<ServiceLanding slug="ai-integrations" />} />
+      <Route path="paginas-web-medellin" element={<CityPage slug="paginas-web-medellin" />} />
+      <Route path="consultoria-ia" element={<CityPage slug="consultoria-ia" />} />
+      <Route path="consultoria-ia-medellin" element={<CityPage slug="consultoria-ia-medellin" />} />
+      <Route path="consultoria-ia-cucuta" element={<CityPage slug="consultoria-ia-cucuta" />} />
+      <Route path="consultoria-ia-bucaramanga" element={<CityPage slug="consultoria-ia-bucaramanga" />} />
       <Route path="portfolio" element={<Portfolio />} />
       <Route path="blog" element={<Blog />} />
       <Route path="blog/:slug" element={<Article />} />

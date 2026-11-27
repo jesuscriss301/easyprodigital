@@ -261,7 +261,7 @@ export function SocialLinks({ profile, label }) {
 }
 
 export function Footer() {
-  const { href, data, t } = useLanguage()
+  const { href, data, t, lang } = useLanguage()
   const { profile } = data
   return (
     <footer className="site-footer">
@@ -279,6 +279,14 @@ export function Footer() {
         </div>
         <nav className="footer-nav" aria-label="Footer">
           <Link to={href('/services/')}>{t.footer.services}</Link>
+          {lang === 'es' && (
+            <>
+              <Link to={href('/paginas-web-medellin/')}>Páginas web en Medellín</Link>
+              <Link to={href('/consultoria-ia/')}>
+                Consultoría IA: Medellín, Cúcuta, Bucaramanga
+              </Link>
+            </>
+          )}
           <Link to={href('/pricing/')}>{t.footer.pricing}</Link>
           <Link to={href('/portfolio/')}>{t.footer.portfolio}</Link>
           <a href="https://demos.easyprodigital.com" target="_blank" rel="noopener noreferrer">

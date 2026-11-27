@@ -23,8 +23,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = join(__dirname, '..')
 const distDir = join(root, 'dist')
 
-// Todas las rutas reales declaradas en src/App.jsx (RouteChildren, en ambas
-// ramas de idioma). Mantener esta lista sincronizada si se agregan rutas.
+// Todas las rutas reales declaradas en src/App.jsx (RouteChildren). Las de
+// ES_ONLY_PATHS solo existen en español y se excluyen de la rama inglesa.
+// Mantener esta lista sincronizada si se agregan rutas.
 const ROUTE_PATHS = [
   '',
   'services',
@@ -43,6 +44,12 @@ const ROUTE_PATHS = [
   'services/seo-services',
   'services/digital-marketing',
   'services/ai-integrations',
+  // Páginas por ciudad: existen solo en español (ver ES_ONLY_PATHS).
+  'paginas-web-medellin',
+  'consultoria-ia',
+  'consultoria-ia-medellin',
+  'consultoria-ia-cucuta',
+  'consultoria-ia-bucaramanga',
   'pricing',
   'portfolio',
   'blog',
@@ -57,8 +64,19 @@ const ROUTE_PATHS = [
   ...articles.map((a) => `blog/${a.slug}`),
 ]
 
+// Rutas que solo existen en español (no tienen versión inglesa). Se
+// prerenderizan únicamente como /es/<slug>; pedirlas en inglés redirige a
+// /es/<slug>/ desde CityPage (src/pages/pages.jsx).
+const ES_ONLY_PATHS = [
+  'paginas-web-medellin',
+  'consultoria-ia',
+  'consultoria-ia-medellin',
+  'consultoria-ia-cucuta',
+  'consultoria-ia-bucaramanga',
+]
+
 const ROUTES = [
-  ...ROUTE_PATHS.map((p) => `/${p}`),
+  ...ROUTE_PATHS.filter((p) => !ES_ONLY_PATHS.includes(p)).map((p) => `/${p}`),
   ...ROUTE_PATHS.map((p) => `/es/${p}`),
 ].map((p) => p.replace(/\/+$/, '') || '/') // sin slash final, salvo la raíz
 

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import Seo from '../components/Seo.jsx'
 import Reveal from '../components/Reveal.jsx'
 import SplitText from '../components/SplitText.jsx'
@@ -20,7 +20,11 @@ import {
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { getServicePage, SOLUTION_SLUGS } from '../data/servicePages.js'
 import { getNichePage, NICHE_SLUGS } from '../data/nichePages.js'
+import { getCityPage, CITY_SLUGS } from '../data/cityPages.js'
 import { PromoBanner } from '../components/Promo.jsx'
+import CityGreeting from '../components/CityGreeting.jsx'
+import HeroChat from '../components/HeroChat.jsx'
+import useVisitorCity from '../components/useVisitorCity.js'
 import { ListingCompare, FlowDiagram } from '../components/Visuals.jsx'
 import { getListingCopy, getServiceVisuals } from '../data/serviceVisuals.js'
 import { PROMO, PROMO_COPY, isPromoActive, discounted } from '../data/promo.js'
@@ -113,7 +117,7 @@ function Avatar({ size = 'lg' }) {
 /* ============ reusable blocks ============ */
 
 function ProjectList({ items }) {
-  const { t } = useLanguage()
+  const { t, data } = useLanguage()
   return (
     <Reveal as="div" className="project-list">
       {items.map((p) => {
@@ -144,9 +148,13 @@ function ProjectList({ items }) {
               </div>
               {p.demo && (
                 <p className="project-demo">
-                  <strong>{t.common.demoUser}:</strong> <code>{p.demo.user}</code>
-                  <span className="project-demo-sep">·</span>
-                  <strong>{t.common.demoPassword}:</strong> <code>{p.demo.password}</code>
+                  <a
+                    href={waLink(data.profile.whatsapp, t.common.demoAccessText + p.name)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t.common.demoAccess}
+                  </a>
                 </p>
               )}
               {hasActions && (
@@ -201,6 +209,10 @@ export function Home() {
   const { lang, href, data, t } = useLanguage()
   const { profile, services, projects } = data
   const steps = getServicePage(lang, SOLUTION_SLUGS[0]).process
+  const city = useVisitorCity()
+  const whatsappText = city
+    ? `${t.home.whatsappText}${t.home.whatsappCitySuffix.replace('{city}', city)}`
+    : t.home.whatsappText
 
   return (
     <>
@@ -210,23 +222,27 @@ export function Home() {
         path="/"
         jsonLd={buildPersonJsonLd(data)}
       />
-      <Reveal as="div" className="hero container" immediate>
-        <p className="eyebrow">{t.home.heroEyebrow}</p>
-        <h1>{t.home.heroTitle}</h1>
-        <p className="hero-tagline">{t.home.heroTagline}</p>
-        <div className="hero-actions">
-          <Link className="btn btn-primary" to={href('/contact/')}>{t.home.ctaAudit}</Link>
-          <a
-            className="btn btn-ghost"
-            href={waLink(profile.whatsapp, t.home.whatsappText)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {t.home.ctaWhatsapp}
-          </a>
+      <Reveal as="div" className="hero container hero--with-chat" immediate>
+        <div className="hero-copy">
+          <CityGreeting />
+          <p className="eyebrow">{t.home.heroEyebrow}</p>
+          <h1>{t.home.heroTitle}</h1>
+          <p className="hero-tagline">{t.home.heroTagline}</p>
+          <div className="hero-actions">
+            <Link className="btn btn-primary" to={href('/contact/')}>{t.home.ctaAudit}</Link>
+            <a
+              className="btn btn-ghost"
+              href={waLink(profile.whatsapp, whatsappText)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t.home.ctaWhatsapp}
+            </a>
+          </div>
+          <p className="hero-proof">{t.home.heroProof}</p>
+          <PromoBanner className="promo-banner--hero" />
         </div>
-        <p className="hero-proof">{t.home.heroProof}</p>
-        <PromoBanner className="promo-banner--hero" />
+        <HeroChat />
       </Reveal>
 
       <section>
@@ -302,7 +318,8 @@ export function Home() {
           <Reveal as="div" className="cap-grid">
             {services.map((s) => (
               <Link className="cap cap-link" key={s.id} to={href(`/services/${s.id}/`)}>
-                <h3>{s.title}</h3>
+                <p className="cap-kicker">{s.title}</p>
+                <h3>{getServicePage(lang, s.id)?.title || s.title}</h3>
                 <p>{s.short}</p>
                 <span className="cap-more">{t.common.readMore}</span>
               </Link>
@@ -360,6 +377,15 @@ export function Home() {
       </section>
     </>
   )
+}
+
+/* Etiquetas cortas para la sección "En tu ciudad" (solo español). */
+const CITY_LINK_LABELS = {
+  'paginas-web-medellin': 'Páginas web en Medellín',
+  'consultoria-ia': 'Consultoría en IA para empresas',
+  'consultoria-ia-medellin': 'Consultoría en IA en Medellín',
+  'consultoria-ia-cucuta': 'Consultoría en IA en Cúcuta',
+  'consultoria-ia-bucaramanga': 'Consultoría en IA en Bucaramanga',
 }
 
 /* ============ Services ============ */
@@ -439,6 +465,28 @@ export function Services() {
           </Reveal>
         </div>
       </section>
+      {lang === 'es' && (
+        <section>
+          <div className="container">
+            <h2 className="section-title">En tu ciudad</h2>
+            <p className="page-intro">
+              Si quieres ver precios, zonas y ejemplos de tu ciudad, empieza por aquí.
+            </p>
+            <Reveal as="div" className="cap-grid">
+              {CITY_SLUGS.map((slug) => {
+                const c = getCityPage(slug)
+                if (!c) return null
+                return (
+                  <Link className="cap cap-link" key={slug} to={href(`/${slug}/`)}>
+                    <p className="cap-kicker">{c.eyebrow}</p>
+                    <h3>{CITY_LINK_LABELS[slug]}</h3>
+                  </Link>
+                )
+              })}
+            </Reveal>
+          </div>
+        </section>
+      )}
       <div className="container">
         <p className="eyebrow">{t.services.techEyebrow}</p>
         <h2 className="section-title">{t.services.techTitle}</h2>
@@ -1019,10 +1067,11 @@ export function Faq() {
 }
 
 /* ============ Niche / service landing (shared layout) ============ */
-function NicheLanding({ c, path, serviceType, audienceType, slug }) {
+function NicheLanding({ c, path, serviceType, audienceType, slug, esOnly = false, areaServed = null }) {
   const { lang, href, data } = useLanguage()
   const visuals = slug ? getServiceVisuals(lang, slug) : null
   const { site, profile } = data
+  const served = areaServed || AREA_SERVED
 
   return (
     <>
@@ -1030,6 +1079,8 @@ function NicheLanding({ c, path, serviceType, audienceType, slug }) {
         title={c.seoTitle}
         description={c.seoDescription}
         path={path}
+        esOnly={esOnly}
+        image={esOnly ? '/og-image.jpg' : null}
         jsonLd={{
           '@context': 'https://schema.org',
           '@graph': [
@@ -1038,9 +1089,9 @@ function NicheLanding({ c, path, serviceType, audienceType, slug }) {
               name: c.title,
               serviceType,
               description: c.seoDescription,
-              url: site.domain + path,
+              url: site.domain + (esOnly ? '/es' + path : path),
               provider: { '@type': 'Person', name: profile.name, url: site.domain },
-              areaServed: AREA_SERVED,
+              areaServed: served,
               audience: { '@type': 'Audience', audienceType },
             },
             {
@@ -1224,6 +1275,26 @@ export function NichePage({ slug }) {
       path={`/services/${slug}/`}
       serviceType={c.serviceType}
       audienceType={c.audienceType}
+    />
+  )
+}
+
+/* ============ Páginas por ciudad, solo en español ============ */
+export function CityPage({ slug }) {
+  const { lang } = useLanguage()
+  const c = getCityPage(slug)
+  if (lang === 'en') {
+    return <Navigate to={`/es/${slug}/`} replace />
+  }
+  if (!c) return <NotFound />
+  return (
+    <NicheLanding
+      c={c}
+      path={`/${slug}/`}
+      serviceType={c.serviceType}
+      audienceType={c.audienceType}
+      esOnly
+      areaServed={c.areaServed}
     />
   )
 }

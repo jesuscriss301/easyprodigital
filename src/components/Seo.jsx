@@ -44,6 +44,7 @@ export default function Seo({
   noindex = false,
   type = 'website',
   publishedTime = null,
+  esOnly = false,
 }) {
   const { lang, data } = useLanguage()
   const { site } = data
@@ -51,7 +52,7 @@ export default function Seo({
   useEffect(() => {
     const enUrl = site.domain + path
     const esUrl = site.domain + '/es' + path
-    const url = lang === 'es' ? esUrl : enUrl
+    const url = esOnly || lang === 'es' ? esUrl : enUrl
 
     // Falls back to the site-wide 1200x630 social preview (site.ogImage) so
     // every page shares a link with a real thumbnail instead of none at all.
@@ -74,13 +75,26 @@ export default function Seo({
     // Inglés para EE. UU. y Canadá, español para Colombia (y el público
     // hispano de EE. UU.). Solo hay dos URLs por página: varios códigos de
     // región pueden apuntar a la misma.
-    upsertLink('alternate', 'en', enUrl)
-    upsertLink('alternate', 'en-US', enUrl)
-    upsertLink('alternate', 'en-CA', enUrl)
-    upsertLink('alternate', 'es', esUrl)
-    upsertLink('alternate', 'es-CO', esUrl)
-    upsertLink('alternate', 'es-US', esUrl)
-    upsertLink('alternate', 'x-default', enUrl)
+    if (esOnly) {
+      // Páginas que solo existen en español: no deben anunciar una versión
+      // en inglés que no existe. Se eliminan los enlaces que haya dejado una
+      // página anterior; al volver a una página normal, upsertLink los recrea.
+      for (const code of ['en', 'en-US', 'en-CA', 'es-US']) {
+        const link = document.head.querySelector(`link[rel="alternate"][hreflang="${code}"]`)
+        if (link) link.remove()
+      }
+      upsertLink('alternate', 'es', esUrl)
+      upsertLink('alternate', 'es-CO', esUrl)
+      upsertLink('alternate', 'x-default', esUrl)
+    } else {
+      upsertLink('alternate', 'en', enUrl)
+      upsertLink('alternate', 'en-US', enUrl)
+      upsertLink('alternate', 'en-CA', enUrl)
+      upsertLink('alternate', 'es', esUrl)
+      upsertLink('alternate', 'es-CO', esUrl)
+      upsertLink('alternate', 'es-US', esUrl)
+      upsertLink('alternate', 'x-default', enUrl)
+    }
 
     // Open Graph / Twitter
     upsertMeta('property', 'og:title', title)
@@ -94,8 +108,13 @@ export default function Seo({
       noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1',
     )
     if (publishedTime) upsertMeta('property', 'article:published_time', publishedTime)
-    upsertMeta('property', 'og:locale', lang === 'es' ? 'es_CO' : 'en_US')
-    upsertMeta('property', 'og:locale:alternate', lang === 'es' ? 'en_US' : 'es_CO')
+    upsertMeta('property', 'og:locale', esOnly || lang === 'es' ? 'es_CO' : 'en_US')
+    if (esOnly) {
+      const alternateLocale = document.head.querySelector('meta[property="og:locale:alternate"]')
+      if (alternateLocale) alternateLocale.remove()
+    } else {
+      upsertMeta('property', 'og:locale:alternate', lang === 'es' ? 'en_US' : 'es_CO')
+    }
     upsertMeta('name', 'twitter:title', title)
     upsertMeta('name', 'twitter:description', description)
     if (imageUrl) {
@@ -122,7 +141,7 @@ export default function Seo({
       script.textContent = JSON.stringify({ inLanguage: lang, ...jsonLd })
       document.head.appendChild(script)
     }
-  }, [title, description, path, jsonLd, image, imageAlt, noindex, type, publishedTime, lang, site.domain, site.brand, site.ogImage])
+  }, [title, description, path, jsonLd, image, imageAlt, noindex, type, publishedTime, esOnly, lang, site.domain, site.brand, site.ogImage])
 
   return null
 }
