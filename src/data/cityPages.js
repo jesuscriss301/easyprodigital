@@ -81,6 +81,10 @@ const CONSULTING_PROCESS = [
 ]
 
 const CONSULTING_SHARED = {
+  // Ilustración animada (ServiceIllustration). Se comparte en las 4 páginas de consultoría.
+  illustration: 'infra',
+  // Variante de soporte para instalaciones: sin planes de mantenimiento web.
+  support: 'infra',
   includesTitle: 'Seis frentes de trabajo',
   includes: CONSULTING_INCLUDES,
   demoTitle: 'Mira un asistente de IA funcionando',
@@ -136,6 +140,8 @@ const CONSULTING_FAQ_BASE = [
 const pages = {
   'paginas-web-medellin': {
     serviceType: 'Diseño de páginas web para negocios',
+    illustration: 'web',
+    storeCompare: true,
     audienceType: 'Negocios y pymes de Medellín y el Valle de Aburrá',
     seoTitle:
       'Páginas Web en Medellín para Negocios — Precio Publicado | EasyPro Digital',

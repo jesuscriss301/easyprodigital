@@ -26,6 +26,8 @@ import CityGreeting from '../components/CityGreeting.jsx'
 import HeroChat from '../components/HeroChat.jsx'
 import useVisitorCity from '../components/useVisitorCity.js'
 import { ListingCompare, FlowDiagram } from '../components/Visuals.jsx'
+import { StoreCompare, SupportBlock } from '../components/ServiceBlocks.jsx'
+import { ServiceIllustration } from '../components/ServiceIllustrations.jsx'
 import { getListingCopy, getServiceVisuals } from '../data/serviceVisuals.js'
 import { PROMO, PROMO_COPY, isPromoActive, discounted } from '../data/promo.js'
 
@@ -239,7 +241,17 @@ export function Home() {
               {t.home.ctaWhatsapp}
             </a>
           </div>
-          <p className="hero-proof">{t.home.heroProof}</p>
+          <p className="hero-proof">
+            <img
+              className="hero-proof-photo"
+              src="/photo-jesus-cristancho-sq.webp"
+              alt={profile.name}
+              width="44"
+              height="44"
+              decoding="async"
+            />
+            <span>{t.home.heroProof}</span>
+          </p>
           <PromoBanner className="promo-banner--hero" />
         </div>
         <HeroChat />
@@ -1070,6 +1082,9 @@ export function Faq() {
 function NicheLanding({ c, path, serviceType, audienceType, slug, esOnly = false, areaServed = null }) {
   const { lang, href, data } = useLanguage()
   const visuals = slug ? getServiceVisuals(lang, slug) : null
+  const illustrationKind = visuals?.illustration || c.illustration || null
+  const storeCompare = visuals?.storeCompare || c.storeCompare
+  const supportVariant = c.support === 'infra' ? 'infra' : undefined
   const { site, profile } = data
   const served = areaServed || AREA_SERVED
 
@@ -1126,6 +1141,14 @@ function NicheLanding({ c, path, serviceType, audienceType, slug, esOnly = false
         <PromoBanner />
       </div>
 
+      {illustrationKind && (
+        <section className="first-section">
+          <div className="container">
+            <ServiceIllustration kind={illustrationKind} />
+          </div>
+        </section>
+      )}
+
       <section className="first-section">
         <Reveal as="div" className="container service-detail">
           <div>
@@ -1151,6 +1174,14 @@ function NicheLanding({ c, path, serviceType, audienceType, slug, esOnly = false
           </ul>
         </Reveal>
       </section>
+
+      {storeCompare && (
+        <section>
+          <Reveal as="div" className="container">
+            <StoreCompare />
+          </Reveal>
+        </section>
+      )}
 
       {visuals?.flow && (
         <section>
@@ -1221,6 +1252,12 @@ function NicheLanding({ c, path, serviceType, audienceType, slug, esOnly = false
             {c.pricingNote} <Link to={href('/pricing/')}>{c.pricingCta}</Link>
           </p>
         </div>
+      </section>
+
+      <section>
+        <Reveal as="div" className="container">
+          <SupportBlock variant={supportVariant} />
+        </Reveal>
       </section>
 
       <section>

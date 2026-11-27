@@ -1,7 +1,8 @@
 // ============================================================
-//  Elementos visuales de las páginas de servicio:
+//  Elementos visuales de las páginas de servicio y de ciudad:
 //   - diagramas de pasos (flow)
 //   - ejemplo "antes / después" de una ficha de Google (listing)
+//   - ilustraciones animadas por servicio (illustrations)
 //  Son ilustraciones con un negocio inventado, no capturas reales.
 // ============================================================
 
@@ -139,12 +140,203 @@ const FLOWS = {
   },
 }
 
+// ============================================================
+//  Ilustraciones animadas por servicio (ServiceIllustrations.jsx).
+//  Todo el texto va aquí, en el idioma de la página. Son dibujos con
+//  negocios inventados: nada de marcas reales ni cifras de resultados.
+// ============================================================
+const ILLUSTRATIONS = {
+  en: {
+    web: {
+      description:
+        'Illustration of a laptop and a phone showing the same page for a made-up business: a header, a sample photo and a WhatsApp button that pulses.',
+      business: 'Your Example Business',
+      url: 'yourbusiness.com',
+      nav: ['Home', 'Services', 'Contact'],
+      tagline: 'Friendly service, close to you',
+      photo: 'Business photo',
+      whatsappCta: 'Message us on WhatsApp',
+      caption: 'Your business, looking sharp on desktop and mobile, with WhatsApp one tap away.',
+    },
+    store: {
+      description:
+        'Illustration of an online purchase: a product card goes into a cart and ends in an approved payment with online payment by PSE or card.',
+      product: 'Example product',
+      inStock: 'In stock',
+      addToCart: 'Add',
+      cart: 'Cart',
+      approved: 'Payment approved',
+      payOnline: 'Online payment',
+      pse: 'PSE',
+      card: 'Card',
+      caption: 'From product card to cart to approved payment, without writing anyone.',
+    },
+    mobile: {
+      description:
+        'Illustration of two phones, a generic iPhone and a generic Android, showing the same app, with a notification dropping in with an appointment reminder.',
+      appName: 'My Business',
+      appTitle: 'Your appointments',
+      appItem: 'Appointment confirmed',
+      appTime: 'Tomorrow · 3:00 PM',
+      notificationTitle: 'Reminder',
+      notification: 'Your appointment is tomorrow at 3:00 PM.',
+      ios: 'iPhone',
+      android: 'Android',
+      caption: 'Your app on iPhone and Android, with reminders that arrive on their own.',
+    },
+    system: {
+      description:
+        'Illustration of a business system: on the left, a messy spreadsheet fading out; on the right, an orderly dashboard with sales, inventory and customers cards and a chart that grows.',
+      appName: 'Business dashboard',
+      sheetLabel: 'Spreadsheet',
+      sales: 'Sales',
+      inventory: 'Inventory',
+      customers: 'Customers',
+      chartLabel: 'Overview',
+      caption: 'From a messy spreadsheet to your whole business on one screen.',
+    },
+    search: {
+      description:
+        'Illustration of generic search results where the “Your business” card rises from fourth to first place.',
+      query: 'service near me',
+      business: 'Your business',
+      businessUrl: 'yourbusiness.com',
+      others: [
+        { title: 'Local service', url: 'example.com/local' },
+        { title: 'Neighborhood shop', url: 'example.com/shop' },
+        { title: 'Central office', url: 'example.com/office' },
+      ],
+      caption: 'Be the first one they find when they search nearby.',
+    },
+    funnel: {
+      description:
+        'Illustration of a three-level funnel with the steps “See your ad”, “They message you” and “They buy”, and dots falling through it.',
+      steps: ['See your ad', 'They message you', 'They buy'],
+      caption: 'A clear path from your ad to the sale.',
+    },
+    ai: {
+      description:
+        'Illustration of a PDF document called “Company handbook” feeding a chat where an assistant answers a question about returns and cites the handbook.',
+      docLabel: 'PDF',
+      docTitle: 'Company handbook',
+      assistant: 'Assistant',
+      question: 'What is the return policy?',
+      answer: 'You have 30 days with the receipt. (Source: Handbook, p. 4)',
+      caption: 'An assistant that answers from your company documents.',
+    },
+    infra: {
+      description:
+        'Illustration of a server with blinking lights, connected by 10 Gb lines to three computers, with an AI chip and a lock showing that data stays in the company.',
+      rackLabel: 'Company server',
+      chip: 'AI',
+      linkLabel: '10 Gb',
+      lockLabel: 'Your data stays in your company',
+      caption: 'AI and files on your own server, with a fast network for the whole team.',
+    },
+  },
+  es: {
+    web: {
+      description:
+        'Ilustración de un portátil y un celular que muestran la misma página de un negocio inventado: encabezado, una foto de muestra y un botón de WhatsApp que late.',
+      business: 'Tu Negocio Ejemplo',
+      url: 'tunegocio.com',
+      nav: ['Inicio', 'Servicios', 'Contacto'],
+      tagline: 'Atención cercana para tu hogar',
+      photo: 'Foto del negocio',
+      whatsappCta: 'Escríbenos por WhatsApp',
+      caption: 'Tu negocio, bien presentado en computador y celular, con WhatsApp a un toque.',
+    },
+    store: {
+      description:
+        'Ilustración de una compra en línea: una tarjeta de producto pasa al carrito y termina en un pago aprobado, con pago en línea por PSE o tarjeta.',
+      product: 'Producto de ejemplo',
+      inStock: 'Disponible',
+      addToCart: 'Agregar',
+      cart: 'Carrito',
+      approved: 'Pago aprobado',
+      payOnline: 'Pago en línea',
+      pse: 'PSE',
+      card: 'Tarjeta',
+      caption: 'Del producto al carrito y al pago, sin escribirle a nadie.',
+    },
+    mobile: {
+      description:
+        'Ilustración de dos celulares, un iPhone y un Android genéricos, con la misma app, y una notificación que cae con el recordatorio de una cita.',
+      appName: 'Mi Negocio',
+      appTitle: 'Tus citas',
+      appItem: 'Cita confirmada',
+      appTime: 'Mañana · 3:00 p. m.',
+      notificationTitle: 'Recordatorio',
+      notification: 'Tu cita es mañana a las 3:00 p. m.',
+      ios: 'iPhone',
+      android: 'Android',
+      caption: 'Tu app en iPhone y Android, con recordatorios que llegan solos.',
+    },
+    system: {
+      description:
+        'Ilustración de un sistema: a la izquierda, una hoja de cálculo desordenada que se desvanece; a la derecha, un panel ordenado con tarjetas de ventas, inventario y clientes y una gráfica que crece.',
+      appName: 'Panel del negocio',
+      sheetLabel: 'Hoja de cálculo',
+      sales: 'Ventas',
+      inventory: 'Inventario',
+      customers: 'Clientes',
+      chartLabel: 'Resumen',
+      caption: 'Del Excel desordenado a todo tu negocio en una pantalla.',
+    },
+    search: {
+      description:
+        'Ilustración de resultados de búsqueda genéricos en los que la tarjeta “Tu negocio” sube del cuarto al primer lugar.',
+      query: 'servicio cerca de mí',
+      business: 'Tu negocio',
+      businessUrl: 'tunegocio.com',
+      others: [
+        { title: 'Servicio local', url: 'ejemplo.com/local' },
+        { title: 'Taller del barrio', url: 'ejemplo.com/taller' },
+        { title: 'Oficina central', url: 'ejemplo.com/oficina' },
+      ],
+      caption: 'Que te encuentren primero cuando te buscan cerca.',
+    },
+    funnel: {
+      description:
+        'Ilustración de un embudo de tres niveles con los pasos “Ven tu anuncio”, “Te escriben” y “Te compran”, y puntos que bajan por el embudo.',
+      steps: ['Ven tu anuncio', 'Te escriben', 'Te compran'],
+      caption: 'Un recorrido claro desde el anuncio hasta la compra.',
+    },
+    ai: {
+      description:
+        'Ilustración de un documento PDF llamado “Manual de la empresa” que alimenta un chat donde un asistente responde una pregunta sobre devoluciones citando el manual.',
+      docLabel: 'PDF',
+      docTitle: 'Manual de la empresa',
+      assistant: 'Asistente',
+      question: '¿Cuál es la política de devoluciones?',
+      answer: 'Tienes 30 días con la factura. (Fuente: Manual, pág. 4)',
+      caption: 'Un asistente que responde con los documentos de tu empresa.',
+    },
+    infra: {
+      description:
+        'Ilustración de un servidor con luces que parpadean, conectado por líneas de 10 Gb a tres computadores, con un chip de IA y un candado que indica que los datos se quedan en la empresa.',
+      rackLabel: 'Servidor de la empresa',
+      chip: 'IA',
+      linkLabel: '10 Gb',
+      lockLabel: 'Tus datos se quedan en la empresa',
+      caption: 'IA y archivos en tu propio servidor, con una red rápida para todo el equipo.',
+    },
+  },
+}
+
 // Qué lleva cada página de servicio.
+// (La ilustración 'store' está lista en ILLUSTRATIONS; todavía no la usa ninguna página.)
 const BY_SLUG = {
   'get-found-online': { flow: 'find', listing: true },
   'google-business-profile-setup': { flow: 'gbp', listing: true },
   'instant-replies': { flow: 'reply' },
   'customer-retention': { flow: 'retain' },
+  'web-development': { illustration: 'web', storeCompare: true },
+  'mobile-development': { illustration: 'mobile' },
+  'saas-development': { illustration: 'system' },
+  'seo-services': { illustration: 'search' },
+  'digital-marketing': { illustration: 'funnel' },
+  'ai-integrations': { illustration: 'ai' },
 }
 
 export function getListingCopy(lang) {
@@ -158,5 +350,12 @@ export function getServiceVisuals(lang, slug) {
   return {
     flow: entry.flow ? FLOWS[entry.flow][l] : null,
     listing: entry.listing ? LISTING[l] : null,
+    illustration: entry.illustration ?? null,
+    storeCompare: entry.storeCompare ?? false,
   }
+}
+
+export function getIllustrationCopy(lang, kind) {
+  const l = lang === 'es' ? 'es' : 'en'
+  return ILLUSTRATIONS[l][kind] ?? null
 }
