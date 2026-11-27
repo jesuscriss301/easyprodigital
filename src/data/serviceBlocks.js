@@ -87,8 +87,8 @@ export const serviceBlocks = {
           text: 'Plugins, libraries and the server kept up to date.',
         },
         {
-          title: 'Errors reviewed and fixed',
-          text: 'You report it on WhatsApp with a screenshot; I look into the cause, fix it and tell you what happened.',
+          title: 'Reply in minutes, fixed in under 24 hours',
+          text: 'You report it on WhatsApp with a screenshot. I reply within minutes, find the cause, fix it in under 24 hours and tell you what happened.',
         },
         {
           title: 'Improvement hours every month',
@@ -110,8 +110,8 @@ export const serviceBlocks = {
             text: 'Operating system, services and model kept up to date.',
           },
           {
-            title: 'Failures reviewed and fixed',
-            text: 'You message me on WhatsApp; I check remotely and, if needed, come in person.',
+            title: 'Reply in minutes, fixed in under 24 hours',
+            text: 'You message me on WhatsApp and I reply within minutes. Anything that can be fixed remotely is solved in under 24 hours; if it needs a visit, we schedule it.',
           },
           {
             title: 'Training and adjustments',
@@ -198,8 +198,8 @@ export const serviceBlocks = {
           text: 'Plugins, librerías y servidor al día.',
         },
         {
-          title: 'Errores revisados y corregidos',
-          text: 'Me reportas por WhatsApp con una captura; reviso la causa, lo corrijo y te cuento qué pasó.',
+          title: 'Respuesta en minutos, solución en menos de 24 horas',
+          text: 'Me reportas por WhatsApp con una captura. Te respondo en minutos, reviso la causa, lo corrijo en menos de 24 horas y te cuento qué pasó.',
         },
         {
           title: 'Horas de mejoras cada mes',
@@ -221,8 +221,8 @@ export const serviceBlocks = {
             text: 'Sistema operativo, servicios y modelo al día.',
           },
           {
-            title: 'Fallas revisadas y corregidas',
-            text: 'Me escribes por WhatsApp; reviso a distancia y, si hace falta, voy en persona.',
+            title: 'Respuesta en minutos, solución en menos de 24 horas',
+            text: 'Me escribes por WhatsApp y te respondo en minutos. Lo que se arregla a distancia queda resuelto en menos de 24 horas; si hace falta ir en persona, coordinamos la visita.',
           },
           {
             title: 'Capacitación y ajustes',
