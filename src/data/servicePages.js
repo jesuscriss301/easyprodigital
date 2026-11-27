@@ -6,7 +6,7 @@
 //  El mercado objetivo es EE. UU., Canadá y Colombia: el inglés habla a
 //  EE. UU./Canadá (texto, WhatsApp, Google) y el español a Colombia.
 // ============================================================
-import { articles } from './articles.js'
+import { articles } from './articleIndex.js'
 
 export const SERVICE_SLUGS = [
   'get-found-online',

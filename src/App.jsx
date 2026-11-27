@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import { LanguageProvider } from './i18n/LanguageContext.jsx'
 import { Header, Footer, StatusBar, ScrollToTop, WhatsAppFloat } from './components/Layout.jsx'
@@ -17,9 +18,12 @@ import {
   NotFound,
 } from './pages/pages.jsx'
 import ArticlesAside from './components/ArticlesAside.jsx'
-import RagForm from './pages/RagForm.jsx'
-import Blog from './pages/Blog.jsx'
-import Article from './pages/Article.jsx'
+
+// Páginas con contenido pesado: se cargan por partes para que los cuerpos de
+// los artículos no entren en el JS principal.
+const RagForm = lazy(() => import('./pages/RagForm.jsx'))
+const Blog = lazy(() => import('./pages/Blog.jsx'))
+const Article = lazy(() => import('./pages/Article.jsx'))
 
 /**
  * Envoltorio de una rama de idioma completa (inglés en "/", español en "/es/*").
@@ -35,7 +39,9 @@ function LangLayout({ lang }) {
           en desktop el grid mueve el aside a la derecha con grid-column/grid-row. */}
       <div className="shell">
         <main className="shell-main">
-          <Outlet />
+          <Suspense fallback={null}>
+            <Outlet />
+          </Suspense>
         </main>
         <ArticlesAside />
       </div>

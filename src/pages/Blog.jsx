@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import Seo from '../components/Seo.jsx'
 import Reveal from '../components/Reveal.jsx'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
-import { articles } from '../data/articles.js'
+import { articles } from '../data/articleIndex.js'
 
 /**
  * Listado del blog. Los artículos viven en src/data/articles.js dentro de este

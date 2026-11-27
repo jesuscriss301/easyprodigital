@@ -82,17 +82,47 @@ async function main() {
       ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_PATH }
       : {}
   )
-  const page = await browser.newPage()
+  // reducedMotion: los componentes animados (SplitText, Reveal, CardSwap, LetterGlitch)
+  // no dividen ni ocultan el texto, así el HTML guardado queda limpio y visible,
+  // y coincide con lo que React espera al hidratar.
+  const page = await browser.newPage({ reducedMotion: 'reduce' })
+  await page.addInitScript(() => { window.__PRERENDER__ = true })
 
   let ok = 0
   let failed = 0
 
   for (const route of ROUTES) {
-    const url = new URL(route, address).toString()
+    // Con barra final, igual que la URL real que abre el visitante (GitHub Pages
+    // redirige /ruta a /ruta/): así los enlaces activos del menú y demás detalles
+    // que dependen de la URL coinciden al hidratar.
+    const url = new URL(route === '/' ? '/' : `${route}/`, address).toString()
     try {
       await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 })
       // Deja que React termine de montar/pintar contenido dinámico (GSAP, etc.)
       await page.waitForTimeout(300)
+      // React necesita un separador <!-- --> entre dos textos seguidos (p. ej.
+      // "-" + "50" + "%"). Al serializar el DOM, el navegador los fusiona en uno
+      // solo y la hidratación falla; aquí se insertan como lo haría React en el servidor.
+      await page.evaluate(() => {
+        const root = document.getElementById('root')
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT)
+        const pairs = []
+        for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+          if (n.nextSibling && n.nextSibling.nodeType === Node.TEXT_NODE) pairs.push(n)
+        }
+        for (const n of pairs) n.parentNode.insertBefore(document.createComment(' '), n.nextSibling)
+        // Los bloques que se revelan al hacer scroll se guardan sin "is-visible",
+        // como los pinta React al arrancar; el hero (data-reveal="now") sí queda visible.
+        root.querySelectorAll('.reveal[data-reveal="scroll"]').forEach((el) => el.classList.remove('is-visible'))
+        // El contenido de <main> va dentro de un <Suspense> (páginas cargadas por
+        // partes, ver App.jsx). React marca esos bloques con <!--$--> ... <!--/$-->
+        // en el HTML; sin las marcas, al hidratar descartaría el contenido.
+        const main = root.querySelector('main.shell-main')
+        if (main) {
+          main.insertBefore(document.createComment('$'), main.firstChild)
+          main.appendChild(document.createComment('/$'))
+        }
+      })
       const html = await page.content()
 
       const outDir = route === '/' ? distDir : join(distDir, route.slice(1))

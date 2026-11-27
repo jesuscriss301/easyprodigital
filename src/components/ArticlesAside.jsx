@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
-import { pickArticles } from '../data/articles.js'
+import { pickArticles } from '../data/articleIndex.js'
 import { getServiceArticles } from '../data/servicePages.js'
 
 /**
@@ -14,7 +14,9 @@ import { getServiceArticles } from '../data/servicePages.js'
  */
 export default function ArticlesAside() {
   const { lang, href, t } = useLanguage()
-  const { pathname } = useLocation()
+  // Sin barra final: "/es/blog" y "/es/blog/" deben elegir los mismos artículos,
+  // si no el HTML prerenderizado y el de React no coinciden al hidratar.
+  const pathname = useLocation().pathname.replace(/\/+$/, '') || '/'
 
   // En la página de un artículo, ese artículo no se enlaza a sí mismo.
   const current = pathname.match(/\/blog\/([^/]+)\/?$/)?.[1] || null

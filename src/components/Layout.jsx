@@ -27,9 +27,16 @@ function getInitialTheme() {
 }
 
 function ThemeToggle() {
-  const [theme, setTheme] = useState(getInitialTheme)
+  // Arranca en null para que el primer render coincida con el HTML prerenderizado
+  // (hidratación); el tema real (guardado o del sistema) se lee al montar.
+  const [theme, setTheme] = useState(null)
 
   useEffect(() => {
+    setTheme(getInitialTheme())
+  }, [])
+
+  useEffect(() => {
+    if (!theme || window.__PRERENDER__) return
     document.documentElement.setAttribute('data-theme', theme)
     try {
       window.localStorage.setItem('epd-theme', theme)
@@ -309,6 +316,9 @@ export function StatusBar() {
         hour12: false,
         timeZone: 'America/Bogota',
       }).format(new Date())
+    // En el prerender no se fija la hora: el HTML estático no debe llevar una
+    // hora "congelada" que luego no coincida al hidratar.
+    if (window.__PRERENDER__) return
     setTime(fmt())
     const id = setInterval(() => setTime(fmt()), 30_000)
     return () => clearInterval(id)
