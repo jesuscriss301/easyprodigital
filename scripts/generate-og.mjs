@@ -54,11 +54,15 @@ const cards = []
 for (const lang of ['en', 'es']) {
   for (const p of PAGES) cards.push({ lang, key: p.key, kicker: p[lang][0], title: p[lang][1] })
   for (const a of articles) {
+    // Los artículos con `onlyLang` solo tienen tarjeta en su idioma.
+    if (a.onlyLang && a.onlyLang !== lang) continue
+    const block = a[lang]
+    if (!block) continue
     cards.push({
       lang,
       key: `blog-${a.slug}`,
-      kicker: a.tag[lang],
-      title: articleSeoTitles[a.slug]?.[lang] || a[lang].title,
+      kicker: a.tag[lang] || a.tag.en,
+      title: articleSeoTitles[a.slug]?.[lang] || block.title,
     })
   }
 }

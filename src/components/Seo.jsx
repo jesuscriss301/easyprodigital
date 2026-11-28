@@ -45,6 +45,7 @@ export default function Seo({
   type = 'website',
   publishedTime = null,
   esOnly = false,
+  enOnly = false,
 }) {
   const { lang, data } = useLanguage()
   const { site } = data
@@ -52,7 +53,7 @@ export default function Seo({
   useEffect(() => {
     const enUrl = site.domain + path
     const esUrl = site.domain + '/es' + path
-    const url = esOnly || lang === 'es' ? esUrl : enUrl
+    const url = esOnly ? esUrl : enOnly ? enUrl : lang === 'es' ? esUrl : enUrl
 
     // Falls back to the site-wide 1200x630 social preview (site.ogImage) so
     // every page shares a link with a real thumbnail instead of none at all.
@@ -79,14 +80,31 @@ export default function Seo({
       // Páginas que solo existen en español: no deben anunciar una versión
       // en inglés que no existe. Se eliminan los enlaces que haya dejado una
       // página anterior; al volver a una página normal, upsertLink los recrea.
-      for (const code of ['en', 'en-US', 'en-CA', 'es-US']) {
+      for (const code of ['en', 'en-US', 'en-CA', 'en-GB', 'es-US']) {
         const link = document.head.querySelector(`link[rel="alternate"][hreflang="${code}"]`)
         if (link) link.remove()
       }
       upsertLink('alternate', 'es', esUrl)
       upsertLink('alternate', 'es-CO', esUrl)
       upsertLink('alternate', 'x-default', esUrl)
+    } else if (enOnly) {
+      // Páginas que solo existen en inglés: solo hreflang inglés (incluye
+      // en-GB) y x-default a la URL inglesa. Se quitan los alternates en
+      // español que haya dejado otra página.
+      for (const code of ['es', 'es-CO', 'es-US']) {
+        const link = document.head.querySelector(`link[rel="alternate"][hreflang="${code}"]`)
+        if (link) link.remove()
+      }
+      upsertLink('alternate', 'en', enUrl)
+      upsertLink('alternate', 'en-US', enUrl)
+      upsertLink('alternate', 'en-CA', enUrl)
+      upsertLink('alternate', 'en-GB', enUrl)
+      upsertLink('alternate', 'x-default', enUrl)
     } else {
+      // en-GB solo lo usan las páginas enOnly; al volver a una normal no debe
+      // quedar apuntando a la URL de otra página.
+      const enGb = document.head.querySelector('link[rel="alternate"][hreflang="en-GB"]')
+      if (enGb) enGb.remove()
       upsertLink('alternate', 'en', enUrl)
       upsertLink('alternate', 'en-US', enUrl)
       upsertLink('alternate', 'en-CA', enUrl)
@@ -108,10 +126,9 @@ export default function Seo({
       noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1',
     )
     if (publishedTime) upsertMeta('property', 'article:published_time', publishedTime)
-    upsertMeta('property', 'og:locale', esOnly || lang === 'es' ? 'es_CO' : 'en_US')
-    if (esOnly) {
-      const alternateLocale = document.head.querySelector('meta[property="og:locale:alternate"]')
-      if (alternateLocale) alternateLocale.remove()
+    upsertMeta('property', 'og:locale', esOnly ? 'es_CO' : enOnly ? 'en_US' : lang === 'es' ? 'es_CO' : 'en_US')
+    if (esOnly || enOnly) {
+      document.head.querySelectorAll('meta[property="og:locale:alternate"]').forEach((el) => el.remove())
     } else {
       upsertMeta('property', 'og:locale:alternate', lang === 'es' ? 'en_US' : 'es_CO')
     }
@@ -141,7 +158,7 @@ export default function Seo({
       script.textContent = JSON.stringify({ inLanguage: lang, ...jsonLd })
       document.head.appendChild(script)
     }
-  }, [title, description, path, jsonLd, image, imageAlt, noindex, type, publishedTime, esOnly, lang, site.domain, site.brand, site.ogImage])
+  }, [title, description, path, jsonLd, image, imageAlt, noindex, type, publishedTime, esOnly, enOnly, lang, site.domain, site.brand, site.ogImage])
 
   return null
 }

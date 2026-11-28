@@ -2,6 +2,21 @@
 // completa (articles.js) como la lista liviana sin cuerpos (articleIndex.js).
 
 /**
+ * ¿El artículo tiene contenido en `lang`? Los artículos sin `onlyLang` son
+ * bilingües; los que lo declaran solo existen en ese idioma.
+ */
+export function isAvailableIn(article, lang) {
+  if (!lang) return true
+  return !article.onlyLang || article.onlyLang === lang
+}
+
+/** Filtra una lista a los artículos disponibles en `lang`. */
+export function availableIn(list, lang) {
+  if (!lang) return list.slice()
+  return list.filter((a) => isAvailableIn(a, lang))
+}
+
+/**
  * Elige `count` artículos de `list` de forma DETERMINISTA a partir de la ruta:
  * la misma página siempre muestra el mismo trío (así queda estable en el HTML
  * prerenderizado y Google indexa lo mismo que ve el visitante), pero páginas

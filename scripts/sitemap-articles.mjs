@@ -15,25 +15,70 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const sitemapPath = join(root, 'public', 'sitemap.xml')
 const DOMAIN = 'https://easyprodigital.com'
 
+const enUrl = (slug) => `${DOMAIN}/blog/${slug}/`
+const esUrl = (slug) => `${DOMAIN}/es/blog/${slug}/`
+
+function urlEntry({ loc, date, alternates }) {
+  return [
+    '  <url>',
+    `    <loc>${loc}</loc>`,
+    `    <lastmod>${date}</lastmod>`,
+    '    <priority>0.7</priority>',
+    ...alternates.map(([code, href]) => `    <xhtml:link rel="alternate" hreflang="${code}" href="${href}" />`),
+    '  </url>',
+  ].join('\n')
+}
+
+// Artículos bilingües: dos URLs y los alternates completos. Artículos con
+// `onlyLang`: una sola URL, con alternates únicamente del idioma que existe.
+const bilingualAlternates = (slug) => [
+  ['en', enUrl(slug)],
+  ['en-US', enUrl(slug)],
+  ['en-CA', enUrl(slug)],
+  ['es', esUrl(slug)],
+  ['es-CO', esUrl(slug)],
+  ['es-US', esUrl(slug)],
+  ['x-default', enUrl(slug)],
+]
+
 const block = articles
-  .flatMap((a) =>
-    ['', '/es'].map((prefix) =>
-      [
-        '  <url>',
-        `    <loc>${DOMAIN}${prefix}/blog/${a.slug}/</loc>`,
-        `    <lastmod>${a.date}</lastmod>`,
-        '    <priority>0.7</priority>',
-        `    <xhtml:link rel="alternate" hreflang="en" href="${DOMAIN}/blog/${a.slug}/" />`,
-        `    <xhtml:link rel="alternate" hreflang="en-US" href="${DOMAIN}/blog/${a.slug}/" />`,
-        `    <xhtml:link rel="alternate" hreflang="en-CA" href="${DOMAIN}/blog/${a.slug}/" />`,
-        `    <xhtml:link rel="alternate" hreflang="es" href="${DOMAIN}/es/blog/${a.slug}/" />`,
-        `    <xhtml:link rel="alternate" hreflang="es-CO" href="${DOMAIN}/es/blog/${a.slug}/" />`,
-        `    <xhtml:link rel="alternate" hreflang="es-US" href="${DOMAIN}/es/blog/${a.slug}/" />`,
-        `    <xhtml:link rel="alternate" hreflang="x-default" href="${DOMAIN}/blog/${a.slug}/" />`,
-        '  </url>',
-      ].join('\n')
+  .flatMap((a) => {
+    if (a.onlyLang === 'es') {
+      return [
+        urlEntry({
+          loc: esUrl(a.slug),
+          date: a.date,
+          alternates: [
+            ['es', esUrl(a.slug)],
+            ['es-CO', esUrl(a.slug)],
+            ['x-default', esUrl(a.slug)],
+          ],
+        }),
+      ]
+    }
+    if (a.onlyLang === 'en') {
+      return [
+        urlEntry({
+          loc: enUrl(a.slug),
+          date: a.date,
+          alternates: [
+            ['en', enUrl(a.slug)],
+            ['en-US', enUrl(a.slug)],
+            ['en-CA', enUrl(a.slug)],
+            ['en-GB', enUrl(a.slug)],
+            ['x-default', enUrl(a.slug)],
+          ],
+        }),
+      ]
+    }
+    return ['en', 'es'].map((lang) =>
+      urlEntry({
+        loc: lang === 'es' ? esUrl(a.slug) : enUrl(a.slug),
+        date: a.date,
+        alternates: bilingualAlternates(a.slug),
+      }),
     )
-  )
+  })
   .join('\n')
 
 const wrapped = `  <!-- articles:start -->\n${block}\n  <!-- articles:end -->\n`
@@ -47,4 +92,9 @@ if (/ {2}<!-- articles:start -->[\s\S]*? {2}<!-- articles:end -->\n/.test(xml)) 
 writeFileSync(sitemapPath, xml)
 
 const total = (xml.match(/<url>/g) || []).length
-console.log(`[sitemap] ${articles.length} artículos x 2 idiomas — ${total} URLs en total`)
+const bilingual = articles.filter((a) => !a.onlyLang).length
+const onlyEs = articles.filter((a) => a.onlyLang === 'es').length
+const onlyEn = articles.filter((a) => a.onlyLang === 'en').length
+console.log(
+  `[sitemap] ${articles.length} artículos (${bilingual} bilingües, ${onlyEs} solo ES, ${onlyEn} solo EN) — ${total} URLs en total`,
+)

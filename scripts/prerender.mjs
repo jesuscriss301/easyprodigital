@@ -23,9 +23,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = join(__dirname, '..')
 const distDir = join(root, 'dist')
 
-// Todas las rutas reales declaradas en src/App.jsx (RouteChildren). Las de
+// Rutas estáticas reales declaradas en src/App.jsx (RouteChildren). Las de
 // ES_ONLY_PATHS solo existen en español y se excluyen de la rama inglesa.
-// Mantener esta lista sincronizada si se agregan rutas.
+// Las rutas de artículos se derivan de articles.js más abajo, respetando
+// `onlyLang`; mantener esta lista sincronizada si se agregan páginas.
 const ROUTE_PATHS = [
   '',
   'services',
@@ -59,9 +60,6 @@ const ROUTE_PATHS = [
   'privacy',
   'terms',
   'cookies',
-  // Un artículo = una ruta. Se derivan de src/data/articles.js para que
-  // agregar un artículo allí baste: no hay que tocar esta lista.
-  ...articles.map((a) => `blog/${a.slug}`),
 ]
 
 // Rutas que solo existen en español (no tienen versión inglesa). Se
@@ -75,9 +73,17 @@ const ES_ONLY_PATHS = [
   'consultoria-ia-bucaramanga',
 ]
 
+// Un artículo = una ruta, pero solo en los idiomas en los que existe: los
+// artículos con `onlyLang` se prerenderizan únicamente en ese idioma. Se
+// derivan de articles.js para que agregar uno allí baste.
+const articlePaths = (lang) =>
+  articles.filter((a) => !a.onlyLang || a.onlyLang === lang).map((a) => `blog/${a.slug}`)
+
 const ROUTES = [
   ...ROUTE_PATHS.filter((p) => !ES_ONLY_PATHS.includes(p)).map((p) => `/${p}`),
+  ...articlePaths('en').map((p) => `/${p}`),
   ...ROUTE_PATHS.map((p) => `/es/${p}`),
+  ...articlePaths('es').map((p) => `/es/${p}`),
 ].map((p) => p.replace(/\/+$/, '') || '/') // sin slash final, salvo la raíz
 
 async function main() {

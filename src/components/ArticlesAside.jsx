@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { pickArticles } from '../data/articleIndex.js'
+import { availableIn } from '../data/articlePicks.js'
 import { getServiceArticles } from '../data/servicePages.js'
 
 /**
@@ -22,7 +23,11 @@ export default function ArticlesAside() {
   const current = pathname.match(/\/blog\/([^/]+)\/?$/)?.[1] || null
   // Las páginas de servicio muestran SUS artículos relacionados (ver
   // SERVICE_ARTICLES en servicePages.js); el resto, la mezcla determinista.
-  const picks = (getServiceArticles(pathname) || pickArticles(pathname, current ? 4 : 3))
+  // En ambos casos se ocultan los artículos que no existen en el idioma actual.
+  const picks = availableIn(
+    getServiceArticles(pathname) || pickArticles(pathname, current ? 4 : 3, lang),
+    lang,
+  )
     .filter((a) => a.slug !== current)
     .slice(0, 3)
 
@@ -51,8 +56,8 @@ export default function ArticlesAside() {
                   />
                 )}
                 <span className="side-article-tag">{a.tag[lang] || a.tag.en}</span>
-                <span className="side-article-title">{a[lang].title}</span>
-                <span className="side-article-summary">{a[lang].summary}</span>
+                <span className="side-article-title">{a[lang]?.title || a[a.onlyLang]?.title}</span>
+                <span className="side-article-summary">{a[lang]?.summary || a[a.onlyLang]?.summary}</span>
                 <span className="side-article-more">{t.aside.readTag} →</span>
               </Link>
             </li>

@@ -3,6 +3,7 @@ import Seo from '../components/Seo.jsx'
 import Reveal from '../components/Reveal.jsx'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { articles } from '../data/articleIndex.js'
+import { availableIn } from '../data/articlePicks.js'
 
 /**
  * Listado del blog. Los artículos viven en src/data/articles.js dentro de este
@@ -12,7 +13,9 @@ import { articles } from '../data/articleIndex.js'
  */
 export default function Blog() {
   const { lang, href, t } = useLanguage()
-  const sorted = articles.slice().sort((a, b) => (a.date < b.date ? 1 : -1))
+  // Solo los artículos que existen en el idioma actual: los de un solo
+  // idioma no aparecen en el listado del otro.
+  const sorted = availableIn(articles, lang).sort((a, b) => (a.date < b.date ? 1 : -1))
 
   return (
     <>
@@ -43,8 +46,8 @@ export default function Blog() {
                   )}
                   <div className="blog-card-body">
                     <span className="blog-card-tag">{a.tag[lang] || a.tag.en}</span>
-                    <h2>{a[lang].title}</h2>
-                    <p>{a[lang].summary}</p>
+                    <h2>{a[lang]?.title || a[a.onlyLang]?.title}</h2>
+                    <p>{a[lang]?.summary || a[a.onlyLang]?.summary}</p>
                     <span className="blog-card-more">{t.blog.readArticle}</span>
                   </div>
                 </Link>

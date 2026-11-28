@@ -8,7 +8,13 @@ function articlesIndex() {
   const virtualId = '\0virtual:articles-index'
   const abs = fileURLToPath(new URL('./src/data/articles.js', import.meta.url))
 
-  const stripBody = ({ body, ...rest }) => rest
+  // Los artículos de un solo idioma (`onlyLang`) no tienen el otro bloque:
+  // stripBody devuelve undefined y JSON.stringify omite la clave.
+  const stripBody = (block) => {
+    if (!block) return undefined
+    const { body, ...rest } = block
+    return rest
+  }
 
   return {
     name: 'articles-index',
