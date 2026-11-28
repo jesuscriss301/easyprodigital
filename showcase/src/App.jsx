@@ -5,6 +5,7 @@ import NotFound from './pages/NotFound.jsx'
 import ChopePage from './pages/ChopePage.jsx'
 import CopieBgrPage from './pages/CopieBgrPage.jsx'
 import PingPongPage from './pages/PingPongPage.jsx'
+import PulkroPage from './pages/PulkroPage.jsx'
 import { getDemoBySlug } from './demos/index.js'
 import { LanguageProvider, useLanguage } from './i18n.jsx'
 import { getLocalizedDemo } from './demos/i18n/es/index.js'
@@ -47,6 +48,10 @@ export default function App() {
           {/* Maquette de prospecto (bar Ping Pong Club, Montréal): página propia,
               bilingüe FR/EN, fuera del registro de demos y sin indexar. */}
           <Route path="ping-pong-club" element={<PingPongPage />} />
+          {/* Maqueta de prospecto (Pulkro Express, lavado de tenis en Belén,
+              Medellín), armada desde su Instagram: página propia en español,
+              fuera del registro de demos y sin indexar. */}
+          <Route path="pulkro-express" element={<PulkroPage />} />
           <Route path=":slug" element={<DemoRoute />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
