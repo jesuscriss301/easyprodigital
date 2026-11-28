@@ -1,0 +1,108 @@
+/* Glaseado que gotea + grageas/harina cayendo — solo demo bakery
+   (demo.frosting = true). Todo SVG/CSS, sin librerías: las gotas son una
+   máscara SVG (3 formas, una por tarjeta en rotación) pintada con el color
+   --demo-frosting de cada paleta; la lluvia de grageas vive en Frosting.jsx. */
+
+.demo-frosting-on { --demo-frosting: var(--demo-accent); }
+
+.demo-frosting-on .demo-service-card,
+.demo-frosting-on .demo-testimonial {
+  position: relative;
+  padding-top: 70px;
+}
+.demo-frosting-on .demo-service-card::after,
+.demo-frosting-on .demo-testimonial::after {
+  content: '';
+  position: absolute;
+  left: -1px; right: -1px; top: -1px;
+  height: 64px;
+  background: var(--demo-frosting);
+  -webkit-mask: var(--drip) top left / 100% 100% no-repeat;
+          mask: var(--drip) top left / 100% 100% no-repeat;
+  border-radius: var(--demo-radius) var(--demo-radius) 0 0;
+  transform-origin: top;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+  filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.06));
+}
+.demo-frosting-on .demo-service-card:nth-child(3n + 1)::after,
+.demo-frosting-on .demo-testimonial:nth-child(3n + 1)::after { --drip: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 64' preserveAspectRatio='none'%3E%3Cpath d='M0 0H400V20C396.7 22.0 398.3 10.4 397.5 27.0A14.1 14.1 0 0 1 369.3 27.0C368.4 10.4 370.1 22.0 366.8 20.0C362.9 22.0 364.8 8.1 363.9 27.6A16.6 16.6 0 0 1 330.7 27.6C329.8 8.1 331.7 22.0 327.8 20.0C325.6 22.0 326.7 49.2 326.1 60.4A9.6 9.6 0 0 1 307.0 60.4C306.4 49.2 307.6 22.0 305.3 20.0C301.9 22.0 303.6 6.7 302.8 23.6A14.3 14.3 0 0 1 274.1 23.6C273.3 6.7 275.0 22.0 271.6 20.0C268.6 22.0 270.1 34.0 269.3 49.2A12.9 12.9 0 0 1 243.5 49.2C242.7 34.0 244.2 22.0 241.2 20.0C237.9 22.0 239.6 23.9 238.8 40.1A13.7 13.7 0 0 1 211.3 40.1C210.5 23.9 212.1 22.0 208.8 20.0C206.1 22.0 207.5 13.3 206.8 26.8A11.5 11.5 0 0 1 183.8 26.8C183.2 13.3 184.5 22.0 181.8 20.0C179.3 22.0 180.6 11.3 179.9 23.7A10.6 10.6 0 0 1 158.8 23.7C158.2 11.3 159.4 22.0 156.9 20.0C153.6 22.0 155.3 17.5 154.5 34.0A14.1 14.1 0 0 1 126.3 34.0C125.5 17.5 127.1 22.0 123.8 20.0C120.1 22.0 121.9 21.2 121.0 40.0A16.0 16.0 0 0 1 89.0 40.0C88.0 21.2 89.9 22.0 86.1 20.0C82.2 22.0 84.2 4.6 83.2 24.4A16.9 16.9 0 0 1 49.4 24.4C48.4 4.6 50.4 22.0 46.5 20.0C42.5 22.0 44.5 33.3 43.5 53.0A16.7 16.7 0 0 1 10.1 53.0C9.1 33.3 11.1 22.0 7.2 20.0C6.4 22.0 6.8 22.9 6.6 26.5A3.0 3.0 0 0 1 0.5 26.5C0.4 22.9 0.7 22.0 0.0 20.0Z'/%3E%3C/svg%3E"); }
+.demo-frosting-on .demo-service-card:nth-child(3n + 2)::after,
+.demo-frosting-on .demo-testimonial:nth-child(3n + 2)::after { --drip: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 64' preserveAspectRatio='none'%3E%3Cpath d='M0 0H400V20C397.3 22.0 398.7 13.1 398.0 26.4A11.3 11.3 0 0 1 375.3 26.4C374.7 13.1 376.0 22.0 373.3 20.0C369.6 22.0 371.5 21.8 370.5 40.5A15.8 15.8 0 0 1 338.8 40.5C337.9 21.8 339.8 22.0 336.0 20.0C333.6 22.0 334.8 42.2 334.2 54.6A10.5 10.5 0 0 1 313.2 54.6C312.6 42.2 313.9 22.0 311.4 20.0C309.0 22.0 310.2 27.8 309.6 40.0A10.3 10.3 0 0 1 288.9 40.0C288.3 27.8 289.5 22.0 287.1 20.0C284.3 22.0 285.7 43.8 285.0 57.5A11.6 11.6 0 0 1 261.8 57.5C261.1 43.8 262.5 22.0 259.8 20.0C256.5 22.0 258.1 25.2 257.3 41.7A14.0 14.0 0 0 1 229.3 41.7C228.4 25.2 230.1 22.0 226.8 20.0C224.3 22.0 225.6 14.7 225.0 27.0A10.5 10.5 0 0 1 204.0 27.0C203.4 14.7 204.6 22.0 202.2 20.0C198.5 22.0 200.3 8.5 199.4 26.7A15.5 15.5 0 0 1 168.4 26.7C167.5 8.5 169.3 22.0 165.7 20.0C161.7 22.0 163.7 4.7 162.7 24.3A16.6 16.6 0 0 1 129.5 24.3C128.5 4.7 130.5 22.0 126.6 20.0C122.8 22.0 124.7 36.5 123.8 55.1A15.9 15.9 0 0 1 92.1 55.1C91.1 36.5 93.0 22.0 89.3 20.0C86.1 22.0 87.7 28.1 86.9 44.2A13.7 13.7 0 0 1 59.5 44.2C58.7 28.1 60.3 22.0 57.1 20.0C54.1 22.0 55.6 22.4 54.9 37.3A12.6 12.6 0 0 1 29.6 37.3C28.9 22.4 30.3 22.0 27.4 20.0C24.6 22.0 26.0 14.2 25.3 27.9A11.6 11.6 0 0 1 2.1 27.9C1.4 14.2 2.7 22.0 0.0 20.0Z'/%3E%3C/svg%3E"); }
+.demo-frosting-on .demo-service-card:nth-child(3n)::after,
+.demo-frosting-on .demo-testimonial:nth-child(3n)::after { --drip: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 64' preserveAspectRatio='none'%3E%3Cpath d='M0 0H400V20C396.8 22.0 398.4 41.7 397.6 57.7A13.5 13.5 0 0 1 370.5 57.7C369.7 41.7 371.3 22.0 368.1 20.0C365.4 22.0 366.8 30.0 366.1 43.6A11.6 11.6 0 0 1 343.0 43.6C342.3 30.0 343.7 22.0 340.9 20.0C338.0 22.0 339.5 8.8 338.7 23.5A12.5 12.5 0 0 1 313.7 23.5C312.9 8.8 314.4 22.0 311.5 20.0C308.5 22.0 310.0 28.8 309.2 43.8A12.8 12.8 0 0 1 283.7 43.8C283.0 28.8 284.5 22.0 281.5 20.0C277.5 22.0 279.5 31.0 278.5 51.0A17.0 17.0 0 0 1 244.5 51.0C243.5 31.0 245.5 22.0 241.5 20.0C238.5 22.0 240.0 10.5 239.3 25.2A12.6 12.6 0 0 1 214.1 25.2C213.4 10.5 214.9 22.0 211.9 20.0C209.4 22.0 210.7 32.9 210.0 45.4A10.7 10.7 0 0 1 188.7 45.4C188.1 32.9 189.4 22.0 186.9 20.0C183.2 22.0 185.0 21.4 184.1 39.5A15.4 15.4 0 0 1 153.3 39.5C152.4 21.4 154.2 22.0 150.6 20.0C147.2 22.0 148.9 31.3 148.0 48.3A14.5 14.5 0 0 1 119.0 48.3C118.2 31.3 119.9 22.0 116.5 20.0C113.9 22.0 115.2 43.0 114.5 56.0A11.0 11.0 0 0 1 92.4 56.0C91.8 43.0 93.1 22.0 90.5 20.0C87.4 22.0 88.9 11.1 88.2 26.8A13.3 13.3 0 0 1 61.6 26.8C60.8 11.1 62.3 22.0 59.2 20.0C56.0 22.0 57.6 8.7 56.8 25.0A13.8 13.8 0 0 1 29.1 25.0C28.3 8.7 29.9 22.0 26.7 20.0C24.0 22.0 25.3 10.2 24.7 23.5A11.3 11.3 0 0 1 2.0 23.5C1.3 10.2 2.7 22.0 0.0 20.0Z'/%3E%3C/svg%3E"); }
+
+/* Al pasar el mouse el glaseado "escurre" un poco más. */
+.demo-frosting-on .demo-service-card:hover::after,
+.demo-frosting-on .demo-testimonial:hover::after { transform: scaleY(1.22); }
+
+/* Gotas que bajan al entrar la tarjeta en pantalla (donde el navegador
+   soporta animaciones ligadas al scroll; si no, quedan quietas). */
+@supports (animation-timeline: view()) {
+  .demo-frosting-on .demo-service-card::after,
+  .demo-frosting-on .demo-testimonial::after {
+    animation: demo-drip-in linear both;
+    animation-timeline: view();
+    animation-range: entry 10% entry 70%;
+  }
+}
+@keyframes demo-drip-in {
+  from { transform: scaleY(0.3); }
+  to { transform: scaleY(1); }
+}
+
+/* ---------- lluvia de grageas, harina y espigas en los costados ---------- */
+.demo-sprinkles {
+  position: fixed;
+  top: 0; bottom: 0;
+  /* Franja angosta pegada al borde: el contenido empieza a 24 px, así que
+     las grageas nunca pasan por encima de textos ni fotos. En pantallas
+     más anchas que el layout (1456 px) la franja crece con el margen. */
+  width: max(22px, calc((100vw - 1456px) / 2 + 20px));
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  display: none;
+}
+.demo-sprinkles--left { left: 0; }
+.demo-sprinkles--right { right: 0; }
+@media (min-width: 1100px) {
+  .demo-sprinkles { display: block; }
+}
+.demo-sprinkle {
+  position: absolute;
+  top: -40px;
+  left: var(--x);
+  animation: demo-sprinkle-fall var(--dur) linear infinite;
+  animation-delay: var(--delay);
+  opacity: 0.8;
+}
+.demo-sprinkle--rod {
+  width: 4px; height: 13px;
+  border-radius: 4px;
+  background: var(--c);
+}
+.demo-sprinkle--dot {
+  width: var(--s); height: var(--s);
+  border-radius: 50%;
+  background: var(--c);
+  opacity: 0.55;
+}
+.demo-sprinkle--wheat { width: 13px; height: 22px; color: var(--c); opacity: 0.55; }
+@keyframes demo-sprinkle-fall {
+  from { transform: translateY(0) rotate(var(--r0)); }
+  to { transform: translateY(calc(100vh + 80px)) rotate(var(--r1)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo-sprinkle { animation: none; transform: translateY(var(--rest)) rotate(var(--r0)); }
+  .demo-frosting-on .demo-service-card::after,
+  .demo-frosting-on .demo-testimonial::after { animation: none; transition: none; transform: none; }
+}
+
+/* Masonry: integra la galería con la paleta de la demo. */
+.demo-masonry { --masonry-radius: 18px; }
+.demo-masonry .masonry__caption { font-family: var(--demo-font-body); }
+.demo-masonry .masonry__title { font-family: var(--demo-font-heading); }
+.demo-masonry-fallback { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+.demo-masonry-fallback img { width: 100%; border-radius: 18px; display: block; }

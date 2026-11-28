@@ -27,6 +27,7 @@ import veterinary from './veterinary.js'
 import selfStorage from './selfStorage.js'
 import carRental from './carRental.js'
 import languageSchool from './languageSchool.js'
+import bakery from './bakery.js'
 
 // Copia local de mergeLang() (ver src/i18n.jsx): el registro de packs ES se
 // importa también con Node puro para verificar contenido, y Node no puede
@@ -52,6 +53,7 @@ function mergeLang(base, override) {
 }
 
 const esContentByKey = {
+  bakery,
   'salon-belleza': salonBelleza,
   'car-wash': carWash,
   cleaners,

@@ -530,6 +530,31 @@ const pitches = {
       ],
     },
   },
+  bakery: {
+    service: '/pricing/',
+    en: {
+      keyword: 'Website design for bakeries and pastry shops',
+      intro:
+        'A bakery lives on its regulars, but new customers find you online first. This layout puts your fresh bread, custom cake orders and pickup hours up front, so visitors know what to buy and when to stop by.',
+      bullets: [
+        'Daily bread menu that shows what is in the case today',
+        'Custom cake orders with flavor, size and pickup date',
+        'Weekly bread subscription sign-up for regulars',
+        'Photo gallery of your breads and cakes, plus hours and map',
+      ],
+    },
+    es: {
+      keyword: 'Diseño de páginas web para panaderías y pastelerías',
+      intro:
+        'Una panadería vive de sus clientes de siempre, pero quien llega por primera vez te encuentra en internet. Este diseño pone al frente el pan fresco, los pedidos de tortas y el horario de recogida, para que sepa qué comprar y cuándo pasar.',
+      bullets: [
+        'Menú del pan del día con lo que hay en la vitrina',
+        'Pedidos de tortas con sabor, tamaño y fecha de recogida',
+        'Suscripción semanal de pan para clientes de siempre',
+        'Galería de panes y tortas, más horario y mapa',
+      ],
+    },
+  },
   'language-school': {
     service: '/pricing/',
     en: {

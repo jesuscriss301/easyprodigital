@@ -1,8 +1,10 @@
+import { Suspense } from 'react'
 import Reveal from './Reveal.jsx'
 import SplitText from './SplitText.jsx'
 import { prefersReducedMotion } from './motionUtils.js'
 import { VineDecor, speciesFor } from './Vines.jsx'
 import { MaterialDecor } from './Materials.jsx'
+import { LazyMasonry } from './reactbits/registry.js'
 
 // TiltedCard (React Bits usa `motion`; esta adaptación es solo mousemove +
 // custom properties para no sumar un segundo runtime DOM al bundle
@@ -47,7 +49,45 @@ function gradientForIndex(i, theme) {
   return `linear-gradient(140deg, ${a}, ${b})`
 }
 
-export default function Gallery({ id = 'gallery', eyebrow, title, intro, items = [], hover, theme, vines = false, materials = null }) {
+// Masonry (React Bits, sin deps): mosaico tipo vitrina de panadería — las
+// fotos entran desde abajo con desenfoque, crecen al pasar el mouse y se
+// abren en lightbox. Cada foto lleva su crédito visible (`credit`) en la
+// leyenda. Solo la usa demos/bakery.js (gallery.variant = 'masonry').
+function MasonryGallery({ items }) {
+  const data = items.map((item, i) => ({
+    id: `${i}-${item.label}`,
+    img: item.image,
+    width: item.width,
+    height: item.height,
+    title: item.label,
+    description: item.credit,
+    alt: item.alt || item.label,
+  }))
+  const fallback = (
+    <div className="demo-masonry-fallback">
+      {items.map((item) => <img key={item.label} src={item.image} alt={item.alt || item.label} loading="lazy" />)}
+    </div>
+  )
+  return (
+    <Suspense fallback={fallback}>
+      <LazyMasonry
+        items={data}
+        columnWidth={280}
+        gap={14}
+        radius={18}
+        animateFrom="bottom"
+        stagger={0.06}
+        blurToFocus
+        hoverEffect="lift"
+        captions="always"
+        draggable={false}
+        className="demo-masonry"
+      />
+    </Suspense>
+  )
+}
+
+export default function Gallery({ id = 'gallery', eyebrow, title, intro, items = [], hover, variant, theme, vines = false, materials = null }) {
   // hover: 'glare' | 'tilt' | 'peel' | 'chroma' | 'blur' | 'float' — un
   // efecto distinto por nicho, ver styles.css "Efectos opt-in por demo".
   const tileHandlers =
@@ -64,6 +104,9 @@ export default function Gallery({ id = 'gallery', eyebrow, title, intro, items =
           <SplitText tag="h2" text={title} textAlign="center" splitType="chars" delay={30} duration={0.8} />
           {intro && <p>{intro}</p>}
         </Reveal>
+        {variant === 'masonry' ? (
+          <MasonryGallery items={items} />
+        ) : (
         <Reveal as="div" className={`demo-gallery${hover ? ` demo-gallery--${hover}` : ''}`}>
           {items.map((item, i) => {
             const isMedia = typeof item === 'object' && item !== null
@@ -86,6 +129,7 @@ export default function Gallery({ id = 'gallery', eyebrow, title, intro, items =
             )
           })}
         </Reveal>
+        )}
       </div>
     </section>
   )

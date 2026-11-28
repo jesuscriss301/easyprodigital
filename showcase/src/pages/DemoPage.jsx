@@ -27,6 +27,7 @@ import Badge from '../components/Badge.jsx'
 import { prefersReducedMotion } from '../components/motionUtils.js'
 import { VineFrame } from '../components/Vines.jsx'
 import { MaterialFrame } from '../components/Materials.jsx'
+import { SprinkleFrame } from '../components/Frosting.jsx'
 import { LazySplashCursor } from '../components/reactbits/registry.js'
 
 function useGoogleFont(href) {
@@ -87,6 +88,7 @@ export default function DemoPage({ demo }) {
     '--demo-line': demo.theme.line,
     '--demo-font-heading': demo.theme.headingFont,
     '--demo-font-body': demo.theme.bodyFont,
+    ...(demo.theme.frosting ? { '--demo-frosting': demo.theme.frosting } : {}),
   }
 
   const order = demo.layout?.order?.length ? demo.layout.order : DEFAULT_ORDER
@@ -95,9 +97,11 @@ export default function DemoPage({ demo }) {
     .map((key) => SECTION_RENDERERS[key](demo))
 
   return (
-    <div className={`demo-root${demo.vines ? ' demo-vines-on' : ''}${demo.materials ? ' demo-vines-on demo-materials-on' : ''}`} style={themeVars}>
+    <div className={`demo-root${demo.vines ? ' demo-vines-on' : ''}${demo.materials ? ' demo-vines-on demo-materials-on' : ''}${demo.frosting ? ' demo-frosting-on' : ''}`} style={themeVars}>
       {demo.vines && <VineFrame />}
       {demo.materials && <MaterialFrame set={demo.materials} />}
+      {/* Glaseado + grageas cayendo (Frosting.jsx) — solo Panadería. */}
+      {demo.frosting && <SprinkleFrame theme={demo.theme} />}
       <Seo
         title={demo.seo.title}
         description={demo.seo.description}

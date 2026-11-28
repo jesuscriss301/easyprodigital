@@ -77,6 +77,10 @@ import languageSchool from './languageSchool.js'
 import veterinary from './veterinary.js'
 import selfStorage from './selfStorage.js'
 import carRental from './carRental.js'
+import bakery from './bakery.js'
+import bakeryCrust from './bakeryCrust.js'
+import bakeryPistachio from './bakeryPistachio.js'
+import bakeryNight from './bakeryNight.js'
 
 // Registro central de demos QUE SE LISTAN en la página de inicio del
 // showcase — una tarjeta por rubro/nicho distinto. Cada entrada se convierte
@@ -87,13 +91,16 @@ import carRental from './carRental.js'
 // conectado todavía, así que esto es la mejor aproximación real que
 // tenemos a "qué demo mira más gente" — conviene re-exportar el reporte y
 // reordenar cada cierto tiempo en vez de dejarlo fijo para siempre.
-const demos = [realestate, aesthetics, lawyers, plumbers, masons, veterinary, dentists, selfStorage, chef, carWash, automechanics, carRental, carpenters, salonBelleza, church, youtuber, adultCreator, cleaners, construction, electricians, foundation, gardeners, languageSchool]
+const demos = [realestate, aesthetics, lawyers, plumbers, masons, veterinary, dentists, selfStorage, chef, carWash, automechanics, carRental, carpenters, salonBelleza, church, youtuber, adultCreator, cleaners, construction, electricians, foundation, gardeners, languageSchool, bakery]
 
 // Variantes de estilo (mismo contenido/rubro, distinta paleta + tipografía)
 // — deliberadamente fuera de `demos` para no duplicar la tarjeta del mismo
 // negocio en la home, pero siguen siendo accesibles por URL directa y se
 // enlazan entre sí con el selector de estilo (StyleSwitcher) en DemoPage.
 const styleOnlyVariants = [
+  bakeryCrust,
+  bakeryPistachio,
+  bakeryNight,
   salonBellezaModern,
   salonBellezaBotanical,
   salonBellezaNight,

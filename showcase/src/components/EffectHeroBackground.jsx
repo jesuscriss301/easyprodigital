@@ -13,6 +13,7 @@ import {
   LazyDotField,
   LazyGlassSurface,
   LazyLiquidChrome,
+  LazySilk,
 } from './reactbits/registry.js'
 
 /**
@@ -31,6 +32,7 @@ import {
  *   lineWaves    → Salón de belleza
  *   gridScan     → Inmobiliaria (con enableWebcam=false, ver nota abajo)
  *   sideRays     → Albañiles
+ *   silk         → Panadería (crema/glaseado que ondula; theme.silk ajusta color)
  */
 export default function EffectHeroBackground({ variant, theme, centered = false }) {
   if (!variant || !theme) return null
@@ -177,6 +179,28 @@ export default function EffectHeroBackground({ variant, theme, centered = false 
         />
       )
       break
+    case 'silk': {
+      // Silk (React Bits, WebGL2 sin dependencias): ondas suaves tipo crema
+      // batida para Panadería. Cada paleta trae su propio `theme.silk`
+      // (color de la tela, brillo y si es tema claro); sin él se usa el
+      // acento de la marca. Sin interacción: el fondo no captura el mouse.
+      const s = theme.silk || {}
+      node = (
+        <LazySilk
+          color={s.color || c2}
+          sheenColor={s.sheenColor || '#ffffff'}
+          lightMode={!!s.lightMode}
+          speed={s.speed ?? 3}
+          scale={s.scale ?? 1.1}
+          rotation={s.rotation ?? 0.35}
+          noiseIntensity={0.6}
+          sheen={s.sheen ?? 0.6}
+          mouseInteraction={false}
+          clickRipple={false}
+        />
+      )
+      break
+    }
     default:
       return null
   }
@@ -184,7 +208,7 @@ export default function EffectHeroBackground({ variant, theme, centered = false 
   // Beams, GridScan y PlasmaWave dibujan formas opacas y muy definidas (no
   // un lavado translúcido que se desvanece solo, como Aurora/PixelSnow) —
   // sin atenuar quedan demasiado dominantes sobre el texto del hero.
-  const dimOpacity = { beams: 0.4, gridScan: 0.4, plasmaWave: 0.32, liquidChrome: 0.5 }[variant]
+  const dimOpacity = { beams: 0.4, gridScan: 0.4, plasmaWave: 0.32, liquidChrome: 0.5, silk: theme.silk?.opacity ?? 0.55 }[variant]
 
   return (
     <div className="demo-hero-bg" style={dimOpacity ? { opacity: dimOpacity } : undefined} aria-hidden="true">

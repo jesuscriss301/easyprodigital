@@ -490,6 +490,29 @@ const systems = {
       ],
     },
   },
+  bakery: {
+    base: 'reservas',
+    en: {
+      name: 'Custom cake orders and weekly bread subscriptions',
+      intro: 'Customers order their cake online with a pickup date and pay a deposit, and bread subscribers get their loaf set aside every week, so you know what to bake before the oven is on.',
+      features: [
+        'Custom cake order form with flavor, size and pickup date',
+        'Deposit payment to confirm the order, with the balance due at pickup',
+        'Weekly bread subscription with pickup or delivery',
+        'Daily order list and pickup reminders by WhatsApp',
+      ],
+    },
+    es: {
+      name: 'Pedidos de tortas por encargo y suscripción semanal de pan',
+      intro: 'El cliente pide su torta en línea con fecha de recogida y paga un anticipo, y quien tiene suscripción de pan encuentra su hogaza apartada cada semana, así sabes qué hornear antes de encender el horno.',
+      features: [
+        'Formulario de torta por encargo con sabor, tamaño y fecha de recogida',
+        'Anticipo para confirmar el pedido y saldo al recoger',
+        'Suscripción semanal de pan con recogida o domicilio',
+        'Lista de pedidos por día y recordatorios de recogida por WhatsApp',
+      ],
+    },
+  },
   'language-school': {
     base: 'crm',
     en: {

@@ -63,3 +63,9 @@ export const LazyGlareHover = lazy(() => import('./GlareHover/GlareHover.jsx'))
 
 // --- Cinta de aviso 'demo de muestra' (motor gsap) ---
 export const LazyTextLoop = lazy(() => import('./TextLoop/TextLoop.jsx'))
+
+// --- Panadería (sin deps: WebGL2 puro + CSS) ---
+// Silk: tela/crema que ondula en el fondo del hero. Masonry: galería tipo
+// vitrina con revelado, captions y lightbox.
+export const LazySilk = lazy(() => import('./Silk/Silk.jsx'))
+export const LazyMasonry = lazy(() => import('./Masonry/Masonry.jsx'))
