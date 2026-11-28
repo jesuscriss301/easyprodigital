@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom'
+import { Link, Navigate, useParams } from 'react-router-dom'
 import Seo from '../components/Seo.jsx'
 import Reveal from '../components/Reveal.jsx'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
@@ -6,6 +6,17 @@ import { articles, pickRelated } from '../data/articles.js'
 import { articleSeoTitles, metaDescription } from '../data/articleSeo.js'
 
 const DEMO_BASE = 'https://demos.easyprodigital.com'
+
+// Rutas de primer nivel de las páginas de ciudad (solo en español). No viven
+// bajo /services/, así que el CTA de un artículo que las referencia debe
+// enlazarlas como /<slug>/ y no como /services/<slug>/.
+const CITY_SERVICE_ROUTES = new Set([
+  'paginas-web-medellin',
+  'consultoria-ia',
+  'consultoria-ia-medellin',
+  'consultoria-ia-cucuta',
+  'consultoria-ia-bucaramanga',
+])
 
 // Rótulos y copy del bloque de demo embebida. En español y en inglés.
 const DEMO_CARD = {
@@ -24,8 +35,8 @@ const DEMO_CARD = {
 /**
  * Página de un artículo. El contenido viene de src/data/articles.js (no de una
  * API en runtime) justamente para que el prerender escriba HTML real con
- * status 200 — cada ruta /blog/<slug>/ tiene que estar en ROUTE_PATHS de
- * scripts/prerender.mjs, que las toma del propio arreglo de artículos.
+ * status 200 — las rutas /blog/<slug>/ se derivan de ese mismo arreglo en
+ * scripts/prerender.mjs, solo en el idioma en que exista el artículo.
  */
 export default function Article() {
   const { slug } = useParams()
@@ -47,18 +58,32 @@ export default function Article() {
     )
   }
 
-  const content = article[lang] || article.en
+  // Artículo de un solo idioma: si se pide en el otro, se redirige a la URL
+  // que sí existe. El idioma de la ruta manda; no se sirve contenido traducido
+  // a medias ni se deja la URL equivocada indexable.
+  if (article.onlyLang && article.onlyLang !== lang) {
+    const target = article.onlyLang === 'es' ? `/es/blog/${article.slug}/` : `/blog/${article.slug}/`
+    return <Navigate to={target} replace />
+  }
+
+  const content = article[lang] || article[article.onlyLang] || article.en || article.es
   const tag = article.tag[lang] || article.tag.en
   const path = `/blog/${article.slug}/`
 
   // "Sigue leyendo": prioriza por tag (mismo nicho); si faltan, completa con
   // los listados en `related`; y si todavía faltan, con artículos cualesquiera.
-  const related = pickRelated(article, 3)
+  // Solo entran los artículos que existen en el idioma actual.
+  const related = pickRelated(article, 3, lang)
 
-  // Destino del CTA final: página de servicio si existe → demo si existe →
-  // contacto como fallback. Siempre va a quedar en una página comercial.
-  const ctaHref = article.relatedService
-    ? href(`/services/${article.relatedService}/`)
+  // Destino del CTA final: página de servicio o de ciudad si existe → demo si
+  // existe → contacto como fallback. Siempre va a quedar en una página comercial.
+  const servicePath = article.relatedService
+    ? CITY_SERVICE_ROUTES.has(article.relatedService)
+      ? `/${article.relatedService}/`
+      : `/services/${article.relatedService}/`
+    : null
+  const ctaHref = servicePath
+    ? href(servicePath)
     : article.relatedDemo
     ? `${DEMO_BASE}/${article.relatedDemo}/`
     : href('/contact/')
@@ -100,6 +125,8 @@ export default function Article() {
         type="article"
         publishedTime={article.date}
         imageAlt={seoTitle}
+        esOnly={article.onlyLang === 'es'}
+        enOnly={article.onlyLang === 'en'}
       />
 
       <article className="article">
@@ -112,7 +139,7 @@ export default function Article() {
             <img
               className="article-hero-img"
               src={article.image}
-              alt={article.imageAlt?.[lang] || article.imageAlt?.en || ''}
+              alt={article.imageAlt?.[lang] || article.imageAlt?.[article.onlyLang] || article.imageAlt?.en || ''}
               width="640"
               height="427"
             />
@@ -160,7 +187,7 @@ export default function Article() {
                     <li key={a.slug}>
                       <Link to={href(`/blog/${a.slug}/`)}>
                         <span className="article-related-tag">{a.tag[lang] || a.tag.en}</span>
-                        <span className="article-related-title">{a[lang].title}</span>
+                        <span className="article-related-title">{a[lang]?.title || a[a.onlyLang]?.title}</span>
                       </Link>
                     </li>
                   ))}

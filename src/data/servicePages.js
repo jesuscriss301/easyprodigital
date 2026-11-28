@@ -6,7 +6,7 @@
 //  El mercado objetivo es EE. UU., Canadá y Colombia: el inglés habla a
 //  EE. UU./Canadá (texto, WhatsApp, Google) y el español a Colombia.
 // ============================================================
-import { articles } from './articles.js'
+import { articles } from './articleIndex.js'
 
 export const SERVICE_SLUGS = [
   'get-found-online',
@@ -92,7 +92,7 @@ const en = {
     audienceType: 'Local businesses',
     seoTitle: 'Websites & Local SEO for Small Businesses | Easy Pro Digital',
     seoDescription: 'A clear, fast website plus a complete Google Business Profile so customers in the US and Canada find you and choose you. Fixed price, no jargon.',
-    eyebrow: 'Get Found',
+    eyebrow: 'Website & Google listing',
     title: 'Get found on Google by customers who are ready to buy',
     intro: 'A clear, fast website and a complete Google Business Profile, so people who search for what you do find you first and know how to contact you in one tap.',
     problemTitle: 'What this fixes',
@@ -122,7 +122,7 @@ const en = {
     audienceType: 'Local businesses',
     seoTitle: 'Instant Replies by Text & WhatsApp | Easy Pro Digital',
     seoDescription: 'Answer every customer message in seconds with automatic replies and quick quotes by text or WhatsApp, and get an alert when a real lead comes in.',
-    eyebrow: 'Respond Fast',
+    eyebrow: 'Text & WhatsApp assistant',
     title: 'Never leave a customer waiting for an answer',
     intro: 'Automatic replies to common questions, quick quotes and an alert on your phone when a new inquiry arrives, so you reply first and sell more.',
     problemTitle: 'What this fixes',
@@ -151,7 +151,7 @@ const en = {
     audienceType: 'Clinics, salons and service businesses',
     seoTitle: 'Reminders & Customer Follow-Up | Easy Pro Digital',
     seoDescription: 'Appointment reminders, simple customer tracking and follow-up messages that bring customers back and cut no-shows for clinics, salons and service businesses.',
-    eyebrow: 'Keep Them Coming Back',
+    eyebrow: 'Customer follow-up',
     title: 'Turn one-time customers into regulars',
     intro: 'Appointment reminders, simple tracking of each customer and follow-up messages, so people return and recommend you without you chasing them.',
     problemTitle: 'What this fixes',
@@ -182,7 +182,7 @@ const en = {
     seoTitle: 'Custom Web Development for Businesses | Easy Pro Digital',
     seoDescription: 'Fast, secure custom websites and web applications built with Java, PHP and React, with SEO and Core Web Vitals in mind, for businesses in the US and Canada.',
     eyebrow: 'Web Development',
-    title: 'Websites and web applications built to last',
+    title: 'A website or online store that brings you customers and sales',
     intro: 'From a fast business website to an internal system handling thousands of daily transactions, built and maintained by the same developer.',
     problemTitle: 'What this solves',
     problems: [
@@ -238,7 +238,7 @@ const en = {
     seoTitle: 'SaaS Development, MVP to Production | Easy Pro Digital',
     seoDescription: 'Scalable SaaS platforms with authentication, payments and multi-tenant architecture, designed for compliance and growth, from MVP to production.',
     eyebrow: 'SaaS Solutions',
-    title: 'Scalable cloud platforms, from MVP to production',
+    title: 'Ditch the spreadsheets: a system built around how you work',
     intro: 'Cloud platforms built to grow: authentication, payments and architecture for real-time data. I have designed databases and systems for pharmaceutical supply chains, mining CRMs and reservation systems.',
     problemTitle: 'What this solves',
     problems: [
@@ -267,7 +267,7 @@ const en = {
     seoTitle: 'SEO Services for Local & Online Businesses | Easy Pro Digital',
     seoDescription: 'Technical, on-page and local SEO for businesses in the US, Canada and Colombia: structured data, speed and content that earns real traffic.',
     eyebrow: 'SEO Services',
-    title: 'SEO that shows up in the numbers',
+    title: 'Show up first when people nearby search for what you sell',
     intro: 'SEO built in from the start, not bolted on at the end: structured data, URL architecture, web performance and on-page optimization. On a past store, organic traffic grew 40% and 30 keywords reached page one.',
     problemTitle: 'What this solves',
     problems: [
@@ -323,7 +323,7 @@ const en = {
     seoTitle: 'AI Chatbots & Integrations for Business | Easy Pro Digital',
     seoDescription: 'Practical AI: chatbots on WhatsApp Business, content pipelines and private local models for businesses that cannot send data to the cloud.',
     eyebrow: 'AI Integrations',
-    title: 'AI that solves real business problems',
+    title: 'Put AI to work in your business without giving away your data',
     intro: 'A WhatsApp chatbot I built took response time from 10–40 minutes to under a minute and automated 85% of customer inquiries. The same approach works with cloud APIs or with private models on your own infrastructure.',
     problemTitle: 'What this solves',
     problems: [
@@ -354,7 +354,7 @@ const es = {
     audienceType: 'Negocios locales',
     seoTitle: 'Páginas Web y SEO Local para Negocios | Easy Pro Digital',
     seoDescription: 'Página web clara y rápida más tu ficha de Google completa para que los clientes en Colombia te encuentren y te elijan. Precio cerrado, sin tecnicismos.',
-    eyebrow: 'Aparece',
+    eyebrow: 'Página web y Google',
     title: 'Aparece en Google ante clientes listos para comprar',
     intro: 'Una página web clara y rápida y tu ficha de Google completa, para que quien busque lo que haces te encuentre primero y sepa cómo contactarte con un toque.',
     problemTitle: 'Qué resuelve',
@@ -384,7 +384,7 @@ const es = {
     audienceType: 'Negocios locales',
     seoTitle: 'Respuestas Automáticas por WhatsApp | Easy Pro Digital',
     seoDescription: 'Responde cada mensaje de tus clientes en segundos con respuestas automáticas y cotizaciones rápidas por WhatsApp, y recibe un aviso cuando llegue un cliente real.',
-    eyebrow: 'Responde',
+    eyebrow: 'Asistente de WhatsApp',
     title: 'Que ningún cliente se quede esperando respuesta',
     intro: 'Respuestas automáticas a las preguntas comunes, cotizaciones rápidas y un aviso en tu celular cuando entra una consulta nueva. Respondes primero y vendes más.',
     problemTitle: 'Qué resuelve',
@@ -413,7 +413,7 @@ const es = {
     audienceType: 'Clínicas, salones y negocios de servicios',
     seoTitle: 'Recordatorios y Seguimiento de Clientes | Easy Pro Digital',
     seoDescription: 'Recordatorios de citas, seguimiento simple de clientes y mensajes de regreso que reducen las inasistencias en clínicas, salones y negocios de servicios.',
-    eyebrow: 'Retiene',
+    eyebrow: 'Seguimiento de clientes',
     title: 'Convierte clientes de una sola vez en clientes fijos',
     intro: 'Recordatorios de citas, seguimiento simple de cada cliente y mensajes de regreso, para que vuelvan y te recomienden sin que tengas que perseguirlos.',
     problemTitle: 'Qué resuelve',
@@ -444,7 +444,7 @@ const es = {
     seoTitle: 'Desarrollo Web a Medida en Colombia | Easy Pro Digital',
     seoDescription: 'Sitios y aplicaciones web a medida, rápidos y seguros, con Java, PHP y React, pensados para SEO y Core Web Vitals. Para negocios en Colombia.',
     eyebrow: 'Desarrollo web',
-    title: 'Sitios y aplicaciones web hechos para durar',
+    title: 'Una página o tienda en línea que te traiga clientes y ventas',
     intro: 'Desde una web rápida para tu negocio hasta un sistema interno con miles de transacciones diarias, construido y mantenido por el mismo desarrollador.',
     problemTitle: 'Qué resuelve',
     problems: [
@@ -500,7 +500,7 @@ const es = {
     seoTitle: 'Desarrollo de SaaS: del MVP a Producción | Easy Pro Digital',
     seoDescription: 'Plataformas SaaS escalables con autenticación, pagos y arquitectura multi-cliente, pensadas para normativa y crecimiento, del MVP a producción.',
     eyebrow: 'Soluciones SaaS',
-    title: 'Plataformas en la nube que escalan, del MVP a producción',
+    title: 'Deja el Excel: un sistema hecho a la forma en que trabajas',
     intro: 'Plataformas construidas para crecer: autenticación, pagos y arquitectura para datos en tiempo real. He diseñado bases de datos y sistemas para cadenas de suministro farmacéuticas, CRMs mineros y sistemas de reservas.',
     problemTitle: 'Qué resuelve',
     problems: [
@@ -529,7 +529,7 @@ const es = {
     seoTitle: 'SEO Técnico y Local en Colombia | Easy Pro Digital',
     seoDescription: 'SEO técnico, on-page y local para negocios en Colombia, EE. UU. y Canadá: datos estructurados, velocidad y contenido que trae tráfico real.',
     eyebrow: 'Servicios de SEO',
-    title: 'SEO que se ve en los números',
+    title: 'Aparece primero cuando te buscan cerca',
     intro: 'SEO desde el inicio, no pegado al final: datos estructurados, arquitectura de URLs, rendimiento web y optimización on-page. En una tienda anterior, el tráfico orgánico creció 40 % y 30 palabras clave llegaron a la primera página.',
     problemTitle: 'Qué resuelve',
     problems: [
@@ -585,7 +585,7 @@ const es = {
     seoTitle: 'Chatbots e IA para Negocios | Easy Pro Digital',
     seoDescription: 'IA práctica: chatbots en WhatsApp Business, producción de contenido y modelos locales privados para negocios que no pueden enviar sus datos a la nube.',
     eyebrow: 'Integraciones de IA',
-    title: 'IA que resuelve problemas reales de negocio',
+    title: 'Pon la IA a trabajar en tu negocio sin regalar tus datos',
     intro: 'Un chatbot de WhatsApp que construí bajó el tiempo de respuesta de 10–40 minutos a menos de un minuto y automatizó el 85 % de las consultas. El mismo enfoque sirve con APIs en la nube o con modelos privados en tu propia infraestructura.',
     problemTitle: 'Qué resuelve',
     problems: [

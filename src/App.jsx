@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import { LanguageProvider } from './i18n/LanguageContext.jsx'
 import { Header, Footer, StatusBar, ScrollToTop, WhatsAppFloat } from './components/Layout.jsx'
@@ -9,6 +10,7 @@ import {
   GoogleBusinessProfileService,
   ServiceLanding,
   NichePage,
+  CityPage,
   Portfolio,
   About,
   Contact,
@@ -17,9 +19,12 @@ import {
   NotFound,
 } from './pages/pages.jsx'
 import ArticlesAside from './components/ArticlesAside.jsx'
-import RagForm from './pages/RagForm.jsx'
-import Blog from './pages/Blog.jsx'
-import Article from './pages/Article.jsx'
+
+// Páginas con contenido pesado: se cargan por partes para que los cuerpos de
+// los artículos no entren en el JS principal.
+const RagForm = lazy(() => import('./pages/RagForm.jsx'))
+const Blog = lazy(() => import('./pages/Blog.jsx'))
+const Article = lazy(() => import('./pages/Article.jsx'))
 
 /**
  * Envoltorio de una rama de idioma completa (inglés en "/", español en "/es/*").
@@ -35,7 +40,9 @@ function LangLayout({ lang }) {
           en desktop el grid mueve el aside a la derecha con grid-column/grid-row. */}
       <div className="shell">
         <main className="shell-main">
-          <Outlet />
+          <Suspense fallback={null}>
+            <Outlet />
+          </Suspense>
         </main>
         <ArticlesAside />
       </div>
@@ -68,6 +75,11 @@ function RouteChildren() {
       <Route path="services/seo-services" element={<ServiceLanding slug="seo-services" />} />
       <Route path="services/digital-marketing" element={<ServiceLanding slug="digital-marketing" />} />
       <Route path="services/ai-integrations" element={<ServiceLanding slug="ai-integrations" />} />
+      <Route path="paginas-web-medellin" element={<CityPage slug="paginas-web-medellin" />} />
+      <Route path="consultoria-ia" element={<CityPage slug="consultoria-ia" />} />
+      <Route path="consultoria-ia-medellin" element={<CityPage slug="consultoria-ia-medellin" />} />
+      <Route path="consultoria-ia-cucuta" element={<CityPage slug="consultoria-ia-cucuta" />} />
+      <Route path="consultoria-ia-bucaramanga" element={<CityPage slug="consultoria-ia-bucaramanga" />} />
       <Route path="portfolio" element={<Portfolio />} />
       <Route path="blog" element={<Blog />} />
       <Route path="blog/:slug" element={<Article />} />

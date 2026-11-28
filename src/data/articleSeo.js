@@ -42,6 +42,14 @@ export const articleSeoTitles = {
   'fontanero-cotizacion-automatica-whatsapp': { en: 'Plumbers Who Reply in 5 Minutes Win the Job: Automate It', es: 'Fontaneros: Responde en 5 Minutos y Gana el Trabajo' },
   'salon-app-reservas-fidelizacion': { en: 'Beauty Salons With Loyal Clients Use Systems, Not Luck', es: 'Salones de Belleza Fieles: Sistemas, No Solo Buen Servicio' },
   'abogado-web-credibilidad-clientes': { en: 'How Colombian Law Firms Win Clients Online', es: 'Cómo los Abogados en Colombia Ganan Clientes en Línea' },
+  'cuanto-cuesta-pagina-web-medellin-2026': { es: '¿Cuánto Cuesta una Página Web en Medellín en 2026?' },
+  'ia-para-pymes-cucuta': { es: 'IA para Pymes en Cúcuta: 5 Usos que Ahorran Tiempo' },
+  'servidor-propio-o-nube-empresas-bucaramanga': { es: '¿Servidor Propio o Nube? Guía para Empresas de Bucaramanga' },
+  'hurricane-season-website-checklist-florida-plumbers': { en: 'Hurricane Season Website Checklist for Florida Plumbers' },
+  'texas-contractor-website-show-your-license': { en: 'Texas Contractors: Put Your License Where Customers Decide' },
+  'california-small-business-website-accessibility': { en: 'California Website Accessibility: Basics That Prevent Claims' },
+  'ontario-small-business-website-aoda-casl': { en: 'Ontario Websites: What AODA and CASL Mean for You' },
+  'manchester-small-business-website-cookies-local-search': { en: 'Manchester Business Website: Cookies and Local Search' },
 }
 
 /**

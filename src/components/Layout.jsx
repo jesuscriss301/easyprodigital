@@ -27,9 +27,16 @@ function getInitialTheme() {
 }
 
 function ThemeToggle() {
-  const [theme, setTheme] = useState(getInitialTheme)
+  // Arranca en null para que el primer render coincida con el HTML prerenderizado
+  // (hidratación); el tema real (guardado o del sistema) se lee al montar.
+  const [theme, setTheme] = useState(null)
 
   useEffect(() => {
+    setTheme(getInitialTheme())
+  }, [])
+
+  useEffect(() => {
+    if (!theme || window.__PRERENDER__) return
     document.documentElement.setAttribute('data-theme', theme)
     try {
       window.localStorage.setItem('epd-theme', theme)
@@ -254,7 +261,7 @@ export function SocialLinks({ profile, label }) {
 }
 
 export function Footer() {
-  const { href, data, t } = useLanguage()
+  const { href, data, t, lang } = useLanguage()
   const { profile } = data
   return (
     <footer className="site-footer">
@@ -272,6 +279,14 @@ export function Footer() {
         </div>
         <nav className="footer-nav" aria-label="Footer">
           <Link to={href('/services/')}>{t.footer.services}</Link>
+          {lang === 'es' && (
+            <>
+              <Link to={href('/paginas-web-medellin/')}>Páginas web en Medellín</Link>
+              <Link to={href('/consultoria-ia/')}>
+                Consultoría IA: Medellín, Cúcuta, Bucaramanga
+              </Link>
+            </>
+          )}
           <Link to={href('/pricing/')}>{t.footer.pricing}</Link>
           <Link to={href('/portfolio/')}>{t.footer.portfolio}</Link>
           <a href="https://demos.easyprodigital.com" target="_blank" rel="noopener noreferrer">
@@ -309,6 +324,9 @@ export function StatusBar() {
         hour12: false,
         timeZone: 'America/Bogota',
       }).format(new Date())
+    // En el prerender no se fija la hora: el HTML estático no debe llevar una
+    // hora "congelada" que luego no coincida al hidratar.
+    if (window.__PRERENDER__) return
     setTime(fmt())
     const id = setInterval(() => setTime(fmt()), 30_000)
     return () => clearInterval(id)

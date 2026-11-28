@@ -42,7 +42,10 @@ const LetterGlitch = ({
   const grid = useRef({ columns: 0, rows: 0 })
   const context = useRef(null)
   const lastGlitchTime = useRef(Date.now())
-  const isVisible = useRef(true)
+  // Arranca en pausa: el IntersectionObserver lo activa solo cuando el bloque
+  // entra en pantalla, así no gasta CPU durante la carga si está más abajo.
+  // Sin IntersectionObserver (navegadores muy viejos) se queda siempre activo.
+  const isVisible = useRef(typeof IntersectionObserver === 'undefined')
 
   const lettersAndSymbols = Array.from(characters)
 

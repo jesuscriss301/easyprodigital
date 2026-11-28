@@ -2,13 +2,29 @@
 <html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8FEQGGF2GG"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'G-8FEQGGF2GG');
+
+      /* Carga diferida de gtag.js: al terminar el evento load, en tiempo ocioso si el
+         navegador lo soporta (o 1500 ms después si no). Los eventos previos quedan
+         encolados en dataLayer. */
+      function loadGtag() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-8FEQGGF2GG';
+        document.head.appendChild(s);
+      }
+      window.addEventListener('load', function () {
+        if (typeof window.requestIdleCallback === 'function') {
+          window.requestIdleCallback(loadGtag);
+        } else {
+          setTimeout(loadGtag, 1500);
+        }
+      });
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -49,10 +65,6 @@
     <meta property="og:image:alt" content="Jesús Manuel Cristancho — Freelance Full-Stack Developer" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://easyprodigital.com/og-image.jpg" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div id="root"></div>

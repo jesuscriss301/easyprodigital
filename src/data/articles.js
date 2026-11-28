@@ -12,7 +12,16 @@
  * Campos: slug, tag (nicho, se muestra como etiqueta), title/summary/body
  * por idioma. `body` es un array de bloques { h } para subtítulo o { p }
  * para párrafo.
+ *
+ * Artículos de un solo idioma: `onlyLang: 'es'` o `onlyLang: 'en'`. En ese
+ * caso SOLO existe el bloque de ese idioma (el otro no se escribe), los
+ * listados lo ocultan en el otro idioma y Article.jsx redirige la URL del
+ * idioma equivocado a la que sí existe. Las rutas se prerenderizan únicamente
+ * en su idioma y el sitemap publica una sola URL con sus alternates. El
+ * validador exige que `related` esté disponible en el mismo idioma.
  */
+import { availableIn, pickFrom } from './articlePicks.js'
+
 export const articles = [
   {
     slug: 'real-estate-website-no-leads',
@@ -148,7 +157,7 @@ export const articles = [
     slug: 'emergency-page-converts-2am',
     relatedDemo: 'plumbers',
     relatedService: 'plumber-website-design',
-    related: ['plumbing-website-no-calls', 'fontaneria-web-lovable-no-google', 'google-business-profile-local-trades'],
+    related: ['plumbing-website-no-calls', 'fontaneria-web-lovable-no-google', 'google-business-profile-local-trades', 'hurricane-season-website-checklist-florida-plumbers'],
     tag: { en: 'Home services', es: 'Servicios a domicilio' },
     date: '2026-10-16',
     image: 'https://cdn.pixabay.com/photo/2019/10/24/08/07/fire-department-4573674_640.jpg',
@@ -190,7 +199,7 @@ export const articles = [
     slug: 'how-much-should-a-website-cost',
     relatedDemo: null,
     relatedService: null,
-    related: ['invisible-on-google-where-to-start', 'web-con-ia-30-segundos-no-aparece-google', 'web-dos-anos-sin-mantenimiento-google-olvida'],
+    related: ['invisible-on-google-where-to-start', 'web-con-ia-30-segundos-no-aparece-google', 'web-dos-anos-sin-mantenimiento-google-olvida', 'cuanto-cuesta-pagina-web-medellin-2026'],
     tag: { en: 'Pricing', es: 'Precios' },
     date: '2026-10-16',
     image: 'https://cdn.pixabay.com/photo/2014/09/24/14/29/macbook-459196_640.jpg',
@@ -458,7 +467,7 @@ export const articles = [
     slug: 'google-business-profile-local-trades',
     relatedDemo: null,
     relatedService: 'google-business-profile-setup',
-    related: ['invisible-on-google-where-to-start', 'web-competencia-peor-rankea-mas-alto', 'fontanero-vecino-mas-llamadas-web-fea'],
+    related: ['invisible-on-google-where-to-start', 'web-competencia-peor-rankea-mas-alto', 'fontanero-vecino-mas-llamadas-web-fea', 'hurricane-season-website-checklist-florida-plumbers', 'manchester-small-business-website-cookies-local-search'],
     tag: { en: 'Local SEO', es: 'SEO local' },
     date: '2026-10-16',
     image: 'https://cdn.pixabay.com/photo/2016/11/22/21/34/treasure-map-1850653_640.jpg',
@@ -1635,6 +1644,321 @@ export const articles = [
       ],
     },
   },
+  {
+    slug: 'cuanto-cuesta-pagina-web-medellin-2026',
+    onlyLang: 'es',
+    relatedDemo: null,
+    relatedService: 'paginas-web-medellin',
+    related: ['how-much-should-a-website-cost', 'ia-para-pymes-cucuta', 'servidor-propio-o-nube-empresas-bucaramanga'],
+    tag: { en: 'Pricing', es: 'Precios' },
+    date: '2026-11-27',
+    image: 'https://cdn.pixabay.com/photo/2014/09/24/14/29/macbook-459196_640.jpg',
+    imageAlt: { en: 'Laptop showing a website on a clean desk', es: 'Portátil mostrando una web sobre un escritorio limpio' },
+    es: {
+      title: '¿Cuánto Cuesta una Página Web en Medellín en 2026? Precios Reales y Qué Incluye',
+      summary:
+        'Los paquetes web parten de 450 USD. Te muestro de qué depende el precio, qué costos se repiten cada año y cómo leer una cotización sin sorpresas.',
+      body: [
+        { p: 'Pides tres cotizaciones para la página web de tu negocio en Medellín y llegan tres números que no se parecen. Una dice un precio, otra dice el triple y otra te ofrece una mensualidad para siempre. Antes de decidir necesitas saber qué estás comprando. Aquí va el desglose, con los rangos que manejo y los costos que casi nadie menciona al principio.' },
+        { h: 'De qué depende realmente el precio' },
+        { p: 'El precio cambia por el trabajo que hay detrás, no por la ciudad ni por la suerte. Estas son las variables que más pesan.' },
+        { p: 'Número de secciones. No es lo mismo una página que presenta un servicio que una web con inicio, servicios, nosotros, blog y contacto. Cada sección necesita textos, diseño y pruebas en celular.' },
+        { p: 'Si hay tienda o no. Una tienda en línea suma productos, medios de pago, envíos, inventario y una capacitación para que puedas administrarla. Eso es otro proyecto, no una sección más.' },
+        { p: 'Textos y fotos. Si los entregas listos, el proyecto avanza. Si hay que escribirlos o conseguir fotos con derechos de uso, ese trabajo también se cobra.' },
+        { p: 'Integraciones. Un botón de WhatsApp es sencillo. Pagos con PSE o Wompi, facturación, agenda o conexión con tu CRM ya requieren pruebas y configuración.' },
+        { p: 'Por eso una cotización seria pregunta primero cómo funciona tu negocio. Un precio sin esas preguntas es un número al aire.' },
+        { h: 'Rangos reales para 2026' },
+        { p: 'Estos son los paquetes que tengo publicados, en dólares y antes de IVA:' },
+        { p: 'Landing page: desde 450 USD hasta 650 USD. Una sola página, entrega en 5 a 7 días hábiles, con formulario a correo y WhatsApp, dominio, certificado de seguridad y una ronda de cambios.' },
+        { p: 'Web corporativa: desde 900 USD hasta 1.500 USD. Cinco a siete páginas para clínicas, restaurantes o pymes, con SEO básico, analítica y dos rondas de revisión. Es el paquete que más se ajusta a un negocio que ya vende y quiere verse serio.' },
+        { p: 'Web premium: desde 2.200 USD hasta 3.500 USD. Diseño único, animaciones e interacción, pensado para marcas que compiten por percepción. Entrega en 3 a 5 semanas.' },
+        { p: 'Tienda en línea: desde 900 USD hasta 1.400 USD la básica, y hasta 2.800 USD la completa. La diferencia está en la cantidad de productos, las pasarelas de pago y si necesitas facturación electrónica.' },
+        { p: 'Si estás en Colombia, puedes pagar en pesos al equivalente del día. El IVA no está incluido y el alcance queda por escrito antes de empezar.' },
+        { h: 'Los costos que se repiten cada año' },
+        { p: 'El desarrollo se paga una vez. La web, en cambio, sigue viva y tiene gastos propios. El dominio se renueva cada año; si no está a tu nombre, empieza por arreglar eso. El hosting también se renueva y depende de cuánto tráfico y cuántos correos manejes.' },
+        { p: 'Después está el mantenimiento. Mis planes van desde 80 USD al mes por dos horas de trabajo y copias de seguridad, 180 USD por cinco horas con SEO y reportes, hasta 350 USD por diez horas y atención prioritaria. No es obligatorio contratarlo, pero una web que nadie actualiza se vuelve lenta y acumula errores.' },
+        { p: 'Súmale lo que no es técnico: renovar fotos, cambiar precios, publicar un artículo o responder reseñas. Ese tiempo existe aunque no aparezca en la cotización inicial.' },
+        { h: 'Señales de una cotización mala' },
+        { p: 'Precio sin alcance escrito. Si no dice cuántas páginas, cuántas rondas de cambios y qué incluye, no es una cotización: es un saludo.' },
+        { p: 'Dominio a nombre del proveedor. Si el dominio queda en su cuenta, tú no eres dueño de tu presencia. Pide que quede a tu nombre desde el primer día.' },
+        { p: 'Mensualidad obligatoria para una web que debería ser tuya. Un pago mensual puede ser razonable por hosting y soporte, pero no para alquilar algo que construiste.' },
+        { p: 'Cero preguntas sobre tu negocio. Una web que sirve empieza por entender a quién le habla y qué tiene que pasar cuando alguien entra.' },
+        { h: 'Agencia, freelance o hacerla tú' },
+        { p: 'Una agencia te da un equipo y un proceso, y suele costar más. Un freelance te da trato directo y menos intermediarios; revisa su portafolio y pregunta quién hará el trabajo. Hacerla tú en Wix o con una herramienta similar puede funcionar si tienes tiempo, aprendes rápido y tu negocio no depende de aparecer en Google.' },
+        { p: 'Lo importante es que la decisión sea consciente. Una plantilla gratuita no es gratis si te toma tres meses y queda a medias. Un desarrollo caro no es caro si te trae clientes durante años.' },
+        { h: 'Cómo pedir una cotización útil' },
+        { p: 'Manda estos cinco datos y vas a recibir respuestas comparables:' },
+        { p: '1) Qué hace tu negocio y a quién le vende. 2) Qué páginas necesitas o qué debe poder hacer la web. 3) Si ya tienes dominio, hosting, textos y fotos. 4) Qué integraciones necesitas: WhatsApp, pagos, agenda o CRM. 5) Tu fecha ideal y tu presupuesto aproximado.' },
+        { p: 'Con eso, cualquier profesional serio puede decirte qué entra, qué no y cuánto cuesta. Si te responde con otro cuestionario, mejor.' },
+        { p: 'En Medellín y el Valle de Aburrá puedo reunirme en persona para revisar el proyecto. Hasta el 31 de diciembre de 2026 hay un 50 % de descuento en los precios publicados; pregunta si aplica a lo que necesitas.' },
+        { p: 'Mi consejo: no compres una web por el precio más bajo ni por el más alto. Compra un alcance claro, un dominio a tu nombre y alguien que te explique qué está haciendo. Si quieres, escríbeme y lo revisamos juntos sin compromiso.' },
+      ],
+    },
+  },
+  {
+    slug: 'ia-para-pymes-cucuta',
+    onlyLang: 'es',
+    relatedDemo: null,
+    relatedService: 'consultoria-ia-cucuta',
+    related: ['cuanto-cuesta-pagina-web-medellin-2026', 'servidor-propio-o-nube-empresas-bucaramanga', 'fontanero-cotizacion-automatica-whatsapp'],
+    tag: { en: 'AI', es: 'IA' },
+    date: '2026-11-27',
+    image: 'https://cdn.pixabay.com/photo/2018/09/27/09/22/artificial-intelligence-3706562_640.jpg',
+    imageAlt: { en: 'Artificial intelligence concept with digital brain', es: 'Concepto de inteligencia artificial con cerebro digital' },
+    es: {
+      title: 'IA para Pymes en Cúcuta: 5 Usos que Sí Ahorran Tiempo (Sin Regalar tus Datos)',
+      summary:
+        'Cinco tareas repetitivas que la IA puede hacer hoy en tu empresa, qué necesitas para cada una y cómo empezar sin subir información sensible.',
+      body: [
+        { p: 'Si tienes una pyme en Cúcuta, la IA probablemente te suena lejana: cara, complicada y con un riesgo que nadie termina de explicar. Mientras tanto, tu equipo pierde horas respondiendo lo mismo por WhatsApp, buscando una cláusula en un contrato o pasando cotizaciones a una hoja de cálculo. No hace falta montar un laboratorio. Hace falta elegir una tarea y hacerla bien.' },
+        { p: 'Hay tres frenos que se repiten: el miedo a subir información sensible, no saber por dónde empezar y creer que hay que invertir una fortuna. Los tres se resuelven con la misma decisión: empezar por una tarea pequeña y con datos que no sean críticos.' },
+        { h: 'Responder WhatsApp con la información del negocio' },
+        { p: 'Qué reemplaza: las mismas respuestas sobre horarios, precios, domicilios y disponibilidad. Un asistente conectado a tu WhatsApp Business puede contestar con tu información y pasar a una persona cuando la conversación se complica.' },
+        { p: 'Qué necesitas: un catálogo o documento con tus respuestas, un número de WhatsApp Business y a alguien que revise las conversaciones al principio. Los primeros días son de ajuste, no de dejar el celular solo.' },
+        { h: 'Buscar respuestas en manuales, contratos y listas de precios' },
+        { p: 'Qué reemplaza: abrir un PDF de ochenta páginas y buscar con Ctrl+F mientras el cliente espera. Un buscador con IA sobre tus propios documentos responde en segundos y cita de dónde salió la respuesta.' },
+        { p: 'Qué necesitas: tus documentos ordenados y actualizados. Si el contrato viejo sigue en la misma carpeta que el nuevo, la IA va a responder con el viejo. Ordenar es la mitad del trabajo.' },
+        { h: 'Resumir correos y documentos largos' },
+        { p: 'Qué reemplaza: leer cuarenta correos de un hilo para saber qué se decidió. La IA puede resumir el hilo, listar compromisos y separar lo urgente de lo informativo.' },
+        { p: 'Qué necesitas: acceso al correo o a la carpeta donde viven los documentos, y una regla clara de qué se puede resumir y qué no. No todo debe pasar por una herramienta externa.' },
+        { h: 'Ordenar cotizaciones e inventario' },
+        { p: 'Qué reemplaza: pasar datos de un mensaje a Excel a mano, con errores de dedo incluidos. La IA puede extraer producto, cantidad, precio y cliente de un mensaje o una factura y dejarlos en una tabla.' },
+        { p: 'Qué necesitas: una plantilla estable y alguien que valide los primeros diez registros. Si la tabla cambia cada semana, ningún sistema la va a ordenar.' },
+        { h: 'Transcribir audios y reuniones' },
+        { p: 'Qué reemplaza: escuchar una nota de voz de diez minutos dos veces para tomar tres tareas. La transcripción convierte audio en texto y de ahí salen resúmenes y pendientes.' },
+        { p: 'Qué necesitas: una grabadora o el mismo celular, y permiso de las personas que participan. La transcripción no reemplaza el criterio: alguien tiene que leer y confirmar.' },
+        { h: 'Nube o servidor propio: cuándo conviene cada una' },
+        { p: 'En la nube, la herramienta vive en los servidores de un proveedor y pagas por uso o por mes. Es rápida de montar, no te preocupas por mantenimiento y sirve cuando el equipo es pequeño o el uso variable. La contraparte es que tus datos salen de tu oficina y dependes de la conexión.' },
+        { p: 'En un servidor propio, el modelo corre en una máquina tuya. Tienes más control sobre la información y no pagas por cada consulta, pero necesitas equipo, alguien que lo mantenga y un plan de copias. Conviene cuando los datos son muy sensibles o el volumen es alto y estable.' },
+        { p: 'Para una pyme que empieza, casi siempre tiene sentido probar en la nube con datos que no sean críticos. Cuando la tarea demuestre que ahorra tiempo, se decide si vale la pena llevarla a un servidor propio.' },
+        { h: 'Por dónde empezar esta semana' },
+        { p: 'Elige UNA tarea repetitiva. No cinco. Mide cuánto tiempo toma hoy, quién la hace y qué pasa si sale mal. Luego prueba una herramienta sencilla con esa tarea durante una semana y compara.' },
+        { p: 'Anota en una libreta cuántas veces al día se repite esa tarea y cuánto dura. Al final de la semana tendrás un número propio, no una promesa de proveedor. Con ese dato es mucho más fácil decidir si la herramienta se paga sola o si todavía no.' },
+        { p: 'Jesús es de Norte de Santander, estudió en la UFPS y viaja a Cúcuta en los momentos clave: el cierre, la toma de requerimientos y las pruebas. El resto del trabajo se hace a distancia. La consultoría inicial cuesta desde $400.000 COP y sirve para definir qué vale la pena automatizar y qué no.' },
+        { p: 'Mi consejo: empieza por la tarea que más se repite y menos criterio necesita. Si la IA se equivoca y nadie lo nota, todavía no es el momento. Si quieres, escríbeme y revisamos juntos cuál es esa primera tarea en tu empresa.' },
+      ],
+    },
+  },
+  {
+    slug: 'servidor-propio-o-nube-empresas-bucaramanga',
+    onlyLang: 'es',
+    relatedDemo: null,
+    relatedService: 'consultoria-ia-bucaramanga',
+    related: ['cuanto-cuesta-pagina-web-medellin-2026', 'ia-para-pymes-cucuta', 'web-dos-anos-sin-mantenimiento-google-olvida'],
+    tag: { en: 'Infrastructure', es: 'Infraestructura' },
+    date: '2026-11-27',
+    image: 'https://cdn.pixabay.com/photo/2015/01/08/18/27/startup-593341_640.jpg',
+    imageAlt: { en: 'Laptop on a desk with notes and coffee', es: 'Portátil en un escritorio con notas y café' },
+    es: {
+      title: '¿Servidor Propio o Nube? Guía para Empresas de Bucaramanga que Quieren Usar IA',
+      summary:
+        'Qué es cada opción, cinco preguntas para decidir, cuándo vale la pena una red de 10 Gb y cómo empezar con IA local sin comprar de más.',
+      body: [
+        { p: 'Quieres usar IA en tu empresa de Bucaramanga y alguien te dijo que necesitas un servidor. Otro te dijo que todo va en la nube y que un servidor es cosa del pasado. Las dos respuestas pueden ser correctas, porque dependen de tu caso. Esta guía no vende una opción: te da las preguntas para elegir.' },
+        { h: 'Qué es cada opción, en palabras simples' },
+        { p: 'Nube: la IA corre en los servidores de un proveedor. Entras por internet, pagas una suscripción o por consumo, y no te preocupas por la máquina. Es como alquilar un apartamento amoblado: llegas y usas.' },
+        { p: 'Servidor propio: la IA corre en un equipo que está en tu oficina o en un centro de datos que controlas. Compras la máquina, la configuras y respondes por ella. Es como comprar casa: más inversión inicial y más control.' },
+        { p: 'Hay una tercera opción que casi nadie menciona: un servidor dedicado alquilado. No está en tu oficina, pero es tuyo mientras pagas. Sirve cuando quieres control sin comprar hardware.' },
+        { h: 'Cinco preguntas para decidir' },
+        { p: '1. ¿Cuánta gente lo va a usar? Una o dos personas haciendo consultas puntuales no justifican una máquina. Un equipo de diez personas usándola todo el día cambia la cuenta.' },
+        { p: '2. ¿Qué tan sensibles son los datos? Historia clínica, contratos, nómina o información de clientes exigen más cuidado. Si no puedes subirlos a un servicio externo, el servidor propio gana puntos.' },
+        { p: '3. ¿Cómo es tu internet? La nube depende de una conexión estable. Si en tu oficina se cae seguido, un equipo local puede seguir trabajando; si la conexión es buena, la nube es más simple.' },
+        { p: '4. ¿Cuánto pagarías al mes frente a una compra? Suma suscripciones, consumo y horas de soporte. Compáralo con el precio del equipo, la energía, el mantenimiento y el reemplazo cada pocos años. No mires solo el primer mes.' },
+        { p: '5. ¿Quién lo mantiene? Un servidor propio necesita actualizaciones, copias y alguien que responda cuando falla. Si no tienes a esa persona, la nube te quita ese problema de encima.' },
+        { h: 'Cuándo vale la pena una red de 10 Gb' },
+        { p: 'Una red de 10 Gb tiene sentido cuando varias personas trabajan sobre los mismos archivos pesados y la red se vuelve el cuello de botella: video, planos, imágenes de alta resolución o respaldos grandes. También cuando tienes un servidor propio con varios usuarios conectados al mismo tiempo y quieres que la copia de un archivo no tarde una eternidad.' },
+        { p: 'No vale la pena si tu equipo son dos personas que revisan correo y documentos. Para eso, el Wi-Fi actual sobra. Tampoco si el problema es la conexión a internet y no la red interna: cambiar los cables no arregla una mala salida.' },
+        { p: 'Antes de comprar switches y cables, mide. Pasa un archivo grande entre dos equipos y mira cuánto tarda. Si el tiempo es razonable, no necesitas 10 Gb; si el equipo se queda esperando, ahí sí.' },
+        { h: 'Qué equipo mirar para IA local' },
+        { p: 'Para IA local, lo que más importa es la memoria de la tarjeta gráfica. Los modelos pequeños corren en equipos modestos; los grandes necesitan tarjetas con mucha memoria. Si la tarjeta se queda corta, el modelo se vuelve lento o no cabe.' },
+        { p: 'No compres por el número más grande del anuncio. Primero define qué modelo quieres usar y cuánta memoria pide; después busca el equipo. También mira el disco, la fuente de poder y la refrigeración, porque un equipo que se apaga por calor no sirve.' },
+        { p: 'Y considera el consumo eléctrico. Un servidor encendido todo el día gasta; en una oficina pequeña, ese costo puede pesar más que la suscripción que querías evitar.' },
+        { h: 'Copias de seguridad: una copia fuera de la oficina' },
+        { p: 'La regla es simple: además de la copia local, ten una copia fuera de la oficina. Si el equipo se daña, se roba o se inunda, la copia de al lado no te salva. Un disco externo que te llevas a casa o una copia en la nube cumplen.' },
+        { p: 'Prueba la restauración. Una copia que nunca se ha restaurado es una esperanza, no un respaldo. Hazlo una vez al trimestre y anota cuánto tardaste.' },
+        { h: 'Cómo trabaja Jesús' },
+        { p: 'Jesús hace una visita para cerrar el proyecto, toma los requerimientos y hace las pruebas en sitio en el área metropolitana: Bucaramanga, Floridablanca, Girón y Piedecuesta. El resto se trabaja a distancia, con avances y reuniones cortas.' },
+        { p: 'La consultoría inicial cuesta desde $400.000 COP y sirve para revisar tu caso, el equipo que ya tienes y las opciones antes de comprar. Si quieres, escríbeme y lo vemos con calma.' },
+        { p: 'Mi consejo: no empieces por el hardware. Empieza por la tarea y por los datos. La infraestructura se elige después, cuando ya sabes qué tiene que correr y quién lo va a cuidar. Si me cuentas cómo trabaja tu empresa, te digo qué opción miraría primero.' },
+      ],
+    },
+  },
+  {
+    slug: 'hurricane-season-website-checklist-florida-plumbers',
+    onlyLang: 'en',
+    relatedDemo: 'plumbers',
+    relatedService: 'plumber-website-design',
+    related: ['emergency-page-converts-2am', 'google-business-profile-local-trades', 'plumbing-website-no-calls'],
+    tag: { en: 'Plumbing', es: 'Plomería' },
+    date: '2026-11-27',
+    image: 'https://cdn.pixabay.com/photo/2019/10/24/08/07/fire-department-4573674_640.jpg',
+    imageAlt: { en: 'Emergency responders working at night during a storm' },
+    en: {
+      title: 'Hurricane Season Website Checklist for Florida Plumbers and Home Service Pros',
+      summary:
+        'The storm is on the radar before most plumbing websites remember they have an emergency page. Fix these pieces before the season turns.',
+      body: [
+        { p: 'The first storm has a name before it has a path, and your phone starts ringing while your website still says "Monday to Friday, 8 to 5". That gap costs you the calls you cannot answer and the customers who cannot tell whether you are open, nearby, or able to help at all. The Atlantic hurricane season runs from June 1 to November 30, so the work of getting ready happens before those dates, not during them.' },
+        { h: 'Get ready before the forecast turns' },
+        { p: 'A storm does not wait for you to finish a redesign. The useful work is small and boring: a banner you can switch on, a phone number that is easy to tap, a page that loads on a weak signal. Do it before the season starts, test it on your own phone, and leave it alone until you need it. If you are rebuilding the site anyway, build these pieces first, because they are the ones that matter when the power is out and someone is searching from a parking lot.' },
+        { h: 'Put the emergency banner behind one switch' },
+        { p: 'You need a banner that you can turn on in minutes, without calling a developer. It should say what is happening, what you can do, and how to reach you. Keep the wording ready in a document so you are not writing it at midnight. When the storm passes, turn it off. A permanent "emergency" banner stops being an emergency and starts looking like neglect.' },
+        { h: 'Write your real hours and your service area' },
+        { p: 'A visitor during a storm does not want a general promise. They want to know whether you are answering today and whether you cover their address. Write the hours you can actually keep, including the ones that change during a storm. Then list the places you serve. You can name Florida cities such as Orlando, Miami, Tampa or Fort Lauderdale as examples, but only if your team really works there. If you serve a radius around one city, say that. If you serve several counties, name them. The point is not to look big. The point is to help someone decide in one screen.' },
+        { h: 'Make call and text impossible to miss on a phone' },
+        { p: 'Most people looking for a plumber during a storm are on a phone, often with a weak signal. Put a call button and a text or WhatsApp button at the top of every page, not only on the contact page. Use a number that receives texts, and say what people should send: their address, a photo, and a short description. If you cannot answer every call, the text option keeps the conversation alive.' },
+        { h: 'Keep the pages light enough for a weak signal' },
+        { p: 'A heavy hero video, a gallery of full-size photos, and a chat widget that loads other scripts will lose a visitor on a bad connection. Compress images before you upload them. Remove anything that is not helping someone call you. Test the site on a phone with the connection throttled, or in a place where the signal is poor. If the page takes long to show your phone number, that is the first thing to fix.' },
+        { h: 'Update Google Business Profile while people are searching' },
+        { p: 'Your Google Business Profile is often the first thing people see, before they reach your site. Update the special hours, add a short post about storm availability, and make sure the phone number and service area are current. Do not mark the business as open if nobody is there to answer. A clear "closed today, back tomorrow" is better than a listing that sends people to voicemail with no explanation.' },
+        { h: 'Publish an after-the-storm page' },
+        { p: 'The calls after a storm are different from the ones during it. People need help with water damage, sump pumps, water heaters, and fixtures that were not broken before. Give that work its own page: what you inspect, what you can repair, what you replace, and how to start. Ask customers to send photos by text so you can triage before you drive. A wide shot of the room, a close-up of the damage, the label or model of the water heater or sump pump, and a note about whether the power is on. That saves a trip and helps you give a straighter answer.' },
+        { p: 'My advice: build the emergency pieces before you need them, then test them on your own phone. A banner, clear call and text buttons, a light page, and an honest service area do more than any redesign during a storm. If you want a second pair of eyes on yours, write to me. I work remotely from Medellín for businesses in the US and Canada, by email and WhatsApp, and I can tell you what I would fix first.' },
+      ],
+    },
+  },
+  {
+    slug: 'texas-contractor-website-show-your-license',
+    onlyLang: 'en',
+    relatedDemo: 'electricians',
+    relatedService: 'plumber-website-design',
+    related: ['electrician-website-licence-trust', 'google-business-profile-local-trades', 'plumbing-website-no-calls'],
+    tag: { en: 'Trades', es: 'Oficios' },
+    date: '2026-11-27',
+    image: 'https://cdn.pixabay.com/photo/2017/09/26/11/11/plumber-2788334_640.jpg',
+    imageAlt: { en: 'Plumber working under a sink with tools' },
+    en: {
+      title: 'Texas Contractors: Put Your License Where Customers Decide',
+      summary:
+        'A homeowner checks your license before they let you through the door. If the number is buried, the decision happens without you.',
+      body: [
+        { p: 'Someone is standing at a front door in Texas, listening to a contractor explain a repair. In their head, one question runs under the conversation: is this person licensed, and can I check it? They will not ask it out loud. They will go back inside, search your name, and decide. Your website either answers that question in a few seconds or leaves it to chance.' },
+        { h: 'What Texas actually licenses' },
+        { p: 'The rules are specific. Plumbers are licensed by the Texas State Board of Plumbing Examiners (TSBPE). Electricians and air conditioning contractors are licensed by the Texas Department of Licensing and Regulation (TDLR). General contractors, home builders and roofers do not have a state license in Texas. That last point matters, because a website that implies a state license you do not have creates a different problem than the one you are trying to solve.' },
+        { p: 'If you are not sure which agency covers a trade, check before you write anything on the site. Guessing produces a page that looks official and is wrong, and the customer who checks will find the mismatch. The same care applies to the word "licensed": use it only for the trade you actually hold, not as a general badge for the whole business. A business that offers more than one trade has more than one story to tell, and the site should keep them apart.' },
+        { h: 'Put the number where the decision happens' },
+        { p: 'Do not hide the license number in an About page. Put it next to the call button, in the footer, and on every service page. Use the format the agency uses, and make sure the name on the license matches the name on the site. If your business name is different from the licensed name, say so in one line. A visitor who has to guess whether the legal name and the trading name are the same company will keep looking.' },
+        { h: 'Link to the public search' },
+        { p: 'Both agencies have a public license search on their websites. Link to the one that applies to you, and tell people what to type. "Search our license number on the TSBPE site" is a stronger trust signal than a badge you designed yourself, because it lets the customer verify the claim without calling you. If you are licensed by TDLR, link there. If you work with both trades, link to both.' },
+        { h: 'If you are a roofer or general contractor' },
+        { p: 'You cannot show a state license you do not have, so show the proof that does exist. Put your insurance and your written warranty where people can see them. Add any local registration your city requires, if it applies to you. Show reviews from real customers, and photographs of work you actually completed. A roof photo with the address removed and the date of the job says more than a stock image of a house. If you use a written contract, say that every job starts with one.' },
+        { h: 'Make the proof easy to check' },
+        { p: 'Trust breaks when the details do not line up. The phone number on your site should be the same one on your Google Business Profile. The license number in the footer should match the one in the header. The insurance certificate should not be expired. Check all of it every few months, because licenses renew and certificates expire. Ask someone who does not work with you to find your license number on your site without help. If they cannot, a customer will not either.' },
+        { h: 'A final checklist' },
+        { p: 'License number beside the call button: yes. License number in the footer: yes. License number on every service page: yes. Link to the TSBPE or TDLR search: yes. Business name and licensed name explained: yes. Insurance and warranty visible for unlicensed trades: yes. Local registrations listed if they apply: yes. Reviews and real job photos: yes. A written contract offered: yes. That is the whole list. None of it requires a redesign. If a customer finds a dead link to the agency search, fix it the same day.' },
+        { p: 'My advice: start with the number and the link. They take an afternoon and they answer the question every customer is already asking. Then add the rest of the proof as you have it. If you want help putting it in the right places, write to me. I work remotely from Medellín for contractors in the US and Canada, over email and WhatsApp.' },
+      ],
+    },
+  },
+  {
+    slug: 'california-small-business-website-accessibility',
+    onlyLang: 'en',
+    relatedDemo: null,
+    relatedService: 'web-development',
+    related: ['how-much-should-a-website-cost', 'web-dos-anos-sin-mantenimiento-google-olvida', 'invisible-on-google-where-to-start'],
+    tag: { en: 'Accessibility', es: 'Accesibilidad' },
+    date: '2026-11-27',
+    image: 'https://cdn.pixabay.com/photo/2014/09/24/14/29/macbook-459196_640.jpg',
+    imageAlt: { en: 'Laptop showing a website on a clean desk' },
+    en: {
+      title: 'California Small Business Websites: Accessibility Basics That Help You Avoid Costly Claims',
+      summary:
+        'Accessibility is not a separate project. It is a set of small decisions in the code you already have, and in California those decisions can have a price.',
+      body: [
+        { p: 'A demand letter about a website is a strange thing to receive. It does not mention a customer who could not use the site. It mentions a law, a standard, and a number. If you run a small business in California, the useful response is not panic and not a plugin. It is to understand what accessibility means in practice and to fix the parts of your site that block people today.' },
+        { h: 'What accessibility means in plain words' },
+        { p: 'An accessible website works for people who use a screen reader, people with low vision, and people who navigate with a keyboard instead of a mouse. It also works for someone with a temporary injury, a small phone, or a slow connection. The point is not a special version of your site for a special group. The point is that the site you already have can be used by more of the people who arrive.' },
+        { h: 'What California law adds' },
+        { p: 'The Unruh Civil Rights Act allows statutory damages of at least $4,000 per violation. A violation of the Americans with Disabilities Act (ADA) also counts as a violation of the Unruh Act. That combination is why California sees a large share of web accessibility claims. In practice, the Web Content Accessibility Guidelines (WCAG) 2.0 and 2.1 at level AA are the reference standard people point to. You do not need to memorize the document. You do need to know that the standard is public and testable.' },
+        { h: 'The checklist that covers most of it' },
+        { p: 'Text alternatives on images. Every meaningful image needs alt text that says what it shows. Decorative images can have empty alt text, but they should not be announced as "image".' },
+        { p: 'Enough contrast. Gray text on a white background looks elegant in a mockup and disappears for someone with low vision. Check the contrast of body text, buttons, and links, including the focus state.' },
+        { p: 'Everything usable with a keyboard. Tab through the page. If you cannot reach a menu, a form field, or a button, neither can someone who does not use a mouse.' },
+        { p: 'Forms with real labels. A placeholder is not a label. Each field needs a visible label connected to the input, and error messages need to say what went wrong.' },
+        { p: 'Buttons with clear text. "Submit" and "Click here" tell a screen reader nothing. "Book a consultation" and "Send my request" do.' },
+        { p: 'Captions on video. If you publish video, add captions. If you publish audio, add a transcript.' },
+        { p: 'Do not rely on color alone. If red means error, add the word "error" or an icon. If a link is only distinguished by color, underline it.' },
+        { p: 'Accessible PDFs. A scanned menu or price list is an image. If a PDF matters to customers, make it a real text document or publish the same information as a page.' },
+        { h: 'Why an overlay does not fix the code' },
+        { p: 'Accessibility widgets and overlays usually add a toolbar on top of the page. They can change font size or contrast for the person using the toolbar. What they do not do is repair the underlying HTML: the missing label, the button that is a div, the image with no alternative. My view is that an overlay is a supplement at best, not a substitute for fixing the site. It can also create a false sense of completion, which is worse than knowing what is still broken.' },
+        { h: 'How to check your site today' },
+        { p: 'Open your site and put the mouse away. Press Tab and follow the focus. Can you see where you are? Can you reach the main menu, the form, and the send button? Does the focus disappear behind a sticky header? Then check the contrast of your smallest text. Zoom the page in and see whether anything overlaps or gets cut off. These tests will not find every issue, but they find the ones that stop people.' },
+        { h: 'Where to start this week' },
+        { p: 'Fix the pages customers use most: the home page, the contact page, and the service page they land on from Google. Add alt text, labels, and focus styles there first. Then move to the rest. Keep a short list of what you changed and what is still open. If a claim ever arrives, that list is more useful than a promise that the site is "fully compliant".' },
+        { p: 'This is general information, not legal advice; check with a lawyer for your situation.' },
+        { p: 'My advice: treat accessibility as part of building the site, not as a cleanup you do after a complaint. The fixes are usually small, and they help every visitor. If you want a plain review of your pages, write to me. I work remotely from Medellín for businesses in the US and Canada, by email and WhatsApp.' },
+      ],
+    },
+  },
+  {
+    slug: 'ontario-small-business-website-aoda-casl',
+    onlyLang: 'en',
+    relatedDemo: null,
+    relatedService: 'web-development',
+    related: ['how-much-should-a-website-cost', 'web-dos-anos-sin-mantenimiento-google-olvida', 'invisible-on-google-where-to-start'],
+    tag: { en: 'Canada', es: 'Canadá' },
+    date: '2026-11-27',
+    image: 'https://cdn.pixabay.com/photo/2018/03/23/17/10/company-3254289_640.jpg',
+    imageAlt: { en: 'Hand holding a smartphone with a business app' },
+    en: {
+      title: 'Ontario Small Business Websites: What AODA and CASL Actually Mean for You',
+      summary:
+        'Two Ontario rules are often mixed together. One is about who can use your site. The other is about who can email or text your customers.',
+      body: [
+        { p: 'If you run a small business in Ontario, you have probably heard AODA and CASL used as if they were the same thing. They are not. One is about accessibility. The other is about consent for commercial messages. Knowing which one applies to you keeps you from paying for work you do not need and from ignoring a rule that does.' },
+        { h: 'Who AODA applies to' },
+        { p: 'Under the Accessibility for Ontarians with Disabilities Act, private and non-profit organizations in Ontario with 50 or more employees must make their public websites conform to WCAG 2.0 level AA. That requirement has applied since 1 January 2021, with exceptions for live captions and pre-recorded audio descriptions. If that is you, the website requirement is real and has a date behind it. The date is old, but the requirement is still on the books.' },
+        { h: 'If you have fewer than 50 employees' },
+        { p: 'The web requirement does not apply to organizations under 50 employees, but the Government of Ontario encourages them to meet it anyway. That is not a loophole to celebrate. An accessible site lets more customers use it: people with low vision, people who navigate by keyboard, people reading on a small screen in bright light. The business case does not need a law to be true. Treat the standard as a good default, and fix the parts that block people first.' },
+        { h: 'What WCAG 2.0 AA means in practice' },
+        { p: 'You do not need to read the whole specification. Start with the basics: alt text on meaningful images, enough contrast, forms with visible labels, buttons with clear names, and a page that works with a keyboard. Add captions to video and a transcript to audio. Check that color is not the only way you communicate something. These are the same fixes that help every visitor, and they are the ones an accessibility review will look at first.' },
+        { h: 'CASL: consent before the message' },
+        { p: "Canada's Anti-Spam Legislation (CASL) requires consent before you send a commercial electronic message, including email and text messages. The message has to identify you and include a way to unsubscribe. The safe habit is simple: ask clearly, keep a record of the answer, and stop when someone opts out. A box people did not notice is not a clear ask. Neither is a message that arrives because someone downloaded a guide and never agreed to hear from you. The test is not whether the message is small; it is whether the person agreed to receive it." },
+        { h: 'How to ask on your forms' },
+        { p: 'If you collect an email for a newsletter, use a checkbox that starts unchecked and says what the person is signing up for. Keep it separate from the box for "you may contact me about my request". If you send marketing texts, ask for that separately too. Save the date and the wording of the consent, because a record you cannot produce is hard to rely on. Make the unsubscribe link work without a login and without a reply.' },
+        { p: 'Keep the ask close to the reason. If someone downloads a guide, the natural question is whether they want the guide, not whether they want a monthly newsletter. A separate checkbox for the newsletter is clearer, and it is easier to explain if anyone asks. When someone says no, leave it alone. Another ask in the same week does not turn a no into consent.' },
+        { h: 'A checklist for this month' },
+        { p: 'Find out whether your organization has 50 or more employees, and write down the answer. If it does, confirm that your public website meets WCAG 2.0 AA and note the exceptions that apply. Check every form that collects an email or phone number for a clear, unchecked consent box. Check one recent commercial email for your business name, how to reach you, and an unsubscribe link. Test the unsubscribe link yourself. Read your privacy page and make sure it describes what you actually do. That is enough for one month; repeat the form and email checks when something changes.' },
+        { p: 'This is general information, not legal advice; check with a lawyer for your situation.' },
+        { p: 'My advice: separate the two questions. Ask "can more people use my site?" and "did this person agree to hear from me?" They lead to different fixes, and both are cheaper before a complaint than after. If you want help reviewing your forms and pages, write to me. I work remotely from Medellín for businesses in Canada, by email and WhatsApp.' },
+      ],
+    },
+  },
+  {
+    slug: 'manchester-small-business-website-cookies-local-search',
+    onlyLang: 'en',
+    relatedDemo: null,
+    relatedService: 'web-development',
+    related: ['google-business-profile-local-trades', 'invisible-on-google-where-to-start', 'how-much-should-a-website-cost'],
+    tag: { en: 'United Kingdom', es: 'Reino Unido' },
+    date: '2026-11-27',
+    image: 'https://cdn.pixabay.com/photo/2015/05/08/14/47/seo-758264_640.jpg',
+    imageAlt: { en: 'Colourful pencils arranged around the word SEO' },
+    en: {
+      title: 'A Website for Your Manchester Business: Cookie Rules After the 2026 Changes and Local Search',
+      summary:
+        'Cookie banners, a new ICO guide and the local searches that actually bring work. A practical pass for a small Manchester business.',
+      body: [
+        { p: 'You open your own website, and the cookie banner appears before the page has finished loading. You click accept because you want to see the site. Behind that click, a marketing pixel may already be running. If that sounds familiar, the 2026 changes are a good reason to look at what your site actually does, and to fix the parts that do not match what you tell visitors.' },
+        { h: 'What changed, in plain English' },
+        { p: 'In the UK, cookies and similar technologies such as tracking pixels, web storage and device fingerprinting are governed by PECR. The changes in the Data (Use and Access) Act came into force on 5 February 2026, and the ICO published its final guidance on storage and access technologies on 29 April 2026. The new exceptions allow statistical analytics and remembering appearance preferences without consent, but only with conditions attached. Advertising and cross-site tracking still need consent. The short version: some things got easier, the core rule did not disappear.' },
+        { h: 'An honest cookie banner' },
+        { p: 'Accept and reject should be equally easy to find, in the same layer, with the same visual weight. A banner that hides reject behind another screen is not honest, even if it is technically possible. The marketing pixel should not fire before the visitor accepts. If your banner loads the pixel on page load and asks afterwards, the banner is decoration. Test it yourself with the browser tools open, and check what happens when you click reject.' },
+        { h: 'Check what your site actually loads' },
+        { p: 'Make a list of every script, pixel, font and embedded player on the site. Include the ones added by plugins and the ones a previous developer left behind. Look at what is stored in the browser after a visit: cookies, local storage, session storage. If you cannot explain what a script is for, it should not be there. Fewer scripts also means a faster site, which matters on a phone in a shop doorway.' },
+        { h: 'Local search starts with your Google Business Profile' },
+        { p: 'For a Manchester business, the map results often appear before the website links. Claim your profile, choose the right primary category, add your real address or service area, and keep the hours current. Add photos of your premises, your team and your work. Answer reviews, especially the critical ones, in a calm and specific way. A profile with recent activity looks like a business that is still open.' },
+        { h: 'Write the neighbourhoods you really serve' },
+        { p: 'If you work across the city, say so on the page. You can name areas such as the Northern Quarter, Ancoats, Didsbury, Salford or Stockport, but only if you genuinely cover them. A list of places you do not serve brings calls you cannot take and makes the rest of the page less believable. If your work is concentrated in a smaller area, write that instead. Specific is better than long.' },
+        { h: 'Reviews and mobile speed' },
+        { p: 'Ask happy customers for a review at the moment the job ends, and make it easy by sending the link. Do not write reviews for them or offer rewards for a rating; real reviews are the point. Then open your site on a phone over mobile data. If the first screen takes more than a moment, compress the images, remove the autoplay video, and cut the scripts you listed earlier. Speed is part of local search and part of whether someone stays.' },
+        { h: 'Working with a developer in Colombia' },
+        { p: 'You do not need someone in the same city to fix these things. I work remotely from Medellín, Colombia, and I am happy to take on UK clients. Colombia is five hours behind the UK in winter and six hours behind in summer, so a message sent in your morning is waiting for me when I start, and I reply before your day ends. We can work by email and WhatsApp, with short calls when a decision needs one. Website packages start at 450 USD, and you can see the current ranges on the pricing page at /pricing/.' },
+        { p: 'This is general information, not legal advice; check with a lawyer for your situation.' },
+        { p: 'My advice: fix the banner first, because it is the piece visitors see and the piece a regulator can test. Then update your Google Business Profile and the neighbourhoods on your page. If you want a second opinion on either, write to me and tell me what your site runs today. I will tell you what I would change first.' },
+      ],
+    },
+  },
 ]
 
 /**
@@ -1643,16 +1967,19 @@ export const articles = [
  *   2. Slugs listados en `related` (manual) — para enlaces cruzados específicos.
  *   3. Cualquier otro, de forma determinista por slug.
  *
- * Se usa en la página de un artículo. Nunca incluye al propio artículo.
+ * Solo considera artículos disponibles en `lang` (los de un solo idioma no
+ * aparecen en el listado del idioma que no tienen). Se usa en la página de un
+ * artículo. Nunca incluye al propio artículo.
  */
-export function pickRelated(article, count = 3) {
+export function pickRelated(article, count = 3, lang = null) {
   if (!article) return []
+  const pool = availableIn(articles, lang)
   const seen = new Set([article.slug])
   const out = []
 
   // 1. Mismo tag (tag.en como clave canónica).
   const tag = article.tag.en
-  for (const a of articles) {
+  for (const a of pool) {
     if (seen.has(a.slug)) continue
     if (a.tag.en === tag) {
       out.push(a)
@@ -1664,7 +1991,7 @@ export function pickRelated(article, count = 3) {
   // 2. `related` explícito.
   for (const slug of article.related || []) {
     if (seen.has(slug)) continue
-    const a = articles.find((x) => x.slug === slug)
+    const a = pool.find((x) => x.slug === slug)
     if (!a) continue
     out.push(a)
     seen.add(a.slug)
@@ -1672,7 +1999,7 @@ export function pickRelated(article, count = 3) {
   }
 
   // 3. Resto, determinista a partir del slug del artículo actual.
-  const rest = pickArticles(`related:${article.slug}`, articles.length)
+  const rest = pickFrom(pool, `related:${article.slug}`, pool.length)
   for (const a of rest) {
     if (seen.has(a.slug)) continue
     out.push(a)
@@ -1687,48 +2014,13 @@ export function pickRelated(article, count = 3) {
  * Elige `count` artículos de forma DETERMINISTA a partir de la ruta: la misma
  * página siempre muestra el mismo trío (así queda estable en el HTML
  * prerenderizado y Google indexa lo mismo que ve el visitante), pero páginas
- * distintas muestran tríos distintos.
+ * distintas muestran tríos distintos. Con `lang`, excluye los artículos que
+ * no existen en ese idioma.
  */
-export function pickArticles(pathname, count = 3) {
-  if (!articles.length) return []
+export function pickArticles(pathname, count = 3, lang = null) {
   // Mezcla determinista sembrada con la ruta: la misma página siempre muestra
   // el mismo trío (el HTML prerenderizado y lo que ve el visitante coinciden,
   // que es lo que Google necesita), y páginas distintas muestran tríos
   // distintos. Con 12 artículos hay 220 combinaciones posibles de 3.
-  const pool = articles.slice()
-  const rand = mulberry32(hashPath(pathname))
-  for (let i = pool.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(rand() * (i + 1))
-    const tmp = pool[i]
-    pool[i] = pool[j]
-    pool[j] = tmp
-  }
-  return pool.slice(0, Math.min(count, pool.length))
-}
-
-// FNV-1a de 32 bits con mezcla final: cambios mínimos en la ruta dan
-// resultados muy distintos.
-function hashPath(pathname) {
-  let h = 0x811c9dc5
-  for (let i = 0; i < pathname.length; i += 1) {
-    h ^= pathname.charCodeAt(i)
-    h = Math.imul(h, 0x01000193)
-  }
-  h ^= h >>> 15
-  h = Math.imul(h, 0x2545f491)
-  h ^= h >>> 13
-  return h >>> 0
-}
-
-// PRNG de 32 bits sin estado global: misma semilla, misma secuencia, en el
-// navegador y en el prerender.
-function mulberry32(seed) {
-  let a = seed >>> 0
-  return function next() {
-    a = (a + 0x6d2b79f5) >>> 0
-    let t = a
-    t = Math.imul(t ^ (t >>> 15), t | 1)
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61)
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
-  }
+  return pickFrom(availableIn(articles, lang), pathname, count)
 }

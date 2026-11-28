@@ -12,17 +12,13 @@ import { useEffect, useRef, useState } from 'react'
  */
 export default function Reveal({ children, as: Tag = 'div', className = '', immediate = false, ...rest }) {
   const ref = useRef(null)
-  // Arranca siempre oculto: si "immediate" partiera ya visible, no habría
-  // frame previo desde el cual hacer la transición y no se vería animación.
-  const [visible, setVisible] = useState(false)
+  // "immediate" (hero) arranca visible: la entrada es una animación CSS con
+  // keyframes, que corre igual al primer pintado, y así coincide con el HTML
+  // prerenderizado (el contenido principal se ve sin esperar al JavaScript).
+  const [visible, setVisible] = useState(immediate)
 
   useEffect(() => {
-    if (immediate) {
-      // Deja pintar el frame oculto y recién en el siguiente tick revela,
-      // para que la transición de opacity/transform sí se dispare.
-      const id = requestAnimationFrame(() => setVisible(true))
-      return () => cancelAnimationFrame(id)
-    }
+    if (immediate) return
     const el = ref.current
     if (!el || typeof IntersectionObserver === 'undefined') {
       setVisible(true)
@@ -44,7 +40,7 @@ export default function Reveal({ children, as: Tag = 'div', className = '', imme
   const cls = `reveal${visible ? ' is-visible' : ''}${className ? ` ${className}` : ''}`
 
   return (
-    <Tag ref={ref} className={cls} {...rest}>
+    <Tag ref={ref} className={cls} data-reveal={immediate ? 'now' : 'scroll'} {...rest}>
       {children}
     </Tag>
   )
